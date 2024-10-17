@@ -29,7 +29,13 @@ export default function Nav() {
     },
   };
 
-  const menuItems = ["Home", "About", "Services", "Contact"];
+  const menuItems = [
+    "Home",
+    "Portfolio",
+    "Services",
+    "Knowledge",
+    "Contact Us",
+  ];
 
   return (
     <div className="relative">

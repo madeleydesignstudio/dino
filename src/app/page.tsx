@@ -23,6 +23,36 @@ export default function HorizontalScrollLanding() {
   const triggerRef = useRef(null);
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [isFirstVisit, setIsFirstVisit] = useState(true);
+
+  useEffect(() => {
+    // Check if it's the first visit
+    const hasVisited = localStorage.getItem("hasVisitedBefore");
+    if (hasVisited) {
+      setIsFirstVisit(false);
+      setLoading(false);
+    } else {
+      // Set the flag for future visits
+      localStorage.setItem("hasVisitedBefore", "true");
+    }
+
+    // Simulate loading progress only on first visit
+    if (isFirstVisit) {
+      const interval = setInterval(() => {
+        setProgress((prevProgress) => {
+          const newProgress = prevProgress + 10;
+          if (newProgress >= 100) {
+            clearInterval(interval);
+            setTimeout(() => setLoading(false), 500); // Delay to show 100%
+            return 100;
+          }
+          return newProgress;
+        });
+      }, 200);
+
+      return () => clearInterval(interval);
+    }
+  }, [isFirstVisit]);
 
   useEffect(() => {
     // Simulate loading progress
