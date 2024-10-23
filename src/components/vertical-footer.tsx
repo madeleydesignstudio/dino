@@ -49,7 +49,7 @@ export default function VerticalFooter() {
 
           <div className="max-w-[20rem]">
             <h2 className="font-bold text-md mb-2 ">NEWSLETTER</h2>
-            <div className="flex">
+            <div className="flex h-fit">
               <Input
                 type="email"
                 placeholder="Enter your Email"
@@ -57,7 +57,7 @@ export default function VerticalFooter() {
               />
               <Button
                 type="submit"
-                className="rounded-l-none bg-black text-white hover:bg-gray-800 text-xs"
+                className="rounded-l-none font-bold bg-[#2EA8A9] text-white hover:bg-[#237e7e] text-xs"
               >
                 Subscribe
               </Button>
