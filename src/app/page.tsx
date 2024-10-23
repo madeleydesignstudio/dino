@@ -159,6 +159,7 @@ export default function HorizontalScrollLanding() {
               </p>
             </Link>
           </section>
+
           <VerticalFooter />
         </div>
       </div>
