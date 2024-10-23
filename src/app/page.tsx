@@ -82,7 +82,7 @@ export default function HorizontalScrollLanding() {
           translateX: 0,
         },
         {
-          translateX: "-300vw",
+          translateX: "-400vw",
           ease: "none",
           duration: 1,
           scrollTrigger: {
@@ -110,7 +110,7 @@ export default function HorizontalScrollLanding() {
       <Navbar />
 
       <div ref={triggerRef} className="h-screen">
-        <div ref={sectionRef} className="flex h-screen w-[400vw]">
+        <div ref={sectionRef} className="flex h-screen w-[500vw]">
           <section className="h-full flex items-center">
             <Component />
           </section>
@@ -160,12 +160,10 @@ export default function HorizontalScrollLanding() {
               </p>
             </Link>
           </section>
-          <section className="h-screen w-[900px] flex items-center justify-center">
-            <div className="h-[900px] w-[900px] flex items-center justify-center">
-              <ComicCover />
-            </div>
+          <section className="h-screen w-[900px] flex items-center justify-center p-12 ">
+            <ComicCover />
           </section>
-          <section className="h-screen w-[38rem] flex items-center justify-center">
+          <section className=" h-screen flex items-center justify-center">
             <VerticalFooter />
           </section>
         </div>
