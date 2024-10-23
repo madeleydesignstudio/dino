@@ -94,6 +94,15 @@ export default function Nav() {
                 </motion.li>
               ))}
             </ul>
+            <footer className="relative bottom-0">
+              <div className="flex">
+                <p className="font-bold text-7xl font-karla">DINO</p>
+                <div className="flex flex-col">
+                  <p className="text-xs font-karla">51.5072° N, 0.1276° W</p>
+                  <p className="text-xs font-karla">UK DESIGN STUDIO</p>
+                </div>
+              </div>
+            </footer>
           </motion.nav>
         )}
       </AnimatePresence>

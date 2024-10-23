@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import HyperText from "./ui/hyper-text";
 
 export default function Component() {
   return (
@@ -24,8 +25,8 @@ export default function Component() {
 
         <div className="relative z-10 flex h-full w-screen -mr-6 flex-col justify-between">
           <main className="">
-            <h2 className="pt-[2.36rem] text-[10.5rem] font-nanum pr-12 pl-6 text-center">
-              Architects of the web.
+            <h2 className="pt-[1.5rem] text-[10.5rem] font-nanum pr-12 pl-6 text-center">
+              <HyperText text="Architects of the web." className="font-nanum" />
             </h2>
             <div className=" border-b border-stone-900 mr-6"></div>
             <p className="text-7xl font-nanum pl-[34%] max-w-[65%] pt-6">
