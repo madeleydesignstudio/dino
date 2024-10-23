@@ -8,6 +8,7 @@ import Component from "@/components/landing-page";
 import Image from "next/image";
 import Link from "next/link";
 import VerticalFooter from "@/components/vertical-footer";
+import ComicCover from "@/components/comic-cover";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -159,8 +160,14 @@ export default function HorizontalScrollLanding() {
               </p>
             </Link>
           </section>
-
-          <VerticalFooter />
+          <section className="h-screen w-[900px] flex items-center justify-center">
+            <div className="h-[900px] w-[900px] flex items-center justify-center">
+              <ComicCover />
+            </div>
+          </section>
+          <section className="h-screen w-[38rem] flex items-center justify-center">
+            <VerticalFooter />
+          </section>
         </div>
       </div>
     </div>
