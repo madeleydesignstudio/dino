@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { nanumMyeongjo, karla } from "../lib/fonts";
 import "./globals.css";
+import { OpenPanelComponent } from "@openpanel/nextjs";
 
 export const metadata: Metadata = {
   title: "Dino - Architecting your web.",
@@ -18,6 +19,10 @@ export default function RootLayout({
       <body
         className={`${nanumMyeongjo.variable} ${karla.variable}  antialiased`}
       >
+        <OpenPanelComponent
+          clientId="5dd02cb1-8de6-4ec1-9d42-a116d6471fd7"
+          trackScreenViews={true}
+        />
         {children}
       </body>
     </html>
