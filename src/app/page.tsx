@@ -133,20 +133,28 @@ export default function HorizontalScrollLanding() {
 
               {/* Overlay divs */}
               <div className="absolute w-full h-screen flex items-end z-10">
-                <div className="flex flex-col p-8">
+                <div className="flex flex-col p-4">
                   <h1 className="text-8xl text-stone-50  font-nanum">
                     Fossil Files
                   </h1>
-                  <p className="text-stone-50 text-sm">
+                  <p className="text-stone-50 text-sm max-w-sm">
                     Fossil Files is our comprehensive knowledge hub dedicated to
                     all facets of the web industry.
                   </p>
                 </div>
-                <img
-                  src="https://ik.imagekit.io/danielcmadeley/dino/Group%209.svg?updatedAt=1730029736000"
-                  alt=""
-                  className="absolute bottom-4 right-4"
-                />
+                <div className="absolute bottom-4 right-4 flex items-end">
+                  <Link href="/fossil-files">
+                    <h1 className=" text-stone-900 hover:text-stone-300 transition-colors absolute left-4 bottom-4 flex items-end font-nanum text-xl">
+                      {" "}
+                      Click here
+                    </h1>
+
+                    <img
+                      src="https://ik.imagekit.io/danielcmadeley/dino/Group%209.svg?updatedAt=1730029736000"
+                      alt=""
+                    />
+                  </Link>
+                </div>
               </div>
             </div>
           </section>

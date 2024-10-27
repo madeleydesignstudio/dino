@@ -37,7 +37,7 @@ export default function Component() {
       <header className="h-16 border-b flex items-center bg-stone-50 w-full justify-between px-4">
         <div className="flex items-center space-x-2">
           <img
-            src="/placeholder.svg?height=24&width=24"
+            src="https://ik.imagekit.io/danielcmadeley/dino/Group%209.svg?updatedAt=1730029736000"
             alt="Fossil Files logo"
             className="w-6 h-6"
           />
