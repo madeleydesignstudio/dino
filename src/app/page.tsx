@@ -159,28 +159,28 @@ export default function HorizontalScrollLanding() {
             </div>
           </section>
           <section className="h-screen flex items-center justify-center">
-            <Link href="/fossil-files">
+            <Link href="/fossil-files?item=Frontend">
               <div className="w-[100px] h-screen bg-[#F9E4B3] border-r border-stone-900 flex items-end py-[8rem] justify-center hover:bg-[#F9E4B3]/80 transition-colors">
                 <h1 className="text-stone-900 text-6xl font-nanum -rotate-90">
                   Frontend.
                 </h1>
               </div>
             </Link>
-            <Link href="/fossil-files">
+            <Link href="/fossil-files?item=Backend">
               <div className="w-[100px] h-screen bg-[#F9E4B3] border-r border-stone-900 flex items-end py-[8rem] justify-center hover:bg-[#F9E4B3]/80 transition-colors">
                 <h1 className="text-stone-900 text-6xl font-nanum -rotate-90">
                   Backend.
                 </h1>
               </div>
             </Link>
-            <Link href="/fossil-files">
+            <Link href="/fossil-files?item=Design">
               <div className="w-[100px] h-screen bg-[#F9E4B3] border-r border-stone-900 flex items-end py-[8rem] justify-center hover:bg-[#F9E4B3]/80 transition-colors">
                 <h1 className="text-stone-900 text-6xl font-nanum -rotate-90">
                   Design.
                 </h1>
               </div>
             </Link>
-            <Link href="/fossil-files">
+            <Link href="/fossil-files?item=Market">
               <div className="w-[100px] h-screen bg-[#F9E4B3] border-r border-stone-900 flex items-end py-[8rem] justify-center hover:bg-[#F9E4B3]/80 transition-colors">
                 <h1 className="text-stone-900 text-6xl font-nanum -rotate-90">
                   Marketing.

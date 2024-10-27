@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import GradientSquare from "./_components/gradient-square";
+import { useSearchParams } from "next/navigation";
 
 const items = [
   {
@@ -24,7 +25,15 @@ const items = [
 ];
 
 export default function Component() {
+  const searchParams = useSearchParams();
   const [selectedItem, setSelectedItem] = useState<string>("Frontend");
+
+  useEffect(() => {
+    const item = searchParams.get("item");
+    if (item && items.some((i) => i.name === item)) {
+      setSelectedItem(item);
+    }
+  }, [searchParams]);
 
   const handleItemClick = (name: string) => {
     setSelectedItem(name);
