@@ -129,30 +129,36 @@ export default function HorizontalScrollLanding() {
                 objectFit="cover"
                 className="opacity-50 -z-10"
               />
-              <div className="absolute inset-0 bg-stone-50/30 -z-5" />
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/95 to-stone-50/30 -z-5" />
 
               {/* Overlay divs */}
-              <div className="flex flex-col h-screen">
-                <div className=" h-full border-b border-stone-900">
-                  <h1>Hello</h1>
+              <div className="absolute w-full h-screen flex items-end z-10">
+                <div className="flex flex-col p-8">
+                  <h1 className="text-8xl text-stone-50  font-nanum">
+                    Fossil Files
+                  </h1>
+                  <p className="text-stone-50 text-sm">
+                    Fossil Files is our comprehensive knowledge hub dedicated to
+                    all facets of the web industry.
+                  </p>
                 </div>
-                <div className=" h-full">
-                  <h1>Bye</h1>
-                </div>
+                <img
+                  src="https://ik.imagekit.io/danielcmadeley/dino/Group%209.svg?updatedAt=1730029736000"
+                  alt=""
+                  className="absolute bottom-4 right-4"
+                />
               </div>
             </div>
           </section>
           <section className="h-screen items-center justify-center px-12 py-14 border-r border-stone-900">
             <h2 className="text-6xl font-nanum">Projects</h2>
             <div className="flex flex-wrap items-center justify-center gap-6 mt-12">
-              {["Structopia", "QuantumLeap", "NeoVerse", "EchoSphere"].map(
-                (project, index) => (
-                  <div key={index} className="mb-6">
-                    <div className="border border-stone-900 w-[450px] h-[600px]"></div>
-                    <h3 className="mt-2 text-2xl font-nanum">{project}</h3>
-                  </div>
-                )
-              )}
+              {["Structopia", "HJB Coaching", "Intor"].map((project, index) => (
+                <div key={index} className="mb-6">
+                  <div className="border border-stone-900 w-[450px] h-[600px]"></div>
+                  <h3 className="mt-2 text-2xl font-nanum">{project}</h3>
+                </div>
+              ))}
             </div>
             <Link href="/portfolio">
               <p className="text-end font-nanum text-4xl ">
