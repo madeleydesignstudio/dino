@@ -123,13 +123,13 @@ export default function HorizontalScrollLanding() {
           <section className="h-[1080px] w-[1080px] flex items-center justify-center">
             <div className="relative h-full w-full border-r border-l border-stone-900">
               <Image
-                src="https://ik.imagekit.io/danielcmadeley/dino/mxdeley_httpss.mj.runc-amOZgo1bo_httpss.mj.runqJ0F4h1q-_8_htt_d739a603-ef51-482a-98eb-fd688d6e5b8b_1.png?updatedAt=1729148536236"
+                src="https://ik.imagekit.io/danielcmadeley/dino/mxdeley_pixar_styled_32bit_pixelated_dinosaur_themed_notice_b_ef872751-925f-4cff-8282-dde37a3891b2_3.png?updatedAt=1730037137765"
                 alt="Desert landscape"
                 layout="fill"
                 objectFit="cover"
                 className="opacity-50 -z-10"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/95 to-stone-50/30 -z-5" />
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/95 to-stone-950/30 -z-5" />
 
               {/* Overlay divs */}
               <div className="absolute w-full h-screen flex items-end z-10">
@@ -144,10 +144,10 @@ export default function HorizontalScrollLanding() {
                 </div>
                 <div className="absolute bottom-4 right-4 flex items-end">
                   <Link href="/fossil-files">
-                    <h1 className=" text-stone-900 hover:text-stone-300 transition-colors absolute left-4 bottom-4 flex items-end font-nanum text-xl">
+                    {/* <h1 className=" text-stone-900 hover:text-stone-300 transition-colors absolute left-4 bottom-4 flex items-end font-nanum text-xl">
                       {" "}
                       Click here
-                    </h1>
+                    </h1> */}
 
                     <img
                       src="https://ik.imagekit.io/danielcmadeley/dino/Group%209.svg?updatedAt=1730029736000"
