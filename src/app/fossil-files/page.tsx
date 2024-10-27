@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { Input } from "@/components/ui/input";
 import GradientSquare from "./_components/gradient-square";
 import { useSearchParams } from "next/navigation";
@@ -24,7 +24,7 @@ const items = [
   },
 ];
 
-export default function Component() {
+function FossilFilesContent() {
   const searchParams = useSearchParams();
   const [selectedItem, setSelectedItem] = useState<string>("Frontend");
 
@@ -99,5 +99,13 @@ export default function Component() {
         </main>
       </div>
     </div>
+  );
+}
+
+export default function Component() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <FossilFilesContent />
+    </Suspense>
   );
 }
