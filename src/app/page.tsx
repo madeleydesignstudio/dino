@@ -158,6 +158,36 @@ export default function HorizontalScrollLanding() {
               </div>
             </div>
           </section>
+          <section className="h-screen flex items-center justify-center">
+            <Link href="/fossil-files">
+              <div className="w-[100px] h-screen bg-[#F9E4B3] border-r border-stone-900 flex items-end py-[8rem] justify-center hover:bg-[#F9E4B3]/80 transition-colors">
+                <h1 className="text-stone-900 text-6xl font-nanum -rotate-90">
+                  Frontend.
+                </h1>
+              </div>
+            </Link>
+            <Link href="/fossil-files">
+              <div className="w-[100px] h-screen bg-[#F9E4B3] border-r border-stone-900 flex items-end py-[8rem] justify-center hover:bg-[#F9E4B3]/80 transition-colors">
+                <h1 className="text-stone-900 text-6xl font-nanum -rotate-90">
+                  Backend.
+                </h1>
+              </div>
+            </Link>
+            <Link href="/fossil-files">
+              <div className="w-[100px] h-screen bg-[#F9E4B3] border-r border-stone-900 flex items-end py-[8rem] justify-center hover:bg-[#F9E4B3]/80 transition-colors">
+                <h1 className="text-stone-900 text-6xl font-nanum -rotate-90">
+                  Design.
+                </h1>
+              </div>
+            </Link>
+            <Link href="/fossil-files">
+              <div className="w-[100px] h-screen bg-[#F9E4B3] border-r border-stone-900 flex items-end py-[8rem] justify-center hover:bg-[#F9E4B3]/80 transition-colors">
+                <h1 className="text-stone-900 text-6xl font-nanum -rotate-90">
+                  Marketing.
+                </h1>
+              </div>
+            </Link>
+          </section>
           <section className="h-screen items-center justify-center px-12 py-14 border-r border-stone-900">
             <h2 className="text-6xl font-nanum">Projects</h2>
             <div className="flex flex-wrap items-center justify-center gap-6 mt-12">
