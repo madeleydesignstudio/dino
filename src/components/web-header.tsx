@@ -3,7 +3,7 @@ import React from "react";
 
 const WebHeader = () => {
   return (
-    <header className="flex justify-between items-center h-[50px] border-b border-stone-900 sticky top-0 left-0 right-0 z-50 bg-stone-50/80 backdrop-blur-sm font-karla">
+    <header className="flex justify-between items-center h-[50px] border-b border-stone-900 fixed top-0 left-0 right-0 z-50 bg-stone-50/80 backdrop-blur-sm font-karla">
       <div className="border-r border-stone-900 h-full w-full ">
         <Link
           href="/"
