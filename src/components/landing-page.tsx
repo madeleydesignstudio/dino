@@ -25,7 +25,7 @@ export default function Component() {
 
         <div className="relative z-10 flex h-full w-screen -mr-6 flex-col justify-between">
           <main className="">
-            <h2 className="pt-[1.5rem] text-[10.5rem] font-nanum pr-12 pl-6 text-center">
+            <h2 className="pt-[1.5rem] text-[10.41rem] font-nanum pr-12 pl-6 text-center">
               <HyperText text="Architects of the web." className="font-nanum" />
             </h2>
             <div className=" border-b border-stone-900 mr-6"></div>
@@ -49,7 +49,7 @@ export default function Component() {
         </div>
       </div>
       <div className=" w-[568px] h-screen border-r border-l border-stone-900 z-10">
-        <Link href="/design">
+        <Link href="/services/design">
           <div className="h-1/3 flex flex-col justify-end pb-6 px-6 border-b border-stone-900 hover:bg-stone-200/50">
             <h2 className="text-7xl  mb-2 font-nanum">Design</h2>
             <p className="text-xs">
@@ -59,7 +59,7 @@ export default function Component() {
           </div>
         </Link>
 
-        <Link href="/engineer">
+        <Link href="/services/engineer">
           <div className="h-1/3 flex flex-col justify-end pb-6 px-6 border-b border-stone-900 hover:bg-stone-200/50">
             <h2 className="text-7xl  mb-2 font-nanum">Engineer</h2>
             <p className="text-xs">
@@ -69,7 +69,7 @@ export default function Component() {
           </div>
         </Link>
 
-        <Link href="/market">
+        <Link href="/services/market">
           <div className="h-1/3 flex flex-col justify-end pb-6 px-6 border-b border-stone-900 hover:bg-stone-200/50">
             <h2 className="text-7xl  mb-2 font-nanum">Market</h2>
             <p className="text-xs">

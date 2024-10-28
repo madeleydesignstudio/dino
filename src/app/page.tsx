@@ -9,8 +9,18 @@ import Image from "next/image";
 import Link from "next/link";
 import VerticalFooter from "@/components/vertical-footer";
 import ComicCover from "@/components/comic-cover";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const newsletterSchema = z.object({
+  email: z.string().email("Please enter a valid email address"),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+});
+
+type NewsletterFormData = z.infer<typeof newsletterSchema>;
 
 const LoadingSpinner = ({ progress }: { progress: number }) => (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-900">
@@ -27,6 +37,15 @@ export default function HorizontalScrollLanding() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [isFirstVisit, setIsFirstVisit] = useState(true);
+
+  // Add these form handlers inside the main component before the return statement:
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<NewsletterFormData>({
+    resolver: zodResolver(newsletterSchema),
+  });
 
   useEffect(() => {
     // Check if it's the first visit
@@ -105,6 +124,12 @@ export default function HorizontalScrollLanding() {
     return <LoadingSpinner progress={progress} />;
   }
 
+  const onSubmit = async (data: NewsletterFormData) => {
+    // Handle form submission here
+    console.log(data);
+    // You can add your newsletter signup logic here
+  };
+
   return (
     <div className="overflow-x-hidden">
       <Navbar />
@@ -144,11 +169,6 @@ export default function HorizontalScrollLanding() {
                 </div>
                 <div className="absolute bottom-4 right-4 flex items-end">
                   <Link href="/fossil-files">
-                    {/* <h1 className=" text-stone-900 hover:text-stone-300 transition-colors absolute left-4 bottom-4 flex items-end font-nanum text-xl">
-                      {" "}
-                      Click here
-                    </h1> */}
-
                     <img
                       src="https://ik.imagekit.io/danielcmadeley/dino/Group%209.svg?updatedAt=1730029736000"
                       alt=""
@@ -206,6 +226,44 @@ export default function HorizontalScrollLanding() {
           </section>
           <section className="h-screen w-[900px] flex items-center justify-center p-12 ">
             <ComicCover />
+          </section>
+          <section className="h-screen flex flex-col items-center justify-center p-12">
+            <div className="max-w-md w-full">
+              <h2 className="text-4xl font-nanum mb-6">Join our Newsletter</h2>
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <div>
+                  <input
+                    {...register("name")}
+                    placeholder="Your name"
+                    className="w-full p-3 border border-stone-300 rounded-md"
+                  />
+                  {errors.name && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.name.message}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <input
+                    {...register("email")}
+                    type="email"
+                    placeholder="Your email"
+                    className="w-full p-3 border border-stone-300 rounded-md"
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-stone-900 text-white p-3 rounded-md hover:bg-stone-800 transition-colors"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
           </section>
           <section className=" h-screen flex items-center justify-center">
             <VerticalFooter />
