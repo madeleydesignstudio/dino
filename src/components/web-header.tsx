@@ -72,6 +72,7 @@ const WebHeader = () => {
               <img
                 src="https://ik.imagekit.io/danielcmadeley/dino/design.svg?updatedAt=1729668663385"
                 alt=""
+                className="w-24 h-24 flex-1"
               />
               <h2 className="font-nanum text-2xl"> Design</h2>
             </Link>
@@ -84,6 +85,7 @@ const WebHeader = () => {
               <img
                 src="https://ik.imagekit.io/danielcmadeley/dino/backend.svg?updatedAt=1729668691498"
                 alt=""
+                className="w-24 h-24 flex-1"
               />
               <h2 className="font-nanum text-2xl"> Engineer</h2>
             </Link>
@@ -96,6 +98,7 @@ const WebHeader = () => {
               <img
                 src="https://ik.imagekit.io/danielcmadeley/dino/market.svg?updatedAt=1729668676661"
                 alt=""
+                className="w-24 h-24 flex-1"
               />
               <h2 className="font-nanum text-2xl"> Market</h2>
             </Link>
