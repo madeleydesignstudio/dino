@@ -29,13 +29,7 @@ export default function Nav() {
     },
   };
 
-  const menuItems = [
-    "Home",
-    "Portfolio",
-    "Services",
-    "Knowledge",
-    "Contact Us",
-  ];
+  const menuItems = ["Home", "Work", "Services", "Company", "Contact Us"];
 
   return (
     <div className="relative">
@@ -73,28 +67,30 @@ export default function Nav() {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="fixed inset-0 bg-background/95 backdrop-blur-sm z-40 flex flex-col items-center justify-center"
+            className="fixed inset-0 bg-background/95 backdrop-blur-sm z-40 flex flex-col items-center"
           >
-            <ul className="space-y-6 text-center">
-              {menuItems.map((item) => (
-                <motion.li
-                  key={item}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ delay: 0.1 * menuItems.indexOf(item) }}
-                >
-                  <a
-                    href="#"
-                    className="text-4xl font-bold text-foreground hover:text-primary transition-colors"
-                    onClick={toggleMenu}
+            <div className="flex-1 flex items-center justify-center">
+              <ul className="space-y-6 text-left">
+                {menuItems.map((item) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ delay: 0.1 * menuItems.indexOf(item) }}
                   >
-                    {item}
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
-            <footer className="relative bottom-0">
+                    <a
+                      href="#"
+                      className="text-8xl font-bold text-left text-foreground hover:text-primary transition-colors font-karla"
+                      onClick={toggleMenu}
+                    >
+                      {item}
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+            <footer>
               <div className="flex">
                 <p className="font-bold text-7xl font-karla">DINO</p>
                 <div className="flex flex-col">

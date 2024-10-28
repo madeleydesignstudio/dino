@@ -1,7 +1,7 @@
-import React from "react";
+"use client"; // Add this line
 
 const Engineer = () => {
-  return <div>Engineer</div>;
+  return <div></div>;
 };
 
 export default Engineer;
