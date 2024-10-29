@@ -51,7 +51,7 @@ export default function ActiveCampaignTest() {
       }
 
       // First API call
-      await fetch("https://madeleydesignstudio.activehosted.com/proc.php", {
+      await fetch(process.env.NEXT_PUBLIC_ACTIVE_CAMPAIGN_URL!, {
         method: "POST",
         body: formData,
         mode: "no-cors",
