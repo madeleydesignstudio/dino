@@ -1,75 +1,92 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+
 import { z } from "zod";
 
 // Define a Zod schema for form validation
-const formSchema = z.object({
+const FormSchema = z.object({
   fullname: z.string().min(1, "Please enter your name"),
   email: z.string().email("Please enter a valid email"),
-  contactmessage: z.string().min(1, "Please enter your message"),
+  contactmessage: z.string().optional(), // Made optional since field is commented out
 });
 
 // Update the form data type to use Zod's inferred type
-type FormData = z.infer<typeof formSchema>;
+type FormData = z.infer<typeof FormSchema>;
 
 export default function ActiveCampaignTest() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>(); // Specify the form data type
+  } = useForm<FormData>({
+    resolver: zodResolver(FormSchema),
+  });
   const [state, setState] = useState({
     isSubmitted: false,
     isError: false,
   });
 
-  const onSubmit = (data: FormData) => {
-    // Validate data using Zod schema
-    const result = formSchema.safeParse(data);
-    if (!result.success) {
-      // Handle validation errors
-      setState({ isSubmitted: false, isError: true });
-      return;
-    }
+  const onSubmit = async (data: FormData) => {
+    try {
+      const formData = new FormData();
 
-    const formData = new FormData();
+      // Hidden field key/values.
+      formData.append("u", "4");
+      formData.append("f", "4");
+      formData.append("s", "s");
+      formData.append("c", "0");
+      formData.append("m", "0");
+      formData.append("act", "sub");
+      formData.append("v", "2");
+      formData.append("or", "c0c3bf12af7fa3ad55cceb047972db9");
 
-    // Hidden field key/values.
-    formData.append("u", "4");
-    formData.append("f", "4");
-    formData.append("s", "s");
-    formData.append("c", "0");
-    formData.append("m", "0");
-    formData.append("act", "sub");
-    formData.append("v", "2");
-    formData.append("or", "c0c3bf12af7fa3ad55cceb047972db9");
+      // Form field key/values.
+      formData.append("fullname", data.fullname);
+      formData.append("email", data.email);
+      if (data.contactmessage) {
+        formData.append("ca[1][v]", data.contactmessage);
+      }
 
-    // Form field key/values.
-    formData.append("fullname", data.fullname);
-    formData.append("email", data.email);
-    formData.append("ca[1][v]", data.contactmessage);
+      // First API call
+      //   const activeCampaignResponse = await fetch(
+      //     "https://madeleydesignstudio.activehosted.com/proc.php",
+      //     {
+      //       method: "POST",
+      //       body: formData,
+      //       mode: "no-cors",
+      //     }
+      //   );
 
-    // Pass FormData values into a POST request to ActiveCampaign.
-    // Mark form submission successful, otherwise return error state.
-    fetch("https://madeleydesignstudio.activehosted.com/proc.php", {
-      method: "POST",
-      body: formData,
-      mode: "no-cors",
-    })
-      .then(() => {
-        setState({
-          isSubmitted: true,
-          isError: false,
-        });
-      })
-      .catch(() => {
-        setState({
-          isSubmitted: false,
-          isError: true,
-        });
+      // Second API call
+      const newsletterResponse = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: data.email,
+          fullname: data.fullname,
+        }),
       });
+
+      if (!newsletterResponse.ok) {
+        throw new Error("Newsletter submission failed");
+      }
+
+      setState({
+        isSubmitted: true,
+        isError: false,
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setState({
+        isSubmitted: false,
+        isError: true,
+      });
+    }
   };
 
   return (
@@ -120,7 +137,7 @@ export default function ActiveCampaignTest() {
                   )}
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <div>
                   <label htmlFor="contactmessage">Message</label>
                   <textarea
@@ -139,7 +156,7 @@ export default function ActiveCampaignTest() {
                     </div>
                   )}
                 </div>
-              </div>
+              </div> */}
               <div>
                 <input type="submit" value="Submit" />
               </div>
