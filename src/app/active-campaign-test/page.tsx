@@ -51,14 +51,11 @@ export default function ActiveCampaignTest() {
       }
 
       // First API call
-      //   const activeCampaignResponse = await fetch(
-      //     "https://madeleydesignstudio.activehosted.com/proc.php",
-      //     {
-      //       method: "POST",
-      //       body: formData,
-      //       mode: "no-cors",
-      //     }
-      //   );
+      await fetch("https://madeleydesignstudio.activehosted.com/proc.php", {
+        method: "POST",
+        body: formData,
+        mode: "no-cors",
+      });
 
       // Second API call
       const newsletterResponse = await fetch("/api/newsletter", {
