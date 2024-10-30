@@ -103,10 +103,12 @@ export default function NewsletterForm() {
   return (
     <>
       <Toaster />
-      <div className="w-full max-w-md mx-auto bg-stone-50/80 backdrop-blur-sm p-8 border border-stone-900">
+      <div className="w-full max-w-md mx-auto  p-8 ">
         <div className="space-y-6">
           <div className="text-center">
-            <h2 className="text-4xl font-nanum mb-2">Join Our Newsletter</h2>
+            <h2 className="text-4xl font-karla mb-2 font-bold">
+              Join Our Newsletter
+            </h2>
             <p className="text-stone-600 text-sm font-karla">
               Stay updated with our latest insights and developments in web
               design, engineering, and digital marketing.
@@ -119,7 +121,7 @@ export default function NewsletterForm() {
                 <input
                   id="fullname"
                   placeholder="Your name"
-                  className={`w-full px-4 py-3 bg-transparent border ${
+                  className={`w-full px-4 py-3 bg-transparent rounded-md border ${
                     errors.fullname ? "border-red-500" : "border-stone-900"
                   } focus:outline-none focus:ring-1 focus:ring-[#2EA8A9] font-karla transition-colors duration-200`}
                   {...register("fullname", { required: true })}
@@ -136,7 +138,7 @@ export default function NewsletterForm() {
                   id="email"
                   type="email"
                   placeholder="Your email"
-                  className={`w-full px-4 py-3 bg-transparent border ${
+                  className={`w-full px-4 py-3 bg-transparent rounded-md border ${
                     errors.email ? "border-red-500" : "border-stone-900"
                   } focus:outline-none focus:ring-1 focus:ring-[#2EA8A9] font-karla transition-colors duration-200`}
                   {...register("email", { required: true })}
@@ -152,7 +154,7 @@ export default function NewsletterForm() {
             <button
               type="submit"
               disabled={state.isLoading}
-              className="w-full bg-[#2EA8A9] text-white py-3 px-6 hover:bg-[#237e7e] transition-colors duration-200 font-karla disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              className="w-full bg-[#2EA8A9] text-white py-3 px-6 hover:bg-[#237e7e] transition-colors duration-200 font-karla disabled:opacity-50 rounded-md disabled:cursor-not-allowed flex items-center justify-center"
             >
               {state.isLoading ? (
                 <>

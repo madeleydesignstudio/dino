@@ -4,6 +4,7 @@ import ComicCover from "@/components/comic-cover";
 import Component from "@/components/landing-page";
 import Navbar from "@/components/navbar";
 import NewsletterForm from "@/components/newsletter-signup";
+import ProjectInquiryForm from "@/components/project-inquiry-form";
 import VerticalFooter from "@/components/vertical-footer";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -207,6 +208,9 @@ export default function HorizontalScrollLanding() {
           </section>
           <section className="h-screen flex flex-col items-center justify-center p-12">
             <NewsletterForm />
+          </section>
+          <section className="h-screen flex items-center justify-center p-12">
+            <ProjectInquiryForm />
           </section>
           <section className=" h-screen flex items-center justify-center">
             <VerticalFooter />
