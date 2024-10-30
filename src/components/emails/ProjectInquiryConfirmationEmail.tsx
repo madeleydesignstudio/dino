@@ -8,6 +8,7 @@ import {
   Tailwind,
   Text,
   Hr,
+  Button,
 } from "@react-email/components";
 import * as React from "react";
 
@@ -76,6 +77,27 @@ export const ProjectInquiryConfirmationEmail: React.FC<
               2. We&apos;ll prepare a tailored response to your inquiry
               <br />
               3. Expect to hear from us within 1-2 business days
+            </Text>
+          </Section>
+
+          {/* Newsletter Section */}
+          <Section className="mt-12 bg-stone-900/50 p-6 rounded-lg">
+            <Text className="font-nanum text-2xl text-stone-100 mb-4">
+              Stay Updated
+            </Text>
+            <Text className="text-base leading-7 text-stone-300 mb-4">
+              Want to stay in the loop with our latest insights and
+              developments? Join our newsletter community!
+            </Text>
+            <Button
+              href="https://www.thedigitaldino.com/#newsletter"
+              className="bg-[#2EA8A9] text-white px-6 py-3 rounded text-sm font-semibold no-underline inline-block hover:bg-[#237e7e]"
+            >
+              Subscribe to Our Newsletter →
+            </Button>
+            <Text className="text-xs text-stone-500 mt-4">
+              Get exclusive insights on web design, engineering, and digital
+              marketing delivered to your inbox.
             </Text>
           </Section>
 
