@@ -9,14 +9,46 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const FormSchema = z.object({
-  fullname: z.string().min(1, "Please enter your name"),
-  email: z.string().email("Please enter a valid email"),
-  company: z.string().min(1, "Please enter your company name"),
-  budget: z.string().min(1, "Please enter your budget"),
-  projectName: z.string().min(1, "Please enter your project name"),
+  fullname: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .max(100, "Name must be less than 100 characters")
+    .regex(
+      /^[a-zA-Z\s-']+$/,
+      "Name can only contain letters, spaces, hyphens and apostrophes"
+    ),
+
+  email: z
+    .string()
+    .email("Please enter a valid email")
+    .min(5, "Email must be at least 5 characters")
+    .max(254, "Email must be less than 254 characters"),
+
+  company: z
+    .string()
+    .min(2, "Company name must be at least 2 characters")
+    .max(100, "Company name must be less than 100 characters")
+    .trim(),
+
+  budget: z
+    .string()
+    .regex(
+      /^\$?\d+(?:,\d{3})*(?:\.\d{2})?$/,
+      "Please enter a valid currency amount (e.g. $1,000 or 1000)"
+    )
+    .transform((val) => val.replace(/[£,]/g, "")), // Removes $ and commas for storage
+
+  projectName: z
+    .string()
+    .min(3, "Project name must be at least 3 characters")
+    .max(100, "Project name must be less than 100 characters")
+    .trim(),
+
   projectDescription: z
     .string()
-    .min(10, "Please provide more details about your project"),
+    .min(50, "Please provide at least 50 characters describing your project")
+    .max(1000, "Project description must be less than 1000 characters")
+    .trim(),
 });
 
 type FormData = z.infer<typeof FormSchema>;
@@ -101,9 +133,15 @@ export default function ProjectInquiryForm() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="space-y-4">
               <div>
+                <label
+                  htmlFor="fullname"
+                  className="block text-sm font-karla mb-1"
+                >
+                  Full Name
+                </label>
                 <input
                   id="fullname"
-                  placeholder="Your name"
+                  placeholder="John Doe"
                   className={`w-full px-4 py-3 bg-transparent rounded-md border ${
                     errors.fullname ? "border-red-500" : "border-stone-900"
                   } focus:outline-none focus:ring-1 focus:ring-[#2EA8A9] font-karla transition-colors duration-200`}
@@ -117,10 +155,16 @@ export default function ProjectInquiryForm() {
               </div>
 
               <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-karla mb-1"
+                >
+                  Email Address
+                </label>
                 <input
                   id="email"
                   type="email"
-                  placeholder="Your email"
+                  placeholder="john@example.com"
                   className={`w-full px-4 py-3 bg-transparent rounded-md border ${
                     errors.email ? "border-red-500" : "border-stone-900"
                   } focus:outline-none focus:ring-1 focus:ring-[#2EA8A9] font-karla transition-colors duration-200`}
@@ -134,9 +178,15 @@ export default function ProjectInquiryForm() {
               </div>
 
               <div>
+                <label
+                  htmlFor="company"
+                  className="block text-sm font-karla mb-1"
+                >
+                  Company Name
+                </label>
                 <input
                   id="company"
-                  placeholder="Company name"
+                  placeholder="Acme Inc."
                   className={`w-full px-4 py-3 bg-transparent rounded-md border ${
                     errors.company ? "border-red-500" : "border-stone-900"
                   } focus:outline-none focus:ring-1 focus:ring-[#2EA8A9] font-karla transition-colors duration-200`}
@@ -150,14 +200,25 @@ export default function ProjectInquiryForm() {
               </div>
 
               <div>
-                <input
-                  id="budget"
-                  placeholder="Project budget"
-                  className={`w-full px-4 py-3 bg-transparent rounded-md border ${
-                    errors.budget ? "border-red-500" : "border-stone-900"
-                  } focus:outline-none focus:ring-1 focus:ring-[#2EA8A9] font-karla transition-colors duration-200`}
-                  {...register("budget")}
-                />
+                <label
+                  htmlFor="budget"
+                  className="block text-sm font-karla mb-1"
+                >
+                  Budget
+                </label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-600">
+                    £
+                  </span>
+                  <input
+                    id="budget"
+                    placeholder="10,000"
+                    className={`w-full pl-8 pr-4 py-3 bg-transparent rounded-md border ${
+                      errors.budget ? "border-red-500" : "border-stone-900"
+                    } focus:outline-none focus:ring-1 focus:ring-[#2EA8A9] font-karla transition-colors duration-200`}
+                    {...register("budget")}
+                  />
+                </div>
                 {errors.budget && (
                   <p className="mt-1 text-xs text-red-500 font-karla">
                     {errors.budget.message}
@@ -166,9 +227,15 @@ export default function ProjectInquiryForm() {
               </div>
 
               <div>
+                <label
+                  htmlFor="projectName"
+                  className="block text-sm font-karla mb-1"
+                >
+                  Project Name
+                </label>
                 <input
                   id="projectName"
-                  placeholder="Project name"
+                  placeholder="My Awesome Project"
                   className={`w-full px-4 py-3 bg-transparent rounded-md border ${
                     errors.projectName ? "border-red-500" : "border-stone-900"
                   } focus:outline-none focus:ring-1 focus:ring-[#2EA8A9] font-karla transition-colors duration-200`}
@@ -182,9 +249,15 @@ export default function ProjectInquiryForm() {
               </div>
 
               <div>
+                <label
+                  htmlFor="projectDescription"
+                  className="block text-sm font-karla mb-1"
+                >
+                  Project Description
+                </label>
                 <textarea
                   id="projectDescription"
-                  placeholder="Project description"
+                  placeholder="Please describe your project in detail..."
                   rows={4}
                   className={`w-full px-4 py-3 bg-transparent rounded-md border ${
                     errors.projectDescription
