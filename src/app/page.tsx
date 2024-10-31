@@ -86,7 +86,7 @@ export default function HorizontalScrollLanding() {
           translateX: 0,
         },
         {
-          translateX: "-400vw",
+          translateX: "-500vw",
           ease: "none",
           duration: 1,
           scrollTrigger: {
@@ -212,7 +212,8 @@ export default function HorizontalScrollLanding() {
           <section className="h-screen flex items-center justify-center p-12">
             <ProjectInquiryForm />
           </section>
-          <section className=" h-screen flex items-center justify-center">
+
+          <section className=" h-screen flex items-center justify-center right-0">
             <VerticalFooter />
           </section>
         </div>

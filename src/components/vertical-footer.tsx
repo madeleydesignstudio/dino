@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 
 export default function VerticalFooter() {
   return (
-    <footer className="fixed right-0 h-screen w-[33rem] text-black overflow-hidden flex flex-col">
+    <footer className=" right-0 h-screen w-[33rem] text-black overflow-hidden flex flex-col">
       <div className="absolute left-0 top-0 h-full flex items-stretch">
         <div className="w-[1px] bg-stone-900 my-6" />
       </div>
