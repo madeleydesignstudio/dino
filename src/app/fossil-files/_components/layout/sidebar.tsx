@@ -20,7 +20,7 @@ export const Sidebar = memo(function Sidebar({
   onItemClick,
 }: SidebarProps) {
   return (
-    <aside className="w-fit border-r flex flex-col justify-between items-center pt-8 pb-2">
+    <aside className="w-fit border-r flex flex-col justify-between items-center pb-2">
       <div className="flex-1" />
       <nav className="flex flex-col items-center space-y-8">
         {items.map((item) => (
@@ -28,9 +28,7 @@ export const Sidebar = memo(function Sidebar({
             key={item.name}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`p-2 hover:bg-gray-100 rounded-md ${
-              selectedItem === item.name ? "bg-gray-200" : ""
-            }`}
+            className="p-2 hover:bg-gray-100 rounded-md"
             onClick={() => onItemClick(item.name)}
             aria-label={`Select ${item.name}`}
             aria-pressed={selectedItem === item.name}
