@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 const icons = [
   {
     src: "https://ik.imagekit.io/danielcmadeley/dino/63ed91102c07a790c287d1f4_Postmark%20Logo.svg?updatedAt=1730381315187",
@@ -56,33 +58,21 @@ const icons = [
 ];
 
 export default function IconGrid() {
-  // Calculate padding needed for symmetry
-  const totalIcons = icons.length;
-  const rowSizes = {
-    default: 3, // mobile
-    md: 5, // tablet
-    lg: 7, // desktop
-  };
-
-  // Calculate how many dummy elements we need to add for the last row to be complete
-  const getFillerCount = (columnCount: number) => {
-    const remainder = totalIcons % columnCount;
-    return remainder === 0 ? 0 : columnCount - remainder;
-  };
-
-  // Create array of dummy elements for padding
-  const getLargestFillerCount = Math.max(
-    getFillerCount(rowSizes.default),
-    getFillerCount(rowSizes.md),
-    getFillerCount(rowSizes.lg)
-  );
-
-  const fillerArray = Array(getLargestFillerCount).fill(null);
+  const shuffledIcons = useMemo(() => {
+    // Create a copy of the icons array to avoid mutating the original
+    const iconsCopy = [...icons];
+    // Fisher-Yates shuffle algorithm
+    for (let i = iconsCopy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [iconsCopy[i], iconsCopy[j]] = [iconsCopy[j], iconsCopy[i]];
+    }
+    return iconsCopy;
+  }, []); // Empty dependency array means this only runs once when component mounts
 
   return (
     <div className="p-8">
-      <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 justify-center">
-        {icons.map(({ src }, index) => (
+      <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-4 justify-center">
+        {shuffledIcons.map(({ src }, index) => (
           <div
             key={index}
             className="aspect-square bg-stone-200 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out"
@@ -91,10 +81,6 @@ export default function IconGrid() {
               <img src={src} alt="" className="w-1/2 h-1/2" />
             </div>
           </div>
-        ))}
-        {/* Add invisible filler elements to maintain grid symmetry */}
-        {fillerArray.map((_, index) => (
-          <div key={`filler-${index}`} className="aspect-square invisible" />
         ))}
       </div>
     </div>
