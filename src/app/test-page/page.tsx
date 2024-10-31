@@ -13,6 +13,8 @@ export default function Component() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (typeof window === "undefined") return; // Ensure this runs only on the client
+
     const ctx = gsap.context(() => {
       const sections = sectionRefs.current;
       const container = containerRef.current;
@@ -101,7 +103,7 @@ export default function Component() {
   const sections = [
     {
       id: 1,
-      width: "w-screen md:w-fit",
+      width: "w-[1200px] md:w-fit",
       bg: "bg-red-200",
       mobileHeight: "h-screen",
       content: <LandingPage />,
@@ -171,7 +173,7 @@ export default function Component() {
               flex-shrink-0
               flex items-center justify-center
               ${
-                window.innerWidth >= 768
+                typeof window !== "undefined" && window.innerWidth >= 768
                   ? "transform-none"
                   : "transform translate-x-0"
               }
