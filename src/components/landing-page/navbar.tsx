@@ -5,18 +5,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Nav from "./nav";
 
-// interface NavbarProps {
-//   isVerticalSection: boolean;
-//   isRedSection: boolean;
-// }
-
 export default function Navbar() {
   return (
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out"
-        // isVerticalSection ? " text-foreground shadow-md" : "  text-foreground",
-        // isRedSection && "opacity-0 pointer-events-none"
       )}
     >
       <div className="container mx-auto px-4">
