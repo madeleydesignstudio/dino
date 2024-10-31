@@ -93,11 +93,13 @@ const WebHeader = () => {
               href="/services/design"
               className="py-2 border-r border-stone-900 h-full flex flex-col justify-around items-center"
             >
-              <img
-                src="https://ik.imagekit.io/danielcmadeley/dino/design.svg?updatedAt=1729668663385"
-                alt=""
-                className="w-24 h-24 flex-1"
-              />
+              <div className="w-24 h-24 flex-1 flex items-center justify-center">
+                <img
+                  src="https://ik.imagekit.io/danielcmadeley/dino/design.svg?updatedAt=1729668663385"
+                  alt=""
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <h2 className="font-nanum text-2xl">Design</h2>
             </Link>
           </li>
@@ -106,11 +108,13 @@ const WebHeader = () => {
               href="/services/engineer"
               className="py-2 border-r border-stone-900 h-full flex flex-col justify-around items-center"
             >
-              <img
-                src="https://ik.imagekit.io/danielcmadeley/dino/backend.svg?updatedAt=1729668691498"
-                alt=""
-                className="w-24 h-24 flex-1"
-              />
+              <div className="w-24 h-24 flex-1 flex items-center justify-center">
+                <img
+                  src="https://ik.imagekit.io/danielcmadeley/dino/backend.svg?updatedAt=1729668691498"
+                  alt=""
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <h2 className="font-nanum text-2xl">Engineer</h2>
             </Link>
           </li>
@@ -119,11 +123,13 @@ const WebHeader = () => {
               href="/services/market"
               className="py-2 h-full flex flex-col justify-around items-center"
             >
-              <img
-                src="https://ik.imagekit.io/danielcmadeley/dino/market.svg?updatedAt=1729668676661"
-                alt=""
-                className="w-24 h-24 flex-1"
-              />
+              <div className="w-24 h-24 flex-1 flex items-center justify-center">
+                <img
+                  src="https://ik.imagekit.io/danielcmadeley/dino/market.svg?updatedAt=1729668676661"
+                  alt=""
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <h2 className="font-nanum text-2xl">Market</h2>
             </Link>
           </li>
@@ -144,11 +150,13 @@ const WebHeader = () => {
               href="/company/about"
               className="py-2 border-r border-stone-900 h-full flex flex-col justify-around items-center"
             >
-              <img
-                src="https://ik.imagekit.io/danielcmadeley/dino/about.svg"
-                alt=""
-                className="w-24 h-24 flex-1"
-              />
+              <div className="w-24 h-24 flex-1 flex items-center justify-center">
+                <img
+                  src="https://ik.imagekit.io/danielcmadeley/dino/icons8-about-500.svg?updatedAt=1730393666505"
+                  alt=""
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <h2 className="font-nanum text-2xl">About</h2>
             </Link>
           </li>
@@ -157,11 +165,13 @@ const WebHeader = () => {
               href="/company/careers"
               className="py-2 border-r border-stone-900 h-full flex flex-col justify-around items-center"
             >
-              <img
-                src="https://ik.imagekit.io/danielcmadeley/dino/careers.svg"
-                alt=""
-                className="w-24 h-24 flex-1"
-              />
+              <div className="w-24 h-24 flex-1 flex items-center justify-center">
+                <img
+                  src="https://ik.imagekit.io/danielcmadeley/dino/job-seeker.png?updatedAt=1730393888811"
+                  alt=""
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <h2 className="font-nanum text-2xl">Careers</h2>
             </Link>
           </li>
@@ -170,11 +180,13 @@ const WebHeader = () => {
               href="/company/blog"
               className="py-2 h-full flex flex-col justify-around items-center"
             >
-              <img
-                src="https://ik.imagekit.io/danielcmadeley/dino/blog.svg"
-                alt=""
-                className="w-24 h-24 flex-1"
-              />
+              <div className="w-24 h-24 flex-1 flex items-center justify-center">
+                <img
+                  src="https://ik.imagekit.io/danielcmadeley/dino/blog.png?updatedAt=1730393880092"
+                  alt=""
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <h2 className="font-nanum text-2xl">Blog</h2>
             </Link>
           </li>

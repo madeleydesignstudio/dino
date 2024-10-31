@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "The digital dino will take care of all your design needs",
 };
 
-export default function WorkLayout({
+export default function CompanyLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

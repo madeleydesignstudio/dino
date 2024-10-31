@@ -1,3 +1,4 @@
+import HorizontalFooter from "@/components/horizontal-footer";
 import WebHeader from "@/components/web-header";
 import type { Metadata } from "next";
 
@@ -15,6 +16,7 @@ export default function ServicesLayout({
     <>
       <WebHeader />
       <main className="min-h-screen flex flex-col">{children}</main>
+      <HorizontalFooter />
     </>
   );
 }
