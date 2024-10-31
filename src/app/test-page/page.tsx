@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import LandingPage from "@/components/landing-page/landing-page";
 
 // Ensure ScrollTrigger is registered
 gsap.registerPlugin(ScrollTrigger);
@@ -100,38 +101,54 @@ export default function Component() {
   const sections = [
     {
       id: 1,
-      width: "w-screen md:w-[50vh]",
+      width: "w-screen md:w-fit",
       bg: "bg-red-200",
-      mobileHeight: "h-[50vh]", // Changed from h-screen
-      content: "Section 1",
+      mobileHeight: "h-screen",
+      content: <LandingPage />,
     },
     {
       id: 2,
       width: "w-screen md:w-[100vh]",
       bg: "bg-blue-200",
-      mobileHeight: "h-screen", // Full height
-      content: "Section 2",
+      mobileHeight: "h-screen",
+      content: (
+        <div className="w-full h-full flex items-center justify-center">
+          Section 2
+        </div>
+      ),
     },
     {
       id: 3,
       width: "w-screen md:w-[100vh]",
       bg: "bg-green-200",
-      mobileHeight: "h-[75vh]", // 75% of viewport height
-      content: "Section 3",
+      mobileHeight: "h-[75vh]",
+      content: (
+        <div className="w-full h-full flex items-center justify-center">
+          Section 3
+        </div>
+      ),
     },
     {
       id: 4,
       width: "w-screen md:w-[20vh]",
       bg: "bg-yellow-200",
-      mobileHeight: "h-[40vh]", // 40% of viewport height
-      content: "Section 4",
+      mobileHeight: "h-[40vh]",
+      content: (
+        <div className="w-full h-full flex items-center justify-center">
+          Section 4
+        </div>
+      ),
     },
     {
       id: 5,
       width: "w-screen md:w-[100vh]",
       bg: "bg-purple-200",
-      mobileHeight: "h-[90vh]", // 90% of viewport height
-      content: "Section 5",
+      mobileHeight: "h-[90vh]",
+      content: (
+        <div className="w-full h-full flex items-center justify-center">
+          Section 5
+        </div>
+      ),
     },
   ];
 
@@ -147,23 +164,20 @@ export default function Component() {
             ref={(el) => {
               sectionRefs.current[index] = el;
             }}
-            className={`
-              ${section.mobileHeight} md:h-full 
-              ${section.width} 
-              ${section.bg} 
-              flex-shrink-0 
+            className={` 
+              ${section.mobileHeight} md:h-full
+              ${section.width}
+              ${section.bg}
+              flex-shrink-0
               flex items-center justify-center
-              transform md:transform-none translate-x-0
+              ${
+                window.innerWidth >= 768
+                  ? "transform-none"
+                  : "transform translate-x-0"
+              }
             `}
           >
-            <div className="text-center">
-              <h2 className="text-4xl font-bold mb-4">{section.content}</h2>
-              <div className="md:hidden">
-                <p className="text-lg">
-                  Mobile-specific content for {section.content}
-                </p>
-              </div>
-            </div>
+            <div className="w-full h-full">{section.content}</div>
           </section>
         ))}
       </div>

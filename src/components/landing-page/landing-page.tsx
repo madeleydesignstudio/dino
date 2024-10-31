@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import HyperText from "../ui/hyper-text";
 
-export default function Component() {
+export default function LandingPage() {
   return (
     <>
       <div className="relative h-screen">
