@@ -4,6 +4,7 @@ import "./globals.css";
 import { OpenPanelComponent } from "@openpanel/nextjs";
 import { PHProvider } from "./providers";
 import dynamic from "next/dynamic";
+import GetStarted from "@/components/get-started";
 
 const PostHogPageView = dynamic(() => import("./PostHogPageView"), {
   ssr: false,
@@ -32,6 +33,7 @@ export default function RootLayout({
             trackScreenViews={true}
           />
           {children}
+          <GetStarted />
         </body>
       </PHProvider>
     </html>
