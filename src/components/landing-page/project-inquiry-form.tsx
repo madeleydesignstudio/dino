@@ -305,7 +305,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-const FormSchema = z.object({
+export const FormSchema = z.object({
   fullname: z
     .string()
     .min(2, "Name must be at least 2 characters")
