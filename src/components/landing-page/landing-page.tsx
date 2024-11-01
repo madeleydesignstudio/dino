@@ -4,7 +4,7 @@ import HyperText from "../ui/hyper-text";
 
 export default function LandingPage() {
   return (
-    <>
+    <section className="flex">
       <div className="relative h-screen">
         {/* White background (1/3 width) */}
         <div className="absolute left-0 top-0 h-full w-1/3 bg-white border-r border-stone-900" />
@@ -78,6 +78,6 @@ export default function LandingPage() {
           </div>
         </Link>
       </div>
-    </>
+    </section>
   );
 }
