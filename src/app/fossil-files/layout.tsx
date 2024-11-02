@@ -1,6 +1,6 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "./_components/layout/sidebar-v3";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { Header } from "./_components/layout/header";
+import { AppSidebar } from "./_components/layout/sidebar-v3";
 
 export default function FossilFilesLayout({
   children,
@@ -12,10 +12,7 @@ export default function FossilFilesLayout({
       <Header />
       <SidebarProvider>
         <AppSidebar />
-        <main>
-          <SidebarTrigger />
-          {children}
-        </main>
+        <main>{children}</main>
       </SidebarProvider>
     </>
   );
