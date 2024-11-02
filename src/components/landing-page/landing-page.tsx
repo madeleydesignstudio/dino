@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 export default function LandingPage() {
   return (
@@ -50,7 +49,7 @@ export default function LandingPage() {
       </div>
 
       <div className="w-[30vw] max-w-[568px] min-w-[400px] h-screen border-r border-l border-stone-900 z-10">
-        <Link href="/services/design">
+        <a href="/services/design">
           <div className="flex-1 h-1/3 flex flex-col justify-end pb-6 px-6 border-b border-stone-900 hover:bg-stone-200/50">
             <h2 className="text-[4vw] mb-2 font-nanum">Design</h2>
             <p className="text-xs">
@@ -58,9 +57,9 @@ export default function LandingPage() {
               starts here.
             </p>
           </div>
-        </Link>
+        </a>
 
-        <Link href="/services/engineer">
+        <a href="/services/engineer">
           <div className="flex-1 h-1/3 flex flex-col justify-end pb-6 px-6 border-b border-stone-900 hover:bg-stone-200/50">
             <h2 className="text-[4vw] mb-2 font-nanum">Engineer</h2>
             <p className="text-xs">
@@ -68,16 +67,16 @@ export default function LandingPage() {
               powerful tech stack.
             </p>
           </div>
-        </Link>
+        </a>
 
-        <Link href="/services/market">
+        <a href="/services/market">
           <div className="flex-1 h-1/3 flex flex-col justify-end pb-6 px-6 hover:bg-stone-200/50">
             <h2 className="text-[4vw] mb-2 font-nanum">Market</h2>
             <p className="text-xs">
               Your deadline is our deadline. Your success is our success.
             </p>
           </div>
-        </Link>
+        </a>
       </div>
     </section>
   );

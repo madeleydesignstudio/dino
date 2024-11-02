@@ -33,7 +33,9 @@ export default function RootLayout({
             trackScreenViews={true}
           />
           {children}
-          <GetStarted />
+          <div className="hidden md:block">
+            <GetStarted />
+          </div>
         </body>
       </PHProvider>
     </html>
