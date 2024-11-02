@@ -2,6 +2,7 @@
 
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import Search from "./search";
 
 export function Header() {
   return (
@@ -29,11 +30,7 @@ export function Header() {
       </div>
 
       <div className="w-64">
-        <Input
-          type="search"
-          placeholder="Search Fossil Files..."
-          className="w-full bg-white/50 dark:bg-stone-800/50 border-stone-200 dark:border-stone-700 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
-        />
+        <Search />
       </div>
     </header>
   );
