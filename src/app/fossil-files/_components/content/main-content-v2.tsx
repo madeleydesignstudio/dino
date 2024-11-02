@@ -9,6 +9,57 @@ import { frontendFacts } from "../../config/frontend-facts";
 import { ChevronDown, HomeIcon } from "lucide-react";
 import ModeToggle from "@/components/mode-toggle";
 
+const introductions = {
+  Frontend: {
+    title: "Frontend Development Tools",
+    description:
+      "Welcome to our curated collection of frontend development tools. Here you'll find everything you need to build modern, responsive, and interactive web applications. From frameworks and libraries to testing and optimization tools, we've organized the essential resources that every frontend developer should know about.",
+    keyFeatures: [
+      "UI Frameworks and Libraries",
+      "State Management Solutions",
+      "Testing Tools",
+      "Build Tools and Bundlers",
+      "Performance Optimization",
+    ],
+  },
+  Backend: {
+    title: "Backend Development Tools",
+    description:
+      "Discover powerful backend development tools that help you build robust server-side applications. Our collection includes databases, server frameworks, API tools, and everything you need for scalable backend development.",
+    keyFeatures: [
+      "Server Frameworks",
+      "Database Management",
+      "API Development Tools",
+      "Authentication Solutions",
+      "Cloud Services",
+    ],
+  },
+  Design: {
+    title: "Design Tools",
+    description:
+      "Explore our selection of design tools that bridge the gap between design and development. From prototyping to asset management, these tools will help you create beautiful and functional user interfaces.",
+    keyFeatures: [
+      "UI/UX Design Tools",
+      "Prototyping Solutions",
+      "Asset Management",
+      "Color and Typography Tools",
+      "Design Systems",
+    ],
+  },
+  Marketing: {
+    title: "Marketing Tools",
+    description:
+      "Access a comprehensive suite of marketing tools to grow your digital presence. These tools will help you analyze, optimize, and expand your reach across various digital channels.",
+    keyFeatures: [
+      "Analytics Platforms",
+      "SEO Tools",
+      "Social Media Management",
+      "Email Marketing",
+      "Content Marketing",
+    ],
+  },
+};
+
 interface Tool {
   name: string;
   url: string;
@@ -25,9 +76,11 @@ interface Category {
 }
 
 const MainContentV2 = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activeSection, setActiveSection] = useState(0);
   const [currentFact, setCurrentFact] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
+  const [showIntroduction, setShowIntroduction] = useState(true);
   const [factKey, setFactKey] = useState(0);
   const [selectedTool, setSelectedTool] = useState<Tool | null>(null);
   const [expandedCategories, setExpandedCategories] = useState<string[]>([
@@ -46,7 +99,7 @@ const MainContentV2 = () => {
   } as const;
 
   const [selectedCategory, setSelectedCategory] =
-    useState<keyof typeof allCategories>("Frontend");
+    useState<keyof typeof introductions>("Frontend");
 
   const toggleCategory = (category: string) => {
     setExpandedCategories((prev) =>
@@ -112,7 +165,7 @@ const MainContentV2 = () => {
     <div className="flex w-full h-screen font-karla bg-stone-50 text-stone-900 dark:bg-stone-900 dark:text-stone-50">
       {/* Left sidebar with categories */}
       <aside className="w-1/5 h-full p-4 border-r border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 backdrop-blur">
-        <h2 className="text-xl font-bold pb-6">Categories</h2>
+        <h2 className="text-xl font-bold pb-6 pt-4">Categories</h2>
         <div className="space-y-1.5">
           {Object.entries(allCategories).map(([mainCategory, categories]) => (
             <div key={mainCategory} className="relative">
@@ -122,9 +175,11 @@ const MainContentV2 = () => {
                     toggleCategory(mainCategory);
                   } else {
                     setSelectedCategory(
-                      mainCategory as keyof typeof allCategories
+                      mainCategory as keyof typeof introductions
                     );
                     setExpandedCategories([mainCategory]);
+                    setShowIntroduction(true);
+                    setSelectedCategoryIndex(null);
                   }
                 }}
                 className={`
@@ -166,24 +221,28 @@ const MainContentV2 = () => {
                       <a
                         href={`#${mainCategory}-category-${i}`}
                         className={`
-                          block px-3 py-2 rounded-md text-sm transition-colors
-                          hover:bg-stone-200 dark:hover:bg-stone-800
+                          block px-3 py-1.5 rounded-lg text-stone-600 
+                          dark:text-stone-400 hover:text-stone-900 
+                          dark:hover:text-stone-100 hover:bg-stone-100 
+                          dark:hover:bg-stone-800 transition-colors
+                          gap-1
                           ${
-                            activeSection === i
-                              ? "font-medium bg-stone-200 dark:bg-stone-800"
-                              : "text-stone-600 dark:text-stone-400"
+                            selectedCategoryIndex === i
+                              ? "bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-stone-100"
+                              : ""
                           }
                         `}
                         onClick={(e) => {
                           e.preventDefault();
                           setSelectedTool(null);
+                          setShowIntroduction(false);
                           setSelectedCategoryIndex(i);
                           document
                             .getElementById(`${mainCategory}-category-${i}`)
                             ?.scrollIntoView({ behavior: "smooth" });
                         }}
                       >
-                        {cat.category}
+                        <h3 className="text-xs">{cat.category}</h3>
                       </a>
                     </li>
                   ))}
@@ -192,7 +251,7 @@ const MainContentV2 = () => {
             </div>
           ))}
         </div>
-        <div className="absolute bottom-14 left-0 flex items-center justify-between w-full p-2 border-t border-stone-200 dark:border-stone-800">
+        <div className="absolute bottom-10 left-0 flex items-center justify-between w-full p-2 border-t border-stone-200 dark:border-stone-800">
           <ModeToggle />
           <Link href="/">
             <div className="text-sm text-stone-500 dark:text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 transition-colors">
@@ -279,12 +338,41 @@ const MainContentV2 = () => {
                   </div>
                 </div>
               </div>
+            ) : showIntroduction ? (
+              // Introduction View
+              <div className="max-w-4xl mx-auto space-y-8">
+                <div>
+                  <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-stone-900 to-stone-700 dark:from-stone-100 dark:to-stone-300 bg-clip-text text-transparent">
+                    {introductions[selectedCategory].title}
+                  </h1>
+                  <p className="text-lg text-stone-600 dark:text-stone-400 leading-relaxed">
+                    {introductions[selectedCategory].description}
+                  </p>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-semibold mb-4 text-stone-800 dark:text-stone-200">
+                    Key Features
+                  </h2>
+                  <div className="grid grid-cols-1 gap-4">
+                    {introductions[selectedCategory].keyFeatures.map(
+                      (feature, index) => (
+                        <div
+                          key={index}
+                          className="p-4 rounded-lg border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900"
+                        >
+                          <p className="text-stone-800 dark:text-stone-200">
+                            {feature}
+                          </p>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
+              </div>
             ) : (
               // List View
               <>
-                <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-stone-900 to-stone-700 dark:from-stone-100 dark:to-stone-300 bg-clip-text text-transparent">
-                  {selectedCategory} Development Tools
-                </h1>
                 {allCategories[selectedCategory]
                   .filter(
                     (_, i) =>
@@ -365,7 +453,7 @@ const MainContentV2 = () => {
       <aside className="w-1/5 h-full p-4 border-l border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900">
         {/* Did You Know section */}
         <div className="pb-6">
-          <h2 className="text-xl font-bold mb-4">Did You Know?</h2>
+          <h2 className="text-xl font-bold mb-4 pt-4">Did You Know?</h2>
           <div className="relative p-4 rounded-lg border bg-card text-card-foreground shadow-sm min-h-[80px] flex items-center">
             <div className="w-full">
               <p
