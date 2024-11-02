@@ -1,6 +1,13 @@
 export interface FrontendCategory {
-  category: string;
-  tools: { name: string; url: string; description: string; logo: string }[];
+  category?: string;
+  tools?: {
+    name?: string;
+    url?: string;
+    description?: string;
+    logo?: string;
+    creator?: string;
+    created?: string;
+  }[];
 }
 
 export const frontend_categories: FrontendCategory[] = [
@@ -13,6 +20,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "React is a popular JavaScript library for building user interfaces, developed by Facebook. It utilizes a component-based architecture and a virtual DOM to efficiently render changes. Use React when building complex, interactive UIs that require efficient state management and performance. It's widely adopted, has a strong community, and integrates well with other libraries. Suitable for applications ranging from small projects to large-scale enterprise solutions.",
         logo: "https://reactjs.org/logo-og.png",
+        creator: "Jordan Walke at Facebook",
+        created: "2013",
       },
       {
         name: "Next.js",
@@ -20,6 +29,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "Next.js is a React framework that enables server-side rendering (SSR) and static site generation (SSG) for React applications. It's ideal for building fast, SEO-friendly web applications. Use Next.js when you need features like automatic code splitting, routing, and image optimization. It excels in dynamic web projects where performance and SEO are critical, such as e-commerce sites and blogs.",
         logo: "https://nextjs.org/static/favicon/favicon-32x32.png",
+        creator: "Guillermo Rauch at Vercel",
+        created: "2016",
       },
       {
         name: "Vue",
@@ -27,6 +38,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "Vue.js is a progressive JavaScript framework for building user interfaces. It is incrementally adoptable and focuses on the view layer, making it easy to integrate with other libraries or existing projects. Choose Vue for its simplicity, flexibility, and gentle learning curve, especially for small to medium-sized applications. Vue's reactivity system and component-based structure facilitate rapid development and maintainability.",
         logo: "https://vuejs.org/images/logo.png",
+        creator: "Evan You",
+        created: "2014",
       },
       {
         name: "Svelte",
@@ -34,6 +47,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "Svelte is a compiler that turns declarative components into efficient JavaScript code that surgically updates the DOM. Unlike frameworks that run in the browser, Svelte shifts work into a compile step, resulting in smaller bundle sizes and faster performance. Use Svelte when you want highly performant applications with less boilerplate code. It's great for building responsive user interfaces with minimal overhead.",
         logo: "https://svelte.dev/svelte-logo-horizontal.svg",
+        creator: "Rich Harris",
+        created: "2016",
       },
       {
         name: "Angular",
@@ -41,6 +56,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "Angular is a comprehensive platform and framework for building single-page client applications using HTML and TypeScript. Developed by Google, it offers a robust set of features like dependency injection, routing, and form validation out of the box. Use Angular for large-scale enterprise applications that require a structured framework and strong typing. It's suitable for teams that prefer convention over configuration and need extensive tooling support.",
         logo: "https://angular.io/assets/images/logos/angular/angular.png",
+        creator: "Google's Angular Team",
+        created: "2016",
       },
     ],
   },
@@ -53,6 +70,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "Tailwind CSS is a utility-first CSS framework that provides low-level utility classes to build custom designs directly in your markup. It promotes rapid UI development and minimizes the need to write custom CSS. Use Tailwind when you want a consistent, design-system-like approach without predefined components. It's ideal for teams that prefer flexibility over predefined styles and want to reduce context switching between HTML and CSS.",
         logo: "https://tailwindcss.com/favicons/apple-touch-icon.png",
+        creator: "Adam Wathan, Steve Schoger, and Jonathan Reinink",
+        created: "2017",
       },
       {
         name: "Styled Components",
@@ -60,6 +79,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "Styled Components is a library for React and React Native that allows you to use component-level styles in your application. It leverages tagged template literals and CSS to style your components dynamically. Use it when you prefer to keep styles scoped to components and write actual CSS in your JavaScript files. It promotes better organization and reusability of styles, especially in large applications.",
         logo: "https://styled-components.com/logo.png",
+        creator: "Max Stoiber and Glen Maddern",
+        created: "2016",
       },
       {
         name: "CSS Modules",
@@ -67,6 +88,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "CSS Modules are CSS files in which all class names and animation names are scoped locally by default. This avoids naming conflicts and allows for modular and maintainable styles. Use CSS Modules when you want isolated CSS without the overhead of a CSS-in-JS library. It's beneficial for projects that require straightforward CSS scoping with existing tooling like Webpack.",
         logo: "https://raw.githubusercontent.com/css-modules/logos/master/css-modules-logo.png",
+        creator: "Glen Maddern and Mark Dalgleish",
+        created: "2015",
       },
       {
         name: "Sass",
@@ -74,6 +97,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "Sass (Syntactically Awesome Style Sheets) is a preprocessor scripting language that extends CSS with variables, mixins, nesting, and more. It compiles to CSS and helps in writing more maintainable and reusable styles. Use Sass when you need advanced features to organize and simplify your CSS, especially in larger projects with complex stylesheets.",
         logo: "https://sass-lang.com/assets/img/styleguide/seal-color-aef0354c.png",
+        creator: "Hampton Catlin, Natalie Weizenbaum, and Chris Eppstein",
+        created: "2006",
       },
       {
         name: "Less",
@@ -81,6 +106,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "Less is a backwards-compatible language extension for CSS that adds features like variables, mixins, functions, and nesting. It compiles into standard CSS and helps make styles more manageable. Less is useful when you're working with older projects or teams that prefer its syntax over Sass. It's also integrated into some frameworks like Bootstrap 3.",
         logo: "http://lesscss.org/public/graphics/less_logo.png",
+        creator: "Alexis Sellier",
+        created: "2009",
       },
       {
         name: "PostCSS",
@@ -88,6 +115,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "PostCSS is a tool for transforming CSS with JavaScript plugins. It allows for the use of future CSS syntax, linting, and other powerful features through its extensive plugin ecosystem. Use PostCSS when you need a flexible and extensible way to process CSS, enabling features like autoprefixing, variable substitution, and code optimization.",
         logo: "https://postcss.org/assets/postcss.876b91fb.svg",
+        creator: "Andrey Sitnik",
+        created: "2013",
       },
     ],
   },
@@ -100,6 +129,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "Vite is a build tool that provides a rapid development experience by leveraging native ES modules and modern browser support. It offers instant server start and lightning-fast hot module replacement (HMR) with near-zero configuration. Use Vite for developing modern web applications quickly with minimal setup, especially when working with frameworks like Vue or React. It significantly improves development efficiency and productivity.",
         logo: "https://vitejs.dev/logo.svg",
+        creator: "Evan You",
+        created: "2020",
       },
       {
         name: "Webpack",
@@ -107,6 +138,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "Webpack is a powerful module bundler for JavaScript applications. It processes application dependencies and generates optimized bundles for production. Use Webpack when you need a highly customizable bundler for complex applications with specific needs. Its rich plugin ecosystem and configurability make it suitable for large projects that require fine-grained control over the build process.",
         logo: "https://webpack.js.org/assets/icon-square-big.svg",
+        creator: "Tobias Koppers",
+        created: "2012",
       },
       {
         name: "Rollup",
@@ -114,6 +147,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "Rollup is a module bundler for JavaScript that compiles small pieces of code into a larger bundle. It uses ES modules and is optimized for libraries. Use Rollup when building libraries or applications that require tree-shaking and minimal bundle sizes. It's excellent for creating reusable code that needs to be as small and efficient as possible.",
         logo: "https://rollupjs.org/logo.svg",
+        creator: "Rich Harris",
+        created: "2015",
       },
       {
         name: "esbuild",
@@ -121,6 +156,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "esbuild is an extremely fast JavaScript bundler and minifier written in Go. It offers near-instantaneous builds and is ideal for development workflows where speed is crucial. Use esbuild when build speed is a priority, such as in large projects or monorepos. It can be integrated into other tools or used standalone, providing rapid feedback during development.",
         logo: "https://esbuild.github.io/favicon.svg",
+        creator: "Evan Wallace",
+        created: "2020",
       },
       {
         name: "Parcel",
@@ -128,6 +165,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "Parcel is a zero-configuration build tool that supports HTML, CSS, JavaScript, and more. It automatically detects and bundles dependencies without the need for a configuration file. Use Parcel for small to medium projects where ease of setup is important, and you want to get started quickly without dealing with complex build configurations.",
         logo: "https://parceljs.org/assets/parcel@2x.png",
+        creator: "Devon Govett",
+        created: "2017",
       },
       {
         name: "Turbopack",
@@ -135,6 +174,8 @@ export const frontend_categories: FrontendCategory[] = [
         description:
           "Turbopack is a Rust-based bundler optimized for speed and performance, developed by Vercel. It's designed to be an order of magnitude faster than existing bundlers, making it suitable for projects where developer experience and build speed are critical. Use Turbopack when you need the fastest development environment possible for large codebases or complex applications.",
         logo: "https://turbo.build/images/favicon-dark/apple-touch-icon.png",
+        creator: "Vercel",
+        created: "2022",
       },
     ],
   },

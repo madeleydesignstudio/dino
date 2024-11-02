@@ -8,10 +8,10 @@ export const toolCardStyles =
   "p-4 rounded-lg border border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-600 transition-colors bg-white/50 dark:bg-stone-800/50 backdrop-blur-sm";
 
 export const categoryItemStyles = (isSelected: boolean) => `
-  px-3 py-2 rounded-md cursor-pointer transition-colors 
+  px-3 py-2 rounded-md cursor-pointer transition-all duration-200 
   ${
     isSelected
-      ? "bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-stone-100"
-      : "text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800/50"
+      ? "bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-stone-100 shadow-sm"
+      : "text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800/50 hover:text-stone-900 dark:hover:text-stone-100"
   }
 `;
