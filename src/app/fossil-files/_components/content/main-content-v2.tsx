@@ -6,6 +6,8 @@ import { design_categories } from "../../config/design-data";
 import { marketing_categories } from "../../config/marketing-data";
 import Link from "next/link";
 import { frontendFacts } from "../../config/frontend-facts";
+import { ChevronDown } from "lucide-react";
+import ModeToggle from "@/components/mode-toggle";
 
 interface Tool {
   name: string;
@@ -20,6 +22,9 @@ const MainContentV2 = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [factKey, setFactKey] = useState(0);
   const [selectedTool, setSelectedTool] = useState<Tool | null>(null);
+  const [expandedCategories, setExpandedCategories] = useState<string[]>([
+    "Frontend",
+  ]);
 
   // Combine all categories
   const allCategories = {
@@ -31,6 +36,12 @@ const MainContentV2 = () => {
 
   const [selectedCategory, setSelectedCategory] =
     useState<keyof typeof allCategories>("Frontend");
+
+  const toggleCategory = (category: string) => {
+    setExpandedCategories((prev) =>
+      prev.includes(category) ? [] : [category]
+    );
+  };
 
   const getNewRandomFact = useCallback(() => {
     const availableFacts = frontendFacts.filter((fact) => fact !== currentFact);
@@ -87,55 +98,96 @@ const MainContentV2 = () => {
   };
 
   return (
-    <div className="flex w-full h-screen pt-2 font-karla">
+    <div className="flex w-full h-screen font-karla">
       {/* Left sidebar with categories */}
-      <aside className="w-1/5 h-full p-4 border-r">
-        <ScrollArea className="h-full">
-          <h2 className="text-xl font-bold mb-4">Categories</h2>
-          <div className="space-y-4">
-            {Object.entries(allCategories).map(([mainCategory, categories]) => (
-              <div key={mainCategory}>
-                <button
-                  onClick={() =>
+      <aside className="w-1/5 h-full p-4 border-r bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <h2 className="text-xl font-bold pb-6">Categories</h2>
+        <div className="space-y-1.5">
+          {Object.entries(allCategories).map(([mainCategory, categories]) => (
+            <div key={mainCategory} className="relative">
+              <button
+                onClick={() => {
+                  if (selectedCategory === mainCategory) {
+                    toggleCategory(mainCategory);
+                  } else {
                     setSelectedCategory(
                       mainCategory as keyof typeof allCategories
-                    )
+                    );
+                    setExpandedCategories([mainCategory]);
                   }
-                  className={`w-full text-left font-semibold mb-2 hover:text-blue-600 transition-colors
+                }}
+                className={`
+                  w-full flex items-center justify-between px-3 py-2 rounded-lg
+                  text-sm font-medium transition-colors
+                  hover:bg-accent hover:text-accent-foreground
+                  ${
+                    selectedCategory === mainCategory
+                      ? "bg-accent text-accent-foreground"
+                      : ""
+                  }
+                `}
+              >
+                <span>{mainCategory}</span>
+                <ChevronDown
+                  className={`w-4 h-4 shrink-0 transition-transform duration-200
                     ${
-                      selectedCategory === mainCategory ? "text-blue-600" : ""
-                    }`}
-                >
-                  {mainCategory}
-                </button>
-                {selectedCategory === mainCategory && (
-                  <ul className="space-y-2 ml-4">
-                    {categories.map((cat, i) => (
-                      <li key={i}>
-                        <a
-                          href={`#${mainCategory}-category-${i}`}
-                          className={`block hover:text-blue-600 transition-colors duration-200 text-sm
-                            ${
-                              activeSection === i ? "font-bold" : "font-normal"
-                            }`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setSelectedTool(null);
-                            document
-                              .getElementById(`${mainCategory}-category-${i}`)
-                              ?.scrollIntoView({ behavior: "smooth" });
-                          }}
-                        >
-                          {cat.category}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                      expandedCategories.includes(mainCategory)
+                        ? "rotate-180"
+                        : ""
+                    }
+                  `}
+                />
+              </button>
+              <div
+                className={`
+                  overflow-hidden transition-all duration-300 ease-in-out
+                  ${
+                    expandedCategories.includes(mainCategory) &&
+                    selectedCategory === mainCategory
+                      ? "max-h-[500px] opacity-100"
+                      : "max-h-0 opacity-0"
+                  }
+                `}
+              >
+                <ul className="pt-2 pl-4 space-y-1">
+                  {categories.map((cat, i) => (
+                    <li key={i}>
+                      <a
+                        href={`#${mainCategory}-category-${i}`}
+                        className={`
+                          block px-3 py-2 rounded-md text-sm transition-colors
+                          hover:bg-accent hover:text-accent-foreground
+                          ${
+                            activeSection === i
+                              ? "font-medium bg-accent/50 text-accent-foreground"
+                              : "text-muted-foreground"
+                          }
+                        `}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setSelectedTool(null);
+                          document
+                            .getElementById(`${mainCategory}-category-${i}`)
+                            ?.scrollIntoView({ behavior: "smooth" });
+                        }}
+                      >
+                        {cat.category}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            ))}
-          </div>
-        </ScrollArea>
+            </div>
+          ))}
+        </div>
+        <div className="absolute bottom-14 left-0 flex items-center justify-between  w-full p-2 border-t border-stone-200">
+          <ModeToggle />
+          <Link href="/">
+            <div className="text-sm text-stone-500 hover:text-stone-600 transition-colors">
+              Go Home
+            </div>
+          </Link>
+        </div>
       </aside>
 
       {/* Main content area */}
@@ -237,7 +289,7 @@ const MainContentV2 = () => {
       </main>
 
       {/* Right sidebar with fact display and Dino UI */}
-      <aside className="w-1/5 h-full p-4 bg-gray-50/50 border-l divide-y divide-gray-200">
+      <aside className="w-1/5 h-full p-4  border-l divide-y divide-stone-200">
         {/* Did You Know section */}
         <div className="pb-6">
           <h2 className="text-xl font-semibold mb-4">Did You Know?</h2>

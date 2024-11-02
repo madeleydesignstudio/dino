@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function Header() {
   return (
-    <header className="h-[50px] bg-stone-100 border-b fixed top-0 left-0 right-0 flex items-center w-full justify-between px-4 py-1">
+    <header className="h-[50px] bg-stone-100 border-b  top-0 left-0 right-0 flex items-center w-full justify-between px-4 py-1 z-50">
       <div className="flex items-center space-x-2">
         <Link href="/fossil-files" className="flex items-center space-x-2">
           <img

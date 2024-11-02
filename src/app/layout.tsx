@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
-import { nanumMyeongjo, karla } from "../lib/fonts";
-import "./globals.css";
-import { OpenPanelComponent } from "@openpanel/nextjs";
-import { PHProvider } from "./providers";
-import dynamic from "next/dynamic";
-import GetStarted from "@/components/get-started";
 import { ThemeProvider } from "@/components/theme-provider";
+import { OpenPanelComponent } from "@openpanel/nextjs";
+import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+import { karla, nanumMyeongjo } from "../lib/fonts";
+import "./globals.css";
+import { PHProvider } from "./providers";
 
 const PostHogPageView = dynamic(() => import("./PostHogPageView"), {
   ssr: false,
@@ -40,9 +39,6 @@ export default function RootLayout({
               trackScreenViews={true}
             />
             {children}
-            <div className="hidden md:block">
-              <GetStarted />
-            </div>
           </ThemeProvider>
         </body>
       </PHProvider>
