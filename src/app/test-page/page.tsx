@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LandingPage from "@/components/landing-page/landing-page";
 import Tagline from "@/components/landing-page/tagline";
 import FossilFiles from "@/components/landing-page/fossil-files";
 import Projects from "@/components/landing-page/projects";
+import VerticalFooter from "@/components/landing-page/vertical-footer";
+import HorizontalFooter from "@/components/horizontal-footer";
 
 // Ensure ScrollTrigger is registered
 gsap.registerPlugin(ScrollTrigger);
@@ -14,6 +16,24 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Component() {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+
+    // Initial check
+    checkScreenSize();
+
+    // Add event listener
+    window.addEventListener("resize", checkScreenSize);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return; // Ensure this runs only on the client
@@ -107,28 +127,24 @@ export default function Component() {
     {
       id: 1,
       width: "w-[1200px] md:w-fit h-screen",
-
       mobileHeight: "h-screen",
       content: <LandingPage />,
     },
     {
       id: 2,
       width: "w-screen md:w-fit h-screen",
-
       mobileHeight: "h-fit",
       content: <Tagline />,
     },
     {
       id: 3,
       width: "w-screen md:w-fit md:h-screen h-fit",
-
       mobileHeight: "h-fit w-screen",
       content: <FossilFiles />,
     },
     {
       id: 4,
       width: "w-screen md:w-fit md:h-screen h-fit",
-
       mobileHeight: "h-fit w-screen",
       content: <Projects />,
     },
@@ -142,6 +158,12 @@ export default function Component() {
           Section 5
         </div>
       ),
+    },
+    {
+      id: 6,
+      width: "w-screen md:w-fit md:h-screen h-fit",
+      mobileHeight: "h-fit w-screen",
+      content: isDesktop ? <VerticalFooter /> : <HorizontalFooter />,
     },
   ];
 
@@ -163,11 +185,7 @@ export default function Component() {
               ${section.bg}
               flex-shrink-0
               flex items-center justify-center
-              ${
-                typeof window !== "undefined" && window.innerWidth >= 768
-                  ? "transform-none"
-                  : "transform translate-x-0"
-              }
+              ${isDesktop ? "transform-none" : "transform translate-x-0"}
             `}
           >
             <div className="w-full h-full">{section.content}</div>
