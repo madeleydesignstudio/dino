@@ -1,5 +1,6 @@
 "use client";
 
+import { ModeToggle } from "@/components/mode-toggle";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
@@ -28,7 +29,7 @@ export function Header({ onLogoClick }: HeaderProps) {
           Powered by <span className="font-semibold">DINO</span>
         </h2>
       </div>
-
+      <ModeToggle />
       <div className="w-64">
         <Input
           type="search"

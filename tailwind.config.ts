@@ -59,7 +59,17 @@ const config: Config = {
   			'color-2': 'hsl(var(--color-2))',
   			'color-3': 'hsl(var(--color-3))',
   			'color-4': 'hsl(var(--color-4))',
-  			'color-5': 'hsl(var(--color-5))'
+  			'color-5': 'hsl(var(--color-5))',
+  			sidebar: {
+  				DEFAULT: 'hsl(var(--sidebar-background))',
+  				foreground: 'hsl(var(--sidebar-foreground))',
+  				primary: 'hsl(var(--sidebar-primary))',
+  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+  				accent: 'hsl(var(--sidebar-accent))',
+  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+  				border: 'hsl(var(--sidebar-border))',
+  				ring: 'hsl(var(--sidebar-ring))'
+  			}
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
@@ -68,7 +78,9 @@ const config: Config = {
   		},
   		animation: {
   			rainbow: 'rainbow var(--speed, 4s) infinite linear',
-  			meteor: 'meteor 5s linear infinite'
+  			meteor: 'meteor 5s linear infinite',
+  			'fade-out-up': 'fade-out-up 0.5s ease-out forwards',
+  			'fade-in-down': 'fade-in-down 0.5s ease-in forwards'
   		},
   		keyframes: {
   			rainbow: {
@@ -90,6 +102,26 @@ const config: Config = {
   				'100%': {
   					transform: 'rotate(215deg) translateX(-500px)',
   					opacity: '0'
+  				}
+  			},
+  			'fade-out-up': {
+  				'0%': {
+  					opacity: '1',
+  					transform: 'translateY(0)'
+  				},
+  				'100%': {
+  					opacity: '0',
+  					transform: 'translateY(-10px)'
+  				}
+  			},
+  			'fade-in-down': {
+  				'0%': {
+  					opacity: '0',
+  					transform: 'translateY(10px)'
+  				},
+  				'100%': {
+  					opacity: '1',
+  					transform: 'translateY(0)'
   				}
   			}
   		}
