@@ -165,7 +165,7 @@ const MainContentV2 = () => {
     <div className="flex w-full h-screen font-karla bg-stone-50 text-stone-900 dark:bg-stone-900 dark:text-stone-50">
       {/* Left sidebar with categories */}
       <aside className="w-1/5 h-full p-4 border-r border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 backdrop-blur">
-        <h2 className="text-xl font-bold pb-6 pt-4">Categories</h2>
+        <h2 className="text-xl font-bold pb-6">Categories</h2>
         <div className="space-y-1.5">
           {Object.entries(allCategories).map(([mainCategory, categories]) => (
             <div key={mainCategory} className="relative">
@@ -251,7 +251,7 @@ const MainContentV2 = () => {
             </div>
           ))}
         </div>
-        <div className="absolute bottom-10 left-0 flex items-center justify-between w-full p-2 border-t border-stone-200 dark:border-stone-800">
+        <div className="absolute bottom-12 left-0 flex items-center justify-between w-full p-2 border-t border-stone-200 dark:border-stone-800">
           <ModeToggle />
           <Link href="/">
             <div className="text-sm text-stone-500 dark:text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 transition-colors">
@@ -453,7 +453,7 @@ const MainContentV2 = () => {
       <aside className="w-1/5 h-full p-4 border-l border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900">
         {/* Did You Know section */}
         <div className="pb-6">
-          <h2 className="text-xl font-bold mb-4 pt-4">Did You Know?</h2>
+          <h2 className="text-xl font-bold mb-4">Did You Know?</h2>
           <div className="relative p-4 rounded-lg border bg-card text-card-foreground shadow-sm min-h-[80px] flex items-center">
             <div className="w-full">
               <p
