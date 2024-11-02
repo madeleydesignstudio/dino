@@ -9,6 +9,17 @@ import { backend_categories } from "../../../config/backend-data";
 import { design_categories } from "../../../config/design-data";
 import { marketing_categories } from "../../../config/marketing-data";
 
+interface Tool {
+  name: string;
+  description: string; // Remove optional
+  url: string; // Remove optional
+}
+
+interface Category {
+  category: string;
+  tools: Tool[];
+}
+
 const sectionDescriptions: Record<NavigationItem, string> = {
   Frontend:
     "Tools and technologies for building user interfaces and client-side applications, focusing on what users see and interact with directly.",
@@ -20,16 +31,16 @@ const sectionDescriptions: Record<NavigationItem, string> = {
     "Marketing and analytics tools to help grow your product, understand your users, and measure success.",
 };
 
-const getCategoryData = (selectedItem: NavigationItem) => {
+const getCategoryData = (selectedItem: NavigationItem): Category[] => {
   switch (selectedItem) {
     case "Frontend":
-      return frontend_categories;
+      return frontend_categories as Category[];
     case "Backend":
-      return backend_categories;
+      return backend_categories as Category[];
     case "Design":
-      return design_categories;
+      return design_categories as Category[];
     case "Market":
-      return marketing_categories;
+      return marketing_categories as Category[];
     default:
       return [];
   }
