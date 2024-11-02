@@ -20,15 +20,17 @@ export const Sidebar = memo(function Sidebar({
   onItemClick,
 }: SidebarProps) {
   return (
-    <aside className="w-fit border-r flex flex-col justify-between items-center pb-2">
+    <aside className="w-[50px] bg-stone-100 border-r flex flex-col justify-between items-center pb-2 relative">
       <div className="flex-1" />
-      <nav className="flex flex-col items-center space-y-8">
+      <nav className="flex flex-col items-center space-y-8 ">
         {items.map((item) => (
           <motion.button
             key={item.name}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="p-2 hover:bg-gray-100 rounded-md"
+            className={`p-2 hover:bg-gray-100 rounded-md ${
+              selectedItem === item.name ? "border-r-2 border-stone-400" : ""
+            }`}
             onClick={() => onItemClick(item.name)}
             aria-label={`Select ${item.name}`}
             aria-pressed={selectedItem === item.name}

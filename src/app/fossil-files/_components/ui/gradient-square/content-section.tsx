@@ -111,7 +111,10 @@ export function ContentSection({
           {selectedCategory && (
             <div className="grid grid-cols-3 gap-6 overflow-y-auto">
               {selectedTools.map((tool) => (
-                <ToolCard key={tool} tool={tool} />
+                <ToolCard
+                  key={typeof tool === "string" ? tool : tool.name}
+                  tool={tool}
+                />
               ))}
             </div>
           )}

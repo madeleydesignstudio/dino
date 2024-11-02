@@ -9,7 +9,7 @@ interface HeaderProps {
 
 export function Header({ onLogoClick }: HeaderProps) {
   return (
-    <header className="h-fit border-b flex items-center w-full justify-between px-4 py-1">
+    <header className="h-[50px] bg-stone-100 border-b flex items-center w-full justify-between px-4 py-1">
       <div className="flex items-center space-x-2">
         <Link
           href="/fossil-files"
