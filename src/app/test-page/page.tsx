@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LandingPage from "@/components/landing-page/landing-page";
+import Tagline from "@/components/landing-page/tagline";
 
 // Ensure ScrollTrigger is registered
 gsap.registerPlugin(ScrollTrigger);
@@ -104,20 +105,16 @@ export default function Component() {
     {
       id: 1,
       width: "w-[1200px] md:w-fit",
-      bg: "bg-red-200",
+
       mobileHeight: "h-screen",
       content: <LandingPage />,
     },
     {
       id: 2,
-      width: "w-screen md:w-[100vh]",
-      bg: "bg-blue-200",
+      width: "w-screen md:w-fit",
+
       mobileHeight: "h-screen",
-      content: (
-        <div className="w-full h-full flex items-center justify-center">
-          Section 2
-        </div>
-      ),
+      content: <Tagline />,
     },
     {
       id: 3,
