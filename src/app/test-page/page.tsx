@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LandingPage from "@/components/landing-page/landing-page";
 import Tagline from "@/components/landing-page/tagline";
+import FossilFiles from "@/components/landing-page/fossil-files";
 
 // Ensure ScrollTrigger is registered
 gsap.registerPlugin(ScrollTrigger);
@@ -104,28 +105,24 @@ export default function Component() {
   const sections = [
     {
       id: 1,
-      width: "w-[1200px] md:w-fit",
+      width: "w-[1200px] md:w-fit h-screen",
 
       mobileHeight: "h-screen",
       content: <LandingPage />,
     },
     {
       id: 2,
-      width: "w-screen md:w-fit",
+      width: "w-screen md:w-fit h-screen",
 
-      mobileHeight: "h-screen",
+      mobileHeight: "h-fit",
       content: <Tagline />,
     },
     {
       id: 3,
-      width: "w-screen md:w-[100vh]",
-      bg: "bg-green-200",
-      mobileHeight: "h-[75vh]",
-      content: (
-        <div className="w-full h-full flex items-center justify-center">
-          Section 3
-        </div>
-      ),
+      width: "w-screen md:w-fit md:h-screen h-fit",
+
+      mobileHeight: "h-fit w-screen",
+      content: <FossilFiles />,
     },
     {
       id: 4,
