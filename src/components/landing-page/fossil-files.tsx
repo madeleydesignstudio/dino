@@ -4,14 +4,15 @@ import Link from "next/link";
 const FossilFiles = () => {
   return (
     <div className="flex md:flex-row flex-col md:h-screen h-full w-full">
-      <div className="w-full md:h-full  border-r border-stone-900 relative">
+      <div className="w-full md:h-full border-r border-stone-900 relative">
         <div className="relative w-full md:h-full aspect-square">
           <Image
-            src="https://ik.imagekit.io/danielcmadeley/dino/mxdeley_pixar_styled_32bit_pixelated_dinosaur_themed_notice_b_ef872751-925f-4cff-8282-dde37a3891b2_3.png?updatedAt=1730037137765"
+            src="https://ik.imagekit.io/danielcmadeley/dino/mxdeley_pixar_styled_32bit_pixelated_dinosaur_themed_notice_b_ef872751-925f-4cff-8282-dde37a3891b2_3.png"
             alt="Desert landscape"
             fill
             className="opacity-50 object-cover"
             priority
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/95 to-stone-950/30" />
@@ -27,9 +28,11 @@ const FossilFiles = () => {
           </div>
           <div className="absolute bottom-4 right-4 flex items-end">
             <Link href="/fossil-files">
-              <img
-                src="https://ik.imagekit.io/danielcmadeley/dino/Group%209.svg?updatedAt=1730029736000"
-                alt=""
+              <Image
+                src="https://ik.imagekit.io/danielcmadeley/dino/Group%209.svg"
+                alt="Navigation icon"
+                width={40}
+                height={40}
               />
             </Link>
           </div>
