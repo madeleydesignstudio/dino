@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LandingPage from "@/components/landing-page/landing-page";
 import Tagline from "@/components/landing-page/tagline";
 import FossilFiles from "@/components/landing-page/fossil-files";
+import Projects from "@/components/landing-page/projects";
 
 // Ensure ScrollTrigger is registered
 gsap.registerPlugin(ScrollTrigger);
@@ -126,14 +127,10 @@ export default function Component() {
     },
     {
       id: 4,
-      width: "w-screen md:w-[20vh]",
-      bg: "bg-yellow-200",
-      mobileHeight: "h-[40vh]",
-      content: (
-        <div className="w-full h-full flex items-center justify-center">
-          Section 4
-        </div>
-      ),
+      width: "w-screen md:w-fit md:h-screen h-fit",
+
+      mobileHeight: "h-fit w-screen",
+      content: <Projects />,
     },
     {
       id: 5,

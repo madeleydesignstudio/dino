@@ -44,7 +44,7 @@ const FossilFiles = () => {
           </div>
         </Link>
         <Link href="/fossil-files?item=Backend">
-          <div className="md:w-[100px] w-full h-full bg-[#020202] md:border-r border-stone-900 flex items-end md:py-[8rem] justify-center hover:bg-[#F9E4B3]/80 transition-colors">
+          <div className="md:w-[100px] w-full h-full bg-[#F9E4B3] md:border-r border-stone-900 flex items-end md:py-[8rem] justify-center hover:bg-[#F9E4B3]/80 transition-colors">
             <h1 className="text-stone-900 md:text-6xl text-4xl font-nanum md:-rotate-90 py-2 md:py-0">
               Backend.
             </h1>
