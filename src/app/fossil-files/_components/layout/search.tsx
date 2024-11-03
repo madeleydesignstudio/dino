@@ -1,96 +1,77 @@
-"use client";
+// "use client";
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
-type SearchResult = {
-  id: string;
-  url: string;
-  title: string;
-  excerpt: string;
-};
+// export default function Search() {
+//   const [searchInstance, setSearchInstance] = useState<any>(null);
+//   const [searchResults, setSearchResults] = useState<any[]>([]);
+//   const [loading, setLoading] = useState(false);
 
-export default function Search() {
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState<SearchResult[]>([]);
-  const [pagefind, setPagefind] = useState<any>(null);
+//   useEffect(() => {
+//     // Initialize Pagefind when component mounts
+//     const initPagefind = async () => {
+//       try {
+//         const pagefind = await import("/pagefind/pagefind.js");
+//         await pagefind.init();
+//         setSearchInstance(pagefind);
+//       } catch (err) {
+//         console.error("Error initializing Pagefind:", err);
+//       }
+//     };
 
-  useEffect(() => {
-    // Initialize Pagefind
-    const initPagefind = async () => {
-      const pagefind = await import("/pagefind/pagefind.js");
-      setPagefind(pagefind);
-    };
+//     initPagefind();
+//   }, []);
 
-    initPagefind();
-  }, []);
+//   const handleSearch = async (term: string) => {
+//     if (!searchInstance || !term) {
+//       setSearchResults([]);
+//       return;
+//     }
 
-  const search = async (searchQuery: string) => {
-    if (!pagefind) return;
+//     setLoading(true);
+//     try {
+//       const search = await searchInstance.search(term);
+//       const results = await Promise.all(
+//         search.results.map((result: any) => result.data())
+//       );
+//       setSearchResults(results);
+//     } catch (err) {
+//       console.error("Search error:", err);
+//       setSearchResults([]);
+//     }
+//     setLoading(false);
+//   };
 
-    setQuery(searchQuery);
+//   return (
+//     <div className="relative">
+//       <input
+//         type="text"
+//         placeholder="Search tools..."
+//         className="w-full px-4 py-2 text-sm rounded-md border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-800 dark:text-stone-200 focus:outline-none focus:ring-2 focus:ring-stone-500"
+//         onChange={(e) => handleSearch(e.target.value)}
+//       />
 
-    if (searchQuery.length > 1) {
-      const search = await pagefind.search(searchQuery);
-      const results = await Promise.all(
-        search.results.map(async (result: any) => {
-          const data = await result.data();
-          return {
-            id: result.id,
-            url: data.url,
-            title: data.meta.title,
-            excerpt: data.excerpt,
-          };
-        })
-      );
-      setResults(results);
-    } else {
-      setResults([]);
-    }
-  };
-
-  return (
-    <div className="search-container">
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => search(e.target.value)}
-        placeholder="Search..."
-        className="search-input"
-      />
-
-      <div className="search-results">
-        {results.map((result) => (
-          <div key={result.id} className="search-result">
-            <a href={result.url}>
-              <h3>{result.title}</h3>
-              <p>{result.excerpt}</p>
-            </a>
-          </div>
-        ))}
-      </div>
-
-      <style jsx>{`
-        .search-container {
-          max-width: 600px;
-          margin: 0 auto;
-        }
-        .search-input {
-          width: 100%;
-          padding: 8px;
-          font-size: 16px;
-          margin-bottom: 16px;
-        }
-        .search-results {
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-        }
-        .search-result {
-          padding: 16px;
-          border: 1px solid #eee;
-          border-radius: 4px;
-        }
-      `}</style>
-    </div>
-  );
-}
+//       {/* Results dropdown */}
+//       {searchResults.length > 0 && (
+//         <div className="absolute top-full mt-2 w-full bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-md shadow-lg max-h-96 overflow-y-auto z-50">
+//           {searchResults.map((result, index) => (
+//             <a
+//               key={index}
+//               href={result.url}
+//               className="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-700"
+//             >
+//               <div className="text-sm font-medium text-stone-800 dark:text-stone-200">
+//                 {result.meta.title}
+//               </div>
+//               {result.excerpt && (
+//                 <div className="text-xs text-stone-500 dark:text-stone-400">
+//                   {result.excerpt}
+//                 </div>
+//               )}
+//             </a>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// }

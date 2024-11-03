@@ -1,8 +1,7 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import Search from "./search";
+// import Search from "./search";
 
 export function Header() {
   return (
@@ -29,9 +28,7 @@ export function Header() {
         </h2>
       </div>
 
-      <div className="w-64">
-        <Search />
-      </div>
+      <div className="w-64">{/* <Search /> */}</div>
     </header>
   );
 }
