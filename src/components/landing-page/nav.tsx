@@ -1,14 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
+import ModeToggle from "../mode-toggle";
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("overflow-hidden"); // Add this line
+    } else {
+      document.body.classList.remove("overflow-hidden"); // Add this line
+    }
+  }, [isOpen]); // Add this dependency
 
   const menuVariants = {
     closed: {
@@ -81,7 +90,7 @@ export default function Nav() {
                   >
                     <a
                       href="#"
-                      className="text-8xl font-bold text-left text-foreground hover:text-primary transition-colors font-karla"
+                      className="text-8xl font-bold text-left transition-colors font-karla hover:text-stone-900/50 text-stone-900 dark:text-stone-50 dark:hover:text-stone-50/50"
                       onClick={toggleMenu}
                     >
                       {item}
@@ -90,7 +99,7 @@ export default function Nav() {
                 ))}
               </ul>
             </div>
-            <footer>
+            <footer className="mb-2">
               <div className="flex">
                 <p className="font-bold text-7xl font-karla">DINO</p>
                 <div className="flex flex-col">
@@ -99,6 +108,9 @@ export default function Nav() {
                 </div>
               </div>
             </footer>
+            <div className="absolute bottom-4 left-4">
+              <ModeToggle />
+            </div>
           </motion.nav>
         )}
       </AnimatePresence>
