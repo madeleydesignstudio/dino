@@ -6,8 +6,10 @@ import { design_categories } from "../../config/design-data";
 import { marketing_categories } from "../../config/marketing-data";
 import Link from "next/link";
 import { frontendFacts } from "../../config/frontend-facts";
-import { ChevronDown, HomeIcon } from "lucide-react";
+import { ChevronDown, HomeIcon, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion"; // Add this import
 import ModeToggle from "@/components/mode-toggle";
+import { Button } from "@/components/ui/button";
 
 const introductions = {
   Frontend: {
@@ -81,6 +83,7 @@ const MainContent = () => {
   const [currentFact, setCurrentFact] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
   const [showIntroduction, setShowIntroduction] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [factKey, setFactKey] = useState(0);
   const [selectedTool, setSelectedTool] = useState<Tool | null>(null);
   const [expandedCategories, setExpandedCategories] = useState<string[]>([
@@ -161,10 +164,100 @@ const MainContent = () => {
     setSelectedTool(null);
   };
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [isMobileMenuOpen]);
+
   return (
     <div className="flex w-full h-screen font-karla bg-stone-50 text-stone-900 dark:bg-stone-900 dark:text-stone-50">
+      <div className="md:hidden fixed top-2 right-4 z-50">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+        >
+          {isMobileMenuOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
+        </Button>
+      </div>
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ y: "-100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-100%" }}
+            transition={{ type: "spring", stiffness: 300, damping: 40 }}
+            className="fixed inset-0 bg-background/80 backdrop-blur-lg z-40 md:hidden"
+          >
+            <div className="h-full flex flex-col p-4 pt-16">
+              <ScrollArea className="flex-1">
+                <h2 className="text-xl font-bold pb-6">Categories</h2>
+                <div className="space-y-1.5">
+                  {Object.entries(allCategories).map(([mainCategory]) => (
+                    <div key={mainCategory} className="relative">
+                      <button
+                        onClick={() => {
+                          if (selectedCategory === mainCategory) {
+                            toggleCategory(mainCategory);
+                          } else {
+                            setSelectedCategory(
+                              mainCategory as keyof typeof introductions
+                            );
+                            setExpandedCategories([mainCategory]);
+                            setShowIntroduction(true);
+                            setSelectedCategoryIndex(null);
+                          }
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className={`
+                          w-full flex items-center justify-between px-3 py-2 rounded-lg
+                          text-sm font-medium transition-colors
+                          hover:bg-stone-200 dark:hover:bg-stone-800
+                          ${
+                            selectedCategory === mainCategory
+                              ? "bg-stone-200 dark:bg-stone-800"
+                              : ""
+                          }
+                        `}
+                      >
+                        <span>{mainCategory}</span>
+                        <ChevronDown
+                          className={`w-4 h-4 shrink-0 transition-transform duration-200
+                            ${
+                              expandedCategories.includes(mainCategory)
+                                ? "rotate-180"
+                                : ""
+                            }
+                          `}
+                        />
+                      </button>
+                      {/* ... rest of your categories content ... */}
+                    </div>
+                  ))}
+                </div>
+              </ScrollArea>
+              <div className="border-t border-stone-200 dark:border-stone-800 pt-4 mt-4 flex items-center justify-between">
+                <ModeToggle />
+                <Link href="/">
+                  <div className="text-sm text-stone-500 dark:text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 transition-colors">
+                    <HomeIcon className="w-4 h-4" />
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       {/* Left sidebar with categories */}
-      <aside className="w-1/5 h-full p-4 border-r border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 backdrop-blur">
+      <aside className=" hidden md:inline w-1/5 h-full p-4 border-r border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 backdrop-blur">
         <h2 className="text-xl font-bold pb-6">Categories</h2>
         <div className="space-y-1.5">
           {Object.entries(allCategories).map(([mainCategory, categories]) => (
@@ -262,7 +355,7 @@ const MainContent = () => {
       </aside>
 
       {/* Main content area */}
-      <main className="w-3/5 h-full p-4">
+      <main className="md:w-3/5 w-full h-full p-4">
         <ScrollArea className="h-full">
           <div className="pt-2">
             {selectedTool ? (
@@ -450,7 +543,7 @@ const MainContent = () => {
       </main>
 
       {/* Right sidebar */}
-      <aside className="w-1/5 h-full p-4 border-l border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900">
+      <aside className="w-1/5 hidden md:inline h-full p-4 border-l border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900">
         {/* Did You Know section */}
         <div className="pb-6">
           <h2 className="text-xl font-bold mb-4">Did You Know?</h2>

@@ -19,8 +19,10 @@ const FossilFiles = () => {
         {/* Overlay divs */}
         <div className="absolute inset-0 flex items-end">
           <div className="flex flex-col p-4">
-            <h1 className="text-8xl text-stone-50 font-nanum">Fossil Files</h1>
-            <p className="text-stone-50 text-sm max-w-sm">
+            <h1 className="md:text-8xl text-5xl text-stone-50 font-nanum">
+              Fossil Files
+            </h1>
+            <p className="md:text-sm text-xs text-stone-50 md:max-w-sm max-w-xs">
               Fossil Files is our comprehensive knowledge hub dedicated to all
               facets of the web industry.
             </p>
@@ -30,8 +32,9 @@ const FossilFiles = () => {
               <Image
                 src="https://ik.imagekit.io/danielcmadeley/dino/Group%209.svg"
                 alt="Navigation icon"
-                width={40}
-                height={40}
+                width={300}
+                height={300}
+                className="w-[100px] h-[100px] md:w-[300px] md:h-[300px]"
               />
             </a>
           </div>

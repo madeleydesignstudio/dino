@@ -109,15 +109,6 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-stone-50 text-foreground;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
+    @apply bg-stone-50 dark:bg-stone-900 text-stone-900 dark:text-stone-50;
   }
 }

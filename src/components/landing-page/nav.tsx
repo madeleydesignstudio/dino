@@ -45,12 +45,12 @@ export default function Nav() {
       <Button
         variant="ghost"
         size="icon"
-        className="fixed top-4 right-20 z-50 "
+        className="z-50 "
         onClick={toggleMenu}
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >
         {isOpen ? (
-          <X className="h-6 w-6" />
+          <X className="h-6 w-6 z-50" />
         ) : (
           <svg
             className="h-6 w-6"
@@ -76,7 +76,7 @@ export default function Nav() {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="fixed inset-0 bg-background/95 backdrop-blur-sm z-40 flex flex-col items-center"
+            className="fixed inset-0 bg-background/80 backdrop-blur-lg z-40 flex flex-col items-center"
           >
             <div className="flex-1 flex items-center justify-center">
               <ul className="space-y-6 text-left">
@@ -89,8 +89,8 @@ export default function Nav() {
                     transition={{ delay: 0.1 * menuItems.indexOf(item) }}
                   >
                     <a
-                      href="#"
-                      className="text-8xl font-bold text-left transition-colors font-karla hover:text-stone-900/50 text-stone-900 dark:text-stone-50 dark:hover:text-stone-50/50"
+                      href=""
+                      className="md:text-8xl text-5xl font-bold text-left transition-colors font-karla hover:text-stone-900/50 text-stone-900 dark:text-stone-50 dark:hover:text-stone-50/50"
                       onClick={toggleMenu}
                     >
                       {item}
@@ -101,10 +101,12 @@ export default function Nav() {
             </div>
             <footer className="mb-2">
               <div className="flex">
-                <p className="font-bold text-7xl font-karla">DINO</p>
-                <div className="flex flex-col">
-                  <p className="text-xs font-karla">51.5072° N, 0.1276° W</p>
-                  <p className="text-xs font-karla">UK DESIGN STUDIO</p>
+                <p className="font-bold md:text-7xl text-5xl font-karla">
+                  DINO
+                </p>
+                <div className="flex flex-col text-xs font-karla">
+                  <p>51.5072° N, 0.1276° W</p>
+                  <p>UK DESIGN STUDIO</p>
                 </div>
               </div>
             </footer>

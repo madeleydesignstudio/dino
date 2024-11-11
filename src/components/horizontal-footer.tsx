@@ -3,9 +3,9 @@ import { Input } from "@/components/ui/input";
 
 export default function HorizontalFooter() {
   return (
-    <footer className="w-full h-[25rem] text-black overflow-hidden flex flex-col justify-center relative">
+    <footer className="w-full h-[25rem] text-stone-900 dark:text-stone-50 overflow-hidden flex flex-col justify-center relative">
       <div className="top-0 left-0 w-full flex items-stretch">
-        <div className="h-[1px] w-full bg-stone-900 mx-6" />
+        <div className="h-[1px] w-full bg-stone-900 dark:bg-stone-50 mx-6" />
       </div>
       <div className="relative z-10 p-8 flex h-full w-full justify-center">
         <div className="max-w-7xl mx-auto flex w-full space-x-24 items-start justify-center">
@@ -56,7 +56,7 @@ export default function HorizontalFooter() {
               />
               <Button
                 type="submit"
-                className="rounded-l-none font-bold bg-[#2EA8A9] text-white hover:bg-[#237e7e] text-xs"
+                className="rounded-l-none font-bold bg-[#2EA8A9] text-stone-50 dark:text-stone-900 hover:bg-[#237e7e] text-xs"
               >
                 Subscribe
               </Button>
@@ -111,7 +111,7 @@ export default function HorizontalFooter() {
         </div>
       </div>
       <div className="absolute inset-x-0 bottom-0 flex justify-center overflow-hidden pointer-events-none h-[15rem]">
-        <span className="text-[45rem] font-bold text-stone-950 leading-none">
+        <span className="text-[45rem] font-bold text-stone-950 dark:text-stone-400 leading-none">
           DINO
         </span>
       </div>

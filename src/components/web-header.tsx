@@ -27,8 +27,8 @@ const WebHeader = () => {
 
   return (
     <div ref={headerRef}>
-      <header className="flex items-center h-[50px] border-b border-stone-900 fixed top-0 left-0 right-0 z-50 bg-stone-50/80 backdrop-blur-sm font-karla">
-        <div className="border-r border-stone-900 h-full w-1/3 ">
+      <header className="flex items-center h-[50px] border-b border-stone-900 dark:border-stone-50 fixed top-0 left-0 right-0 z-50 bg-stone-50/80 dark:bg-stone-900/80 backdrop-blur-sm font-karla">
+        <div className="border-r border-stone-900 dark:border-stone-50 h-full w-1/3 ">
           <Link
             href="/"
             className=" h-full w-full flex items-center justify-start"
@@ -36,13 +36,13 @@ const WebHeader = () => {
             <h1 className="text-xl font-bold font-karla px-4">DINO</h1>
           </Link>
         </div>
-        <div className="border-r border-stone-900 h-full w-1/3">
+        <div className="border-r border-stone-900 dark:border-stone-50 h-full w-1/3">
           <div className="flex items-center justify-between h-full">
             <Link
               href="/work"
-              className="border-r border-stone-900 h-full w-full flex items-center justify-start"
+              className="border-r border-stone-900 dark:border-stone-50 h-full w-full flex items-center justify-start"
             >
-              <h2 className="text-stone-900 px-4">Work</h2>
+              <h2 className="text-stone-900 dark:text-stone-50 px-4">Work</h2>
             </Link>
             <div
               className="group h-full w-full flex items-center justify-start"
@@ -51,21 +51,25 @@ const WebHeader = () => {
                 setCompanyExpanded(false);
               }}
             >
-              <h2 className="text-stone-900 px-4">Services</h2>
-              <span className="text-stone-900">+</span>
+              <h2 className="text-stone-900 dark:text-stone-50 px-4">
+                Services
+              </h2>
+              <span className="text-stone-900 dark:text-stone-50">+</span>
             </div>
           </div>
         </div>
         <div className="h-full w-1/3">
           <div className="flex items-center justify-between h-full">
             <div
-              className="group border-r border-stone-900 h-full w-full flex items-center justify-start"
+              className="group border-r border-stone-900 dark:border-stone-50 h-full w-full flex items-center justify-start"
               onClick={() => {
                 setCompanyExpanded(!companyExpanded);
                 setServicesExpanded(false);
               }}
             >
-              <h2 className="text-stone-900 px-4">Company</h2>
+              <h2 className="text-stone-900 dark:text-stone-50 px-4">
+                Company
+              </h2>
               <span className="text-stone-900">+</span>
             </div>
             <Link
@@ -83,7 +87,7 @@ const WebHeader = () => {
       <div
         className={`fixed top-[50px] left-0 right-0 bg-stone-50/80 z-50 backdrop-blur-sm overflow-hidden transition-all duration-200 ease-in-out ${
           servicesExpanded
-            ? "max-h-[200px] border-b border-stone-900"
+            ? "max-h-[200px] border-b border-stone-900 dark:border-stone-50"
             : "max-h-0"
         }`}
       >
@@ -91,7 +95,7 @@ const WebHeader = () => {
           <li className="w-1/3 text-center">
             <Link
               href="/services/design"
-              className="py-2 border-r border-stone-900 h-full flex flex-col justify-around items-center"
+              className="py-2 border-r border-stone-900 dark:border-stone-50 h-full flex flex-col justify-around items-center"
             >
               <div className="w-24 h-24 flex-1 flex items-center justify-center">
                 <img
@@ -106,7 +110,7 @@ const WebHeader = () => {
           <li className="w-1/3 text-center">
             <Link
               href="/services/engineer"
-              className="py-2 border-r border-stone-900 h-full flex flex-col justify-around items-center"
+              className="py-2 border-r border-stone-900 dark:border-stone-50 h-full flex flex-col justify-around items-center"
             >
               <div className="w-24 h-24 flex-1 flex items-center justify-center">
                 <img

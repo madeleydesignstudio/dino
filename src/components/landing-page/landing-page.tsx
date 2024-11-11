@@ -19,7 +19,7 @@ export default function LandingPage() {
 
       <div className="relative h-screen flex-1">
         {/* White background (1/3 width) */}
-        <div className="absolute left-0 top-0 h-full w-1/3 bg-white border-r border-stone-900" />
+        <div className="absolute left-0 top-0 h-full w-1/3 bg-stone-50 dark:bg-stone-950 border-r border-stone-900" />
 
         <div className="relative z-10 flex h-full w-full flex-col justify-between">
           <main>
