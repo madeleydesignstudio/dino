@@ -614,7 +614,7 @@ const MainContent = () => {
                 solutions.
               </p>
               <Link
-                href="/contact"
+                href="/company/contact"
                 className="block w-full text-center bg-background text-primary py-2.5 px-4 rounded-lg font-medium text-sm hover:bg-primary-foreground/10 active:bg-primary-foreground/20 transition-all duration-200"
               >
                 Start a New Project →
