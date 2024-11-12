@@ -89,7 +89,7 @@ export default function Nav() {
                     transition={{ delay: 0.1 * menuItems.indexOf(item) }}
                   >
                     <a
-                      href=""
+                      href={`/${item.toLowerCase()}`}
                       className="md:text-8xl text-5xl font-bold text-left transition-colors font-karla hover:text-stone-900/50 text-stone-900 dark:text-stone-50 dark:hover:text-stone-50/50"
                       onClick={toggleMenu}
                     >
