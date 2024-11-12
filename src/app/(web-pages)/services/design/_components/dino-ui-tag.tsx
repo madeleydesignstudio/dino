@@ -9,7 +9,7 @@ export default function DinoUiTag() {
     <Drawer.Root direction="left">
       <Drawer.Trigger asChild>
         <div className="fixed left-[-0.25rem] top-1/2 z-50 -rotate-90 -translate-x-[calc(50%-1.5rem)] transition-transform hover:scale-110">
-          <RainbowButton className="font-bold rounded-t-none font-karla">
+          <RainbowButton className="font-bold rounded-t-none font-karla text-stone-50 dark:text-stone-900 bg-stone-50 dark:bg-stone-900">
             DINO UI
           </RainbowButton>
         </div>

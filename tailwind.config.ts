@@ -81,8 +81,13 @@ const config: Config = {
         meteor: "meteor 5s linear infinite",
         "fade-out-up": "fade-out-up 0.5s ease-out forwards",
         "fade-in-down": "fade-in-down 0.5s ease-in forwards",
+        "scroll-arrow": "scroll-arrow 1.5s ease-in-out infinite",
       },
       keyframes: {
+        "scroll-arrow": {
+          "0%, 100%": { transform: "translateX(0)" },
+          "50%": { transform: "translateX(10px)" },
+        },
         rainbow: {
           "0%": {
             "background-position": "0%",

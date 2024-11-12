@@ -111,7 +111,7 @@ export default function HorizontalFooter() {
         </div>
       </div>
       <div className="absolute inset-x-0 bottom-0 flex justify-center overflow-hidden pointer-events-none h-[15rem]">
-        <span className="text-[45rem] font-bold text-stone-950 dark:text-stone-400 leading-none">
+        <span className="text-[45rem] font-bold text-stone-950 dark:text-stone-100 leading-none">
           DINO
         </span>
       </div>

@@ -1,5 +1,5 @@
 import HorizontalFooter from "@/components/horizontal-footer";
-import WebHeader from "@/components/web-header";
+import WebHeader from "@/components/website-header/web-header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "The digital dino will take care of all your design needs",
 };
 
-export default function ServicesLayout({
+export default function CompanyLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

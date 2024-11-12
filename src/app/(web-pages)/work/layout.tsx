@@ -1,5 +1,5 @@
 import HorizontalFooter from "@/components/horizontal-footer";
-import WebHeader from "@/components/web-header";
+import WebHeader from "@/components/website-header/web-header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -19,11 +19,11 @@ export default function LandingPage() {
 
       <div className="relative h-screen flex-1">
         {/* White background (1/3 width) */}
-        <div className="absolute left-0 top-0 h-full w-1/3 bg-stone-50 dark:bg-stone-950 border-r border-stone-900" />
+        <div className="absolute left-0 top-0 h-full w-1/3 backdrop-blur-xl bg-stone-50/80 dark:bg-stone-950/80 border-r border-stone-900 dark:border-stone-300" />
 
         <div className="relative z-10 flex h-full w-full flex-col justify-between">
           <main>
-            <div className="relative left-0  h-[33.333vh] border-b border-stone-900 flex items-center justify-center">
+            <div className="relative left-0  h-[33.333vh] border-b border-stone-900 dark:border-stone-300 flex items-center justify-center">
               <h2 className="text-[9vw] font-nanum  text-center">
                 Architects of the web.
               </h2>
@@ -42,15 +42,16 @@ export default function LandingPage() {
               </div>
             </div>
             <p className="text-[2vw] font-nanum">
-              Scroll <span className="ml-2">→</span>
+              Scroll{" "}
+              <span className="ml-2 inline-block animate-scroll-arrow">→</span>
             </p>
           </footer>
         </div>
       </div>
 
-      <div className="w-[30vw] max-w-[568px] min-w-[400px] h-screen border-r border-l border-stone-900 z-10">
+      <div className="w-[30vw] max-w-[568px] min-w-[400px] h-screen border-r border-l border-stone-900 dark:border-stone-300 z-10">
         <a href="/services/design">
-          <div className="flex-1 h-1/3 flex flex-col justify-end pb-6 px-6 border-b border-stone-900 hover:bg-stone-200/50">
+          <div className="flex-1 h-1/3 flex flex-col justify-end pb-6 px-6 border-b border-stone-900 dark:border-stone-300 hover:bg-stone-200/50 transition-colors dark:hover:bg-stone-800/50">
             <h2 className="text-[4vw] mb-2 font-nanum">Design</h2>
             <p className="text-xs">
               Elevate your digital experience and delight every user. It all
@@ -60,7 +61,7 @@ export default function LandingPage() {
         </a>
 
         <a href="/services/engineer">
-          <div className="flex-1 h-1/3 flex flex-col justify-end pb-6 px-6 border-b border-stone-900 hover:bg-stone-200/50">
+          <div className="flex-1 h-1/3 flex flex-col justify-end pb-6 px-6 border-b border-stone-900 dark:border-stone-300 hover:bg-stone-200/50 transition-colors dark:hover:bg-stone-800/50">
             <h2 className="text-[4vw] mb-2 font-nanum">Engineer</h2>
             <p className="text-xs">
               Make zero comprises when implementing your vision, using a
@@ -70,7 +71,7 @@ export default function LandingPage() {
         </a>
 
         <a href="/services/market">
-          <div className="flex-1 h-1/3 flex flex-col justify-end pb-6 px-6 hover:bg-stone-200/50">
+          <div className="flex-1 h-1/3 flex flex-col justify-end pb-6 px-6 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors">
             <h2 className="text-[4vw] mb-2 font-nanum">Market</h2>
             <p className="text-xs">
               Your deadline is our deadline. Your success is our success.

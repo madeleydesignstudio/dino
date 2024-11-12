@@ -38,7 +38,7 @@ export default function Nav() {
     },
   };
 
-  const menuItems = ["Home", "Work", "Services", "Company", "Contact Us"];
+  const menuItems = ["Home", "Work", "Services", "Company", "Contact"];
 
   return (
     <div className="relative">

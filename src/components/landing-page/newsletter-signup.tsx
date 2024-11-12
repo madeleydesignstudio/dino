@@ -101,7 +101,7 @@ export default function NewsletterForm() {
   };
 
   return (
-    <>
+    <div>
       <Toaster />
       <div className="w-full max-w-md mx-auto  p-8 ">
         <div className="space-y-6">
@@ -168,6 +168,6 @@ export default function NewsletterForm() {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 }

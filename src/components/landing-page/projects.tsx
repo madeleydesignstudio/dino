@@ -33,7 +33,7 @@ const Projects = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <Link href="/portfolio">
+          <Link href="/work">
             <p className="text-end font-nanum text-4xl">
               All work <span className="ml-2">→</span>
             </p>
