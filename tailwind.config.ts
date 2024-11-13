@@ -1,6 +1,8 @@
 import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
 
+import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
+
 const config: Config = {
   darkMode: ["class"],
   content: [
@@ -82,8 +84,17 @@ const config: Config = {
         "fade-out-up": "fade-out-up 0.5s ease-out forwards",
         "fade-in-down": "fade-in-down 0.5s ease-in forwards",
         "scroll-arrow": "scroll-arrow 1.5s ease-in-out infinite",
+        aurora: "aurora 60s linear infinite",
       },
       keyframes: {
+        aurora: {
+          from: {
+            backgroundPosition: "50% 50%, 50% 50%",
+          },
+          to: {
+            backgroundPosition: "350% 50%, 350% 50%",
+          },
+        },
         "scroll-arrow": {
           "0%, 100%": { transform: "translateX(0)" },
           "50%": { transform: "translateX(10px)" },
@@ -132,6 +143,18 @@ const config: Config = {
       },
     },
   },
-  plugins: [animate],
+  plugins: [animate, addVariablesForColors],
 };
 export default config;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function addVariablesForColors({ addBase, theme }: any) {
+  const allColors = flattenColorPalette(theme("colors"));
+  const newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}

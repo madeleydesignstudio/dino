@@ -111,9 +111,9 @@ export default function ProjectInquiryForm() {
   };
 
   return (
-    <div className="relative w-[900px] h-screen bg-stone-50 dark:bg-stone-900 border-r border-stone-900 border-l ">
+    <div className="relative w-[900px] h-screen bg-stone-50 dark:bg-stone-900 border-r border-stone-900 border-l">
       {/* Content overlay */}
-      <div className="absolute inset-0 bg-stone-50/60 dark:bg-stone-900/60" />
+      <div className="absolute inset-0 bg-stone-50 bg-opacity-60 dark:bg-stone-900 dark:bg-opacity-60" />
 
       {/* Main content */}
       <div className="relative z-10 h-full flex flex-col">
@@ -146,8 +146,10 @@ export default function ProjectInquiryForm() {
                   <input
                     id="fullname"
                     placeholder="John Doe"
-                    className={`w-full px-4 py-2 bg-transparent border ${
-                      errors.fullname ? "border-red-500" : "border-stone-900"
+                    className={`w-full px-4 py-2 bg-transparent rounded-sm border ${
+                      errors.fullname
+                        ? "border-red-500"
+                        : "border-stone-900 dark:border-stone-500"
                     } focus:outline-none focus:ring-1 focus:ring-[#2EA8A9] font-karla transition-colors duration-200`}
                     {...register("fullname")}
                   />
@@ -169,8 +171,10 @@ export default function ProjectInquiryForm() {
                     id="email"
                     type="email"
                     placeholder="john@example.com"
-                    className={`w-full px-4 py-2 bg-transparent border ${
-                      errors.email ? "border-red-500" : "border-stone-900"
+                    className={`w-full px-4 py-2 bg-transparent rounded-sm border ${
+                      errors.email
+                        ? "border-red-500"
+                        : "border-stone-900 dark:border-stone-500"
                     } focus:outline-none focus:ring-1 focus:ring-[#2EA8A9] font-karla transition-colors duration-200`}
                     {...register("email")}
                   />
@@ -191,8 +195,10 @@ export default function ProjectInquiryForm() {
                   <input
                     id="company"
                     placeholder="Acme Inc."
-                    className={`w-full px-4 py-2 bg-transparent border ${
-                      errors.company ? "border-red-500" : "border-stone-900"
+                    className={`w-full px-4 py-2 bg-transparent rounded-sm border ${
+                      errors.company
+                        ? "border-red-500"
+                        : "border-stone-900 dark:border-stone-500"
                     } focus:outline-none focus:ring-1 focus:ring-[#2EA8A9] font-karla transition-colors duration-200`}
                     {...register("company")}
                   />
@@ -217,8 +223,10 @@ export default function ProjectInquiryForm() {
                     <input
                       id="budget"
                       placeholder="10,000"
-                      className={`w-full pl-8 pr-4 py-2 bg-transparent border ${
-                        errors.budget ? "border-red-500" : "border-stone-900"
+                      className={`w-full pl-8 pr-4 py-2 bg-transparent rounded-sm border ${
+                        errors.budget
+                          ? "border-red-500"
+                          : "border-stone-900 dark:border-stone-500"
                       } focus:outline-none focus:ring-1 focus:ring-[#2EA8A9] font-karla transition-colors duration-200`}
                       {...register("budget")}
                     />
@@ -240,8 +248,10 @@ export default function ProjectInquiryForm() {
                   <input
                     id="projectName"
                     placeholder="My Awesome Project"
-                    className={`w-full px-4 py-2 bg-transparent border ${
-                      errors.projectName ? "border-red-500" : "border-stone-900"
+                    className={`w-full px-4 py-2 bg-transparent rounded-sm border ${
+                      errors.projectName
+                        ? "border-red-500"
+                        : "border-stone-900 dark:border-stone-500"
                     } focus:outline-none focus:ring-1 focus:ring-[#2EA8A9] font-karla transition-colors duration-200`}
                     {...register("projectName")}
                   />
@@ -262,11 +272,11 @@ export default function ProjectInquiryForm() {
                   <textarea
                     id="projectDescription"
                     placeholder="Please describe your project in detail..."
-                    rows={6}
-                    className={`w-full px-4 py-2 bg-transparent border ${
+                    rows={3}
+                    className={`w-full px-4 py-2 bg-transparent rounded-sm border ${
                       errors.projectDescription
                         ? "border-red-500"
-                        : "border-stone-900"
+                        : "border-stone-900 dark:border-stone-500"
                     } focus:outline-none focus:ring-1 focus:ring-[#2EA8A9] font-karla transition-colors duration-200`}
                     {...register("projectDescription")}
                   />

@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { AuroraBackground } from "../ui/aurora-background";
+import { motion } from "framer-motion";
 
 export default function LandingPage() {
   return (
@@ -19,7 +21,19 @@ export default function LandingPage() {
 
       <div className="relative h-screen flex-1">
         {/* White background (1/3 width) */}
-        <div className="absolute left-0 top-0 h-full w-1/3 backdrop-blur-xl bg-stone-50/80 dark:bg-stone-950/80 border-r border-stone-900 dark:border-stone-300" />
+        {/* <div className="absolute left-0 top-0 h-full w-1/3 backdrop-blur-xl bg-stone-50/80 dark:bg-stone-950/80 border-r border-stone-900 dark:border-stone-300"/> */}
+        <AuroraBackground className="absolute left-0 top-0 h-full w-1/3 backdrop-blur-xl bg-stone-50/80 dark:bg-stone-950/80 border-r border-stone-900 dark:border-stone-300">
+          <motion.div
+            initial={{ opacity: 0.0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            className="relative flex flex-col gap-4 items-center justify-center px-4"
+          />
+        </AuroraBackground>
 
         <div className="relative z-10 flex h-full w-full flex-col justify-between">
           <main>

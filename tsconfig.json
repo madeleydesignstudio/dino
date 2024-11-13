@@ -27,7 +27,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/algolia/Hit.jsx",
-    "config/image-domains.mjs"
+    "config/image-domains.mjs",
+    "src/types/*.d.ts"
   ],
   "exclude": ["node_modules"]
 }
