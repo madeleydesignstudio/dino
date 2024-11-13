@@ -15,7 +15,7 @@ export default function LandingPage() {
             objectFit="cover"
             className="opacity-50"
           />
-          <div className="absolute inset-0 bg-stone-50/30" />
+          <div className="absolute inset-0 bg-stone-50/10 dark:bg-stone-900/10" />
         </div>
       </div>
 
