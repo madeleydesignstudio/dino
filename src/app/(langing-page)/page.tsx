@@ -9,6 +9,7 @@ import FossilFiles from "@/components/landing-page/fossil-files";
 import Projects from "@/components/landing-page/projects";
 import VerticalFooter from "@/components/landing-page/vertical-footer";
 import HorizontalFooter from "@/components/horizontal-footer";
+import ProjectInquiryForm from "@/components/landing-page/project-inquiry-form";
 
 // Ensure ScrollTrigger is registered
 gsap.registerPlugin(ScrollTrigger);
@@ -162,11 +163,7 @@ export default function Component() {
       width: "w-screen md:w-[100vh]",
       bg: "bg-purple-200",
       mobileHeight: "h-[90vh]",
-      content: (
-        <div className="w-full h-full flex items-center justify-center">
-          Section 5
-        </div>
-      ),
+      content: <ProjectInquiryForm />,
     },
     {
       id: 6,

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const Projects = () => {
   return (
     <div>
-      <section className="h-full items-center justify-center px-12 py-14 border-r border-stone-900">
+      <section className="h-full items-center justify-center px-12 py-14 border-r border-stone-900 dark:border-stone-400">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -23,7 +23,7 @@ const Projects = () => {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className="mb-6"
             >
-              <div className="border border-stone-900 w-[300px] sm:w-[450px] h-[400px] sm:h-[600px]"></div>
+              <div className="border border-stone-900 dark:border-stone-400 w-[300px] sm:w-[450px] h-[400px] sm:h-[600px]"></div>
               <h3 className="mt-2 text-2xl font-nanum">{project}</h3>
             </motion.div>
           ))}

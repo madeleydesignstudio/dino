@@ -6,7 +6,7 @@ export default function VerticalFooter() {
   return (
     <footer className=" right-0 h-screen w-[33rem] text-stone-900 dark:text-stone-50 overflow-hidden flex flex-col">
       <div className="absolute left-0 top-0 h-full flex items-stretch">
-        <div className="w-[1px] bg-stone-900 my-6" />
+        <div className="w-[1px] bg-stone-900 my-6 dark:bg-stone-400" />
       </div>
       <div className="relative z-10 p-8 flex flex-col h-full justify-between">
         <div className="space-y-8">
