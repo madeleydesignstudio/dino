@@ -7,15 +7,15 @@ export default function LandingPage() {
     <section className="hidden md:flex min-w-[768px] w-[125vw] relative">
       {/* Photo background (covers entire section) */}
       <div className="absolute inset-0">
-        <div className="relative h-full w-full">
+        <div className="relative h-full w-full ">
           <Image
             src="https://ik.imagekit.io/danielcmadeley/dino/mxdeley_httpss.mj.runmHocz22p-iQ_Rick_and_morty_styled_pixel__95d55bd2-f449-4bc4-9ea9-ade80d3360c9_0.png?updatedAt=1729106463251"
             alt="Desert landscape"
             layout="fill"
             objectFit="cover"
-            className="opacity-50"
+            className="opacity-50 "
           />
-          <div className="absolute inset-0 bg-stone-50/10 dark:bg-stone-900/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-50/10 to-stone-50/30 dark:from-stone-950/60 dark:to-stone-950/30 backdrop-blur-sm" />
         </div>
       </div>
 
