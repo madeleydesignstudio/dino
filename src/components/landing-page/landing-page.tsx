@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { AuroraBackground } from "../ui/aurora-background";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export default function LandingPage() {
   return (

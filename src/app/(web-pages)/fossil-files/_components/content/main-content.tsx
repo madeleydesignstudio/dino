@@ -7,7 +7,7 @@ import { marketing_categories } from "../../config/marketing-data";
 import Link from "next/link";
 import { frontendFacts } from "../../config/frontend-facts";
 import { ChevronDown, HomeIcon, Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion"; // Add this import
+import { motion, AnimatePresence } from "motion/react"; // Add this import
 import ModeToggle from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 

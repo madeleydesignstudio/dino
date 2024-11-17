@@ -1,4 +1,4 @@
-import type { Variants } from "framer-motion";
+import type { Variants } from "motion/react";
 
 export const squareVariants: Variants = {
   initial: { width: 100, height: 100, borderRadius: 8 },
