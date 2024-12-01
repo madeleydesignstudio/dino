@@ -41,6 +41,9 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@content-collections/core": "^0.7.3",
+    "@content-collections/mdx": "^0.2.0",
+    "@content-collections/next": "^0.2.4",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",

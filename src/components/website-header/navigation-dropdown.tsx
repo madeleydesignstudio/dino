@@ -5,14 +5,16 @@ import { NavigationItem } from "./navigation-types";
 interface NavigationDropdownProps {
   items: NavigationItem[];
   isExpanded: boolean;
+  onLinkClick: () => void;
 }
 
 export const NavigationDropdown = ({
   items,
   isExpanded,
+  onLinkClick,
 }: NavigationDropdownProps) => (
   <div
-    className={`fixed top-[50px] left-0 right-0 bg-stone-50/80 dark:bg-stone-900/80 z-50 backdrop-blur-sm overflow-hidden transition-all duration-200 ease-in-out ${
+    className={`fixed top-[50px] left-0 right-0 bg-stone-50/80 dark:bg-stone-900/80 z-50 backdrop-blur-lg overflow-hidden transition-all duration-200 ease-in-out ${
       isExpanded
         ? "max-h-[200px] border-b border-stone-900 dark:border-stone-500"
         : "max-h-0"
@@ -28,6 +30,7 @@ export const NavigationDropdown = ({
                 ? "border-r border-stone-900 dark:border-stone-500"
                 : ""
             }`}
+            onClick={onLinkClick}
           >
             <div className="w-24 h-24 flex-1 flex items-center justify-center">
               <Image

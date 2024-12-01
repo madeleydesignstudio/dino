@@ -11,6 +11,11 @@ export const WebHeader = () => {
   const [companyExpanded, setCompanyExpanded] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
 
+  const closeDropdowns = () => {
+    setServicesExpanded(false);
+    setCompanyExpanded(false);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (headerRef.current?.contains(event.target as Node)) return;
@@ -78,8 +83,13 @@ export const WebHeader = () => {
       <NavigationDropdown
         items={SERVICES_ITEMS}
         isExpanded={servicesExpanded}
+        onLinkClick={closeDropdowns}
       />
-      <NavigationDropdown items={COMPANY_ITEMS} isExpanded={companyExpanded} />
+      <NavigationDropdown
+        items={COMPANY_ITEMS}
+        isExpanded={companyExpanded}
+        onLinkClick={closeDropdowns}
+      />
     </div>
   );
 };
