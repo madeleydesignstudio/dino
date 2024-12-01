@@ -141,14 +141,10 @@ export default function ProjectInquiryForm() {
       initial="hidden"
       animate="visible"
       variants={fadeIn}
-      className="relative w-full max-w-[900px] min-h-screen mx-auto bg-stone-50 dark:bg-stone-900 border-x border-stone-900"
+      className="relative w-full max-w-[900px] min-h-screen mx-auto bg-stone-50 dark:bg-stone-900 border-x border-stone-900 flex items-center justify-center p-4 sm:p-6"
     >
-      {/* Content overlay */}
       <div className="absolute inset-0 bg-stone-50 bg-opacity-60 dark:bg-stone-900 dark:bg-opacity-60" />
-
-      {/* Main content */}
-      <div className="relative z-10 h-full flex flex-col">
-        {/* Header */}
+      <div className="relative z-10 w-full flex flex-col">
         <motion.div
           variants={slideUp}
           className="border-b border-stone-900 p-4 sm:p-6 flex flex-col items-center gap-2"
@@ -163,8 +159,6 @@ export default function ProjectInquiryForm() {
             </p>
           </div>
         </motion.div>
-
-        {/* Form Section */}
         <div className="flex-1 overflow-auto p-4 sm:p-6">
           <motion.div
             variants={staggerChildren}
@@ -172,7 +166,6 @@ export default function ProjectInquiryForm() {
           >
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <motion.div variants={staggerChildren} className="space-y-4">
-                {/* Form fields - each wrapped in motion.div */}
                 <motion.div variants={slideUp}>
                   <div>
                     <label
@@ -198,7 +191,6 @@ export default function ProjectInquiryForm() {
                     )}
                   </div>
                 </motion.div>
-
                 <motion.div variants={slideUp}>
                   <div>
                     <label
@@ -225,7 +217,6 @@ export default function ProjectInquiryForm() {
                     )}
                   </div>
                 </motion.div>
-
                 <motion.div variants={slideUp}>
                   <div>
                     <label
@@ -251,7 +242,6 @@ export default function ProjectInquiryForm() {
                     )}
                   </div>
                 </motion.div>
-
                 <motion.div variants={slideUp}>
                   <div>
                     <label
@@ -282,7 +272,6 @@ export default function ProjectInquiryForm() {
                     )}
                   </div>
                 </motion.div>
-
                 <motion.div variants={slideUp}>
                   <div>
                     <label
@@ -308,7 +297,6 @@ export default function ProjectInquiryForm() {
                     )}
                   </div>
                 </motion.div>
-
                 <motion.div variants={slideUp}>
                   <div>
                     <label
@@ -336,13 +324,11 @@ export default function ProjectInquiryForm() {
                   </div>
                 </motion.div>
               </motion.div>
-
-              {/* Submit Button */}
               <motion.div variants={slideUp} className="pt-4">
                 <button
                   type="submit"
                   disabled={state.isLoading}
-                  className="w-full bg-[#2EA8A9] text-white py-2.5 sm:py-3 px-4 sm:px-6 text-sm sm:text-base hover:bg-[#237e7e] transition-colors duration-200 font-karla disabled:opacity-50 border border-stone-900 disabled:cursor-not-allowed flex items-center justify-center"
+                  className="w-full bg-[#2EA8A9] text-white py-2.5 sm:py-3 px-4 sm:px-6 text-sm sm:text-base hover:bg-[#237e7e] transition-colors duration-200 font-karla disabled:opacity-50 border border-stone-900 disabled:cursor-not-allowed flex items-center justify-center rounded-sm"
                 >
                   {state.isLoading ? (
                     <>

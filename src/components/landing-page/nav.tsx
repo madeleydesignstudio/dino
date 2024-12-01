@@ -45,12 +45,12 @@ export default function Nav() {
       <Button
         variant="ghost"
         size="icon"
-        className="z-50 "
+        className="fixed z-[60]"
         onClick={toggleMenu}
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >
         {isOpen ? (
-          <X className="h-6 w-6 z-50" />
+          <X className="h-6 w-6" />
         ) : (
           <svg
             className="h-6 w-6"
@@ -76,7 +76,7 @@ export default function Nav() {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="fixed inset-0 bg-background/80 backdrop-blur-lg z-40 flex flex-col items-center"
+            className="fixed inset-0 bg-background/80 backdrop-blur-lg z-50 flex flex-col items-center"
           >
             <div className="flex-1 flex items-center justify-center">
               <ul className="space-y-6 text-left">
@@ -89,7 +89,11 @@ export default function Nav() {
                     transition={{ delay: 0.1 * menuItems.indexOf(item) }}
                   >
                     <a
-                      href={`/${item.toLowerCase()}`}
+                      href={
+                        item.toLowerCase() === "home"
+                          ? "/"
+                          : `/${item.toLowerCase()}`
+                      }
                       className="md:text-8xl text-5xl font-bold text-left transition-colors font-karla hover:text-stone-900/50 text-stone-900 dark:text-stone-50 dark:hover:text-stone-50/50"
                       onClick={toggleMenu}
                     >
