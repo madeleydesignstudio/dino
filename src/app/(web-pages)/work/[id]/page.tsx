@@ -1,13 +1,25 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { projects } from "../_components/project-carousel";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function ProjectPage() {
   const params = useParams();
-  const project = projects.find((p) => p.id.toString() === params.id);
+  const router = useRouter();
+  const currentIndex = projects.findIndex((p) => p.id.toString() === params.id);
+  const project = projects[currentIndex];
+
+  const navigateToProject = (direction: "prev" | "next") => {
+    let newIndex = currentIndex;
+    if (direction === "prev") {
+      newIndex = currentIndex > 0 ? currentIndex - 1 : projects.length - 1;
+    } else {
+      newIndex = currentIndex < projects.length - 1 ? currentIndex + 1 : 0;
+    }
+    router.push(`/work/${projects[newIndex].id}`);
+  };
 
   if (!project) {
     return (
@@ -21,6 +33,48 @@ export default function ProjectPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <div className="relative h-[70vh] w-full border-b border-stone-900 dark:border-stone-400">
+        {/* Navigation Buttons */}
+        <button
+          onClick={() => navigateToProject("prev")}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-4 text-stone-50 hover:text-stone-300 transition-colors"
+          aria-label="Previous project"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+        <button
+          onClick={() => navigateToProject("next")}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-4 text-stone-50 hover:text-stone-300 transition-colors"
+          aria-label="Next project"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+
         <div className="absolute inset-0">
           <Image
             src={`/placeholder.svg?height=1080&width=1920&text=${project.id}`}

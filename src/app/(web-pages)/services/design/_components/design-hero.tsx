@@ -91,7 +91,7 @@ export default function DesignHero({
   };
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-stone-50">
+    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-stone-50 dark:bg-stone-900">
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl" />
 
       <div className="absolute inset-0 overflow-hidden">
@@ -148,15 +148,10 @@ export default function DesignHero({
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-900/[0.03] border border-stone-900/[0.08] mb-8 md:mb-12"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full dark:bg-stone-50/[0.03] bg-stone-900/[0.03] border border-stone-900/[0.08] mb-8 md:mb-12"
           >
-            <Image
-              src="https://kokonutui.com/logo.svg"
-              alt="Kokonut UI"
-              width={20}
-              height={20}
-            />
-            <span className="text-sm text-stone-900 tracking-wide">
+            🦖
+            <span className="text-sm text-stone-900 dark:text-stone-50 tracking-wide">
               {badge}
             </span>
           </motion.div>
@@ -178,7 +173,7 @@ export default function DesignHero({
             initial="hidden"
             animate="visible"
           >
-            <p className="text-base sm:text-lg md:text-xl text-stone-900  mb-8 leading-relaxed font-light font-karla tracking-wide max-w-xl mx-auto px-4">
+            <p className="text-base sm:text-lg md:text-xl text-stone-900 dark:text-stone-50  mb-8 leading-relaxed font-light font-karla tracking-wide max-w-xl mx-auto px-4">
               Crafting exceptional digital experiences through innovative design
               and cutting-edge technology.
             </p>
@@ -186,7 +181,7 @@ export default function DesignHero({
         </div>
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-transparent to-stone-50/80 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-stone-50 dark:from-stone-900 via-transparent to-stone-50/80 dark:to-stone-900/80 pointer-events-none" />
     </div>
   );
 }
