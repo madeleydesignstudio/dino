@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
+  const router = useRouter();
+
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-stone-50 dark:bg-stone-900">
       {/* Background gradient */}
@@ -51,8 +53,8 @@ export default function NotFound() {
               Looks Like This Page Is Extinct
             </h2>
             <p className="text-stone-600 dark:text-stone-400 font-karla">
-              The page you're looking for has vanished into the digital fossil
-              record.
+              The page you&apos;re looking for has vanished into the digital
+              fossil record.
             </p>
           </motion.div>
 
@@ -63,14 +65,13 @@ export default function NotFound() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-center"
           >
-            <Link href="/">
-              <Button
-                variant="outline"
-                className="border-stone-900 dark:border-stone-50 text-stone-900 dark:text-stone-50 hover:bg-stone-900 hover:text-stone-50 dark:hover:bg-stone-50 dark:hover:text-stone-900"
-              >
-                Return to the Present →
-              </Button>
-            </Link>
+            <Button
+              variant="outline"
+              className="border-stone-900 dark:border-stone-50 text-stone-900 dark:text-stone-50 hover:bg-stone-900 hover:text-stone-50 dark:hover:bg-stone-50 dark:hover:text-stone-900"
+              onClick={() => router.back()}
+            >
+              ← Go Back
+            </Button>
           </motion.div>
         </div>
       </div>
