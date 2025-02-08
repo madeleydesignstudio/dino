@@ -65,7 +65,7 @@ export default function ProjectCarousel() {
     inViewThreshold: 0.7,
   });
 
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  // const [selectedIndex, setSelectedIndex] = React.useState(0);
   const cardsRef = React.useRef<(HTMLDivElement | null)[]>([]);
   const lenisRef = React.useRef<Lenis | null>(null);
 
@@ -121,7 +121,7 @@ export default function ProjectCarousel() {
   const onSelect = React.useCallback(() => {
     if (!emblaApi) return;
     const newIndex = emblaApi.selectedScrollSnap();
-    setSelectedIndex(newIndex);
+    // setSelectedIndex(newIndex);
 
     cardsRef.current.forEach((card, index) => {
       if (!card) return;
@@ -161,7 +161,7 @@ export default function ProjectCarousel() {
       exit={{ opacity: 0 }}
       className="w-full h-full items-end justify-center flex mx-auto px-4 py-12 overflow-hidden"
     >
-      <div className="overflow-hidden h-[500px]" ref={emblaRef}>
+      <div className="overflow-hidden h-[600px]" ref={emblaRef}>
         <div className="flex items-center h-full">
           {loopProjects.map((project, index) => (
             <motion.div
@@ -177,8 +177,8 @@ export default function ProjectCarousel() {
                   <Image
                     src={`/placeholder.svg?height=100&width=100&text=${project.id}`}
                     alt={project.name}
-                    width={400}
-                    height={400}
+                    width={500}
+                    height={500}
                     className="mb-4 rounded-full"
                   />
                   <h3 className="font-semibold text-lg mb-2 text-center">
