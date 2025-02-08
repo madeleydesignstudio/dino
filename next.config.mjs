@@ -7,6 +7,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "ik.imagekit.io",
       },
+      {
+        protocol: "https",
+        hostname: "kokonutui.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.kokonutui.com",
+      },
     ],
     dangerouslyAllowSVG: true,
   },

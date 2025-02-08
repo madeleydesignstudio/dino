@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const Projects = () => {
   return (
     <div>
-      <section className="h-full items-center justify-center px-12 py-14 border-r border-stone-900 dark:border-stone-400">
+      <section className="h-full items-center justify-center px-12 py-14">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

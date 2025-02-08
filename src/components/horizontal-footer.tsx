@@ -3,9 +3,9 @@ import { Input } from "@/components/ui/input";
 
 export default function HorizontalFooter() {
   return (
-    <footer className="w-full h-[20rem] text-stone-900 dark:text-stone-50 overflow-hidden flex flex-col justify-center relative">
+    <footer className="w-full h-[20rem] text-stone-900 dark:text-stone-50 overflow-hidden flex flex-col justify-center relative border-t border-stone-900 dark:border-stone-400">
       <div className="top-0 left-0 w-full flex items-stretch">
-        <div className="h-[1px] w-full bg-stone-900 dark:bg-stone-50 mx-6" />
+        {/* <div className="h-[1px] w-full bg-stone-900 dark:bg-stone-50" /> */}
       </div>
       <div className="relative z-10 p-8 flex h-full w-full justify-center">
         <div className="max-w-7xl mx-auto flex w-full space-x-24 items-start justify-center">

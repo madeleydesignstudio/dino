@@ -148,26 +148,25 @@ export default function Component() {
     },
     {
       id: 3,
-      width: "w-screen md:w-fit md:h-screen h-fit",
+      width: "w-screen md:w-fit md:h-screen h-screen",
       mobileHeight: "h-fit w-screen",
       content: <FossilFiles />,
     },
     {
       id: 4,
-      width: "w-screen md:w-fit md:h-screen h-fit",
+      width: "w-screen md:w-fit md:h-screen h-screen",
       mobileHeight: "h-fit w-screen",
       content: <Projects />,
     },
     {
       id: 5,
-      width: "w-screen md:w-[100vh]",
-      bg: "bg-purple-200",
-      mobileHeight: "h-[90vh]",
+      width: "w-screen md:w-fit md:h-screen h-screen",
+      mobileHeight: "h-fit w-screen",
       content: <ProjectInquiryForm />,
     },
     {
       id: 6,
-      width: "w-screen md:w-fit md:h-screen h-fit",
+      width: "w-screen md:w-fit md:h-screen h-screen",
       mobileHeight: "h-fit w-screen",
       content: isDesktop ? <VerticalFooter /> : <HorizontalFooter />,
     },
@@ -188,7 +187,6 @@ export default function Component() {
             className={` 
               ${section.mobileHeight} md:h-full
               ${section.width}
-              ${section.bg}
               flex-shrink-0
               flex items-center justify-center
               ${isDesktop ? "transform-none" : "transform translate-x-0"}

@@ -141,13 +141,13 @@ export default function ProjectInquiryForm() {
       initial="hidden"
       animate="visible"
       variants={fadeIn}
-      className="relative w-full max-w-[900px] min-h-screen mx-auto bg-stone-50 dark:bg-stone-900 border-x border-stone-900 flex items-center justify-center p-4 sm:p-6"
+      className="relative w-full h-full max-w-[900px] min-h-screen mx-auto border-x border-stone-900 dark:border-stone-400 bg-stone-50 dark:bg-stone-900 flex items-center justify-center p-4 sm:p-6"
     >
-      <div className="absolute inset-0 bg-stone-50 bg-opacity-60 dark:bg-stone-900 dark:bg-opacity-60" />
+      <div className="absolute inset-0 bg-stone-50 dark:bg-stone-900" />
       <div className="relative z-10 w-full flex flex-col">
         <motion.div
           variants={slideUp}
-          className="border-b border-stone-900 p-4 sm:p-6 flex flex-col items-center gap-2"
+          className=" p-4 sm:p-6 flex flex-col items-center gap-2"
         >
           <h2 className="text-2xl sm:text-3xl font-nanum text-center">
             Start Your Project

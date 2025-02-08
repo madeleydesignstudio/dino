@@ -1,97 +1,198 @@
 "use client";
 
-import { Card } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
+import * as React from "react";
+import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+import useEmblaCarousel from "embla-carousel-react";
+import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import Lenis from "@studio-freight/lenis";
 
-interface CarouselItem {
-  id: string;
-  label: string;
-  number: number;
-  icon: "globe" | "close";
-}
-
-const items: CarouselItem[] = [
+// Sample project data
+const projects = [
   {
-    id: "1",
-    label: "Superpower",
-    number: 1,
-    icon: "close",
+    id: 1,
+    name: "Project Alpha",
+    description: "A groundbreaking AI initiative",
   },
   {
-    id: "2",
-    label: "Girlfriends",
-    number: 2,
-    icon: "close",
+    id: 2,
+    name: "Project Beta",
+    description: "Revolutionary blockchain solution",
+  },
+  { id: 3, name: "Project Gamma", description: "Next-gen IoT platform" },
+  { id: 4, name: "Project Delta", description: "Cutting-edge VR experience" },
+  {
+    id: 5,
+    name: "Project Epsilon",
+    description: "Advanced data analytics tool",
   },
   {
-    id: "3",
-    label: "Character AI",
-    number: 3,
-    icon: "close",
+    id: 6,
+    name: "Project Zeta",
+    description: "Innovative cloud computing service",
   },
   {
-    id: "4",
-    label: "Bastion Bees",
-    number: 4,
-    icon: "globe",
+    id: 7,
+    name: "Project Eta",
+    description: "State-of-the-art cybersecurity system",
   },
   {
-    id: "5",
-    label: "Eliza Doolittle",
-    number: 5,
-    icon: "close",
+    id: 8,
+    name: "Project Theta",
+    description: "Futuristic autonomous vehicle tech",
   },
   {
-    id: "6",
-    label: "Waverly",
-    number: 6,
-    icon: "globe",
+    id: 9,
+    name: "Project Iota",
+    description: "Breakthrough in quantum computing",
   },
   {
-    id: "7",
-    label: "Eliza Doolittle",
-    number: 7,
-    icon: "close",
-  },
-  {
-    id: "8",
-    label: "Waverly",
-    number: 8,
-    icon: "globe",
+    id: 10,
+    name: "Project Kappa",
+    description: "Pioneering space exploration tech",
   },
 ];
 
+// Duplicate the projects array to create a seamless loop
+const loopProjects = [...projects, ...projects, ...projects];
+
 export default function ProjectCarousel() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "center",
+    loop: true,
+    skipSnaps: false,
+    inViewThreshold: 0.7,
+  });
+
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const cardsRef = React.useRef<(HTMLDivElement | null)[]>([]);
+  const lenisRef = React.useRef<Lenis | null>(null);
+
+  React.useEffect(() => {
+    lenisRef.current = new Lenis();
+
+    function raf(time: number) {
+      lenisRef.current?.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenisRef.current?.destroy();
+    };
+  }, []);
+
+  const handleMouseEnter = React.useCallback(() => {
+    lenisRef.current?.stop();
+  }, []);
+
+  const handleMouseLeave = React.useCallback(() => {
+    lenisRef.current?.start();
+  }, []);
+
+  React.useEffect(() => {
+    if (!emblaApi) return;
+
+    const rootNode = emblaApi.rootNode();
+    rootNode.addEventListener("mouseenter", handleMouseEnter);
+    rootNode.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      rootNode.removeEventListener("mouseenter", handleMouseEnter);
+      rootNode.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, [emblaApi, handleMouseEnter, handleMouseLeave]);
+
+  const onWheel = React.useCallback(
+    (event: WheelEvent) => {
+      if (!emblaApi) return;
+      event.preventDefault();
+      if (event.deltaY > 0) {
+        emblaApi.scrollNext();
+      } else {
+        emblaApi.scrollPrev();
+      }
+    },
+    [emblaApi]
+  );
+
+  const onSelect = React.useCallback(() => {
+    if (!emblaApi) return;
+    const newIndex = emblaApi.selectedScrollSnap();
+    setSelectedIndex(newIndex);
+
+    cardsRef.current.forEach((card, index) => {
+      if (!card) return;
+      const distance = Math.abs(
+        (index - newIndex + loopProjects.length) % loopProjects.length
+      );
+      const wrappedDistance = Math.min(
+        distance,
+        loopProjects.length - distance
+      );
+
+      gsap.to(card, {
+        scale: wrappedDistance === 0 ? 1 : wrappedDistance <= 1 ? 0.8 : 0.6,
+        opacity: 1 - wrappedDistance * 0.2,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+    });
+  }, [emblaApi]);
+
+  React.useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.rootNode().addEventListener("wheel", onWheel);
+
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.rootNode().removeEventListener("wheel", onWheel);
+    };
+  }, [emblaApi, onSelect, onWheel]);
+
   return (
-    <div className="w-full h-fit mx-auto pb-4">
-      <Carousel
-        opts={{
-          align: "center",
-          loop: true,
-          slidesToScroll: 1,
-          startIndex: 2,
-        }}
-        className="w-full h-full "
-      >
-        <CarouselContent>
-          {items.map((item) => (
-            <CarouselItem
-              key={item.id}
-              className="px-4 basis-1/5 transition-all"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="w-full h-full items-end justify-center flex mx-auto px-4 py-12 overflow-hidden"
+    >
+      <div className="overflow-hidden h-[500px]" ref={emblaRef}>
+        <div className="flex items-center h-full">
+          {loopProjects.map((project, index) => (
+            <motion.div
+              key={`${project.id}-${index}`}
+              ref={(el) => {
+                cardsRef.current[index] = el;
+              }}
+              className="flex-[0_0_20%] min-w-0 px-2"
+              initial={{ scale: 0.6, opacity: 0.6 }}
             >
-              <Card className="transition-transform duration-200 hover:scale-110">
-                <div className="flex items-center justify-center aspect-[3/4] w-full">
-                  <span className="text-6xl font-bold">{item.number}</span>
-                </div>
+              <Card className="h-full shadow-lg">
+                <CardContent className="flex flex-col items-center justify-center p-6 h-full">
+                  <Image
+                    src={`/placeholder.svg?height=100&width=100&text=${project.id}`}
+                    alt={project.name}
+                    width={400}
+                    height={400}
+                    className="mb-4 rounded-full"
+                  />
+                  <h3 className="font-semibold text-lg mb-2 text-center">
+                    {project.name}
+                  </h3>
+                  <p className="text-sm text-center text-muted-foreground">
+                    {project.description}
+                  </p>
+                </CardContent>
               </Card>
-            </CarouselItem>
+            </motion.div>
           ))}
-        </CarouselContent>
-      </Carousel>
-    </div>
+        </div>
+      </div>
+    </motion.div>
   );
 }
