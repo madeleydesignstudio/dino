@@ -7,9 +7,10 @@ import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import Lenis from "@studio-freight/lenis";
+import Link from "next/link";
 
 // Sample project data
-const projects = [
+export const projects = [
   {
     id: 1,
     name: "Project Alpha",
@@ -86,10 +87,12 @@ export default function ProjectCarousel() {
 
   const handleMouseEnter = React.useCallback(() => {
     lenisRef.current?.stop();
+    document.body.style.overflow = "hidden";
   }, []);
 
   const handleMouseLeave = React.useCallback(() => {
     lenisRef.current?.start();
+    document.body.style.overflow = "";
   }, []);
 
   React.useEffect(() => {
@@ -109,6 +112,7 @@ export default function ProjectCarousel() {
     (event: WheelEvent) => {
       if (!emblaApi) return;
       event.preventDefault();
+      event.stopPropagation();
       if (event.deltaY > 0) {
         emblaApi.scrollNext();
       } else {
@@ -159,7 +163,7 @@ export default function ProjectCarousel() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="w-full h-full items-end justify-center flex mx-auto px-4 py-12 overflow-hidden"
+      className="w-full h-full items-end justify-center flex mx-auto overflow-hidden"
     >
       <div className="overflow-hidden h-[600px]" ref={emblaRef}>
         <div className="flex items-center h-full">
@@ -169,26 +173,28 @@ export default function ProjectCarousel() {
               ref={(el) => {
                 cardsRef.current[index] = el;
               }}
-              className="flex-[0_0_20%] min-w-0 px-2"
+              className="flex-[0_0_25%] min-w-0 px-2"
               initial={{ scale: 0.6, opacity: 0.6 }}
             >
-              <Card className="h-full shadow-lg">
-                <CardContent className="flex flex-col items-center justify-center p-6 h-full">
-                  <Image
-                    src={`/placeholder.svg?height=100&width=100&text=${project.id}`}
-                    alt={project.name}
-                    width={500}
-                    height={500}
-                    className="mb-4 rounded-full"
-                  />
-                  <h3 className="font-semibold text-lg mb-2 text-center">
-                    {project.name}
-                  </h3>
-                  <p className="text-sm text-center text-muted-foreground">
-                    {project.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <Link href={`/work/${project.id}`}>
+                <Card className="h-full shadow-lg cursor-pointer transition-shadow hover:shadow-xl">
+                  <CardContent className="flex flex-col items-center justify-center p-4 h-full">
+                    <Image
+                      src={`/placeholder.svg?height=100&width=100&text=${project.id}`}
+                      alt={project.name}
+                      width={650}
+                      height={650}
+                      className="rounded-full"
+                    />
+                    <h3 className="font-semibold text-lg mb-2 text-center">
+                      {project.name}
+                    </h3>
+                    <p className="text-sm text-center text-muted-foreground">
+                      {project.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
             </motion.div>
           ))}
         </div>
