@@ -38,7 +38,7 @@ export const NavigationDropdown = ({
                 alt={item.alt || ""}
                 width={96}
                 height={96}
-                className="object-contain w-full h-full"
+                className="object-contain w-full h-full dark:invert"
               />
             </div>
             <h2 className="font-nanum text-2xl">{item.title}</h2>
