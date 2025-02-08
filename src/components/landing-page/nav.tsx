@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import ModeToggle from "../mode-toggle";
+import Link from "next/link";
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -116,6 +117,14 @@ export default function Nav() {
             </footer>
             <div className="absolute bottom-4 left-4">
               <ModeToggle />
+            </div>
+            <div className="absolute bottom-4 right-4 font-karla text-xs">
+              powered by{" "}
+              <span className="font-bold">
+                <Link href="https://www.madeleydesignstudio.org/">
+                  madeleyedesignstudio
+                </Link>
+              </span>
             </div>
           </motion.nav>
         )}

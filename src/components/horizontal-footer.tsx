@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
 export default function HorizontalFooter() {
   return (
@@ -20,13 +21,12 @@ export default function HorizontalFooter() {
 
           <div>
             <h2 className="font-bold text-lg mb-2">SERVICES</h2>
-            <ul className="space-y-1 text-xs">
-              <li>Design</li>
-              <li>Engineer</li>
-              <li>Market</li>
+            <ul className="space-y-1 text-xs flex flex-col">
+              <Link href="/services/design">Design</Link>
+              <Link href="/services/engineer">Engineer</Link>
+              <Link href="/services/market">Market</Link>
             </ul>
           </div>
-
           <div>
             <h2 className="font-bold text-lg mb-2">COMPANY</h2>
             <ul className="space-y-1 text-xs">
