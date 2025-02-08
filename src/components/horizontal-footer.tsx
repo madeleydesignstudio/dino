@@ -29,23 +29,22 @@ export default function HorizontalFooter() {
           </div>
           <div>
             <h2 className="font-bold text-lg mb-2">COMPANY</h2>
-            <ul className="space-y-1 text-xs">
-              <li>About</li>
-              <li>Careers</li>
-              <li>Fossil Files</li>
-              <li>Dino Bytes</li>
+            <ul className="space-y-1 text-xs flex flex-col">
+              <Link href="/company/about">About</Link>
+              <Link href="/company/careers">Careers</Link>
+              <Link href="/company/fossil-files">Fossil Files</Link>
+              <Link href="/company/dino-bytes">Dino Bytes</Link>
             </ul>
           </div>
 
           <div>
             <h2 className="font-bold text-lg mb-2">LEGAL</h2>
-            <ul className="space-y-1 text-xs">
-              <li>Privacy Policy</li>
-              <li>Accreditation</li>
-              <li>Cookie Policy</li>
+            <ul className="space-y-1 text-xs flex flex-col">
+              <Link href="/legal/privacy-policy">Privacy Policy</Link>
+              <Link href="/legal/accreditation">Accreditation</Link>
+              <Link href="/legal/cookie-policy">Cookie Policy</Link>
             </ul>
           </div>
-
           <div className="max-w-[20rem]">
             <h2 className="font-bold text-md mb-2">NEWSLETTER</h2>
             <div className="flex h-fit">
