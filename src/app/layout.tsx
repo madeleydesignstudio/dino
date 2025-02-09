@@ -15,12 +15,37 @@ export const metadata: Metadata = {
   description:
     "Dino is a web agency that specializes in building custom websites and web applications.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      {
+        url: "/favicon.ico",
+        sizes: "32x32",
+        type: "image/x-icon",
+      },
+      {
+        url: "/favicon.ico",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        url: "/favicon.ico",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+    apple: {
+      url: "/favicon.ico",
+      sizes: "180x180",
+      type: "image/png",
+    },
+    shortcut: "/favicon.ico",
   },
+  metadataBase: new URL("https://thedigitaldino.com"),
   openGraph: {
     title: "Dino - Architecting your web.",
     description:
       "Dino is a web agency that specializes in building custom websites and web applications.",
+    url: "https://thedigitaldino.com",
+    siteName: "Dino",
     images: [
       {
         url: "https://ik.imagekit.io/danielcmadeley/madeleydesignstudio/SEO-Image.png?updatedAt=1739110571203",
@@ -30,13 +55,16 @@ export const metadata: Metadata = {
       },
     ],
     type: "website",
+    locale: "en_GB",
   },
   twitter: {
     card: "summary_large_image",
     title: "Dino - Architecting your web.",
     description:
       "Dino is a web agency that specializes in building custom websites and web applications.",
-    images: ["/favicon.ico"], // Replace with your logo/image path
+    images: [
+      "https://ik.imagekit.io/danielcmadeley/madeleydesignstudio/SEO-Image.png?updatedAt=1739110571203",
+    ],
   },
 };
 
