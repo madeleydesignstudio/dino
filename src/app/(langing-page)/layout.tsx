@@ -29,7 +29,7 @@ export const metadata = {
     locale: "en_GB",
     images: [
       {
-        url: "https://www.dinoagency.com/images/og-image.jpg",
+        url: "https://ik.imagekit.io/danielcmadeley/madeleydesignstudio/SEO-Image.png?updatedAt=1739110571203",
         width: 1200,
         height: 630,
         alt: "Dino Digital Design Agency - Interactive Web Development",
@@ -63,7 +63,7 @@ export default function LandingPageLayout({
           url: "https://www.thedigitaldino.com",
           logo: {
             "@type": "ImageObject",
-            url: "https://www.thedigitaldino.com/images/logo.png",
+            url: "https://ik.imagekit.io/danielcmadeley/madeleydesignstudio/SEO-Image.png?updatedAt=1739110571203",
             width: "112",
             height: "112",
             alternateName: "Dino Digital Design Agency Logo",
