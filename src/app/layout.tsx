@@ -22,22 +22,23 @@ export const metadata: Metadata = {
         type: "image/x-icon",
       },
       {
-        url: "/favicon.ico",
+        url: "https://ik.imagekit.io/danielcmadeley/dino/new-Logo.png?updatedAt=1739112919603",
         sizes: "192x192",
         type: "image/png",
       },
       {
-        url: "/favicon.ico",
+        url: "https://ik.imagekit.io/danielcmadeley/dino/new-Logo.png?updatedAt=1739112919603",
         sizes: "512x512",
         type: "image/png",
       },
     ],
     apple: {
-      url: "/favicon.ico",
+      url: "https://ik.imagekit.io/danielcmadeley/dino/new-Logo.png?updatedAt=1739112919603",
       sizes: "180x180",
       type: "image/png",
     },
-    shortcut: "/favicon.ico",
+    shortcut:
+      "https://ik.imagekit.io/danielcmadeley/dino/new-Logo.png?updatedAt=1739112919603",
   },
   metadataBase: new URL("https://thedigitaldino.com"),
   openGraph: {
