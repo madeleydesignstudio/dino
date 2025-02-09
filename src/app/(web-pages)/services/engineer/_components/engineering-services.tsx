@@ -1,13 +1,12 @@
-import { motion } from "framer-motion";
 import {
+  Cloud,
   Code2,
+  Cog,
+  Cpu,
   Database,
   Lock,
   Rocket,
-  Cloud,
   Smartphone,
-  Cog,
-  Cpu,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -101,8 +100,8 @@ export default function EngineeringServices() {
             Ready to Build Something Amazing?
           </h2>
           <p className="text-stone-300 dark:text-stone-600 max-w-2xl mx-auto">
-            Let's collaborate to create powerful, scalable solutions that drive
-            your business forward.
+            Let&apos;s collaborate to create powerful, scalable solutions that
+            drive your business forward.
           </p>
           <Link href="/contact">
             <button className="bg-stone-50 dark:bg-stone-900 text-stone-900 dark:text-stone-50 px-8 py-4 rounded-lg font-karla hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors">

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Code2, Database, Lock, Rocket } from "lucide-react";
+import { Code2 } from "lucide-react";
 
 export default function EngineerHero() {
   const fadeUpVariants = {

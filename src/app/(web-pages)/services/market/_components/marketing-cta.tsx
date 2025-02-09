@@ -21,7 +21,7 @@ export default function MarketingCTA() {
                 Ready to Grow Your Digital Presence?
               </h2>
               <p className="text-lg text-stone-600 dark:text-stone-400 mb-8">
-                Let's create a marketing strategy that drives results and
+                Let&apos;s create a marketing strategy that drives results and
                 delivers real business value.
               </p>
 
