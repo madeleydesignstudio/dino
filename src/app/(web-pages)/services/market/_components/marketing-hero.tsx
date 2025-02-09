@@ -66,7 +66,7 @@ export default function MarketingHero() {
             animate="visible"
           >
             <p className="text-base sm:text-lg md:text-xl text-stone-900 dark:text-stone-50 mb-8 leading-relaxed font-light font-karla tracking-wide max-w-xl mx-auto px-4">
-              Transform your brand's reach with our comprehensive digital
+              Transform your brand&apos;s reach with our comprehensive digital
               marketing solutions, powered by analytics and creative strategy.
             </p>
           </motion.div>
