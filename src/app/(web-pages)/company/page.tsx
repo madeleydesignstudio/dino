@@ -1,7 +1,8 @@
 import React from "react";
+import { redirect } from "next/navigation";
 
 const Company = () => {
-  return <div>Company</div>;
+  redirect("/company/about");
 };
 
 export default Company;
