@@ -73,7 +73,7 @@ export default function VerticalFooter() {
             height={100}
           />
           <div className="flex space-x-8 mb-4">
-            <Link href="https://github.com/danielcmadeley">
+            <Link href="https://dub.sh/github-dino">
               <svg
                 width={20}
                 height={20}
