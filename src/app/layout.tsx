@@ -14,6 +14,30 @@ export const metadata: Metadata = {
   title: "Dino - Architecting your web.",
   description:
     "Dino is a web agency that specializes in building custom websites and web applications.",
+  icons: {
+    icon: "/favicon.ico",
+  },
+  openGraph: {
+    title: "Dino - Architecting your web.",
+    description:
+      "Dino is a web agency that specializes in building custom websites and web applications.",
+    images: [
+      {
+        url: "https://ik.imagekit.io/danielcmadeley/madeleydesignstudio/SEO-Image.png?updatedAt=1739110571203",
+        width: 1200,
+        height: 630,
+        alt: "Dino Web Agency Logo",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dino - Architecting your web.",
+    description:
+      "Dino is a web agency that specializes in building custom websites and web applications.",
+    images: ["/favicon.ico"], // Replace with your logo/image path
+  },
 };
 
 export default function RootLayout({
