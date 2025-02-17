@@ -19,17 +19,6 @@ export const metadata: Metadata = {
       {
         url: "/favicon.ico",
         sizes: "32x32",
-        type: "image/x-icon",
-      },
-      {
-        url: "https://ik.imagekit.io/danielcmadeley/dino/new-Logo.png?updatedAt=1739112919603",
-        sizes: "192x192",
-        type: "image/png",
-      },
-      {
-        url: "https://ik.imagekit.io/danielcmadeley/dino/new-Logo.png?updatedAt=1739112919603",
-        sizes: "512x512",
-        type: "image/png",
       },
     ],
     apple: {
