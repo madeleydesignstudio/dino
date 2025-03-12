@@ -76,7 +76,7 @@ const About = () => {
           </motion.div>
 
           {/* Main Story */}
-          <motion.div
+{/*           <motion.div
             className="space-y-8 text-stone-600 dark:text-stone-400"
             variants={staggerChildren}
           >
@@ -93,7 +93,7 @@ const About = () => {
                 {text}
               </motion.p>
             ))}
-          </motion.div>
+          </motion.div> */}
 
           {/* Conclusion */}
           <motion.div
