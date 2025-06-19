@@ -1,125 +1,321 @@
-# 🦖 Digital Dino - Where Code Meets Creativity
+# Payload Website Template
 
-Welcome to the prehistoric playground of web development! Digital Dino isn't just another web agency - we're a pack of code-loving dinosaurs who turn digital dreams into roaring realities.
+This is the official [Payload Website Template](https://github.com/payloadcms/payload/blob/main/templates/website). Use it to power websites, blogs, or portfolios from small to enterprise. This repo includes a fully-working backend, enterprise-grade admin panel, and a beautifully designed, production-ready website.
 
-## 🌟 What Makes Us Extinct-ional
+This template is right for you if you are working on:
 
-- 🎨 **Horizontal Scrolling Wonder**: Our landing page scrolls sideways (because dinosaurs don't believe in vertical limitations)
-- 🦖 **Fossil Files**: Our tech knowledge base (where we store millions of years of dev wisdom)
-- 📧 **Email That Doesn't Go Extinct**: Custom templates that survive any inbox
-- 🎯 **Analytics That Dig Deep**: Like archaeological data, but for your website
-- 💼 **Portfolio That Roars**: Showcasing our greatest discoveries
-- 📱 **Responsive Like a Raptor**: Adapts faster than evolutionary theory
+- A personal or enterprise-grade website, blog, or portfolio
+- A content publishing platform with a fully featured publication workflow
+- Exploring the capabilities of Payload
 
-## 🛠️ Our Prehistoric Tech Stack
+Core features:
 
-- **Framework**: Next.js 14 (Because even dinosaurs need the latest tools)
-- **Styling**: Tailwind CSS (Making our sites look prettier than a Pterodactyl)
-- **Animations**:
-  - Framer Motion (For smooth moves)
-  - GSAP (Because dinosaurs love smooth scrolling)
-- **Email**: React Email & Postmark (Faster than a Velociraptor)
-- **Analytics**: PostHog & OpenPanel (Tracking better than a T-Rex)
-- **Search**: Algolia (Finding things faster than a pack of Compys)
-- **Forms**: React Hook Form with Zod (Validated like fossil carbon dating)
-- **UI**: Radix UI primitives (As reliable as prehistoric rock formations)
+- [Pre-configured Payload Config](#how-it-works)
+- [Authentication](#users-authentication)
+- [Access Control](#access-control)
+- [Layout Builder](#layout-builder)
+- [Draft Preview](#draft-preview)
+- [Live Preview](#live-preview)
+- [On-demand Revalidation](#on-demand-revalidation)
+- [SEO](#seo)
+- [Search](#search)
+- [Redirects](#redirects)
+- [Jobs and Scheduled Publishing](#jobs-and-scheduled-publish)
+- [Website](#website)
 
-## 🌋 Project Structure
+## Quick Start
 
-Our codebase is organized like geological layers:
+To spin up this example locally, follow these steps:
 
-src/
-├── app/
-│ ├── company/ # Company related pages
-│ ├── services/ # Service pages
-│ │ ├── design/ # Design services
-│ │ ├── engineer/ # Engineering services
-│ │ └── market/ # Marketing services
-│ ├── fossil-files/ # Tech stack documentation
-│ └── work/ # Portfolio section
-├── components/
-│ ├── landing-page/ # Landing page components
-│ ├── emails/ # Email templates
-│ └── ui/ # Reusable UI components
-├── lib/ # Utilities and configurations
-│ ├── fonts.ts # Font configurations
-│ └── utils.ts # Helper functions
-└── styles/ # Global styles and Tailwind config
+### Clone
 
-## 🦕 Key Features
+If you have not done so already, you need to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
 
-### The Fossil Files
+#### Method 1 (recommended)
 
-Our pride and joy! A comprehensive collection of development tools and knowledge. Check out our extensive collections:
+Go to Payload Cloud and [clone this template](https://payloadcms.com/new/clone/website). This will create a new repository on your GitHub account with this template's code which you can then clone to your own machine.
 
-```typescript:src/app/(web-pages)/fossil-files/config/frontend-data.ts
-startLine: 13
-endLine: 63
+#### Method 2
+
+Use the `create-payload-app` CLI to clone this template directly to your machine:
+
+```bash
+pnpx create-payload-app my-project -t website
 ```
 
-### Fun Facts Engine
+#### Method 3
 
-We've got a treasure trove of tech facts that would make even a Brachiosaurus' long neck spin:
+Use the `git` CLI to clone this template directly to your machine:
 
-```typescript:src/app/(web-pages)/fossil-files/config/frontend-facts.ts
-startLine: 1
-endLine: 52
+```bash
+git clone -n --depth=1 --filter=tree:0 https://github.com/payloadcms/payload my-project && cd my-project && git sparse-checkout set --no-cone templates/website && git checkout && rm -rf .git && git init && git add . && git mv -f templates/website/{.,}* . && git add . && git commit -m "Initial commit"
 ```
 
-## 🌿 Environment Setup
+### Development
 
-Before you start digging, create a `.env.local` file with these essentials:
+1. First [clone the repo](#clone) if you have not done so already
+1. `cd my-project && cp .env.example .env` to copy the example environment variables
+1. `pnpm install && pnpm dev` to install dependencies and start the dev server
+1. open `http://localhost:3000` to open the app in your browser
 
-```env
-# Analytics (for tracking those footprints)
-NEXT_PUBLIC_POSTHOG_KEY=your_posthog_key
-NEXT_PUBLIC_POSTHOG_HOST=your_posthog_host
+That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
 
-# Email (for prehistoric communication)
-POSTMARK_API_TOKEN=your_postmark_token
-POSTMARK_FROM_EMAIL=your_from_email
+## How it works
 
-# Search (finding needles in prehistoric haystacks)
-NEXT_PUBLIC_ALGOLIA_APP_ID=your_algolia_app_id
-NEXT_PUBLIC_ALGOLIA_SEARCH_KEY=your_algolia_search_key
-ALGOLIA_ADMIN_KEY=your_algolia_admin_key
+The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
+
+### Collections
+
+See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
+
+- #### Users (Authentication)
+
+  Users are auth-enabled collections that have access to the admin panel and unpublished content. See [Access Control](#access-control) for more details.
+
+  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
+
+- #### Posts
+
+  Posts are used to generate blog posts, news articles, or any other type of content that is published over time. All posts are layout builder enabled so you can generate unique layouts for each post using layout-building blocks, see [Layout Builder](#layout-builder) for more details. Posts are also draft-enabled so you can preview them before publishing them to your website, see [Draft Preview](#draft-preview) for more details.
+
+- #### Pages
+
+  All pages are layout builder enabled so you can generate unique layouts for each page using layout-building blocks, see [Layout Builder](#layout-builder) for more details. Pages are also draft-enabled so you can preview them before publishing them to your website, see [Draft Preview](#draft-preview) for more details.
+
+- #### Media
+
+  This is the uploads enabled collection used by pages, posts, and projects to contain media like images, videos, downloads, and other assets. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
+
+- #### Categories
+
+  A taxonomy used to group posts together. Categories can be nested inside of one another, for example "News > Technology". See the official [Payload Nested Docs Plugin](https://payloadcms.com/docs/plugins/nested-docs) for more details.
+
+### Globals
+
+See the [Globals](https://payloadcms.com/docs/configuration/globals) docs for details on how to extend this functionality.
+
+- `Header`
+
+  The data required by the header on your front-end like nav links.
+
+- `Footer`
+
+  Same as above but for the footer of your site.
+
+## Access control
+
+Basic access control is setup to limit access to various content based based on publishing status.
+
+- `users`: Users can access the admin panel and create or edit content.
+- `posts`: Everyone can access published posts, but only users can create, update, or delete them.
+- `pages`: Everyone can access published pages, but only users can create, update, or delete them.
+
+For more details on how to extend this functionality, see the [Payload Access Control](https://payloadcms.com/docs/access-control/overview#access-control) docs.
+
+## Layout Builder
+
+Create unique page layouts for any type of content using a powerful layout builder. This template comes pre-configured with the following layout building blocks:
+
+- Hero
+- Content
+- Media
+- Call To Action
+- Archive
+
+Each block is fully designed and built into the front-end website that comes with this template. See [Website](#website) for more details.
+
+## Lexical editor
+
+A deep editorial experience that allows complete freedom to focus just on writing content without breaking out of the flow with support for Payload blocks, media, links and other features provided out of the box. See [Lexical](https://payloadcms.com/docs/rich-text/overview) docs.
+
+## Draft Preview
+
+All posts and pages are draft-enabled so you can preview them before publishing them to your website. To do this, these collections use [Versions](https://payloadcms.com/docs/configuration/collections#versions) with `drafts` set to `true`. This means that when you create a new post, project, or page, it will be saved as a draft and will not be visible on your website until you publish it. This also means that you can preview your draft before publishing it to your website. To do this, we automatically format a custom URL which redirects to your front-end to securely fetch the draft version of your content.
+
+Since the front-end of this template is statically generated, this also means that pages, posts, and projects will need to be regenerated as changes are made to published documents. To do this, we use an `afterChange` hook to regenerate the front-end when a document has changed and its `_status` is `published`.
+
+For more details on how to extend this functionality, see the official [Draft Preview Example](https://github.com/payloadcms/payload/tree/examples/draft-preview).
+
+## Live preview
+
+In addition to draft previews you can also enable live preview to view your end resulting page as you're editing content with full support for SSR rendering. See [Live preview docs](https://payloadcms.com/docs/live-preview/overview) for more details.
+
+## On-demand Revalidation
+
+We've added hooks to collections and globals so that all of your pages, posts, or footer or header, change they will automatically be updated in the frontend via on-demand revalidation supported by Nextjs.
+
+> Note: if an image has been changed, for example it's been cropped, you will need to republish the page it's used on in order to be able to revalidate the Nextjs image cache.
+
+## SEO
+
+This template comes pre-configured with the official [Payload SEO Plugin](https://payloadcms.com/docs/plugins/seo) for complete SEO control from the admin panel. All SEO data is fully integrated into the front-end website that comes with this template. See [Website](#website) for more details.
+
+## Search
+
+This template also pre-configured with the official [Payload Search Plugin](https://payloadcms.com/docs/plugins/search) to showcase how SSR search features can easily be implemented into Next.js with Payload. See [Website](#website) for more details.
+
+## Redirects
+
+If you are migrating an existing site or moving content to a new URL, you can use the `redirects` collection to create a proper redirect from old URLs to new ones. This will ensure that proper request status codes are returned to search engines and that your users are not left with a broken link. This template comes pre-configured with the official [Payload Redirects Plugin](https://payloadcms.com/docs/plugins/redirects) for complete redirect control from the admin panel. All redirects are fully integrated into the front-end website that comes with this template. See [Website](#website) for more details.
+
+## Jobs and Scheduled Publish
+
+We have configured [Scheduled Publish](https://payloadcms.com/docs/versions/drafts#scheduled-publish) which uses the [jobs queue](https://payloadcms.com/docs/jobs-queue/jobs) in order to publish or unpublish your content on a scheduled time. The tasks are run on a cron schedule and can also be run as a separate instance if needed.
+
+> Note: When deployed on Vercel, depending on the plan tier, you may be limited to daily cron only.
+
+## Website
+
+This template includes a beautifully designed, production-ready front-end built with the [Next.js App Router](https://nextjs.org), served right alongside your Payload app in a instance. This makes it so that you can deploy both your backend and website where you need it.
+
+Core features:
+
+- [Next.js App Router](https://nextjs.org)
+- [TypeScript](https://www.typescriptlang.org)
+- [React Hook Form](https://react-hook-form.com)
+- [Payload Admin Bar](https://github.com/payloadcms/payload/tree/main/packages/admin-bar)
+- [TailwindCSS styling](https://tailwindcss.com/)
+- [shadcn/ui components](https://ui.shadcn.com/)
+- User Accounts and Authentication
+- Fully featured blog
+- Publication workflow
+- Dark mode
+- Pre-made layout building blocks
+- SEO
+- Search
+- Redirects
+- Live preview
+
+### Cache
+
+Although Next.js includes a robust set of caching strategies out of the box, Payload Cloud proxies and caches all files through Cloudflare using the [Official Cloud Plugin](https://www.npmjs.com/package/@payloadcms/payload-cloud). This means that Next.js caching is not needed and is disabled by default. If you are hosting your app outside of Payload Cloud, you can easily reenable the Next.js caching mechanisms by removing the `no-store` directive from all fetch requests in `./src/app/_api` and then removing all instances of `export const dynamic = 'force-dynamic'` from pages files, such as `./src/app/(pages)/[slug]/page.tsx`. For more details, see the official [Next.js Caching Docs](https://nextjs.org/docs/app/building-your-application/caching).
+
+## Development
+
+To spin up this example locally, follow the [Quick Start](#quick-start). Then [Seed](#seed) the database with a few pages, posts, and projects.
+
+### Working with Postgres
+
+Postgres and other SQL-based databases follow a strict schema for managing your data. In comparison to our MongoDB adapter, this means that there's a few extra steps to working with Postgres.
+
+Note that often times when making big schema changes you can run the risk of losing data if you're not manually migrating it.
+
+#### Local development
+
+Ideally we recommend running a local copy of your database so that schema updates are as fast as possible. By default the Postgres adapter has `push: true` for development environments. This will let you add, modify and remove fields and collections without needing to run any data migrations.
+
+If your database is pointed to production you will want to set `push: false` otherwise you will risk losing data or having your migrations out of sync.
+
+#### Migrations
+
+[Migrations](https://payloadcms.com/docs/database/migrations) are essentially SQL code versions that keeps track of your schema. When deploy with Postgres you will need to make sure you create and then run your migrations.
+
+Locally create a migration
+
+```bash
+pnpm payload migrate:create
 ```
 
-## 🦖 Getting Started
+This creates the migration files you will need to push alongside with your new configuration.
 
-1. Clone this repository (like extracting DNA from amber)
-2. Install dependencies: `npm install` (gathering your tools)
-3. Run the development server: `npm run dev` (awakening the beast)
-4. Open [http://localhost:3000](http://localhost:3000) (your portal to the prehistoric web)
+On the server after building and before running `pnpm start` you will want to run your migrations
 
-## 🌋 Deployment
+```bash
+pnpm payload migrate
+```
 
-We're optimized for Vercel deployment (because even dinosaurs need a reliable hosting platform). Just make sure you've got:
+This command will check for any migrations that have not yet been run and try to run them and it will keep a record of migrations that have been run in the database.
 
-- Node.js 18.x or higher (no prehistoric versions allowed)
-- Edge Runtime support (for those lightning-fast responses)
-- Environment variables configured (your secret fossil collection)
+### Docker
 
-## 🦕 Contributing
+Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
 
-Want to join our pack? Follow these steps:
+1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
+1. Next run `docker-compose up`
+1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
 
-1. Fork the repository (like finding your own dig site)
-2. Create your feature branch (`git checkout -b feature/amazing-dino-feature`)
-3. Commit your changes (`git commit -m 'Add some Jurassic magic'`)
-4. Push to the branch (`git push origin feature/amazing-dino-feature`)
-5. Open a Pull Request (let's review those fossils)
+That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
 
-## 📜 License
+### Seed
 
-This project is private and proprietary to Digital Dino. No fossil theft allowed! 🚫
+To seed the database with a few pages, posts, and projects you can click the 'seed database' link from the admin panel.
 
-## 🌟 Contact
+The seed script will also create a demo user for demonstration purposes only:
 
-- 🌐 Website: [thedigitaldino.com](https://thedigitaldino.com)
-- 📍 Location: London, UK (51.5072° N, 0.1276° W) - Our prehistoric playground
-- 📧 Email: hello@thedigitaldino.com
+- Demo Author
+  - Email: `demo-author@payloadcms.com`
+  - Password: `password`
 
----
+> NOTICE: seeding the database is destructive because it drops your current database to populate a fresh one from the seed template. Only run this command if you are starting a new project or can afford to lose your current data.
 
-Built with 🦖 by Digital Dino - Making the web prehistoric again!
+## Production
+
+To run Payload in production, you need to build and start the Admin panel. To do so, follow these steps:
+
+1. Invoke the `next build` script by running `pnpm build` or `npm run build` in your project root. This creates a `.next` directory with a production-ready admin bundle.
+1. Finally run `pnpm start` or `npm run start` to run Node in production and serve Payload from the `.build` directory.
+1. When you're ready to go live, see Deployment below for more details.
+
+### Deploying to Payload Cloud
+
+The easiest way to deploy your project is to use [Payload Cloud](https://payloadcms.com/new/import), a one-click hosting solution to deploy production-ready instances of your Payload apps directly from your GitHub repo.
+
+### Deploying to Vercel
+
+This template can also be deployed to Vercel for free. You can get started by choosing the Vercel DB adapter during the setup of the template or by manually installing and configuring it:
+
+```bash
+pnpm add @payloadcms/db-vercel-postgres
+```
+
+```ts
+// payload.config.ts
+import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
+
+export default buildConfig({
+  // ...
+  db: vercelPostgresAdapter({
+    pool: {
+      connectionString: process.env.POSTGRES_URL || '',
+    },
+  }),
+  // ...
+```
+
+We also support Vercel's blob storage:
+
+```bash
+pnpm add @payloadcms/storage-vercel-blob
+```
+
+```ts
+// payload.config.ts
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+
+export default buildConfig({
+  // ...
+  plugins: [
+    vercelBlobStorage({
+      collections: {
+        [Media.slug]: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN || '',
+    }),
+  ],
+  // ...
+```
+
+There is also a simplified [one click deploy](https://github.com/payloadcms/payload/tree/templates/with-vercel-postgres) to Vercel should you need it.
+
+### Self-hosting
+
+Before deploying your app, you need to:
+
+1. Ensure your app builds and serves in production. See [Production](#production) for more details.
+2. You can then deploy Payload as you would any other Node.js or Next.js application either directly on a VPS, DigitalOcean's Apps Platform, via Coolify or more. More guides coming soon.
+
+You can also deploy your app manually, check out the [deployment documentation](https://payloadcms.com/docs/production/deployment) for full details.
+
+## Questions
+
+If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
