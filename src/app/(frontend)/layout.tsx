@@ -11,6 +11,13 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html lang="en">
+      <head>
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="50f0d6bf-596e-4e58-8e58-69aa5142ad2a"
+        ></script>
+      </head>
       <body>
         <main>{children}</main>
       </body>
