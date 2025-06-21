@@ -52,7 +52,7 @@ const Hero = () => {
           alt="Ordo Banner"
         />
       </AspectRatio>
-      <div className="flex w-full justify-between items-center px-8 pt-8">
+      <div className="flex w-full justify-between items-center px-4 pt-8">
         <h2 className="max-w-2xl text-3xl">
           A design and development studio — intentionally small, inherently bold. We partner with
           brands to shape digital experiences that engage, inspire, and leave a lasting impression.
