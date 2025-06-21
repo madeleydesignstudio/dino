@@ -1,7 +1,5 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
-import { useHotkeys } from 'react-hotkeys-hook'
 import {
   CommandDialog,
   CommandEmpty,
@@ -13,25 +11,31 @@ import {
   CommandShortcut,
 } from '@/components/ui/command'
 import {
+  BookOpenIcon,
+  BriefcaseIcon,
+  CodeIcon,
   FileTextIcon,
   FolderIcon,
-  HomeIcon,
-  UserIcon,
-  BriefcaseIcon,
-  BookOpenIcon,
-  WrenchIcon,
-  UsersIcon,
-  MailIcon,
-  PhoneIcon,
-  InfoIcon,
-  TrendingUpIcon,
-  PaletteIcon,
-  CodeIcon,
-  HeadphonesIcon,
-  SearchIcon,
   HashIcon,
+  HeadphonesIcon,
+  HomeIcon,
+  InfoIcon,
+  PaletteIcon,
+  PhoneIcon,
+  TrendingUpIcon,
+  UsersIcon,
+  WrenchIcon,
 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
+import { useHotkeys } from 'react-hotkeys-hook'
+
+// Declare global window property
+declare global {
+  interface Window {
+    openSearch?: () => void
+  }
+}
 
 // Define search data
 const searchItems = [
@@ -178,6 +182,14 @@ const SearchCommand = () => {
   const [open, setOpen] = useState(false)
   const [search, setSearch] = useState('')
   const router = useRouter()
+
+  // Expose openSearch function globally
+  React.useEffect(() => {
+    window.openSearch = () => setOpen(true)
+    return () => {
+      delete window.openSearch
+    }
+  }, [])
 
   // Listen for Cmd+K or Ctrl+K
   useHotkeys(

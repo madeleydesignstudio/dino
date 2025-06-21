@@ -213,7 +213,21 @@
   * {
     @apply border-border outline-ring/50;
   }
+  
+  html {
+    @apply m-0 p-0;
+    height: 100%;
+    scroll-behavior: smooth;
+  }
+  
   body {
-    @apply bg-neutral-50 text-foreground;
+    @apply bg-neutral-50 text-foreground m-0 p-0 min-h-full overflow-x-hidden;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Prevent overscroll/bounce effect */
+  #__next {
+    isolation: isolate;
   }
 }

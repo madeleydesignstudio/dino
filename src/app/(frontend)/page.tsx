@@ -1,3 +1,4 @@
+import { Separator } from '@/components/ui/separator'
 import CaseStudies from './components/homepage/case-studies'
 import Hero from './components/homepage/hero'
 import News from './components/homepage/news'
@@ -11,12 +12,19 @@ export default async function HomePage() {
   return (
     <div>
       <Hero />
+      <Separator className="my-8" />
       <Studio />
+      <Separator className="my-8" />
       <CaseStudies />
+      <Separator className="my-8" />
       <Pricing />
+      <Separator className="my-8" />
       <Resources />
+      <Separator className="my-8" />
       <Questions />
+      <Separator className="my-8" />
       <News />
+      <Separator className="my-8" />
       <Footer />
     </div>
   )

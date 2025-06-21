@@ -1,8 +1,6 @@
 import React from 'react'
 import { OpenPanelComponent } from '@openpanel/nextjs'
-import './globals.css'
-import PrimaryNavbar from './components/navs/primary-navbar'
-import AppWrapper from './components/providers/app-wrapper'
+import './(frontend)/globals.css'
 
 export const metadata = {
   description:
@@ -15,12 +13,19 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html lang="en">
-      <body>
-        <AppWrapper>
-          <PrimaryNavbar />
-          <main className="border-x border-neutral-200">{children}</main>
-        </AppWrapper>
-      </body>
+      <head>
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="50f0d6bf-596e-4e58-8e58-69aa5142ad2a"
+        ></script>
+        <OpenPanelComponent
+          clientId="6621cc22-a1ff-4225-a38e-cc0cec494e81"
+          trackScreenViews={true}
+        />
+      </head>
+
+      <body>{children}</body>
     </html>
   )
 }
