@@ -125,9 +125,13 @@ const Pricing = () => {
             who want a complete, done-for-you solution.
           </h2>
         </div>
-        <div className="w-2/3">
+        <div className="w-2/3" suppressHydrationWarning={true}>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-6">
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="flex flex-col gap-6"
+              suppressHydrationWarning={true}
+            >
               <h2 className="text-2xl text-neutral-400">See your estimate right away</h2>
               <Separator />
 
@@ -136,7 +140,7 @@ const Pricing = () => {
                 name="pageCount"
                 render={({ field }) => (
                   <FormItem>
-                    <div className="flex justify-between items-start gap-4">
+                    <div className="flex w-full justify-between items-start gap-4">
                       <div className="flex flex-col">
                         <FormLabel className="text-lg text-neutral-900 mb-1">Page count?</FormLabel>
                         <FormDescription className="text-sm text-neutral-500">
@@ -169,7 +173,7 @@ const Pricing = () => {
                 name="serviceType"
                 render={({ field }) => (
                   <FormItem>
-                    <div className="flex justify-between items-start gap-4">
+                    <div className="flex w-full justify-between items-start gap-4">
                       <div className="flex flex-col">
                         <FormLabel className="text-lg text-neutral-900 mb-1">
                           Pick what you need
@@ -202,7 +206,7 @@ const Pricing = () => {
                 name="brandStatus"
                 render={({ field }) => (
                   <FormItem>
-                    <div className="flex justify-between items-start gap-4">
+                    <div className="flex w-full justify-between items-start gap-4">
                       <div className="flex flex-col">
                         <FormLabel className="text-lg text-neutral-900 mb-1">
                           Where&apos;s your brand at right now?
@@ -235,8 +239,11 @@ const Pricing = () => {
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem>
-                    <div className="flex justify-between items-start gap-4 ">
+                  <FormItem suppressHydrationWarning={true}>
+                    <div
+                      className="flex w-full justify-between items-start gap-4"
+                      suppressHydrationWarning={true}
+                    >
                       <div className="flex flex-col">
                         <FormLabel className="text-lg text-neutral-900 mb-1">
                           Tell us where to send your estimate.
@@ -245,11 +252,12 @@ const Pricing = () => {
                           Your quote will arrive within 5 minutes.
                         </FormDescription>
                       </div>
-                      <FormControl>
+                      <FormControl suppressHydrationWarning={true}>
                         <Input
                           type="email"
                           placeholder="your@email.com"
                           className="w-[200px] h-[50px] bg-neutral-100"
+                          suppressHydrationWarning={true}
                           {...field}
                         />
                       </FormControl>

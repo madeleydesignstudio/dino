@@ -94,23 +94,32 @@ export const NewsletterSignup = ({
   }
 
   return (
-    <div className={`w-full ${className}`}>
+    <div className={`w-full ${className}`} suppressHydrationWarning={true}>
       <div className="mb-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
         <p className="text-sm text-gray-600">{description}</p>
       </div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-4"
+          suppressHydrationWarning={true}
+        >
           {showFirstName && (
             <FormField
               control={form.control}
               name="firstName"
               render={({ field }) => (
-                <FormItem>
+                <FormItem suppressHydrationWarning={true}>
                   <FormLabel className="text-sm font-medium text-gray-700">First Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your first name" className="w-full" {...field} />
+                  <FormControl suppressHydrationWarning={true}>
+                    <Input
+                      placeholder="Enter your first name"
+                      className="w-full"
+                      suppressHydrationWarning={true}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -122,13 +131,14 @@ export const NewsletterSignup = ({
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem>
+              <FormItem suppressHydrationWarning={true}>
                 <FormLabel className="text-sm font-medium text-gray-700">Email Address</FormLabel>
-                <FormControl>
+                <FormControl suppressHydrationWarning={true}>
                   <Input
                     type="email"
                     placeholder="Enter your email"
                     className="w-full"
+                    suppressHydrationWarning={true}
                     {...field}
                   />
                 </FormControl>

@@ -14,12 +14,10 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   return (
-    <body>
-      <AppWrapper>
-        <PrimaryNavbar />
-        <main className="border-x border-neutral-200">{children}</main>
-        <Toaster position="bottom-right" richColors />
-      </AppWrapper>
-    </body>
+    <AppWrapper>
+      <PrimaryNavbar />
+      <main className="border-x border-neutral-200">{children}</main>
+      <Toaster position="bottom-right" richColors />
+    </AppWrapper>
   )
 }
