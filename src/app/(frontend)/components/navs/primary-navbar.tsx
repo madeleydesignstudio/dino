@@ -166,7 +166,7 @@ const PrimaryNavbar = () => {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-auto px-2 py-1 text-[10px] font-normal">
+                <NavigationMenuTrigger className="h-auto px-2 py-1 text-[10px] font-normal bg-transparent">
                   Case Studies
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -175,7 +175,7 @@ const PrimaryNavbar = () => {
                       <NavigationMenuLink asChild>
                         <Link
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                          href="/"
+                          href="/case-studies"
                         >
                           <div className="mb-2 mt-4 text-lg font-medium">Our Work</div>
                           <p className="text-sm leading-tight text-muted-foreground">
@@ -198,7 +198,7 @@ const PrimaryNavbar = () => {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-auto px-2 py-1 text-[10px] font-normal">
+                <NavigationMenuTrigger className="h-auto px-2 py-1 text-[10px] font-normal bg-transparent">
                   Resources
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -226,7 +226,7 @@ const PrimaryNavbar = () => {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-auto px-2 py-1 text-[10px] font-normal">
+                <NavigationMenuTrigger className="h-auto px-2 py-1 text-[10px] font-normal bg-transparent">
                   Services
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -254,7 +254,7 @@ const PrimaryNavbar = () => {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-auto px-2 py-1 text-[10px] font-normal">
+                <NavigationMenuTrigger className="h-auto px-2 py-1 text-[10px] font-normal bg-transparent">
                   Company
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
