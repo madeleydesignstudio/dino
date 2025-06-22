@@ -224,6 +224,12 @@
     @apply bg-neutral-50 text-foreground m-0 p-0 min-h-full overflow-x-hidden;
     overscroll-behavior-y: none;
     -webkit-overflow-scrolling: touch;
+    transition: padding-top 0.3s ease-in-out;
+  }
+  
+  /* Announcement banner styles */
+  body.announcement-visible {
+    padding-top: 60px;
   }
   
   /* Prevent overscroll/bounce effect */
