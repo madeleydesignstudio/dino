@@ -14,6 +14,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { toast } from 'sonner'
 
 const createNewsletterSchema = (showFirstName: boolean) =>
   z.object({
@@ -43,7 +44,6 @@ export const NewsletterSignup = ({
   showFirstName = true,
 }: NewsletterSignupProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
 
   const newsletterSchema = createNewsletterSchema(showFirstName)
 
@@ -57,7 +57,6 @@ export const NewsletterSignup = ({
 
   async function onSubmit(values: z.infer<typeof newsletterSchema>) {
     setIsSubmitting(true)
-    setMessage(null)
 
     try {
       const response = await fetch('/api/newsletter/subscribe', {
@@ -71,9 +70,10 @@ export const NewsletterSignup = ({
       const data = await response.json()
 
       if (response.ok) {
-        setMessage({
-          type: 'success',
-          text: 'Thanks for subscribing! You&apos;ll receive our latest updates soon.',
+        toast.success('Welcome to our newsletter! 🎉', {
+          description:
+            'Check your email for a welcome message. You&apos;ll receive our latest updates soon.',
+          duration: 5000,
         })
         form.reset()
       } else {
@@ -81,9 +81,12 @@ export const NewsletterSignup = ({
       }
     } catch (error) {
       console.error('Newsletter subscription error:', error)
-      setMessage({
-        type: 'error',
-        text: error instanceof Error ? error.message : 'Something went wrong. Please try again.',
+      const errorMessage =
+        error instanceof Error ? error.message : 'Something went wrong. Please try again.'
+
+      toast.error('Subscription failed', {
+        description: errorMessage,
+        duration: 5000,
       })
     } finally {
       setIsSubmitting(false)
@@ -141,18 +144,6 @@ export const NewsletterSignup = ({
           >
             {isSubmitting ? 'Subscribing...' : buttonText}
           </Button>
-
-          {message && (
-            <div
-              className={`p-3 rounded-md text-sm ${
-                message.type === 'success'
-                  ? 'bg-green-50 text-green-800 border border-green-200'
-                  : 'bg-red-50 text-red-800 border border-red-200'
-              }`}
-            >
-              {message.text}
-            </div>
-          )}
         </form>
       </Form>
 

@@ -1,6 +1,9 @@
 import { Resend } from 'resend'
+import { LoopsClient } from 'loops'
+import { WelcomeTemplate } from '@/components/email/welcome-template'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
+const loops = new LoopsClient(process.env.LOOPS_API_KEY as string)
 
 // Your newsletter audience ID - you'll need to create this in Resend dashboard first
 const NEWSLETTER_AUDIENCE_ID = process.env.RESEND_NEWSLETTER_AUDIENCE_ID || 'your-audience-id'
@@ -48,38 +51,87 @@ export async function POST(request: Request) {
       )
     }
 
-    // Add contact to the audience
+    // Add contact to Resend audience
     const contactResult = await resend.contacts.create({
       email,
       firstName: firstName || undefined,
       audienceId,
     })
 
+    // Track if this is a new subscription or existing
+    let isAlreadySubscribed = false
+
     if (contactResult.error) {
       // Check if contact already exists
       if (contactResult.error.message?.includes('Contact already exists')) {
-        return Response.json(
-          { error: 'You&apos;re already subscribed to our newsletter!' },
-          { status: 409 },
-        )
+        console.log('Contact already exists in Resend, continuing with Loops...')
+        isAlreadySubscribed = true
+      } else {
+        console.error('Error adding contact to Resend:', contactResult.error)
+        return Response.json({ error: 'Failed to subscribe to newsletter' }, { status: 500 })
       }
+    }
 
-      console.error('Error adding contact:', contactResult.error)
-      return Response.json({ error: 'Failed to subscribe to newsletter' }, { status: 500 })
+    // Add contact to Loops (this will create or update)
+    const loopsResult = await loops.updateContact(email, {
+      firstName: firstName || undefined,
+      source: 'website_newsletter',
+      subscriptionSource: 'footer_form',
+      subscriptionDate: new Date().toISOString(),
+    })
+
+    if (!loopsResult.success) {
+      console.error('Error adding contact to Loops:', loopsResult)
+      // Don't fail the subscription if Loops fails, but log it
+      console.log('Newsletter subscription successful but Loops sync failed')
+    } else {
+      console.log('Contact synced to Loops successfully:', loopsResult.id)
+    }
+
+    // If already subscribed to both services, return appropriate message
+    if (isAlreadySubscribed && loopsResult.success) {
+      return Response.json(
+        { error: 'You&apos;re already subscribed to our newsletter!' },
+        { status: 409 },
+      )
+    }
+
+    // Send welcome email to the new subscriber
+    const welcomeEmailResult = await resend.emails.send({
+      from: 'Madeley Design Studio <mail@madeleydesignstudio.com>',
+      to: [email],
+      subject: 'Welcome to our newsletter! 🎉',
+      react: WelcomeTemplate({
+        firstName: firstName || undefined,
+        email,
+      }) as React.ReactElement,
+    })
+
+    if (welcomeEmailResult.error) {
+      console.error('Error sending welcome email:', welcomeEmailResult.error)
+      // Don't fail the subscription if welcome email fails
+      console.log('Newsletter subscription successful but welcome email failed')
+    } else {
+      console.log('Welcome email sent successfully:', welcomeEmailResult.data?.id)
     }
 
     // Log successful subscription
     console.log('New newsletter subscription:', {
       email,
       firstName,
-      contactId: contactResult.data?.id,
+      resendContactId: contactResult.data?.id,
+      loopsContactId: loopsResult.success ? loopsResult.id : null,
       audienceId,
+      welcomeEmailId: welcomeEmailResult.data?.id,
     })
 
     return Response.json({
       success: true,
       message: 'Successfully subscribed to newsletter!',
-      contactId: contactResult.data?.id,
+      resendContactId: contactResult.data?.id,
+      loopsContactId: loopsResult.success ? loopsResult.id : null,
+      welcomeEmailSent: !welcomeEmailResult.error,
+      loopsSynced: loopsResult.success,
     })
   } catch (error) {
     console.error('Newsletter subscription error:', error)

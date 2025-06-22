@@ -1,6 +1,7 @@
 import React from 'react'
 import PrimaryNavbar from './components/navs/primary-navbar'
 import AppWrapper from './components/providers/app-wrapper'
+import { Toaster } from 'sonner'
 import './globals.css'
 
 export const metadata = {
@@ -17,6 +18,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <AppWrapper>
         <PrimaryNavbar />
         <main className="border-x border-neutral-200">{children}</main>
+        <Toaster position="bottom-right" richColors />
       </AppWrapper>
     </body>
   )
