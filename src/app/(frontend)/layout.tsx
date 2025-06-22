@@ -1,6 +1,6 @@
 import React from 'react'
-import PrimaryNavbar from './components/navs/primary-navbar'
-import AppWrapper from './components/providers/app-wrapper'
+import PrimaryNavbar from '@/components/navs/primary-navbar'
+import AppWrapper from '../../components/providers/app-wrapper'
 import { Toaster } from 'sonner'
 import { ProjectAnnouncement } from '@/components/ui/project-announcement'
 import './globals.css'

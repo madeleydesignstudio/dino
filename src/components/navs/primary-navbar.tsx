@@ -27,7 +27,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import { cn } from '@/lib/utils'
-import SearchCommand from '../search-command'
+import SearchCommand from '@/components/ui/search-command'
 
 const PrimaryNavbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false)
