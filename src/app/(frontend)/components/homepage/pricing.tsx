@@ -24,6 +24,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import React from 'react'
+import { toast } from 'sonner'
 
 const formSchema = z.object({
   pageCount: z.string().min(1, {
@@ -70,16 +71,20 @@ const Pricing = () => {
       })
 
       if (response.ok) {
-        alert(
-          'Thank you! Your quote request has been submitted. You should receive it within 5 minutes.',
-        )
+        toast.success('Quote sent! 📧', {
+          description: 'Your estimate is on its way! Check your email within 5 minutes.',
+          duration: 6000,
+        })
         form.reset()
       } else {
         throw new Error('Failed to submit form')
       }
     } catch (error) {
       console.error('Form submission error:', error)
-      alert('Sorry, there was an error submitting your request. Please try again.')
+      toast.error('Submission failed', {
+        description: 'Sorry, there was an error submitting your request. Please try again.',
+        duration: 5000,
+      })
     }
   }
 
@@ -125,13 +130,9 @@ const Pricing = () => {
             who want a complete, done-for-you solution.
           </h2>
         </div>
-        <div className="w-2/3" suppressHydrationWarning={true}>
+        <div className="w-2/3">
           <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="flex flex-col gap-6"
-              suppressHydrationWarning={true}
-            >
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-6">
               <h2 className="text-2xl text-neutral-400">See your estimate right away</h2>
               <Separator />
 
@@ -239,11 +240,8 @@ const Pricing = () => {
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem suppressHydrationWarning={true}>
-                    <div
-                      className="flex w-full justify-between items-start gap-4"
-                      suppressHydrationWarning={true}
-                    >
+                  <FormItem>
+                    <div className="flex w-full justify-between items-start gap-4">
                       <div className="flex flex-col">
                         <FormLabel className="text-lg text-neutral-900 mb-1">
                           Tell us where to send your estimate.
@@ -252,14 +250,16 @@ const Pricing = () => {
                           Your quote will arrive within 5 minutes.
                         </FormDescription>
                       </div>
-                      <FormControl suppressHydrationWarning={true}>
-                        <Input
-                          type="email"
-                          placeholder="your@email.com"
-                          className="w-[200px] h-[50px] bg-neutral-100"
-                          suppressHydrationWarning={true}
-                          {...field}
-                        />
+                      <FormControl>
+                        <div>
+                          {' '}
+                          <Input
+                            type="email"
+                            placeholder="your@email.com"
+                            className="w-[200px] h-[50px] bg-neutral-100"
+                            {...field}
+                          />
+                        </div>
                       </FormControl>
                     </div>
                     <FormMessage />

@@ -94,32 +94,23 @@ export const NewsletterSignup = ({
   }
 
   return (
-    <div className={`w-full ${className}`} suppressHydrationWarning={true}>
+    <div className={`w-full ${className}`}>
       <div className="mb-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
         <p className="text-sm text-gray-600">{description}</p>
       </div>
 
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-4"
-          suppressHydrationWarning={true}
-        >
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {showFirstName && (
             <FormField
               control={form.control}
               name="firstName"
               render={({ field }) => (
-                <FormItem suppressHydrationWarning={true}>
+                <FormItem>
                   <FormLabel className="text-sm font-medium text-gray-700">First Name</FormLabel>
-                  <FormControl suppressHydrationWarning={true}>
-                    <Input
-                      placeholder="Enter your first name"
-                      className="w-full"
-                      suppressHydrationWarning={true}
-                      {...field}
-                    />
+                  <FormControl>
+                    <Input placeholder="Enter your first name" className="w-full" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

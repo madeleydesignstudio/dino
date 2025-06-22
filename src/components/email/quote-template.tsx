@@ -9,6 +9,8 @@ import {
   Heading,
   Text,
   Hr,
+  Button,
+  Link,
 } from '@react-email/components'
 import * as React from 'react'
 
@@ -168,6 +170,30 @@ export const QuoteTemplate: React.FC<Readonly<QuoteTemplateProps>> = ({
                     💡 <strong>This is an approximate estimate</strong> based on your selections.
                     Your final quote may vary based on specific requirements, complexity, and
                     additional features discussed during our consultation.
+                  </Text>
+                </Section>
+              </Section>
+            )}
+
+            {/* Book a Call Section (Client Only) */}
+            {isForClient && (
+              <Section className="text-center mb-8">
+                <Section className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg">
+                  <Heading className="text-gray-800 text-lg font-semibold mb-2 mt-0">
+                    Ready to discuss your project?
+                  </Heading>
+                  <Text className="text-gray-600 text-base mb-4 mt-0">
+                    Let&apos;s schedule a call to discuss your requirements, timeline, and next
+                    steps.
+                  </Text>
+                  <Button
+                    href="https://cal.com/madeleydesignstudio"
+                    className="bg-blue-600 text-white px-6 py-3 rounded-md text-base font-medium no-underline hover:bg-blue-700"
+                  >
+                    📅 Book a Free Consultation
+                  </Button>
+                  <Text className="text-gray-500 text-xs mt-3 mb-0">
+                    Choose a time that works for you - typically 30 minutes
                   </Text>
                 </Section>
               </Section>
