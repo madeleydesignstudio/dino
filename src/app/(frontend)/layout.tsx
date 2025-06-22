@@ -1,8 +1,7 @@
 import React from 'react'
-import { OpenPanelComponent } from '@openpanel/nextjs'
-import './globals.css'
 import PrimaryNavbar from './components/navs/primary-navbar'
 import AppWrapper from './components/providers/app-wrapper'
+import './globals.css'
 
 export const metadata = {
   description:
@@ -14,13 +13,11 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   return (
-    <html lang="en">
-      <body>
-        <AppWrapper>
-          <PrimaryNavbar />
-          <main className="border-x border-neutral-200">{children}</main>
-        </AppWrapper>
-      </body>
-    </html>
+    <body>
+      <AppWrapper>
+        <PrimaryNavbar />
+        <main className="border-x border-neutral-200">{children}</main>
+      </AppWrapper>
+    </body>
   )
 }

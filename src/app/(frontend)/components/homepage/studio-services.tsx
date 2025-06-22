@@ -1,24 +1,37 @@
+import Link from 'next/link'
 import React from 'react'
 
 const Studio = () => {
   const services = [
     {
       title: 'Website Design',
+      backgroundImage: 'https://storage.dev-0af.workers.dev/website-design.png',
+      href: '/services/website-design',
     },
     {
       title: 'Website Development',
+      backgroundImage: 'https://storage.dev-0af.workers.dev/website-development.png',
+      href: '/services/website-development',
     },
     {
       title: 'Art & Creative Design',
+      backgroundImage: 'https://storage.dev-0af.workers.dev/art&creative-design.png',
+      href: '/services/art-creative-design',
     },
     {
       title: 'Agentic AI',
+      backgroundImage: 'https://storage.dev-0af.workers.dev/agentic-ai.png',
+      href: '/services/agentic-ai',
     },
     {
       title: 'Product Design',
+      backgroundImage: 'https://storage.dev-0af.workers.dev/product-design.png',
+      href: '/services/product-design',
     },
     {
       title: 'View All',
+      backgroundImage: 'https://storage.dev-0af.workers.dev/view-all.png',
+      href: '/services',
     },
   ]
 
@@ -58,13 +71,28 @@ const Studio = () => {
         {/* 2x3 Grid of Services */}
         <div className="grid grid-cols-2 gap-4">
           {services.map((service, index) => (
-            <div
+            <Link
+              href={service.href}
               key={index}
-              className="h-[150px] w-full border border-neutral-400 rounded-md p-4 flex flex-col justify-end"
+              className="h-[150px] w-full border border-neutral-400 rounded-md p-4 flex flex-col justify-end bg-cover bg-center relative hover:scale-105 transition-all duration-300 cursor-pointer"
+              style={{
+                backgroundImage: `url(${service.backgroundImage})`,
+              }}
             >
-              <h3 className="font-semibold text-sm">{service.title}</h3>
-            </div>
+              <div className="absolute inset-0 bg-neutral-900/60 rounded-md"></div>
+              <h3 className="font-semibold text-sm text-white relative z-10">{service.title}</h3>
+            </Link>
           ))}
+        </div>
+        <div className="flex flex-col gap-2 max-w-lg self-end">
+          <p className="text-xs text-neutral-500">
+            In short, we partner with those ready to break convention and think beyond the usual. We
+            design websites and apps anchored in clear goals — but driven by unrestrained
+            creativity.
+          </p>
+          <button className="px-2 py-1 rounded-md bg-violet-200 text-neutral-900 cursor-pointer w-fit text-sm">
+            Get a Quote
+          </button>
         </div>
       </div>
     </div>

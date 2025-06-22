@@ -23,12 +23,14 @@ const Timeline: React.FC<TimelineProps> = ({ items, className = '' }) => {
       <div className="absolute inset-0">
         {/* Top section - text on right, image on left */}
         <div className="absolute left-[120px] top-[30px] w-[240px]">
-          <h3 className="text-sm font-semibold mb-1">{items[0]?.title || 'Title 1'}</h3>
-          <p className="text-[10px] text-neutral-600">
+          <h3 className="text-sm font-semibold mb-1 text-neutral-700">
+            {items[0]?.title || 'Title 1'}
+          </h3>
+          <p className="text-[10px] text-neutral-500">
             {items[0]?.description || 'Description for first timeline item.'}
           </p>
         </div>
-        <div className="absolute right-[110px] top-[70px] w-[120px] h-[60px] bg-neutral-200 rounded flex items-center justify-center">
+        <div className="absolute right-[110px] top-[70px] w-[120px] h-[60px]  rounded flex items-center justify-center">
           <Image
             src="https://storage.dev-0af.workers.dev/meteor-strike.png"
             alt="Meteor Strike"
@@ -39,8 +41,10 @@ const Timeline: React.FC<TimelineProps> = ({ items, className = '' }) => {
         </div>
         {/* Middle section - text on left, image on right */}
         <div className="absolute right-[120px] top-[180px] w-[240px] text-right">
-          <h3 className="text-sm font-semibold mb-1">{items[1]?.title || 'Title 2'}</h3>
-          <p className="text-[10px] text-neutral-600">
+          <h3 className="text-sm font-semibold mb-1 text-neutral-700">
+            {items[1]?.title || 'Title 2'}
+          </h3>
+          <p className="text-[10px] text-neutral-500">
             {items[1]?.description || 'Description for second timeline item.'}
           </p>
         </div>
@@ -55,13 +59,21 @@ const Timeline: React.FC<TimelineProps> = ({ items, className = '' }) => {
 
         {/* Bottom section - text on right, image on left */}
         <div className="absolute left-[120px] top-[330px] w-[240px]">
-          <h3 className="text-sm font-semibold mb-1">{items[2]?.title || 'Title 3'}</h3>
-          <p className="text-[10px] text-neutral-600">
+          <h3 className="text-sm font-semibold mb-1 text-neutral-700">
+            {items[2]?.title || 'Title 3'}
+          </h3>
+          <p className="text-[10px] text-neutral-500">
             {items[2]?.description || 'Description for third timeline item.'}
           </p>
         </div>
-        <div className="absolute right-[120px] top-[330px] w-[120px] h-[60px] bg-neutral-200 rounded flex items-center justify-center">
-          <span className="text-xs text-neutral-500">Image 3</span>
+        <div className="absolute right-[120px] top-[330px] w-[120px] h-[60px] gap-2 flex items-center justify-center">
+          <Image
+            src="https://storage.dev-0af.workers.dev/dino-logo.png"
+            alt="Meteor Strike"
+            width={40}
+            height={40}
+          />
+          <span className="text-xl font-bold text-neutral-900">Dino</span>
         </div>
       </div>
     </div>
