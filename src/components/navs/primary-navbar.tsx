@@ -57,18 +57,18 @@ const PrimaryNavbar = () => {
       title: 'Resources',
       items: [
         {
-          title: 'Blog',
-          href: '/blog',
+          title: 'Dino UI',
+          href: '/resources/dino-ui',
           description: 'Design insights, tutorials, and industry trends',
         },
         {
-          title: 'Guides',
-          href: '/guides',
+          title: 'Dino API',
+          href: '/resources/dino-api',
           description: 'Step-by-step guides for design and development',
         },
         {
-          title: 'Templates',
-          href: '/templates',
+          title: 'Dino Open Source',
+          href: '/resources/dino-opensource',
           description: 'Free design templates and UI components',
         },
         {
@@ -203,22 +203,22 @@ const PrimaryNavbar = () => {
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    <ListItem href="/blog" title="Blog">
+                    <ListItem href="/resources/dino-ui" title="Dino UI">
                       Design insights, tutorials, and industry trends.
                     </ListItem>
-                    <ListItem href="/guides" title="Guides">
+                    <ListItem href="/resources/dino-api" title="Dino API">
                       Step-by-step guides for design and development.
                     </ListItem>
-                    <ListItem href="/templates" title="Templates">
+                    <ListItem href="/resources/dino-opensource" title="Dino Open Source">
                       Free design templates and UI components.
                     </ListItem>
-                    <ListItem href="/tools" title="Tools">
+                    <ListItem href="/resources/tools" title="Dino Tools">
                       Recommended tools and resources for designers.
                     </ListItem>
-                    <ListItem href="/community" title="Community">
+                    <ListItem href="/resources/dino-academy" title="Dino Academy">
                       Join our community of designers and developers.
                     </ListItem>
-                    <ListItem href="/newsletter" title="Newsletter">
+                    <ListItem href="/resources/dino-newsletter" title="Dino Newsletter">
                       Stay updated with our latest content and projects.
                     </ListItem>
                   </ul>
@@ -292,9 +292,12 @@ const PrimaryNavbar = () => {
             <SearchIcon className="w-3 h-3" />
             <span className="text-[9px] text-muted-foreground hidden sm:inline">⌘K</span>
           </button>
-          <button className="px-2 py-1 rounded-md bg-violet-200 text-neutral-900 cursor-pointer">
+          <Link
+            href="/start-project"
+            className="px-2 py-1 rounded-md bg-violet-200 text-neutral-900 cursor-pointer"
+          >
             Start Project
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Navigation */}
