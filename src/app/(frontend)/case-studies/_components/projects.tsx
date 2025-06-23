@@ -3,54 +3,23 @@
 import React, { useRef } from 'react'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
-import Link from 'next/link'
 
 const CabinetOfCuriosities = () => {
   const containerRef = useRef<HTMLDivElement>(null)
   const rotatingContainerRef = useRef<HTMLDivElement>(null)
   const incrRef = useRef(0)
 
-  // Project data with slugs for navigation
-  const projectItems = [
-    {
-      id: 'ocean-waves',
-      title: 'Ocean Dynamics',
-      image: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=600&fit=crop',
-      slug: 'ocean-dynamics',
-    },
-    {
-      id: 'forest-canopy',
-      title: 'Forest Ecosystem',
-      image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=600&fit=crop',
-      slug: 'forest-ecosystem',
-    },
-    {
-      id: 'mountain-peak',
-      title: 'Mountain Explorer',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop',
-      slug: 'mountain-explorer',
-    },
-    {
-      id: 'lake-reflection',
-      title: 'Lake Serenity',
-      image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=600&fit=crop',
-      slug: 'lake-serenity',
-    },
-    {
-      id: 'desert-landscape',
-      title: 'Desert Mirage',
-      image: 'https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=400&h=600&fit=crop',
-      slug: 'desert-mirage',
-    },
-    {
-      id: 'coastal-cliffs',
-      title: 'Coastal Views',
-      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&h=600&fit=crop',
-      slug: 'coastal-views',
-    },
+  // Generate media items with duplicates
+  const mediaItems = [
+    'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=400&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&h=600&fit=crop',
   ]
   // Duplicate the array for seamless rotation
-  const allProjectItems = [...projectItems, ...projectItems]
+  const allMediaItems = [...mediaItems, ...mediaItems]
 
   useGSAP(
     () => {
@@ -71,44 +40,10 @@ const CabinetOfCuriosities = () => {
         })
       })
 
-      // Function to update clickability based on rotation
-      const updateClickability = () => {
-        const containerRotation = incrRef.current % 360
-        let closestToFront = 0
-        let minDistance = Infinity
-
-        medias.forEach((media, index) => {
-          const mediaRotation = (360 / mediasTotal) * index
-          const totalRotation = (containerRotation + mediaRotation) % 360
-          const normalizedRotation = totalRotation < 0 ? totalRotation + 360 : totalRotation
-
-          // Calculate distance from front (0 degrees)
-          const distanceFromFront = Math.min(normalizedRotation, 360 - normalizedRotation)
-
-          if (distanceFromFront < minDistance) {
-            minDistance = distanceFromFront
-            closestToFront = index
-          }
-        })
-
-        // Enable clicks for the item closest to front and disable for others
-        medias.forEach((media, index) => {
-          const link = media.querySelector('.cabinet-media') as HTMLElement
-          if (link) {
-            const isClickable = index === closestToFront
-            link.style.pointerEvents = isClickable ? 'auto' : 'none'
-            link.style.zIndex = isClickable ? '20' : '10'
-            // Add visual feedback for clickable items
-            link.style.opacity = isClickable ? '1' : '0.7'
-          }
-        })
-      }
-
       // QuickTo functions for smooth animations
       const rotTo = gsap.quickTo(rotatingContainerRef.current, 'rotation', {
         duration: 0.8,
         ease: 'power4',
-        onUpdate: updateClickability,
       })
 
       const yTo1 = gsap.quickTo('.media-1 .cabinet-media', 'yPercent', {
@@ -138,9 +73,6 @@ const CabinetOfCuriosities = () => {
         yTo3(val)
       }
 
-      // Initial clickability setup
-      updateClickability()
-
       window.addEventListener('wheel', handleWheel, { passive: true })
 
       return () => {
@@ -151,7 +83,7 @@ const CabinetOfCuriosities = () => {
   )
 
   return (
-    <div ref={containerRef} className="overflow-hidden h-screen fixed top-0 left-0 w-full">
+    <div ref={containerRef} className=" overflow-hidden h-screen fixed top-0 left-0 w-full">
       <section className="w-full h-full">
         <div
           ref={rotatingContainerRef}
@@ -163,40 +95,23 @@ const CabinetOfCuriosities = () => {
             willChange: 'transform',
           }}
         >
-          {allProjectItems.map((project, index) => (
+          {allMediaItems.map((src, index) => (
             <div
-              key={`${project.id}-${index}`}
+              key={index}
               className="inner-media absolute top-0 left-0 w-full h-full flex justify-center"
             >
-              <Link
-                href={`/case-studies/${project.slug}`}
-                className="cabinet-media cursor-pointer hover:scale-105 transition-all duration-300"
+              <img
+                className="cabinet-media object-contain"
+                src={src}
+                alt=""
                 style={{
                   width: '20vw',
                   height: '26vw',
                   marginTop: '50vh',
+                  objectPosition: '50% 100%',
                   willChange: 'transform',
-                  display: 'block',
-                  position: 'relative',
-                  zIndex: 10,
-                  pointerEvents: 'auto',
                 }}
-              >
-                <img
-                  className="object-contain w-full h-full"
-                  src={project.image}
-                  alt={project.title}
-                  title={project.title}
-                  style={{
-                    objectPosition: '50% 100%',
-                    pointerEvents: 'none',
-                  }}
-                />
-                {/* Optional: Add title overlay for better UX */}
-                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-center text-sm opacity-0 hover:opacity-100 transition-opacity duration-300">
-                  {project.title}
-                </div>
-              </Link>
+              />
             </div>
           ))}
         </div>
