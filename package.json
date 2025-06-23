@@ -15,6 +15,7 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^5.1.1",
     "@openpanel/nextjs": "^1.0.8",
     "@payloadcms/db-postgres": "3.43.0",
