@@ -1,7 +1,19 @@
+'use client'
+
 import React from 'react'
+import { usePathname } from 'next/navigation'
 
 const AppWrapper = ({ children }: { children: React.ReactNode }) => {
-  return <div className="max-w-7xl mx-auto">{children}</div>
+  const pathname = usePathname()
+  const isDinoUiRoute = pathname === '/resources/dino-ui'
+
+  return (
+    <div
+      className={`transition-all duration-1000 ease-in-out ${isDinoUiRoute ? 'mx-64' : 'mx-32'}`}
+    >
+      {children}
+    </div>
+  )
 }
 
 export default AppWrapper
