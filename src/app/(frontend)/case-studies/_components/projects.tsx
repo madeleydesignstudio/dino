@@ -181,10 +181,6 @@ const CabinetOfCuriosities = () => {
                   zIndex: 10,
                   pointerEvents: 'auto',
                 }}
-                // Add onClick handler for debugging
-                onClick={(e) => {
-                  console.log(`Clicked on: ${project.title} -> /case-studies/${project.slug}`)
-                }}
               >
                 <img
                   className="object-contain w-full h-full"

@@ -140,16 +140,6 @@ export default function ProjectPage({ params }: PageProps) {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Overview</h2>
               <p className="text-gray-600 text-lg leading-relaxed">{project.overview}</p>
             </div>
-
-            {/* Back Button */}
-            <div className="pt-8 border-t border-gray-200">
-              <a
-                href="/case-studies"
-                className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                ← Back to Case Studies
-              </a>
-            </div>
           </div>
         </div>
       </div>
