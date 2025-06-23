@@ -37,15 +37,15 @@ interface ProjectRequestTemplateProps {
   ecommerceDetails?: string
   cmsNeeds: boolean
   integrationNeeds: string[]
-  contentReady: string
-  contentHelp: string[]
-  photographyNeeds: string
-  logoStatus: string
-  hostingNeeds: string
-  domainStatus: string
-  analyticsNeeds: boolean
-  seoImportance: string
-  performanceRequirements: string[]
+  _contentReady: string
+  _contentHelp: string[]
+  _photographyNeeds: string
+  _logoStatus: string
+  _hostingNeeds: string
+  _domainStatus: string
+  _analyticsNeeds: boolean
+  _seoImportance: string
+  _performanceRequirements: string[]
   projectTimeline: string
   launchDate?: Date | string
   isLaunchDateFlexible: boolean
@@ -54,7 +54,7 @@ interface ProjectRequestTemplateProps {
   additionalRequirements?: string
   inspiration?: string
   concerns?: string
-  howDidYouHear: string
+  _howDidYouHear: string
   preferredContactMethod: string
   bestTimeToCall?: string
   timezone: string
@@ -86,15 +86,15 @@ export const ProjectRequestTemplate: React.FC<Readonly<ProjectRequestTemplatePro
   ecommerceDetails,
   cmsNeeds,
   integrationNeeds,
-  contentReady,
-  contentHelp,
-  photographyNeeds,
-  logoStatus,
-  hostingNeeds,
-  domainStatus,
-  analyticsNeeds,
-  seoImportance,
-  performanceRequirements,
+  _contentReady,
+  _contentHelp,
+  _photographyNeeds,
+  _logoStatus,
+  _hostingNeeds,
+  _domainStatus,
+  _analyticsNeeds,
+  _seoImportance,
+  _performanceRequirements,
   projectTimeline,
   launchDate,
   isLaunchDateFlexible,
@@ -103,7 +103,7 @@ export const ProjectRequestTemplate: React.FC<Readonly<ProjectRequestTemplatePro
   additionalRequirements,
   inspiration,
   concerns,
-  howDidYouHear,
+  _howDidYouHear,
   preferredContactMethod,
   bestTimeToCall,
   timezone,
@@ -337,7 +337,7 @@ export const ProjectRequestTemplate: React.FC<Readonly<ProjectRequestTemplatePro
                     <strong>What happens next?</strong>
                   </Text>
                   <Text className="text-blue-700 text-sm mb-2 mt-0">
-                    1. We'll review your detailed requirements within 24 hours
+                    1. We&apos;ll review your detailed requirements within 24 hours
                   </Text>
                   <Text className="text-blue-700 text-sm mb-2 mt-0">
                     2. Schedule a consultation call to discuss your project in detail
