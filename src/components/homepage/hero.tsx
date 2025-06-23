@@ -1,8 +1,38 @@
+'use client'
+
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 import Image from 'next/image'
 import Timeline from '../ui/timeline'
+import { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const Hero = () => {
+  const logoRef = useRef<HTMLImageElement>(null)
+
+  useEffect(() => {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger)
+
+    if (logoRef.current) {
+      // Create scroll-triggered spinning animation
+      gsap.to(logoRef.current, {
+        rotation: 360,
+        scrollTrigger: {
+          trigger: logoRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1, // Makes the animation smooth and tied to scroll position
+        },
+      })
+    }
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+    }
+  }, [])
+
   const timelineData = [
     {
       title: '66 Million Years Ago - Cretaceous-Paleogene Extinction Event',
@@ -87,6 +117,7 @@ const Hero = () => {
           brands to shape digital experiences that engage, inspire, and leave a lasting impression.
         </h2>
         <Image
+          ref={logoRef}
           src={'https://storage.dev-0af.workers.dev/dino-logo.png'}
           alt="Ordo Banner"
           width={50}
