@@ -1,15 +1,5 @@
-'use client'
+'use client';
 
-import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from '@/components/ui/command'
 import {
   BookOpenIcon,
   BriefcaseIcon,
@@ -25,15 +15,25 @@ import {
   TrendingUpIcon,
   UsersIcon,
   WrenchIcon,
-} from 'lucide-react'
-import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
-import { useHotkeys } from 'react-hotkeys-hook'
+} from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import { useHotkeys } from 'react-hotkeys-hook';
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from '@/components/ui/command';
 
 // Declare global window property
 declare global {
   interface Window {
-    openSearch?: () => void
+    openSearch?: () => void;
   }
 }
 
@@ -176,85 +176,87 @@ const searchItems = [
     icon: HashIcon,
     keywords: ['process', 'approach', 'methodology', 'workflow'],
   },
-]
+];
 
 const SearchCommand = () => {
-  const [open, setOpen] = useState(false)
-  const [search, setSearch] = useState('')
-  const router = useRouter()
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState('');
+  const router = useRouter();
 
   // Expose openSearch function globally
   React.useEffect(() => {
-    window.openSearch = () => setOpen(true)
+    window.openSearch = () => setOpen(true);
     return () => {
-      delete window.openSearch
-    }
-  }, [])
+      delete window.openSearch;
+    };
+  }, []);
 
   // Listen for Cmd+K or Ctrl+K
   useHotkeys(
     ['meta+k', 'ctrl+k'],
     (event) => {
-      event.preventDefault()
-      setOpen(true)
+      event.preventDefault();
+      setOpen(true);
     },
     {
       enableOnFormTags: true,
-    },
-  )
+    }
+  );
 
   // Close on escape
   useHotkeys(
     'escape',
     () => {
       if (open) {
-        setOpen(false)
+        setOpen(false);
       }
     },
     {
       enableOnFormTags: true,
       enabled: open,
-    },
-  )
+    }
+  );
 
   // Filter items based on search
   const filteredItems = React.useMemo(() => {
-    if (!search) return searchItems
+    if (!search) return searchItems;
 
     return searchItems.filter(
       (item) =>
         item.title.toLowerCase().includes(search.toLowerCase()) ||
         item.description.toLowerCase().includes(search.toLowerCase()) ||
-        item.keywords.some((keyword) => keyword.toLowerCase().includes(search.toLowerCase())),
-    )
-  }, [search])
+        item.keywords.some((keyword) =>
+          keyword.toLowerCase().includes(search.toLowerCase())
+        )
+    );
+  }, [search]);
 
   // Group items by category
   const groupedItems = React.useMemo(() => {
-    const groups: { [key: string]: typeof searchItems } = {}
+    const groups: { [key: string]: typeof searchItems } = {};
 
     filteredItems.forEach((item) => {
       if (!groups[item.category]) {
-        groups[item.category] = []
+        groups[item.category] = [];
       }
-      groups[item.category].push(item)
-    })
+      groups[item.category].push(item);
+    });
 
-    return groups
-  }, [filteredItems])
+    return groups;
+  }, [filteredItems]);
 
   const handleSelect = (href: string) => {
-    setOpen(false)
-    setSearch('')
-    router.push(href)
-  }
+    setOpen(false);
+    setSearch('');
+    router.push(href);
+  };
 
   return (
-    <CommandDialog open={open} onOpenChange={setOpen} className="max-w-2xl">
+    <CommandDialog className="max-w-2xl" onOpenChange={setOpen} open={open}>
       <CommandInput
+        onValueChange={setSearch}
         placeholder="Search pages, case studies, services..."
         value={search}
-        onValueChange={setSearch}
       />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
@@ -264,20 +266,22 @@ const SearchCommand = () => {
             {index > 0 && <CommandSeparator />}
             <CommandGroup heading={category}>
               {items.map((item) => {
-                const Icon = item.icon
+                const Icon = item.icon;
                 return (
                   <CommandItem
+                    className="flex items-center gap-3"
                     key={item.href}
                     onSelect={() => handleSelect(item.href)}
-                    className="flex items-center gap-3"
                   >
                     <Icon className="h-4 w-4" />
                     <div className="flex flex-col">
                       <span className="font-medium">{item.title}</span>
-                      <span className="text-xs text-muted-foreground">{item.description}</span>
+                      <span className="text-muted-foreground text-xs">
+                        {item.description}
+                      </span>
                     </div>
                   </CommandItem>
-                )
+                );
               })}
             </CommandGroup>
           </React.Fragment>
@@ -288,13 +292,13 @@ const SearchCommand = () => {
             <CommandSeparator />
             <CommandGroup heading="Quick Actions">
               <CommandItem
-                onSelect={() => handleSelect('/contact')}
                 className="flex items-center gap-3"
+                onSelect={() => handleSelect('/contact')}
               >
                 <PhoneIcon className="h-4 w-4" />
                 <div className="flex flex-col">
                   <span className="font-medium">Start a Project</span>
-                  <span className="text-xs text-muted-foreground">
+                  <span className="text-muted-foreground text-xs">
                     Get in touch to discuss your next project
                   </span>
                 </div>
@@ -305,7 +309,7 @@ const SearchCommand = () => {
         )}
       </CommandList>
     </CommandDialog>
-  )
-}
+  );
+};
 
-export default SearchCommand
+export default SearchCommand;

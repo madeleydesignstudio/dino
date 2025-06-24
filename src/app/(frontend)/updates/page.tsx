@@ -1,5 +1,5 @@
 const Updates = () => {
-  return <div>Updates</div>
-}
+  return <div>Updates</div>;
+};
 
-export default Updates
+export default Updates;

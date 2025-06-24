@@ -1,5 +1,5 @@
 const DinoOpenSource = () => {
-  return <div>DinoOpenSource</div>
-}
+  return <div>DinoOpenSource</div>;
+};
 
-export default DinoOpenSource
+export default DinoOpenSource;

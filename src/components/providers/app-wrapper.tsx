@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import React from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation';
+import type React from 'react';
 
 const AppWrapper = ({ children }: { children: React.ReactNode }) => {
-  const pathname = usePathname()
-  const isDinoUiRoute = pathname === '/resources/dino-ui'
+  const pathname = usePathname();
+  const isDinoUiRoute = pathname === '/resources/dino-ui';
 
   return (
     <div
@@ -13,7 +13,7 @@ const AppWrapper = ({ children }: { children: React.ReactNode }) => {
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
-export default AppWrapper
+export default AppWrapper;

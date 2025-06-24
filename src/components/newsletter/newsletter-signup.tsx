@@ -1,6 +1,11 @@
-'use client'
+'use client';
 
-import { Button } from '@/components/ui/button'
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import { z } from 'zod';
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -8,13 +13,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { toast } from 'sonner'
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 
 const createNewsletterSchema = (showFirstName: boolean) =>
   z.object({
@@ -26,14 +26,14 @@ const createNewsletterSchema = (showFirstName: boolean) =>
           message: 'Please enter your first name.',
         })
       : z.string().optional(),
-  })
+  });
 
 interface NewsletterSignupProps {
-  className?: string
-  title?: string
-  description?: string
-  buttonText?: string
-  showFirstName?: boolean
+  className?: string;
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  showFirstName?: boolean;
 }
 
 export const NewsletterSignup = ({
@@ -43,9 +43,9 @@ export const NewsletterSignup = ({
   buttonText = 'Subscribe',
   showFirstName = true,
 }: NewsletterSignupProps) => {
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const newsletterSchema = createNewsletterSchema(showFirstName)
+  const newsletterSchema = createNewsletterSchema(showFirstName);
 
   const form = useForm<z.infer<typeof newsletterSchema>>({
     resolver: zodResolver(newsletterSchema),
@@ -53,10 +53,10 @@ export const NewsletterSignup = ({
       email: '',
       firstName: '',
     },
-  })
+  });
 
   async function onSubmit(values: z.infer<typeof newsletterSchema>) {
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     try {
       const response = await fetch('/api/newsletter/subscribe', {
@@ -65,52 +65,60 @@ export const NewsletterSignup = ({
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(values),
-      })
+      });
 
-      const data = await response.json()
+      const data = await response.json();
 
       if (response.ok) {
         toast.success('Welcome to our newsletter! 🎉', {
           description:
             'Check your email for a welcome message. You&apos;ll receive our latest updates soon.',
           duration: 5000,
-        })
-        form.reset()
+        });
+        form.reset();
       } else {
-        throw new Error(data.error || 'Failed to subscribe')
+        throw new Error(data.error || 'Failed to subscribe');
       }
     } catch (error) {
-      console.error('Newsletter subscription error:', error)
+      console.error('Newsletter subscription error:', error);
       const errorMessage =
-        error instanceof Error ? error.message : 'Something went wrong. Please try again.'
+        error instanceof Error
+          ? error.message
+          : 'Something went wrong. Please try again.';
 
       toast.error('Subscription failed', {
         description: errorMessage,
         duration: 5000,
-      })
+      });
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
   }
 
   return (
     <div className={`w-full ${className}`}>
       <div className="mb-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
-        <p className="text-sm text-gray-600">{description}</p>
+        <h3 className="mb-2 font-semibold text-gray-900 text-lg">{title}</h3>
+        <p className="text-gray-600 text-sm">{description}</p>
       </div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
           {showFirstName && (
             <FormField
               control={form.control}
               name="firstName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium text-gray-700">First Name</FormLabel>
+                  <FormLabel className="font-medium text-gray-700 text-sm">
+                    First Name
+                  </FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter your first name" className="w-full" {...field} />
+                    <Input
+                      className="w-full"
+                      placeholder="Enter your first name"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -123,13 +131,15 @@ export const NewsletterSignup = ({
             name="email"
             render={({ field }) => (
               <FormItem suppressHydrationWarning={true}>
-                <FormLabel className="text-sm font-medium text-gray-700">Email Address</FormLabel>
+                <FormLabel className="font-medium text-gray-700 text-sm">
+                  Email Address
+                </FormLabel>
                 <FormControl suppressHydrationWarning={true}>
                   <Input
-                    type="email"
-                    placeholder="Enter your email"
                     className="w-full"
+                    placeholder="Enter your email"
                     suppressHydrationWarning={true}
+                    type="email"
                     {...field}
                   />
                 </FormControl>
@@ -139,18 +149,18 @@ export const NewsletterSignup = ({
           />
 
           <Button
-            type="submit"
+            className="w-full bg-neutral-800 text-white hover:bg-neutral-900"
             disabled={isSubmitting}
-            className="w-full bg-neutral-800 hover:bg-neutral-900 text-white"
+            type="submit"
           >
             {isSubmitting ? 'Subscribing...' : buttonText}
           </Button>
         </form>
       </Form>
 
-      <p className="text-xs text-gray-500 mt-4">
+      <p className="mt-4 text-gray-500 text-xs">
         We respect your privacy. Unsubscribe at any time.
       </p>
     </div>
-  )
-}
+  );
+};

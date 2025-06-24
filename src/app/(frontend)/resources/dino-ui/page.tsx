@@ -1,5 +1,5 @@
 const DinoUi = () => {
-  return <div>DinoUi</div>
-}
+  return <div>DinoUi</div>;
+};
 
-export default DinoUi
+export default DinoUi;

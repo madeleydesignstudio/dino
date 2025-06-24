@@ -3,9 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
 @theme inline {
-
   --radius-sm: calc(var(--radius) - 4px);
 
   --radius-md: calc(var(--radius) - 2px);
@@ -78,7 +76,6 @@
 }
 
 :root {
-
   --radius: 0.625rem;
 
   --background: oklch(1 0 0);
@@ -145,7 +142,6 @@
 }
 
 .dark {
-
   --background: oklch(0.145 0 0);
 
   --foreground: oklch(0.985 0 0);
@@ -213,25 +209,25 @@
   * {
     @apply border-border outline-ring/50;
   }
-  
+
   html {
     @apply m-0 p-0;
     height: 100%;
     scroll-behavior: smooth;
   }
-  
+
   body {
     @apply bg-neutral-50 text-foreground m-0 p-0 min-h-full overflow-x-hidden;
     overscroll-behavior-y: none;
     -webkit-overflow-scrolling: touch;
     transition: padding-top 0.3s ease-in-out;
   }
-  
+
   /* Announcement banner styles */
   body.announcement-visible {
     padding-top: 60px;
   }
-  
+
   /* Prevent overscroll/bounce effect */
   #__next {
     isolation: isolate;

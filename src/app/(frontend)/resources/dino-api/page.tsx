@@ -1,5 +1,5 @@
 const DinoApi = () => {
-  return <div>DinoApi</div>
-}
+  return <div>DinoApi</div>;
+};
 
-export default DinoApi
+export default DinoApi;
