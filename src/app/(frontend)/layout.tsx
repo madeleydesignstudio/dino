@@ -1,10 +1,9 @@
-import type React from 'react';
-import { Toaster } from 'sonner';
 import PrimaryNavbar from '@/components/navs/primary-navbar';
 import { ProjectAnnouncement } from '@/components/ui/project-announcement';
+import type React from 'react';
+import { Toaster } from 'sonner';
 import AppWrapper from '../../components/providers/app-wrapper';
 import './globals.css';
-import Footer from '@/components/navs/footer';
 
 export const metadata = {
   description:
@@ -20,9 +19,6 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <ProjectAnnouncement />
       <PrimaryNavbar />
       <main className="border-neutral-200 border-x">{children}
-
-
-        <Footer />
       </main>
       <Toaster position="bottom-right" richColors />
     </AppWrapper>

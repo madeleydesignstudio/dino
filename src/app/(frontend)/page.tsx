@@ -25,6 +25,7 @@ export default async function HomePage() {
       <Separator className="my-8" />
       <News />
       <Separator className="my-8" />
+        <Footer />
     </div>
   );
 }
