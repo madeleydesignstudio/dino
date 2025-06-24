@@ -1,118 +1,107 @@
 import React from 'react';
+import Link from 'next/link';
 import { NewsletterSignup } from '@/components/newsletter/newsletter-signup';
 
 const Footer = () => {
   return (
-    <footer className="border-gray-200 border-t bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {/* Company Info */}
-          <div className="space-y-4">
-            <h3 className="font-semibold text-gray-900 text-lg">
-              Madeley Design Studio
-            </h3>
-            <p className="text-gray-600 text-sm">
-              Creating beautiful, functional websites that help your business
-              grow.
-            </p>
-            <div className="text-gray-600 text-sm">
-              <p>daniel@madeleydesignstudio.com</p>
+    <footer className="">
+      <div className="mx-auto max-w-7xl px-4 py-16">
+        {/* Main Content */}
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+          {/* Left Side - Hero Content */}
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <p className="text-neutral-600 text-md">Don&apos;t hold back</p>
+              <h2 className="font-bold text-4xl text-neutral-900 max-w-md">
+                — your standout site could be live in 10 days.
+              </h2>
             </div>
+            <Link
+              className="inline-block rounded-md bg-violet-300 px-2 py-1 font-medium text-neutral-900 transition-colors hover:bg-violet-500 text-xs"
+              href="/start-project"
+            >
+              Start Project
+            </Link>
           </div>
 
-          {/* Services */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-gray-900 text-sm uppercase tracking-wide">
-              Services
-            </h4>
-            <ul className="space-y-2 text-gray-600 text-sm">
-              <li>
-                <a className="transition-colors hover:text-gray-900" href="#">
-                  Web Design
-                </a>
-              </li>
-              <li>
-                <a className="transition-colors hover:text-gray-900" href="#">
-                  Web Development
-                </a>
-              </li>
-              <li>
-                <a className="transition-colors hover:text-gray-900" href="#">
-                  Brand Identity
-                </a>
-              </li>
-              <li>
-                <a className="transition-colors hover:text-gray-900" href="#">
-                  Consulting
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Right Side - Navigation */}
+          <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+            {/* Case Studies */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-neutral-900 text-sm">Case Studies</h4>
+              <ul className="space-y-2 text-neutral-600 text-xs">
+                <li><Link className="transition-colors hover:text-neutral-900" href="/case-studies/ordo">Ordo</Link></li>
+                <li><Link className="transition-colors hover:text-neutral-900" href="/case-studies/structopia">Structopia</Link></li>
+                <li><Link className="transition-colors hover:text-neutral-900" href="/case-studies/form-function">Form + Function</Link></li>
+                <li><Link className="transition-colors hover:text-neutral-900" href="/case-studies/madeleydesignstudio">madeleydesignstudio</Link></li>
+                <li><Link className="border-b border-neutral-300 pb-0.5 transition-colors hover:text-neutral-900" href="/case-studies">View All</Link></li>
+              </ul>
+            </div>
 
-          {/* Resources */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-gray-900 text-sm uppercase tracking-wide">
-              Resources
-            </h4>
-            <ul className="space-y-2 text-gray-600 text-sm">
-              <li>
-                <a className="transition-colors hover:text-gray-900" href="#">
-                  Portfolio
-                </a>
-              </li>
-              <li>
-                <a className="transition-colors hover:text-gray-900" href="#">
-                  Case Studies
-                </a>
-              </li>
-              <li>
-                <a className="transition-colors hover:text-gray-900" href="#">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a className="transition-colors hover:text-gray-900" href="#">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
+            {/* Resources */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-neutral-900 text-sm">Resources</h4>
+              <ul className="space-y-2 text-neutral-600 text-xs">
+                <li><Link className="transition-colors hover:text-neutral-900" href="/resources/dino-ui">Dino UI</Link></li>
+                <li><Link className="transition-colors hover:text-neutral-900" href="/resources/dino-opensource">Dino Open Source</Link></li>
+                <li><Link className="transition-colors hover:text-neutral-900" href="/resources/dino-api">Dino API</Link></li>
+                <li><Link className="transition-colors hover:text-neutral-900" href="/resources/dino-tools">Dino Tools</Link></li>
+                <li><Link className="transition-colors hover:text-neutral-900" href="/resources/dino-academy">Dino Academy</Link></li>
+                <li><Link className="border-b border-neutral-300 pb-0.5 transition-colors hover:text-neutral-900" href="/resources">View All</Link></li>
+              </ul>
+            </div>
 
-          {/* Newsletter Signup */}
-          <div>
-            <NewsletterSignup
-              buttonText="Subscribe"
-              className="max-w-sm"
-              description="Get design tips, project updates, and industry insights."
-              showFirstName={false}
-              title="Newsletter"
-            />
-          </div>
-        </div>
+            {/* Services */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-neutral-900 text-sm">Services</h4>
+              <ul className="space-y-2 text-neutral-600 text-xs">
+                <li><Link className="transition-colors hover:text-neutral-900" href="/services/website-design">Website Design</Link></li>
+                <li><Link className="transition-colors hover:text-neutral-900" href="/services/website-development">Website Development</Link></li>
+                <li><Link className="transition-colors hover:text-neutral-900" href="/services/art-creative-design">Art & Creative Design</Link></li>
+                <li><Link className="transition-colors hover:text-neutral-900" href="/services/agentic-ai">Agentic AI</Link></li>
+                <li><Link className="transition-colors hover:text-neutral-900" href="/services/product-design">Product Design</Link></li>
+                <li><Link className="border-b border-neutral-300 pb-0.5 transition-colors hover:text-neutral-900" href="/services">View All</Link></li>
+              </ul>
+            </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 border-gray-200 border-t pt-8">
-          <div className="flex flex-col items-center justify-between md:flex-row">
-            <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Madeley Design Studio. All rights
-              reserved.
-            </p>
-            <div className="mt-4 flex space-x-6 md:mt-0">
-              <a
-                className="text-gray-500 text-sm transition-colors hover:text-gray-900"
-                href="#"
-              >
-                Privacy Policy
-              </a>
-              <a
-                className="text-gray-500 text-sm transition-colors hover:text-gray-900"
-                href="#"
-              >
-                Terms of Service
-              </a>
+            {/* Company */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-neutral-900 text-sm">Company</h4>
+              <ul className="space-y-2 text-neutral-600 text-xs">
+                <li><Link className="transition-colors hover:text-neutral-900" href="/company/updates-news">Updates & News</Link></li>
+                <li><Link className="transition-colors hover:text-neutral-900" href="/pricing">Pricing</Link></li>
+                <li><Link className="transition-colors hover:text-neutral-900" href="/questions">Questions</Link></li>
+                <li><Link className="transition-colors hover:text-neutral-900" href="/testimonials">Testimonials</Link></li>
+              </ul>
             </div>
           </div>
         </div>
+<div className="flex flex-col items-end">
+   {/* Newsletter Section */}
+        <div className=" pt-8 ">
+          <NewsletterSignup
+            buttonText="Subscribe"
+            className="max-w-md text-xs"
+            description="Join our newsletter to stay informed about new tips, tutorials, projects, products, investments, and more."
+            showFirstName={false}
+            title="Newsletter"
+          />
+        </div>
+
+        {/* Social Links */}
+        <div className="mt-8 flex space-x-6">
+          <Link className="text-neutral-600 text-sm transition-colors hover:text-neutral-900" href="https://instagram.com">
+            INSTAGRAM
+          </Link>
+          <Link className="text-neutral-600 text-sm transition-colors hover:text-neutral-900" href="https://x.com">
+            X.COM
+          </Link>
+          <Link className="text-neutral-600 text-sm transition-colors hover:text-neutral-900" href="https://linkedin.com">
+            LINKEDIN
+          </Link>
+        </div>
+</div>
+       
       </div>
     </footer>
   );

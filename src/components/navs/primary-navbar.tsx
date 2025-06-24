@@ -166,20 +166,24 @@ const PrimaryNavbar = () => {
 
   return (
     <div className="sticky top-0 z-50 flex h-[40px] w-full items-center justify-center border border-neutral-200 bg-neutral-50 ">
-      <div className="relative flex w-full items-center justify-between px-4">
-        <Link className="flex items-center gap-2 " href="/">
-          <Image
-            alt="Dino"
-            className="transition-all duration-300 hover:rotate-180"
-            height={20}
-            src="https://storage.dev-0af.workers.dev/dino-logo.png"
-            width={20}
-          />
-          <span className="font-medium text-sm">Dino</span>
-        </Link>
-
-        {/* Desktop Navigation - Centered */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 hidden items-center gap-2 text-xs md:flex">
+      <div className="flex w-full items-center justify-between px-4">
+        <div className="flex items-center gap-4">
+          <Link className="flex items-center gap-2" href="/">
+            <Image
+              alt="Dino"
+              className="transition-all duration-300 hover:rotate-180"
+              height={20}
+              src="https://storage.dev-0af.workers.dev/dino-logo.png"
+              width={20}
+            />
+            <span className="font-medium text-sm">Dino</span>
+          </Link>
+          
+          {/* Vertical Separator */}
+          <div className="hidden h-4 w-px bg-neutral-300 md:block" />
+          
+          {/* Desktop Navigation */}
+          <div className="hidden items-center gap-2 text-xs md:flex">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -311,35 +315,50 @@ const PrimaryNavbar = () => {
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    <ListItem href="/about" title="About Us">
-                      Learn about our team and mission.
+                    <ListItem href="/company/blog" title="Blog">
+                      Latest insights, tutorials, and industry thoughts.
                     </ListItem>
-                    <ListItem href="/careers" title="Careers">
+                    <ListItem href="/company/careers" title="Careers">
                       Join our team of talented designers and developers.
                     </ListItem>
-                    <ListItem href="/contact" title="Contact">
-                      Get in touch for your next project.
+                    <ListItem href="/company/updates-news" title="Updates & News">
+                      Company announcements and product updates.
                     </ListItem>
-                    <ListItem href="/process" title="Our Process">
-                      How we approach design and development projects.
+                    <ListItem href="/pricing" title="Pricing">
+                      Transparent pricing for all our services.
                     </ListItem>
-                    <ListItem href="/values" title="Values">
-                      The principles that guide our work.
+                    <ListItem href="/questions" title="Questions">
+                      Frequently asked questions and support.
                     </ListItem>
-                    <ListItem href="/press" title="Press">
-                      Media coverage and press resources.
+                    <ListItem href="/testimonials" title="Testimonials">
+                      What our clients say about working with us.
                     </ListItem>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
+          </div>
         </div>
 
        {/* Search and Start Project */}
         <div className="flex items-center gap-2">
+          <div className="relative hidden md:flex">
+            <input
+              className="h-7 w-64 rounded-md border border-neutral-200 bg-neutral-50 px-2 pr-6 text-xs placeholder:text-neutral-400 focus:border-violet-300 focus:outline-none focus:ring-1 focus:ring-violet-200"
+              placeholder="Search..."
+              onFocus={() => {
+                window.openSearch?.();
+              }}
+              onClick={() => {
+                window.openSearch?.();
+              }}
+              readOnly
+            />
+            <SearchIcon className="absolute right-2 top-1/2 h-3 w-3 -translate-y-1/2 text-neutral-400" />
+          </div>
           <button
-            className="flex cursor-pointer items-center gap-1 rounded-sm px-1 py-1 hover:bg-neutral-100"
+            className="flex cursor-pointer items-center gap-1 rounded-sm px-1 py-1 hover:bg-neutral-100 md:hidden"
             onClick={() => {
               window.openSearch?.();
             }}
