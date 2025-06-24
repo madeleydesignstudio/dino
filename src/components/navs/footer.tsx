@@ -90,13 +90,13 @@ const Footer = () => {
 
         {/* Social Links */}
         <div className="mt-8 flex space-x-6">
-          <Link className="text-neutral-600 text-sm transition-colors hover:text-neutral-900" href="https://instagram.com">
+          <Link className="text-neutral-400 text-sm transition-colors hover:text-neutral-600" href="https://instagram.com">
             INSTAGRAM
           </Link>
-          <Link className="text-neutral-600 text-sm transition-colors hover:text-neutral-900" href="https://x.com">
+          <Link className="text-neutral-400 text-sm transition-colors hover:text-neutral-600" href="https://x.com">
             X.COM
           </Link>
-          <Link className="text-neutral-600 text-sm transition-colors hover:text-neutral-900" href="https://linkedin.com">
+          <Link className="text-neutral-400 text-sm transition-colors hover:text-neutral-600" href="https://linkedin.com">
             LINKEDIN
           </Link>
         </div>
