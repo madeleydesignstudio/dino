@@ -20,11 +20,21 @@ const AppWrapper = ({ children }: { children: React.ReactNode }) => {
   
   const hasResourceSidebars = isDinoUiRoute || isDinoApiRoute || isDinoOpenSourceRoute;
   const [showSidebars, setShowSidebars] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   // Reset sidebar visibility when route changes
   useEffect(() => {
     setShowSidebars(false);
-  }, [pathname]);
+    // After first route change, we're no longer on initial load
+    if (!isInitialLoad) {
+      // Small delay to ensure smooth transitions
+      setTimeout(() => {
+        setIsInitialLoad(false);
+      }, 50);
+    } else {
+      setIsInitialLoad(false);
+    }
+  }, [pathname, isInitialLoad]);
 
   // Handle animation completion
   const handleAnimationComplete = () => {
@@ -39,11 +49,15 @@ const AppWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarAnimationContext.Provider value={{ showSidebars }}>
       <motion.div
+        initial={{
+          marginLeft: '8rem',
+          marginRight: '8rem',
+        }}
         animate={{
           marginLeft: hasResourceSidebars ? '16rem' : '8rem',
           marginRight: hasResourceSidebars ? '16rem' : '8rem',
         }}
-        transition={{
+        transition={isInitialLoad ? { duration: 0 } : {
           duration: 1,
           ease: [0.25, 0.46, 0.45, 0.94],
         }}
