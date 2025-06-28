@@ -336,13 +336,13 @@ const getSimilarProjects = (currentProject: any) => {
   ).slice(0, 3);
 };
 
-interface ProjectPageProps {
+interface PageProps {
   params: {
     slug: string;
   };
 }
 
-const ProjectPage = ({ params }: ProjectPageProps) => {
+const ProjectPage = ({ params }: PageProps) => {
   const project = findProjectBySlug(params.slug);
   
   if (!project) {
