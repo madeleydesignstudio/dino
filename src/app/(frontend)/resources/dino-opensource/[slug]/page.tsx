@@ -337,13 +337,14 @@ const getSimilarProjects = (currentProject: any) => {
 };
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-const ProjectPage = ({ params }: PageProps) => {
-  const project = findProjectBySlug(params.slug);
+const ProjectPage = async ({ params }: PageProps) => {
+  const { slug } = await params;
+  const project = findProjectBySlug(slug);
   
   if (!project) {
     notFound();
