@@ -250,7 +250,7 @@ const PrimaryNavbar = () => {
                     >
                       Free design templates and UI components.
                     </ListItem>
-                    <ListItem href="/resources/tools" title="Dino Tools">
+                    <ListItem href="/resources/dino-tools" title="Dino Tools">
                       Recommended tools and resources for designers.
                     </ListItem>
                     <ListItem
@@ -324,13 +324,13 @@ const PrimaryNavbar = () => {
                     <ListItem href="/company/updates-news" title="Updates & News">
                       Company announcements and product updates.
                     </ListItem>
-                    <ListItem href="/pricing" title="Pricing">
+                    <ListItem href="/company/pricing" title="Pricing">
                       Transparent pricing for all our services.
                     </ListItem>
-                    <ListItem href="/questions" title="Questions">
+                    <ListItem href="/company/questions" title="Questions">
                       Frequently asked questions and support.
                     </ListItem>
-                    <ListItem href="/testimonials" title="Testimonials">
+                    <ListItem href="/company/testimonials" title="Testimonials">
                       What our clients say about working with us.
                     </ListItem>
                   </ul>
