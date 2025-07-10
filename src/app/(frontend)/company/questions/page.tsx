@@ -1,17 +1,16 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowRightIcon, SearchIcon, MessageCircleIcon, PhoneIcon, MailIcon } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
+import { ArrowRightIcon, MailIcon, MessageCircleIcon, PhoneIcon } from 'lucide-react'
+import Link from 'next/link'
 
 const Questions = () => {
   const faqCategories = [

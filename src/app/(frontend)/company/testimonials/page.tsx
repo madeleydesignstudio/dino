@@ -1,11 +1,10 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowRightIcon, StarIcon, QuoteIcon } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+import { ArrowRightIcon, QuoteIcon, StarIcon } from 'lucide-react'
+import Link from 'next/link'
 
 const Testimonials = () => {
   const testimonials = [

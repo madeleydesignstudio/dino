@@ -18,6 +18,23 @@ const requiredEnvVars: (keyof EnvironmentConfig)[] = [
 export function validateEnvironment(): EnvironmentConfig {
   const env = process.env as Record<string, string | undefined>
 
+  // Skip validation during build process
+  if (
+    process.env.NODE_ENV === 'development' &&
+    process.env.NEXT_PHASE === 'phase-production-build'
+  ) {
+    console.log('⚠️  Skipping environment validation during build process')
+    return {
+      RESEND_API_KEY: env.RESEND_API_KEY || 'build-placeholder',
+      LOOPS_API_KEY: env.LOOPS_API_KEY || 'build-placeholder',
+      PAYLOAD_SECRET: env.PAYLOAD_SECRET || 'build-placeholder',
+      DATABASE_URI:
+        env.DATABASE_URI || 'postgresql://placeholder:placeholder@localhost:5432/placeholder',
+      RESEND_NEWSLETTER_AUDIENCE_ID: env.RESEND_NEWSLETTER_AUDIENCE_ID,
+      NODE_ENV: env.NODE_ENV,
+    }
+  }
+
   // Check for missing required variables
   const missing = requiredEnvVars.filter((envVar) => !env[envVar])
 
@@ -64,6 +81,18 @@ export function getValidatedEnv(): EnvironmentConfig {
   try {
     return validateEnvironment()
   } catch (error) {
+    // During build, don't exit the process, just log and return placeholders
+    if (process.env.NEXT_PHASE === 'phase-production-build') {
+      console.warn('Environment validation failed during build, using placeholders:', error)
+      return {
+        RESEND_API_KEY: 'build-placeholder',
+        LOOPS_API_KEY: 'build-placeholder',
+        PAYLOAD_SECRET: 'build-placeholder',
+        DATABASE_URI: 'postgresql://placeholder:placeholder@localhost:5432/placeholder',
+        RESEND_NEWSLETTER_AUDIENCE_ID: undefined,
+        NODE_ENV: process.env.NODE_ENV,
+      }
+    }
     console.error('Environment validation failed:', error)
     process.exit(1)
   }

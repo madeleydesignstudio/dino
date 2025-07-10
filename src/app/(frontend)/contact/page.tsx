@@ -1,21 +1,8 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
-import {
-  ArrowRightIcon,
-  MailIcon,
-  PhoneIcon,
-  MapPinIcon,
-  ClockIcon,
-  MessageCircleIcon,
-  CalendarIcon
-} from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import {
   Select,
@@ -24,6 +11,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Separator } from '@/components/ui/separator'
+import { Textarea } from '@/components/ui/textarea'
+import {
+  ArrowRightIcon,
+  CalendarIcon,
+  ClockIcon,
+  MailIcon,
+  MapPinIcon,
+  MessageCircleIcon,
+  PhoneIcon,
+} from 'lucide-react'
+import Link from 'next/link'
 
 const Contact = () => {
   const contactInfo = [
@@ -89,8 +88,8 @@ const Contact = () => {
             Let&apos;s Build Something Amazing Together
           </h1>
           <p className="text-lg text-neutral-600 mb-8">
-            Ready to start your project? We&apos;d love to hear about your vision and discuss how
-            we can help bring it to life. Get in touch with us today.
+            Ready to start your project? We&apos;d love to hear about your vision and discuss how we
+            can help bring it to life. Get in touch with us today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>
@@ -342,14 +341,18 @@ const Contact = () => {
               </p>
             </div>
             <div className="bg-neutral-50 rounded-lg p-6">
-              <h3 className="font-semibold text-lg mb-2">What information do you need to get started?</h3>
+              <h3 className="font-semibold text-lg mb-2">
+                What information do you need to get started?
+              </h3>
               <p className="text-neutral-600 text-sm">
-                We need details about your project goals, target audience, timeline, and budget.
-                Any existing materials or references are also helpful.
+                We need details about your project goals, target audience, timeline, and budget. Any
+                existing materials or references are also helpful.
               </p>
             </div>
             <div className="bg-neutral-50 rounded-lg p-6">
-              <h3 className="font-semibold text-lg mb-2">Do you work with international clients?</h3>
+              <h3 className="font-semibold text-lg mb-2">
+                Do you work with international clients?
+              </h3>
               <p className="text-neutral-600 text-sm">
                 Yes! We work with clients worldwide and are experienced in remote collaboration
                 across different time zones.
