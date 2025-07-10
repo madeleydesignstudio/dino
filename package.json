@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "dino-studio",
   "version": "1.0.0",
   "description": "A blank template to get started with Payload 3.0",
   "license": "MIT",
@@ -12,7 +12,9 @@
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "security:validate": "node -e \"require('./src/lib/startup-validation.js'); console.log('✅ Security validation passed');\"",
+    "security:check": "npm run security:validate && npm audit --audit-level=moderate"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
