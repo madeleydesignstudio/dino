@@ -1,21 +1,20 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
 import {
   ArrowRightIcon,
-  CheckIcon,
-  StarIcon,
-  BotIcon,
-  BrainIcon,
-  ZapIcon,
-  ShieldIcon,
   BarChart3Icon,
+  BrainIcon,
+  CheckIcon,
   CogIcon,
+  ShieldIcon,
+  StarIcon,
+  ZapIcon,
 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const AgenticAI = () => {
   const features = [
@@ -222,7 +221,7 @@ const AgenticAI = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              What's Included in Our AI Solutions
+              What&apos;s Included in Our AI Solutions
             </h2>
             <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
               Every AI project includes these essential components for successful implementation.
@@ -404,7 +403,9 @@ const AgenticAI = () => {
                     <StarIcon key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <blockquote className="text-neutral-800 mb-4">"{testimonial.quote}"</blockquote>
+                <blockquote className="text-neutral-800 mb-4">
+                  &quot;{testimonial.quote}&quot;
+                </blockquote>
                 <div>
                   <div className="font-semibold">{testimonial.name}</div>
                   <div className="text-sm text-neutral-600">
@@ -437,7 +438,7 @@ const AgenticAI = () => {
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="/company/contact">Schedule AI Assessment</Link>
+              <Link href="/contact">Schedule AI Assessment</Link>
             </Button>
           </div>
         </div>

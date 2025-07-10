@@ -105,8 +105,8 @@ const WebsiteDesign = () => {
               </h1>
               <p className="text-lg text-neutral-600 mb-8">
                 We create stunning, user-focused websites that not only look amazing but drive real
-                business results. From concept to launch, we'll transform your vision into a digital
-                experience that captivates and converts.
+                business results. From concept to launch, we&apos;ll transform your vision into a
+                digital experience that captivates and converts.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" asChild>
@@ -141,7 +141,7 @@ const WebsiteDesign = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              What's Included in Our Website Design Service
+              What&apos;s Included in Our Website Design Service
             </h2>
             <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
               Every website design project includes these essential elements to ensure your success.
@@ -232,8 +232,8 @@ const WebsiteDesign = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">What Our Clients Say</h2>
             <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-              Don't just take our word for it. Here's what our clients have to say about our website
-              designs.
+              Don&apos;t just take our word for it. Here&apos;s what our clients have to say about
+              our website designs.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -244,7 +244,9 @@ const WebsiteDesign = () => {
                     <StarIcon key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <blockquote className="text-neutral-800 mb-4">"{testimonial.quote}"</blockquote>
+                <blockquote className="text-neutral-800 mb-4">
+                  &quot;{testimonial.quote}&quot;
+                </blockquote>
                 <div>
                   <div className="font-semibold">{testimonial.name}</div>
                   <div className="text-sm text-neutral-600">
@@ -275,7 +277,7 @@ const WebsiteDesign = () => {
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="/company/contact">Schedule Consultation</Link>
+              <Link href="/contact">Schedule Consultation</Link>
             </Button>
           </div>
         </div>

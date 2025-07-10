@@ -196,7 +196,7 @@ const ArtCreativeDesign = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              What's Included in Our Creative Design Service
+              What&apos;s Included in Our Creative Design Service
             </h2>
             <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
               Every creative project includes these essential elements for brand success.
@@ -349,7 +349,9 @@ const ArtCreativeDesign = () => {
                     <StarIcon key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <blockquote className="text-neutral-800 mb-4">"{testimonial.quote}"</blockquote>
+                <blockquote className="text-neutral-800 mb-4">
+                  &quot;{testimonial.quote}&quot;
+                </blockquote>
                 <div>
                   <div className="font-semibold">{testimonial.name}</div>
                   <div className="text-sm text-neutral-600">
@@ -382,7 +384,7 @@ const ArtCreativeDesign = () => {
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="/company/contact">Schedule Consultation</Link>
+              <Link href="/contact">Schedule Consultation</Link>
             </Button>
           </div>
         </div>
@@ -418,7 +420,7 @@ const ArtCreativeDesign = () => {
                 Do you offer revisions during the design process?
               </h3>
               <p className="text-neutral-600">
-                Yes! We include 3 rounds of revisions in all our packages to ensure you're
+                Yes! We include 3 rounds of revisions in all our packages to ensure you&apos;re
                 completely satisfied with the final design.
               </p>
             </div>

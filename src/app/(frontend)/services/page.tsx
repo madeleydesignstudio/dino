@@ -1,21 +1,19 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
 import {
   ArrowRightIcon,
-  PaletteIcon,
-  CodeIcon,
-  MonitorIcon,
-  BrushIcon,
   BotIcon,
   BoxIcon,
-  StarIcon,
   CheckIcon,
+  CodeIcon,
+  MonitorIcon,
+  PaletteIcon,
+  StarIcon,
 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
+import Link from 'next/link'
 
 const Services = () => {
   const services = [
@@ -183,7 +181,7 @@ const Services = () => {
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link href="/company/contact">Schedule Consultation</Link>
+                <Link href="/contact">Schedule Consultation</Link>
               </Button>
             </div>
           </div>
@@ -318,7 +316,9 @@ const Services = () => {
                     <StarIcon key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <blockquote className="text-neutral-800 mb-4">"{testimonial.quote}"</blockquote>
+                <blockquote className="text-neutral-800 mb-4">
+                  &quot;{testimonial.quote}&quot;
+                </blockquote>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-neutral-200 rounded-full flex items-center justify-center">
                     <span className="text-sm font-semibold">{testimonial.name[0]}</span>
@@ -343,8 +343,8 @@ const Services = () => {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">Ready to Get Started?</h2>
           <p className="text-lg text-neutral-600 mb-8">
-            Let's discuss your project and create a custom solution that meets your specific needs
-            and budget.
+            Let&apos;s discuss your project and create a custom solution that meets your specific
+            needs and budget.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>
@@ -354,7 +354,7 @@ const Services = () => {
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="/company/contact">Schedule Free Consultation</Link>
+              <Link href="/contact">Schedule Free Consultation</Link>
             </Button>
           </div>
         </div>
@@ -390,7 +390,7 @@ const Services = () => {
             </div>
             <div>
               <h3 className="font-semibold text-lg mb-2">
-                What's included in your project management?
+                What&apos;s included in your project management?
               </h3>
               <p className="text-neutral-600">
                 Every project includes dedicated project management, regular progress updates,

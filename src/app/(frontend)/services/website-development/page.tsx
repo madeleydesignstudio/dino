@@ -206,7 +206,7 @@ const WebsiteDevelopment = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              What's Included in Our Development Service
+              What&apos;s Included in Our Development Service
             </h2>
             <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
               Every development project includes these essential elements for success.
@@ -359,7 +359,9 @@ const WebsiteDevelopment = () => {
                     <StarIcon key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <blockquote className="text-neutral-800 mb-4">"{testimonial.quote}"</blockquote>
+                <blockquote className="text-neutral-800 mb-4">
+                  &quot;{testimonial.quote}&quot;
+                </blockquote>
                 <div>
                   <div className="font-semibold">{testimonial.name}</div>
                   <div className="text-sm text-neutral-600">
@@ -390,7 +392,7 @@ const WebsiteDevelopment = () => {
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="/company/contact">Schedule Consultation</Link>
+              <Link href="/contact">Schedule Consultation</Link>
             </Button>
           </div>
         </div>

@@ -1,21 +1,20 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
 import {
   ArrowRightIcon,
   CheckIcon,
-  StarIcon,
-  BoxIcon,
-  UsersIcon,
-  PenToolIcon,
-  TargetIcon,
   LayersIcon,
+  PenToolIcon,
   SmartphoneIcon,
+  StarIcon,
+  TargetIcon,
+  UsersIcon,
 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const ProductDesign = () => {
   const features = [
@@ -243,7 +242,7 @@ const ProductDesign = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              What's Included in Our Product Design Service
+              What&apos;s Included in Our Product Design Service
             </h2>
             <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
               Every product design project includes these essential elements for success.
@@ -399,7 +398,9 @@ const ProductDesign = () => {
                     <StarIcon key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <blockquote className="text-neutral-800 mb-4">"{testimonial.quote}"</blockquote>
+                <blockquote className="text-neutral-800 mb-4">
+                  &quot;{testimonial.quote}&quot;
+                </blockquote>
                 <div>
                   <div className="font-semibold">{testimonial.name}</div>
                   <div className="text-sm text-neutral-600">
@@ -432,7 +433,7 @@ const ProductDesign = () => {
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="/company/contact">Schedule Design Review</Link>
+              <Link href="/contact">Schedule Design Review</Link>
             </Button>
           </div>
         </div>
@@ -473,7 +474,8 @@ const ProductDesign = () => {
               </h3>
               <p className="text-neutral-600">
                 Absolutely. We can work within your existing design system or help you create a new
-                one. We're experienced with various design tools and can adapt to your workflow.
+                one. We&apos;re experienced with various design tools and can adapt to your
+                workflow.
               </p>
             </div>
             <div>
