@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -228,8 +228,147 @@
     padding-top: 60px;
   }
 
+  /* Mobile announcement banner adjustments */
+  @media (max-width: 1023px) {
+    body.announcement-visible {
+      padding-top: 50px;
+    }
+  }
+
   /* Prevent overscroll/bounce effect */
   #__next {
     isolation: isolate;
+  }
+
+  /* Mobile responsive improvements */
+  @media (max-width: 1023px) {
+    /* Ensure text is readable on mobile */
+    body {
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    /* Improve touch targets */
+    button,
+    a,
+    [role='button'] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Better spacing on mobile */
+    .container {
+      @apply px-4;
+    }
+
+    /* Prevent horizontal overflow */
+    * {
+      max-width: 100%;
+    }
+
+    /* Improve form controls on mobile */
+    input,
+    textarea,
+    select {
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    /* Better focus states for mobile */
+    button:focus,
+    a:focus,
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: 2px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    /* Optimize images for mobile */
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+
+    /* Improve table responsiveness */
+    table {
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    /* Better modal/dialog handling on mobile */
+    .modal,
+    .dialog {
+      width: 95vw;
+      max-width: 95vw;
+      margin: 2.5vw auto;
+    }
+
+    /* Prevent text from being too small in navigation */
+    nav {
+      font-size: 16px;
+    }
+  }
+
+  /* Extra small mobile devices */
+  @media (max-width: 480px) {
+    body {
+      font-size: 14px;
+    }
+
+    /* Reduce padding for very small screens */
+    .container {
+      @apply px-2;
+    }
+
+    /* Stack elements better on small screens */
+    .flex {
+      @apply flex-col gap-2;
+    }
+
+    /* Ensure buttons aren't too wide */
+    button {
+      max-width: 100%;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+      @apply px-6;
+    }
+
+    /* Better touch targets for tablets */
+    button,
+    a,
+    [role='button'] {
+      min-height: 48px;
+      min-width: 48px;
+    }
+  }
+
+  /* Touch device optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    /* Remove hover effects on touch devices */
+    *:hover {
+      /* Reset any hover styles that might cause issues */
+    }
+
+    /* Better tap highlighting */
+    button,
+    a,
+    [role='button'] {
+      -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
+    }
+  }
+
+  /* High DPI display optimizations */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    /* Ensure crisp text rendering */
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
   }
 }

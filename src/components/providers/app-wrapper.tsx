@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
 import type React from 'react'
 import { createContext, useContext, useEffect, useState } from 'react'
@@ -79,27 +78,13 @@ const AppWrapper = ({ children }: { children: React.ReactNode }) => {
     <SidebarAnimationContext.Provider
       value={{ showSidebars, shouldAnimateSidebars, animationComplete }}
     >
-      <motion.div
-        initial={{
-          marginLeft: '8rem',
-          marginRight: '8rem',
-        }}
-        animate={{
-          marginLeft: hasResourceSidebars ? '16rem' : '8rem',
-          marginRight: hasResourceSidebars ? '16rem' : '8rem',
-        }}
-        transition={
-          isInitialLoad || !marginsWillChange
-            ? { duration: 0 }
-            : {
-                duration: 1,
-                ease: [0.25, 0.46, 0.45, 0.94],
-              }
-        }
-        onAnimationComplete={handleAnimationComplete}
+      <div
+        className={`w-full transition-all duration-1000 ease-out ${
+          hasResourceSidebars ? 'lg:pl-64 lg:pr-64' : 'lg:pl-32 lg:pr-32'
+        }`}
       >
         {children}
-      </motion.div>
+      </div>
     </SidebarAnimationContext.Provider>
   )
 }

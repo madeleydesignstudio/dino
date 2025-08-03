@@ -4,6 +4,23 @@ import { motion, AnimatePresence } from 'motion/react'
 import { useSidebarAnimation } from '@/components/providers/app-wrapper'
 import { useEffect, useState } from 'react'
 
+// Custom hook to detect mobile screens
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  return isMobile
+}
+
 interface AnimatedSidebarProps {
   position: 'left' | 'right'
   children: React.ReactNode
@@ -13,8 +30,15 @@ interface AnimatedSidebarProps {
 export const AnimatedSidebar = ({ position, children, className = '' }: AnimatedSidebarProps) => {
   const { showSidebars, shouldAnimateSidebars, animationComplete } = useSidebarAnimation()
   const [isVisible, setIsVisible] = useState(false)
+  const isMobile = useIsMobile()
 
   useEffect(() => {
+    // Always hide sidebars on mobile
+    if (isMobile) {
+      setIsVisible(false)
+      return
+    }
+
     if (showSidebars && !shouldAnimateSidebars) {
       // Show immediately without animation (navigation within resources)
       setIsVisible(true)
@@ -25,7 +49,7 @@ export const AnimatedSidebar = ({ position, children, className = '' }: Animated
       // Hide
       setIsVisible(false)
     }
-  }, [showSidebars, shouldAnimateSidebars, animationComplete])
+  }, [showSidebars, shouldAnimateSidebars, animationComplete, isMobile])
 
   const variants = {
     hidden: {
@@ -56,7 +80,7 @@ export const AnimatedSidebar = ({ position, children, className = '' }: Animated
           initial={shouldAnimateSidebars ? 'hidden' : 'visible'}
           animate="visible"
           exit="hidden"
-          className={`fixed top-[40px] h-[calc(100vh-40px)] w-64 border-neutral-200 bg-neutral-50/80 backdrop-blur-sm z-10 ${
+          className={`fixed top-[40px] h-[calc(100vh-40px)] w-64 border-neutral-200 bg-neutral-50/80 backdrop-blur-sm z-10 hidden lg:block ${
             position === 'left' ? 'left-0 border-r' : 'right-0 border-l'
           } ${className}`}
         >
