@@ -18,7 +18,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     <AppWrapper>
       <ProjectAnnouncement />
       <PrimaryNavbar />
-      <main className="border-neutral-200 lg:border-x">{children}</main>
+      <main className="lg:border-x border-neutral-200">{children}</main>
       <Toaster position="bottom-right" richColors />
     </AppWrapper>
   )

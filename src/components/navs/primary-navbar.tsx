@@ -165,22 +165,22 @@ const PrimaryNavbar = () => {
   }
 
   return (
-    <div className="sticky top-0 z-50 flex h-[40px] w-full items-center justify-center border border-neutral-200 bg-neutral-50 ">
-      <div className="flex w-full items-center justify-between px-4">
+    <div className="navbar-container">
+      <div className="navbar-content">
         {/* Logo - Always visible */}
-        <Link className="flex items-center gap-2" href="/">
+        <Link className="navbar-link" href="/">
           <Image
             alt="Dino"
-            className="transition-all duration-300 hover:rotate-180"
+            className="navbar-logo"
             height={20}
             src="https://storage.dev-0af.workers.dev/dino-logo.png"
             width={20}
           />
-          <span className="font-medium text-sm">Dino</span>
+          <span className="navbar-brand-text">Dino</span>
         </Link>
 
         {/* Desktop Navigation Container */}
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="navbar-desktop">
           {/* Vertical Separator */}
           <div className="h-4 w-px bg-neutral-300" />
 
@@ -198,23 +198,15 @@ const PrimaryNavbar = () => {
                         <NavigationMenuLink asChild>
                           <Link
                             className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                            href="/case-studies"
+                            href="/case-studies/structopia"
                           >
-                            <div className="mt-4 mb-2 font-medium text-lg">Our Work</div>
+                            <div className="mb-2 mt-4 font-medium text-lg">Structopia</div>
                             <p className="text-muted-foreground text-sm leading-tight">
-                              Explore our portfolio of design and development projects.
+                              Modern web platform for architectural design.
                             </p>
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      <li className="col-span-1">
-                        <div className="px-3 font-medium text-neutral-500 text-xs">
-                          Latest Projects
-                        </div>
-                      </li>
-                      <ListItem href="/case-studies/structopia" title="Structopia">
-                        Modern web platform for architectural design.
-                      </ListItem>
                       <ListItem href="/case-studies/ordo" title="Ordo">
                         Task management and productivity application.
                       </ListItem>
@@ -230,7 +222,7 @@ const PrimaryNavbar = () => {
                     Resources
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2">
                       <ListItem href="/resources/dino-ui" title="Dino UI">
                         Design insights, tutorials, and industry trends.
                       </ListItem>
@@ -240,13 +232,13 @@ const PrimaryNavbar = () => {
                       <ListItem href="/resources/dino-opensource" title="Dino Open Source">
                         Free design templates and UI components.
                       </ListItem>
-                      <ListItem href="/resources/dino-tools" title="Dino Tools">
+                      <ListItem href="/tools" title="Tools">
                         Recommended tools and resources for designers.
                       </ListItem>
-                      <ListItem href="/resources/dino-academy" title="Dino Academy">
+                      <ListItem href="/community" title="Community">
                         Join our community of designers and developers.
                       </ListItem>
-                      <ListItem href="/resources/dino-newsletter" title="Dino Newsletter">
+                      <ListItem href="/newsletter" title="Newsletter">
                         Stay updated with our latest content and projects.
                       </ListItem>
                     </ul>
@@ -258,24 +250,24 @@ const PrimaryNavbar = () => {
                     Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] grid-cols-2 gap-1 p-2">
-                      <ListItem href="/services/website-design" title="Website Design">
-                        Custom web design projects and user experience.
+                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2">
+                      <ListItem href="/services/web-design" title="Web Design">
+                        Custom website design and user experience.
                       </ListItem>
-                      <ListItem href="/services/website-development" title="Website Development">
+                      <ListItem href="/services/development" title="Development">
                         Frontend and full-stack web development.
                       </ListItem>
-                      <ListItem href="/services/art-creative-design" title="Art & Creative Design">
-                        Artistic design and creative visual solutions.
+                      <ListItem href="/services/branding" title="Branding">
+                        Brand identity and visual design systems.
                       </ListItem>
-                      <ListItem href="/services/agentic-ai" title="Agentic AI">
-                        AI-powered applications and intelligent systems.
+                      <ListItem href="/services/consulting" title="Consulting">
+                        Design strategy and technical consultation.
                       </ListItem>
-                      <ListItem href="/services/product-design" title="Product Design">
-                        User experience and product interface design.
+                      <ListItem href="/services/maintenance" title="Maintenance">
+                        Ongoing support and website maintenance.
                       </ListItem>
-                      <ListItem href="/services" title="View All">
-                        Explore all our services and capabilities.
+                      <ListItem href="/services/audit" title="Design Audit">
+                        UX/UI analysis and improvement recommendations.
                       </ListItem>
                     </ul>
                   </NavigationMenuContent>
@@ -286,16 +278,35 @@ const PrimaryNavbar = () => {
                     Company
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      <ListItem href="/company/blog" title="Blog">
-                        Latest insights, tutorials, and industry thoughts.
+                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2">
+                      <ListItem href="/about" title="About Us">
+                        Learn about our team and mission.
                       </ListItem>
-                      <ListItem href="/company/careers" title="Careers">
+                      <ListItem href="/careers" title="Careers">
                         Join our team of talented designers and developers.
                       </ListItem>
-                      <ListItem href="/company/updates-news" title="Updates & News">
-                        Company announcements and product updates.
+                      <ListItem href="/contact" title="Contact">
+                        Get in touch for your next project.
                       </ListItem>
+                      <ListItem href="/process" title="Our Process">
+                        How we approach design and development projects.
+                      </ListItem>
+                      <ListItem href="/values" title="Values">
+                        The principles that guide our work.
+                      </ListItem>
+                      <ListItem href="/press" title="Press">
+                        Media coverage and press resources.
+                      </ListItem>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="h-auto bg-transparent px-2 py-1 font-normal text-xs">
+                    Pricing
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2">
                       <ListItem href="/company/pricing" title="Pricing">
                         Transparent pricing for all our services.
                       </ListItem>
@@ -329,7 +340,7 @@ const PrimaryNavbar = () => {
               <SearchIcon className="absolute right-2 top-1/2 h-3 w-3 -translate-y-1/2 text-neutral-400" />
             </div>
             <Link
-              className="cursor-pointer rounded-md bg-violet-200 px-2 py-1 text-neutral-900 text-xs"
+              className="navbar-link cursor-pointer rounded-md bg-violet-200 px-2 py-1 text-neutral-900 text-xs"
               href="/start-project"
             >
               Start Project
@@ -338,56 +349,56 @@ const PrimaryNavbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="navbar-mobile">
           <button
-            className="flex items-center gap-1 rounded-sm px-1 py-1 hover:bg-neutral-100"
+            className="navbar-button navbar-search-btn"
             onClick={() => {
               window.openSearch?.()
             }}
           >
-            <SearchIcon className="h-4 w-4" />
+            <SearchIcon className="navbar-icon" />
           </button>
 
           <Drawer onOpenChange={setDrawerOpen} open={drawerOpen}>
             <DrawerTrigger asChild>
-              <button className="flex h-8 w-8 items-center justify-center rounded-sm hover:bg-neutral-100">
-                <MenuIcon className="h-4 w-4" />
+              <button className="navbar-button navbar-menu-btn">
+                <MenuIcon className="navbar-icon" />
               </button>
             </DrawerTrigger>
-            <DrawerContent className="max-h-[85vh]">
-              <DrawerHeader className="border-b">
+            <DrawerContent className="max-h-[90vh]">
+              <DrawerHeader className="border-b p-2">
                 <div className="flex items-center justify-between">
-                  <DrawerTitle>Navigation</DrawerTitle>
+                  <DrawerTitle className="text-sm">Navigation</DrawerTitle>
                   <DrawerClose asChild>
-                    <button className="flex h-8 w-8 items-center justify-center rounded-sm hover:bg-neutral-100">
-                      <XIcon className="h-4 w-4" />
+                    <button className="navbar-button">
+                      <XIcon className="navbar-icon" />
                     </button>
                   </DrawerClose>
                 </div>
               </DrawerHeader>
 
-              <div className="flex-1 overflow-y-auto p-4">
-                <Accordion className="w-full space-y-2" collapsible type="single">
+              <div className="flex-1 overflow-y-auto p-2">
+                <Accordion className="w-full space-y-1" collapsible type="single">
                   {navigationSections.map((section, index) => (
                     <AccordionItem
                       className="rounded-lg border"
                       key={section.title}
                       value={`section-${index}`}
                     >
-                      <AccordionTrigger className="px-4 font-medium text-sm hover:bg-neutral-50 hover:no-underline">
+                      <AccordionTrigger className="px-2 py-2 text-xs font-medium hover:bg-neutral-50 hover:no-underline">
                         {section.title}
                       </AccordionTrigger>
-                      <AccordionContent className="px-4 pb-4">
-                        <div className="space-y-3">
+                      <AccordionContent className="px-2 pb-2">
+                        <div className="space-y-2">
                           {section.items.map((item) => (
                             <Link
-                              className="block rounded-md p-3 transition-colors hover:bg-neutral-50"
+                              className="navbar-link block rounded-md p-2 transition-colors hover:bg-neutral-50"
                               href={item.href}
                               key={item.href}
                               onClick={handleLinkClick}
                             >
-                              <div className="font-medium text-sm">{item.title}</div>
-                              <div className="mt-1 text-muted-foreground text-xs">
+                              <div className="text-xs font-medium">{item.title}</div>
+                              <div className="mt-0.5 text-[10px] text-muted-foreground">
                                 {item.description}
                               </div>
                             </Link>
@@ -398,9 +409,9 @@ const PrimaryNavbar = () => {
                   ))}
                 </Accordion>
 
-                <div className="mt-6 space-y-3 border-t pt-6">
+                <div className="mt-4 space-y-2 border-t pt-4">
                   <Link
-                    className="block w-full rounded-md bg-violet-200 px-4 py-3 text-center font-medium text-neutral-900 transition-colors hover:bg-violet-300"
+                    className="navbar-link block w-full rounded-md bg-violet-200 px-2 py-2 text-center text-xs font-medium text-neutral-900 transition-colors hover:bg-violet-300"
                     href="/contact"
                     onClick={handleLinkClick}
                   >
@@ -440,6 +451,7 @@ const ListItem = React.forwardRef<
     </li>
   )
 })
+
 ListItem.displayName = 'ListItem'
 
 export default PrimaryNavbar
