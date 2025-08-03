@@ -150,8 +150,9 @@ const Pricing = () => {
               <h4 className="font-medium text-neutral-700">What We Deliver</h4>
               <p>
                 You can choose from two delivery options: <strong>Design Only</strong> - Perfect if
-                you've got the skills to build it yourself. <strong>Design & Development</strong> -
-                Best for those who want a complete, done-for-you solution.
+                you&apos;ve got the skills to build it yourself.{' '}
+                <strong>Design & Development</strong> - Best for those who want a complete,
+                done-for-you solution.
               </p>
             </div>
           </div>
@@ -325,8 +326,8 @@ const Pricing = () => {
             <h4 className="font-medium text-neutral-700">What We Deliver</h4>
             <p>
               You can choose from two delivery options: <strong>Design Only</strong> - Perfect if
-              you've got the skills to build it yourself. <strong>Design & Development</strong> -
-              Best for those who want a complete, done-for-you solution.
+              you&apos;ve got the skills to build it yourself. <strong>Design & Development</strong>{' '}
+              - Best for those who want a complete, done-for-you solution.
             </p>
           </div>
         </div>
