@@ -1,13 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function DebugPage() {
   const [results, setResults] = useState<any[]>([])
   const [loading, setLoading] = useState(false)
 
   const addResult = (test: string, result: any) => {
-    setResults(prev => [...prev, { test, result, timestamp: new Date().toISOString() }])
+    setResults((prev) => [...prev, { test, result, timestamp: new Date().toISOString() }])
   }
 
   const runTest = async (name: string, url: string, options: RequestInit = {}) => {
@@ -111,9 +112,7 @@ export default function DebugPage() {
             <div
               key={index}
               className={`border rounded p-4 ${
-                result.result.success
-                  ? 'bg-green-50 border-green-200'
-                  : 'bg-red-50 border-red-200'
+                result.result.success ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
               }`}
             >
               <div className="flex justify-between items-start mb-2">
@@ -124,11 +123,13 @@ export default function DebugPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <strong>Status:</strong>
-                  <span className={`ml-2 px-2 py-1 rounded text-sm ${
-                    result.result.success
-                      ? 'bg-green-200 text-green-800'
-                      : 'bg-red-200 text-red-800'
-                  }`}>
+                  <span
+                    className={`ml-2 px-2 py-1 rounded text-sm ${
+                      result.result.success
+                        ? 'bg-green-200 text-green-800'
+                        : 'bg-red-200 text-red-800'
+                    }`}
+                  >
                     {result.result.status}
                   </span>
                 </div>
@@ -152,22 +153,38 @@ export default function DebugPage() {
       <div className="mt-8 bg-yellow-50 border border-yellow-200 p-4 rounded">
         <h3 className="font-semibold mb-2">Quick Links</h3>
         <ul className="space-y-1 text-sm">
-          <li><a href="/admin" className="text-blue-600 hover:underline">→ Admin Panel</a></li>
-          <li><a href="/company" className="text-blue-600 hover:underline">→ Company Page</a></li>
-          <li><a href="/api/status" className="text-blue-600 hover:underline">→ Status API</a></li>
-          <li><a href="/api/debug-company" className="text-blue-600 hover:underline">→ Debug Company API</a></li>
+          <li>
+            <Link href="/admin" className="text-blue-600 hover:underline">
+              → Admin Panel
+            </Link>
+          </li>
+          <li>
+            <Link href="/company" className="text-blue-600 hover:underline">
+              → Company Page
+            </Link>
+          </li>
+          <li>
+            <Link href="/api/status" className="text-blue-600 hover:underline">
+              → Status API
+            </Link>
+          </li>
+          <li>
+            <Link href="/api/debug-company" className="text-blue-600 hover:underline">
+              → Debug Company API
+            </Link>
+          </li>
         </ul>
       </div>
 
       <div className="mt-4 bg-blue-50 border border-blue-200 p-4 rounded">
         <h3 className="font-semibold mb-2">Troubleshooting Steps</h3>
         <ol className="list-decimal list-inside space-y-1 text-sm">
-          <li>Run "Test Status" first to check basic connectivity</li>
-          <li>Run "Test Company Access" to verify collection access</li>
-          <li>Run "Test Company Creation" to test direct creation</li>
+          <li>Run &quot;Test Status&quot; first to check basic connectivity</li>
+          <li>Run &quot;Test Company Access&quot; to verify collection access</li>
+          <li>Run &quot;Test Company Creation&quot; to test direct creation</li>
           <li>If tests pass but admin fails, check browser console for errors</li>
           <li>Check server terminal for detailed error messages</li>
-          <li>Try the simplified "Company Simple" collection in admin</li>
+          <li>Try the simplified &quot;Company Simple&quot; collection in admin</li>
         </ol>
       </div>
     </div>

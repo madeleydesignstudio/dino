@@ -4,6 +4,7 @@ import { Separator } from '@/components/ui/separator'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import Image from 'next/image'
+import Link from 'next/link'
 import type { Company as CompanyType } from '@/payload-types'
 
 // Temporary type definition until types are regenerated
@@ -94,20 +95,20 @@ export default async function DynamicCompany() {
               <ol className="text-left text-sm text-neutral-600 space-y-2">
                 <li>
                   1. Go to the{' '}
-                  <a href="/admin" className="text-violet-600 hover:text-violet-700 underline">
+                  <Link href="/admin" className="text-violet-600 hover:text-violet-700 underline">
                     admin panel
-                  </a>
+                  </Link>
                 </li>
-                <li>2. Navigate to the "Company" collection</li>
-                <li>3. Click "Create New" to add your company information</li>
+                <li>2. Navigate to the &quot;Company&quot; collection</li>
+                <li>3. Click &quot;Create New&quot; to add your company information</li>
                 <li>4. Fill in your company details and save</li>
                 <li>5. Return to this page to see your content displayed</li>
               </ol>
             </div>
             <Badge variant="outline">
-              <a href="/admin" className="text-violet-600 hover:text-violet-700">
+              <Link href="/admin" className="text-violet-600 hover:text-violet-700">
                 Go to Admin Panel →
-              </a>
+              </Link>
             </Badge>
           </div>
         </section>
@@ -258,7 +259,9 @@ export default async function DynamicCompany() {
             <Badge variant="outline" className="mb-4">
               Dynamic Content
             </Badge>
-            <h3 className="font-semibold text-xl mb-4">✨ This content is powered by Payload CMS</h3>
+            <h3 className="font-semibold text-xl mb-4">
+              ✨ This content is powered by Payload CMS
+            </h3>
             <p className="text-neutral-600 mb-6">
               All the content on this page can be edited through the admin panel. Changes will be
               reflected immediately on the website.
@@ -272,9 +275,9 @@ export default async function DynamicCompany() {
             </div>
             <div className="mt-6">
               <Badge variant="outline">
-                <a href="/admin" className="text-violet-600 hover:text-violet-700">
-                  Edit Content in Admin Panel →
-                </a>
+                <Link href="/admin" className="text-violet-600 hover:text-violet-700">
+                  Go to Admin Panel →
+                </Link>
               </Badge>
             </div>
           </div>

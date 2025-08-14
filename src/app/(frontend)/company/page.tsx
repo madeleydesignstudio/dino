@@ -4,6 +4,7 @@ import { Separator } from '@/components/ui/separator'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import Image from 'next/image'
+import Link from 'next/link'
 
 async function getCompanyData() {
   try {
@@ -52,21 +53,21 @@ export default async function Company() {
               <ol className="text-left text-sm text-neutral-600 space-y-2">
                 <li>
                   1. Go to the{' '}
-                  <a href="/admin" className="text-violet-600 hover:text-violet-700 underline">
+                  <Link href="/admin" className="text-violet-600 hover:text-violet-700 underline">
                     admin panel
-                  </a>
+                  </Link>
                 </li>
-                <li>2. Navigate to the "Company" collection</li>
-                <li>3. Click "Create New" to add your company information</li>
+                <li>2. Navigate to the &quot;Company&quot; collection</li>
+                <li>3. Click &quot;Create New&quot; to add your company information</li>
                 <li>4. Fill in your company details and save</li>
                 <li>5. Return to this page to see your content displayed</li>
               </ol>
             </div>
             <div className="space-y-4">
               <Badge variant="outline">
-                <a href="/admin" className="text-violet-600 hover:text-violet-700">
+                <Link href="/admin" className="text-violet-600 hover:text-violet-700">
                   Go to Admin Panel →
-                </a>
+                </Link>
               </Badge>
               <div>
                 <p className="text-sm text-neutral-500 mb-2">Or seed some initial data:</p>
@@ -248,9 +249,9 @@ export default async function Company() {
             </div>
             <div className="mt-6">
               <Badge variant="outline">
-                <a href="/admin" className="text-violet-600 hover:text-violet-700">
+                <Link href="/admin" className="text-violet-600 hover:text-violet-700">
                   Edit Content in Admin Panel →
-                </a>
+                </Link>
               </Badge>
             </div>
           </div>
