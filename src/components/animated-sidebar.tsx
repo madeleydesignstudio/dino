@@ -80,8 +80,8 @@ export const AnimatedSidebar = ({ position, children, className = '' }: Animated
           initial={shouldAnimateSidebars ? 'hidden' : 'visible'}
           animate="visible"
           exit="hidden"
-          className={`fixed top-[40px] h-[calc(100vh-40px)] w-64 border-neutral-200 bg-neutral-50/80 backdrop-blur-sm z-10 hidden lg:block ${
-            position === 'left' ? 'left-0 border-r' : 'right-0 border-l'
+          className={`fixed top-[40px] h-[calc(100vh-40px)] w-64 z-10 hidden lg:block ${
+            position === 'left' ? 'left-0' : 'right-0'
           } ${className}`}
         >
           {children}

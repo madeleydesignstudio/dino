@@ -92,34 +92,35 @@ const PrimaryNavbar = () => {
       title: 'Services',
       items: [
         {
-          title: 'Web Design',
-          href: '/services/web-design',
-          description: 'Custom website design and user experience',
+          title: 'Website Design',
+          href: '/services/website-design',
+          description: 'Beautiful, user-focused websites that convert visitors into customers',
         },
         {
-          title: 'Development',
-          href: '/services/development',
-          description: 'Frontend and full-stack web development',
+          title: 'Website Development',
+          href: '/services/website-development',
+          description: 'High-performance web applications built with cutting-edge technologies',
         },
         {
-          title: 'Branding',
-          href: '/services/branding',
-          description: 'Brand identity and visual design systems',
+          title: 'Art & Creative Design',
+          href: '/services/art-creative-design',
+          description: 'Complete visual identity systems and creative assets',
         },
         {
-          title: 'Consulting',
-          href: '/services/consulting',
-          description: 'Design strategy and technical consultation',
+          title: 'Product Design',
+          href: '/services/product-design',
+          description: 'User-centered product design that creates intuitive experiences',
         },
         {
-          title: 'Maintenance',
-          href: '/services/maintenance',
-          description: 'Ongoing support and website maintenance',
+          title: 'Agentic AI',
+          href: '/services/agentic-ai',
+          description:
+            'Intelligent AI solutions that automate processes and enhance decision-making',
         },
         {
-          title: 'Design Audit',
-          href: '/services/audit',
-          description: 'UX/UI analysis and improvement recommendations',
+          title: 'All Services',
+          href: '/services',
+          description: 'View our complete range of digital services',
         },
       ],
     },
@@ -322,23 +323,23 @@ const PrimaryNavbar = () => {
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2">
-                    <ListItem href="/services/web-design" title="Web Design">
-                      Custom website design and user experience.
+                    <ListItem href="/services/website-design" title="Website Design">
+                      Beautiful, user-focused websites that convert visitors into customers.
                     </ListItem>
-                    <ListItem href="/services/development" title="Development">
-                      Frontend and full-stack web development.
+                    <ListItem href="/services/website-development" title="Website Development">
+                      High-performance web applications built with cutting-edge technologies.
                     </ListItem>
-                    <ListItem href="/services/branding" title="Branding">
-                      Brand identity and visual design systems.
+                    <ListItem href="/services/art-creative-design" title="Art & Creative Design">
+                      Complete visual identity systems and creative assets.
                     </ListItem>
-                    <ListItem href="/services/consulting" title="Consulting">
-                      Design strategy and technical consultation.
+                    <ListItem href="/services/product-design" title="Product Design">
+                      User-centered product design that creates intuitive experiences.
                     </ListItem>
-                    <ListItem href="/services/maintenance" title="Maintenance">
-                      Ongoing support and website maintenance.
+                    <ListItem href="/services/agentic-ai" title="Agentic AI">
+                      Intelligent AI solutions that automate processes and enhance decision-making.
                     </ListItem>
-                    <ListItem href="/services/audit" title="Design Audit">
-                      UX/UI analysis and improvement recommendations.
+                    <ListItem href="/services" title="All Services">
+                      View our complete range of digital services.
                     </ListItem>
                   </ul>
                 </NavigationMenuContent>

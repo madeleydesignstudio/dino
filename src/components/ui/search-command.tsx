@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import {
   BookOpenIcon,
@@ -15,10 +15,10 @@ import {
   TrendingUpIcon,
   UsersIcon,
   WrenchIcon,
-} from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
-import { useHotkeys } from 'react-hotkeys-hook';
+} from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
+import { useHotkeys } from 'react-hotkeys-hook'
 import {
   CommandDialog,
   CommandEmpty,
@@ -28,12 +28,12 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from '@/components/ui/command';
+} from '@/components/ui/command'
 
 // Declare global window property
 declare global {
   interface Window {
-    openSearch?: () => void;
+    openSearch?: () => void
   }
 }
 
@@ -94,35 +94,51 @@ const searchItems = [
   // Services
   {
     category: 'Services',
-    title: 'Web Design',
-    description: 'Custom website design and user experience',
-    href: '/services/web-design',
+    title: 'Website Design',
+    description: 'Beautiful, user-focused websites that convert visitors into customers',
+    href: '/services/website-design',
     icon: PaletteIcon,
     keywords: ['web', 'design', 'ui', 'ux', 'website'],
   },
   {
     category: 'Services',
-    title: 'Development',
-    description: 'Frontend and full-stack web development',
-    href: '/services/development',
+    title: 'Website Development',
+    description: 'High-performance web applications built with cutting-edge technologies',
+    href: '/services/website-development',
     icon: CodeIcon,
     keywords: ['development', 'coding', 'frontend', 'fullstack', 'programming'],
   },
   {
     category: 'Services',
-    title: 'Branding',
-    description: 'Brand identity and visual design systems',
-    href: '/services/branding',
+    title: 'Art & Creative Design',
+    description: 'Complete visual identity systems and creative assets',
+    href: '/services/art-creative-design',
     icon: TrendingUpIcon,
-    keywords: ['branding', 'identity', 'visual', 'logo', 'brand'],
+    keywords: ['branding', 'identity', 'visual', 'logo', 'brand', 'art', 'creative'],
   },
   {
     category: 'Services',
-    title: 'Consulting',
-    description: 'Design strategy and technical consultation',
-    href: '/services/consulting',
+    title: 'Product Design',
+    description: 'User-centered product design that creates intuitive experiences',
+    href: '/services/product-design',
     icon: HeadphonesIcon,
-    keywords: ['consulting', 'strategy', 'advice', 'consultation'],
+    keywords: ['product', 'design', 'ux', 'user', 'experience', 'prototyping'],
+  },
+  {
+    category: 'Services',
+    title: 'Agentic AI',
+    description: 'Intelligent AI solutions that automate processes and enhance decision-making',
+    href: '/services/agentic-ai',
+    icon: CodeIcon,
+    keywords: ['ai', 'artificial', 'intelligence', 'automation', 'agentic', 'machine', 'learning'],
+  },
+  {
+    category: 'Services',
+    title: 'All Services',
+    description: 'View our complete range of digital services',
+    href: '/services',
+    icon: FolderIcon,
+    keywords: ['services', 'all', 'overview', 'complete', 'digital'],
   },
 
   // Resources
@@ -176,80 +192,78 @@ const searchItems = [
     icon: HashIcon,
     keywords: ['process', 'approach', 'methodology', 'workflow'],
   },
-];
+]
 
 const SearchCommand = () => {
-  const [open, setOpen] = useState(false);
-  const [search, setSearch] = useState('');
-  const router = useRouter();
+  const [open, setOpen] = useState(false)
+  const [search, setSearch] = useState('')
+  const router = useRouter()
 
   // Expose openSearch function globally
   React.useEffect(() => {
-    window.openSearch = () => setOpen(true);
+    window.openSearch = () => setOpen(true)
     return () => {
-      delete window.openSearch;
-    };
-  }, []);
+      delete window.openSearch
+    }
+  }, [])
 
   // Listen for Cmd+K or Ctrl+K
   useHotkeys(
     ['meta+k', 'ctrl+k'],
     (event) => {
-      event.preventDefault();
-      setOpen(true);
+      event.preventDefault()
+      setOpen(true)
     },
     {
       enableOnFormTags: true,
-    }
-  );
+    },
+  )
 
   // Close on escape
   useHotkeys(
     'escape',
     () => {
       if (open) {
-        setOpen(false);
+        setOpen(false)
       }
     },
     {
       enableOnFormTags: true,
       enabled: open,
-    }
-  );
+    },
+  )
 
   // Filter items based on search
   const filteredItems = React.useMemo(() => {
-    if (!search) return searchItems;
+    if (!search) return searchItems
 
     return searchItems.filter(
       (item) =>
         item.title.toLowerCase().includes(search.toLowerCase()) ||
         item.description.toLowerCase().includes(search.toLowerCase()) ||
-        item.keywords.some((keyword) =>
-          keyword.toLowerCase().includes(search.toLowerCase())
-        )
-    );
-  }, [search]);
+        item.keywords.some((keyword) => keyword.toLowerCase().includes(search.toLowerCase())),
+    )
+  }, [search])
 
   // Group items by category
   const groupedItems = React.useMemo(() => {
-    const groups: { [key: string]: typeof searchItems } = {};
+    const groups: { [key: string]: typeof searchItems } = {}
 
     filteredItems.forEach((item) => {
       if (!groups[item.category]) {
-        groups[item.category] = [];
+        groups[item.category] = []
       }
-      groups[item.category].push(item);
-    });
+      groups[item.category].push(item)
+    })
 
-    return groups;
-  }, [filteredItems]);
+    return groups
+  }, [filteredItems])
 
   const handleSelect = (href: string) => {
-    setOpen(false);
-    setSearch('');
-    router.push(href);
-  };
+    setOpen(false)
+    setSearch('')
+    router.push(href)
+  }
 
   return (
     <CommandDialog className="max-w-2xl" onOpenChange={setOpen} open={open}>
@@ -266,7 +280,7 @@ const SearchCommand = () => {
             {index > 0 && <CommandSeparator />}
             <CommandGroup heading={category}>
               {items.map((item) => {
-                const Icon = item.icon;
+                const Icon = item.icon
                 return (
                   <CommandItem
                     className="flex items-center gap-3"
@@ -276,12 +290,10 @@ const SearchCommand = () => {
                     <Icon className="h-4 w-4" />
                     <div className="flex flex-col">
                       <span className="font-medium">{item.title}</span>
-                      <span className="text-muted-foreground text-xs">
-                        {item.description}
-                      </span>
+                      <span className="text-muted-foreground text-xs">{item.description}</span>
                     </div>
                   </CommandItem>
-                );
+                )
               })}
             </CommandGroup>
           </React.Fragment>
@@ -309,7 +321,7 @@ const SearchCommand = () => {
         )}
       </CommandList>
     </CommandDialog>
-  );
-};
+  )
+}
 
-export default SearchCommand;
+export default SearchCommand
