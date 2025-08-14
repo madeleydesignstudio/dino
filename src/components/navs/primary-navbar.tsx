@@ -165,204 +165,35 @@ const PrimaryNavbar = () => {
   }
 
   return (
-    <div className="navbar-container">
-      <div className="navbar-content">
+    <div className="sticky top-0 bg-background z-[99999] border-b py-1 border-x">
+      <div className="flex items-center justify-between px-2 w-full">
         {/* Logo - Always visible */}
-        <Link className="navbar-link" href="/">
+        <Link className="flex items-center gap-2" href="/">
           <Image
             alt="Dino"
-            className="navbar-logo"
+            className="h-5 w-5"
             height={20}
             src="https://storage.dev-0af.workers.dev/dino-logo.png"
             width={20}
           />
-          <span className="navbar-brand-text">Dino</span>
+          <span className="text-sm font-medium">Dino</span>
         </Link>
 
-        {/* Desktop Navigation Container */}
-        <div className="navbar-desktop">
-          {/* Vertical Separator */}
-          <div className="h-4 w-px bg-neutral-300" />
-
-          {/* Desktop Navigation */}
-          <div className="flex items-center gap-2 text-xs">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="h-auto bg-transparent px-2 py-1 font-normal text-xs">
-                    Case Studies
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid gap-1 p-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                      <li className="row-span-4">
-                        <NavigationMenuLink asChild>
-                          <Link
-                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                            href="/case-studies/structopia"
-                          >
-                            <div className="mb-2 mt-4 font-medium text-lg">Structopia</div>
-                            <p className="text-muted-foreground text-sm leading-tight">
-                              Modern web platform for architectural design.
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                      <ListItem href="/case-studies/ordo" title="Ordo">
-                        Task management and productivity application.
-                      </ListItem>
-                      <ListItem href="/case-studies/form-function" title="Form + Function">
-                        Design studio portfolio and brand identity.
-                      </ListItem>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="h-auto bg-transparent px-2 py-1 font-normal text-xs">
-                    Resources
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2">
-                      <ListItem href="/resources/dino-ui" title="Dino UI">
-                        Design insights, tutorials, and industry trends.
-                      </ListItem>
-                      <ListItem href="/resources/dino-api" title="Dino API">
-                        Step-by-step guides for design and development.
-                      </ListItem>
-                      <ListItem href="/resources/dino-opensource" title="Dino Open Source">
-                        Free design templates and UI components.
-                      </ListItem>
-                      <ListItem href="/tools" title="Tools">
-                        Recommended tools and resources for designers.
-                      </ListItem>
-                      <ListItem href="/community" title="Community">
-                        Join our community of designers and developers.
-                      </ListItem>
-                      <ListItem href="/newsletter" title="Newsletter">
-                        Stay updated with our latest content and projects.
-                      </ListItem>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="h-auto bg-transparent px-2 py-1 font-normal text-xs">
-                    Services
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2">
-                      <ListItem href="/services/web-design" title="Web Design">
-                        Custom website design and user experience.
-                      </ListItem>
-                      <ListItem href="/services/development" title="Development">
-                        Frontend and full-stack web development.
-                      </ListItem>
-                      <ListItem href="/services/branding" title="Branding">
-                        Brand identity and visual design systems.
-                      </ListItem>
-                      <ListItem href="/services/consulting" title="Consulting">
-                        Design strategy and technical consultation.
-                      </ListItem>
-                      <ListItem href="/services/maintenance" title="Maintenance">
-                        Ongoing support and website maintenance.
-                      </ListItem>
-                      <ListItem href="/services/audit" title="Design Audit">
-                        UX/UI analysis and improvement recommendations.
-                      </ListItem>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="h-auto bg-transparent px-2 py-1 font-normal text-xs">
-                    Company
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2">
-                      <ListItem href="/about" title="About Us">
-                        Learn about our team and mission.
-                      </ListItem>
-                      <ListItem href="/careers" title="Careers">
-                        Join our team of talented designers and developers.
-                      </ListItem>
-                      <ListItem href="/contact" title="Contact">
-                        Get in touch for your next project.
-                      </ListItem>
-                      <ListItem href="/process" title="Our Process">
-                        How we approach design and development projects.
-                      </ListItem>
-                      <ListItem href="/values" title="Values">
-                        The principles that guide our work.
-                      </ListItem>
-                      <ListItem href="/press" title="Press">
-                        Media coverage and press resources.
-                      </ListItem>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="h-auto bg-transparent px-2 py-1 font-normal text-xs">
-                    Pricing
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2">
-                      <ListItem href="/company/pricing" title="Pricing">
-                        Transparent pricing for all our services.
-                      </ListItem>
-                      <ListItem href="/company/questions" title="Questions">
-                        Frequently asked questions and support.
-                      </ListItem>
-                      <ListItem href="/company/testimonials" title="Testimonials">
-                        What our clients say about working with us.
-                      </ListItem>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
-
-          {/* Desktop Search and Start Project */}
-          <div className="flex items-center gap-2">
-            <div className="relative">
-              <input
-                className="h-7 w-64 rounded-md border border-neutral-200 bg-neutral-50 px-2 pr-6 text-xs placeholder:text-neutral-400 focus:border-violet-300 focus:outline-none focus:ring-1 focus:ring-violet-200"
-                placeholder="Search..."
-                onFocus={() => {
-                  window.openSearch?.()
-                }}
-                onClick={() => {
-                  window.openSearch?.()
-                }}
-                readOnly
-              />
-              <SearchIcon className="absolute right-2 top-1/2 h-3 w-3 -translate-y-1/2 text-neutral-400" />
-            </div>
-            <Link
-              className="navbar-link cursor-pointer rounded-md bg-violet-200 px-2 py-1 text-neutral-900 text-xs"
-              href="/start-project"
-            >
-              Start Project
-            </Link>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        <div className="navbar-mobile">
+        {/* Mobile Navigation - visible on mobile, hidden on md+ */}
+        <div className="flex items-center gap-2 md:hidden">
           <button
-            className="navbar-button navbar-search-btn"
+            className="flex h-8 w-8 items-center justify-center rounded-md hover:bg-neutral-100"
             onClick={() => {
               window.openSearch?.()
             }}
           >
-            <SearchIcon className="navbar-icon" />
+            <SearchIcon className="h-4 w-4" />
           </button>
 
           <Drawer onOpenChange={setDrawerOpen} open={drawerOpen}>
             <DrawerTrigger asChild>
-              <button className="navbar-button navbar-menu-btn">
-                <MenuIcon className="navbar-icon" />
+              <button className="flex h-8 w-8 items-center justify-center rounded-md hover:bg-neutral-100">
+                <MenuIcon className="h-4 w-4" />
               </button>
             </DrawerTrigger>
             <DrawerContent className="max-h-[90vh]">
@@ -370,8 +201,8 @@ const PrimaryNavbar = () => {
                 <div className="flex items-center justify-between">
                   <DrawerTitle className="text-sm">Navigation</DrawerTitle>
                   <DrawerClose asChild>
-                    <button className="navbar-button">
-                      <XIcon className="navbar-icon" />
+                    <button className="flex h-8 w-8 items-center justify-center rounded-md hover:bg-neutral-100">
+                      <XIcon className="h-4 w-4" />
                     </button>
                   </DrawerClose>
                 </div>
@@ -392,7 +223,7 @@ const PrimaryNavbar = () => {
                         <div className="space-y-2">
                           {section.items.map((item) => (
                             <Link
-                              className="navbar-link block rounded-md p-2 transition-colors hover:bg-neutral-50"
+                              className="block rounded-md p-2 transition-colors hover:bg-neutral-50"
                               href={item.href}
                               key={item.href}
                               onClick={handleLinkClick}
@@ -411,7 +242,7 @@ const PrimaryNavbar = () => {
 
                 <div className="mt-4 space-y-2 border-t pt-4">
                   <Link
-                    className="navbar-link block w-full rounded-md bg-violet-200 px-2 py-2 text-center text-xs font-medium text-neutral-900 transition-colors hover:bg-violet-300"
+                    className="block w-full rounded-md bg-violet-200 px-2 py-2 text-center text-xs font-medium text-neutral-900 transition-colors hover:bg-violet-300"
                     href="/contact"
                     onClick={handleLinkClick}
                   >
@@ -421,6 +252,170 @@ const PrimaryNavbar = () => {
               </div>
             </DrawerContent>
           </Drawer>
+        </div>
+
+        {/* Desktop Navigation - hidden on mobile, visible on md+ */}
+        <div className="hidden md:flex md:items-center md:gap-6">
+          {/* Desktop Navigation */}
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="h-auto bg-transparent px-2 py-1 font-normal text-xs">
+                  Case Studies
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid gap-1 p-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                    <li className="row-span-4">
+                      <NavigationMenuLink asChild>
+                        <Link
+                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                          href="/case-studies/structopia"
+                        >
+                          <div className="mb-2 mt-4 font-medium text-lg">Structopia</div>
+                          <p className="text-muted-foreground text-sm leading-tight">
+                            Modern web platform for architectural design.
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <ListItem href="/case-studies/ordo" title="Ordo">
+                      Task management and productivity application.
+                    </ListItem>
+                    <ListItem href="/case-studies/form-function" title="Form + Function">
+                      Design studio portfolio and brand identity.
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="h-auto bg-transparent px-2 py-1 font-normal text-xs">
+                  Resources
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2">
+                    <ListItem href="/resources/dino-ui" title="Dino UI">
+                      Design insights, tutorials, and industry trends.
+                    </ListItem>
+                    <ListItem href="/resources/dino-api" title="Dino API">
+                      Step-by-step guides for design and development.
+                    </ListItem>
+                    <ListItem href="/resources/dino-opensource" title="Dino Open Source">
+                      Free design templates and UI components.
+                    </ListItem>
+                    <ListItem href="/tools" title="Tools">
+                      Recommended tools and resources for designers.
+                    </ListItem>
+                    <ListItem href="/community" title="Community">
+                      Join our community of designers and developers.
+                    </ListItem>
+                    <ListItem href="/newsletter" title="Newsletter">
+                      Stay updated with our latest content and projects.
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="h-auto bg-transparent px-2 py-1 font-normal text-xs">
+                  Services
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2">
+                    <ListItem href="/services/web-design" title="Web Design">
+                      Custom website design and user experience.
+                    </ListItem>
+                    <ListItem href="/services/development" title="Development">
+                      Frontend and full-stack web development.
+                    </ListItem>
+                    <ListItem href="/services/branding" title="Branding">
+                      Brand identity and visual design systems.
+                    </ListItem>
+                    <ListItem href="/services/consulting" title="Consulting">
+                      Design strategy and technical consultation.
+                    </ListItem>
+                    <ListItem href="/services/maintenance" title="Maintenance">
+                      Ongoing support and website maintenance.
+                    </ListItem>
+                    <ListItem href="/services/audit" title="Design Audit">
+                      UX/UI analysis and improvement recommendations.
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="h-auto bg-transparent px-2 py-1 font-normal text-xs">
+                  Company
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2">
+                    <ListItem href="/about" title="About Us">
+                      Learn about our team and mission.
+                    </ListItem>
+                    <ListItem href="/careers" title="Careers">
+                      Join our team of talented designers and developers.
+                    </ListItem>
+                    <ListItem href="/contact" title="Contact">
+                      Get in touch for your next project.
+                    </ListItem>
+                    <ListItem href="/process" title="Our Process">
+                      How we approach design and development projects.
+                    </ListItem>
+                    <ListItem href="/values" title="Values">
+                      The principles that guide our work.
+                    </ListItem>
+                    <ListItem href="/press" title="Press">
+                      Media coverage and press resources.
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="h-auto bg-transparent px-2 py-1 font-normal text-xs">
+                  Pricing
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2">
+                    <ListItem href="/company/pricing" title="Pricing">
+                      Transparent pricing for all our services.
+                    </ListItem>
+                    <ListItem href="/company/questions" title="Questions">
+                      Frequently asked questions and support.
+                    </ListItem>
+                    <ListItem href="/company/testimonials" title="Testimonials">
+                      What our clients say about working with us.
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          {/* Desktop Search and Start Project */}
+          <div className="flex items-center gap-2">
+            <div className="relative">
+              <input
+                className="h-7 w-48 md:w-64 rounded-md border border-neutral-200 bg-neutral-50 px-2 pr-6 text-xs placeholder:text-neutral-400 focus:border-violet-300 focus:outline-none focus:ring-1 focus:ring-violet-200"
+                placeholder="Search..."
+                onFocus={() => {
+                  window.openSearch?.()
+                }}
+                onClick={() => {
+                  window.openSearch?.()
+                }}
+                readOnly
+              />
+              <SearchIcon className="absolute right-2 top-1/2 h-3 w-3 -translate-y-1/2 text-neutral-400" />
+            </div>
+            <Link
+              className="cursor-pointer rounded-md bg-violet-200 px-2 py-1 text-neutral-900 text-xs hover:bg-violet-300"
+              href="/start-project"
+            >
+              Start Project
+            </Link>
+          </div>
         </div>
       </div>
       <SearchCommand />
