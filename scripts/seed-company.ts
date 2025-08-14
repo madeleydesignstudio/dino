@@ -39,6 +39,7 @@ async function seedCompanyData() {
                     text: 'We are a creative digital studio dedicated to building beautiful, functional, and user-centered digital experiences. Our team combines strategic thinking with cutting-edge design and development to help businesses grow and connect with their audiences.',
                   },
                 ],
+                version: 1,
               },
               {
                 type: 'paragraph',
@@ -48,6 +49,7 @@ async function seedCompanyData() {
                     text: 'Founded with a passion for innovation and excellence, we specialize in web design, development, branding, and digital strategy. Every project is an opportunity to create something meaningful and impactful.',
                   },
                 ],
+                version: 1,
               },
             ],
             direction: null,
@@ -77,19 +79,23 @@ async function seedCompanyData() {
         values: [
           {
             title: 'Innovation',
-            description: 'We constantly explore new technologies and approaches to stay ahead of the curve and deliver cutting-edge solutions.',
+            description:
+              'We constantly explore new technologies and approaches to stay ahead of the curve and deliver cutting-edge solutions.',
           },
           {
             title: 'Quality',
-            description: 'Excellence is not negotiable. We maintain the highest standards in every aspect of our work, from design to development.',
+            description:
+              'Excellence is not negotiable. We maintain the highest standards in every aspect of our work, from design to development.',
           },
           {
             title: 'Collaboration',
-            description: 'We believe in working closely with our clients as partners, ensuring transparent communication throughout the entire process.',
+            description:
+              'We believe in working closely with our clients as partners, ensuring transparent communication throughout the entire process.',
           },
           {
             title: 'Impact',
-            description: 'Every project should make a difference. We focus on creating solutions that drive real business results and user satisfaction.',
+            description:
+              'Every project should make a difference. We focus on creating solutions that drive real business results and user satisfaction.',
           },
         ],
         teamMembers: [

@@ -38,6 +38,7 @@ export async function POST() {
                     text: 'We are a creative digital studio dedicated to building beautiful, functional, and user-centered digital experiences.',
                   },
                 ],
+                version: 1,
               },
             ],
             direction: null,
