@@ -4,36 +4,78 @@ import { Separator } from '@/components/ui/separator'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import Image from 'next/image'
+import type { Company as CompanyType } from '@/payload-types'
 
-async function getCompanyData() {
+// Temporary type definition until types are regenerated
+interface CompanyData {
+  id: number
+  title: string
+  subtitle?: string
+  description?: any // Rich text content
+  heroImage?: {
+    id: number
+    url?: string
+    alt: string
+  }
+  stats?: Array<{
+    label: string
+    value: string
+  }>
+  teamMembers?: Array<{
+    name: string
+    role: string
+    bio?: string
+    image?: {
+      id: number
+      url?: string
+      alt: string
+    }
+  }>
+  values?: Array<{
+    title: string
+    description: string
+  }>
+  updatedAt: string
+  createdAt: string
+}
+
+async function getCompanyData(): Promise<CompanyData | null> {
   try {
     const payload = await getPayload({ config })
+
     const result = await payload.find({
-      collection: 'company' as any,
+      collection: 'company',
       limit: 1,
     })
-    return result.docs.length > 0 ? result.docs[0] : null
+
+    return result.docs.length > 0 ? (result.docs[0] as CompanyData) : null
   } catch (error) {
     console.error('Error fetching company data:', error)
     return null
   }
 }
 
-function renderRichText(description: any): string {
-  if (!description?.root?.children) return ''
-  return description.root.children
-    .map((child: any) => {
-      if (child.children) {
-        return child.children.map((textChild: any) => textChild.text || '').join('')
-      }
-      return ''
-    })
-    .join(' ')
+function renderRichText(content: any): string {
+  if (!content) return ''
+
+  if (Array.isArray(content)) {
+    return content
+      .map((block) => {
+        if (block.children) {
+          return block.children.map((child: any) => child.text || '').join('')
+        }
+        return ''
+      })
+      .join(' ')
+  }
+
+  return String(content)
 }
 
-export default async function Company() {
+export default async function DynamicCompany() {
   const companyData = await getCompanyData()
 
+  // If no company data exists, show a setup message
   if (!companyData) {
     return (
       <div className="w-full">
@@ -62,42 +104,27 @@ export default async function Company() {
                 <li>5. Return to this page to see your content displayed</li>
               </ol>
             </div>
-            <div className="space-y-4">
-              <Badge variant="outline">
-                <a href="/admin" className="text-violet-600 hover:text-violet-700">
-                  Go to Admin Panel →
-                </a>
-              </Badge>
-              <div>
-                <p className="text-sm text-neutral-500 mb-2">Or seed some initial data:</p>
-                <form action="/api/seed" method="POST" className="inline">
-                  <button
-                    type="submit"
-                    className="bg-violet-600 text-white px-4 py-2 rounded hover:bg-violet-700 text-sm"
-                  >
-                    🌱 Seed Sample Data
-                  </button>
-                </form>
-              </div>
-            </div>
+            <Badge variant="outline">
+              <a href="/admin" className="text-violet-600 hover:text-violet-700">
+                Go to Admin Panel →
+              </a>
+            </Badge>
           </div>
         </section>
       </div>
     )
   }
 
-  const heroImage = typeof companyData.heroImage === 'object' ? companyData.heroImage : null
-
   return (
     <div className="w-full">
       {/* Hero Section */}
       <section className="px-4 py-16 lg:py-24">
         <div className="max-w-4xl mx-auto">
-          {heroImage?.url && (
+          {companyData.heroImage?.url && (
             <div className="mb-8">
               <Image
-                src={heroImage.url}
-                alt={heroImage.alt || companyData.title}
+                src={companyData.heroImage.url}
+                alt={companyData.heroImage.alt || companyData.title}
                 width={800}
                 height={400}
                 className="w-full h-64 object-cover rounded-lg"
@@ -122,9 +149,7 @@ export default async function Company() {
         <div className="max-w-4xl mx-auto">
           <div className="prose prose-lg mx-auto text-center">
             <div className="text-lg leading-relaxed text-neutral-700">
-              {companyData.description
-                ? renderRichText(companyData.description)
-                : 'We are a creative digital studio dedicated to building beautiful, functional, and user-centered digital experiences. Our team combines strategic thinking with cutting-edge design and development to help businesses grow and connect with their audiences.'}
+              {renderRichText(companyData.description)}
             </div>
           </div>
         </div>
@@ -143,9 +168,13 @@ export default async function Company() {
                   Numbers that showcase our journey and achievements
                 </p>
               </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {companyData.stats.map((stat: any, index: number) => (
-                  <Card key={stat.id || index} className="text-center">
+              <div
+                className={`grid gap-8 ${
+                  companyData.stats.length <= 3 ? 'md:grid-cols-3' : 'md:grid-cols-2 lg:grid-cols-4'
+                }`}
+              >
+                {companyData.stats.map((stat, index) => (
+                  <Card key={index} className="text-center">
                     <CardContent className="pt-6">
                       <div className="text-3xl lg:text-4xl font-bold text-violet-600 mb-2">
                         {stat.value}
@@ -172,9 +201,9 @@ export default async function Company() {
                   The principles that guide everything we do
                 </p>
               </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {companyData.values.map((value: any, index: number) => (
-                  <Card key={value.id || index}>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {companyData.values.map((value, index) => (
+                  <Card key={index}>
                     <CardContent className="p-6">
                       <h3 className="font-semibold text-xl mb-3">{value.title}</h3>
                       <p className="text-neutral-600">{value.description}</p>
@@ -197,29 +226,26 @@ export default async function Company() {
               <p className="text-lg text-neutral-600">The people behind our success</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {companyData.teamMembers.map((member: any, index: number) => {
-                const memberImage = typeof member.image === 'object' ? member.image : null
-                return (
-                  <Card key={member.id || index}>
-                    <CardContent className="p-6 text-center">
-                      {memberImage?.url && (
-                        <div className="mb-4">
-                          <Image
-                            src={memberImage.url}
-                            alt={memberImage.alt || member.name}
-                            width={150}
-                            height={150}
-                            className="w-24 h-24 rounded-full mx-auto object-cover"
-                          />
-                        </div>
-                      )}
-                      <h3 className="font-semibold text-lg mb-1">{member.name}</h3>
-                      <div className="text-violet-600 text-sm mb-3">{member.role}</div>
-                      {member.bio && <p className="text-neutral-600 text-sm">{member.bio}</p>}
-                    </CardContent>
-                  </Card>
-                )
-              })}
+              {companyData.teamMembers.map((member, index) => (
+                <Card key={index}>
+                  <CardContent className="p-6 text-center">
+                    {member.image?.url && (
+                      <div className="mb-4">
+                        <Image
+                          src={member.image.url}
+                          alt={member.image.alt || member.name}
+                          width={150}
+                          height={150}
+                          className="w-24 h-24 rounded-full mx-auto object-cover"
+                        />
+                      </div>
+                    )}
+                    <h3 className="font-semibold text-lg mb-1">{member.name}</h3>
+                    <div className="text-violet-600 text-sm mb-3">{member.role}</div>
+                    {member.bio && <p className="text-neutral-600 text-sm">{member.bio}</p>}
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
@@ -232,9 +258,7 @@ export default async function Company() {
             <Badge variant="outline" className="mb-4">
               Dynamic Content
             </Badge>
-            <h3 className="font-semibold text-xl mb-4">
-              ✨ This content is powered by Payload CMS
-            </h3>
+            <h3 className="font-semibold text-xl mb-4">✨ This content is powered by Payload CMS</h3>
             <p className="text-neutral-600 mb-6">
               All the content on this page can be edited through the admin panel. Changes will be
               reflected immediately on the website.

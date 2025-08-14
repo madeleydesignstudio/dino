@@ -6,6 +6,8 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
+import { Company } from './collections/Company'
+import { CompanySimple } from './collections/Company-simple'
 import { Media } from './collections/Media'
 import { Users } from './collections/Users'
 import { getValidatedEnv } from './lib/env-validation'
@@ -23,7 +25,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Company, CompanySimple],
   editor: lexicalEditor(),
   secret: env.PAYLOAD_SECRET,
   typescript: {
