@@ -3,6 +3,10 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { seedCompanyData } from '@/lib/seed-company'
 
+// Force dynamic rendering to ensure fresh data
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export async function GET(request: NextRequest) {
   try {
     const payload = await getPayload({ config })
@@ -34,10 +38,17 @@ export async function GET(request: NextRequest) {
       })
     }
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
       data: result.docs[0],
     })
+
+    // Prevent caching to ensure fresh data
+    response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate')
+    response.headers.set('Pragma', 'no-cache')
+    response.headers.set('Expires', '0')
+
+    return response
   } catch (error) {
     console.error('Error in company API route:', error)
     return NextResponse.json(
@@ -46,7 +57,7 @@ export async function GET(request: NextRequest) {
         message: 'Internal server error',
         error: error instanceof Error ? error.message : 'Unknown error',
       },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }
@@ -78,11 +89,18 @@ export async function POST(request: NextRequest) {
       })
     }
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
       message: 'Company data saved successfully',
       data: result,
     })
+
+    // Prevent caching to ensure fresh data
+    response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate')
+    response.headers.set('Pragma', 'no-cache')
+    response.headers.set('Expires', '0')
+
+    return response
   } catch (error) {
     console.error('Error saving company data:', error)
     return NextResponse.json(
@@ -91,7 +109,7 @@ export async function POST(request: NextRequest) {
         message: 'Failed to save company data',
         error: error instanceof Error ? error.message : 'Unknown error',
       },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }

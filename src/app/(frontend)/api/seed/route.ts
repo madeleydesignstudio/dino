@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 
+// Force dynamic rendering to ensure fresh data
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export async function POST() {
   try {
     const payload = await getPayload({ config })

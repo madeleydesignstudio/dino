@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 
+// Force dynamic rendering to ensure fresh data
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export async function GET() {
   try {
     const payload = await getPayload({ config })
@@ -38,7 +42,7 @@ export async function GET() {
         error: error instanceof Error ? error.message : 'Unknown error',
         timestamp: new Date().toISOString(),
       },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }

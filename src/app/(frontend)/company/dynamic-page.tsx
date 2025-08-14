@@ -7,6 +7,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Company as CompanyType } from '@/payload-types'
 
+// Force dynamic rendering to get fresh data from CMS
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 // Temporary type definition until types are regenerated
 interface CompanyData {
   id: number
