@@ -69,8 +69,10 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    company: Company;
-    'company-simple': CompanySimple;
+    'case-studies': CaseStudy;
+    careers: Career;
+    'contact-submissions': ContactSubmission;
+    pages: Page;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,8 +81,10 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    company: CompanySelect<false> | CompanySelect<true>;
-    'company-simple': CompanySimpleSelect<false> | CompanySimpleSelect<true>;
+    'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
+    careers: CareersSelect<false> | CareersSelect<true>;
+    'contact-submissions': ContactSubmissionsSelect<false> | ContactSubmissionsSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -88,8 +92,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'company-about': CompanyAbout;
+  };
+  globalsSelect: {
+    'company-about': CompanyAboutSelect<false> | CompanyAboutSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -132,6 +140,13 @@ export interface User {
   hash?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
   password?: string | null;
 }
 /**
@@ -154,20 +169,37 @@ export interface Media {
   focalY?: number | null;
 }
 /**
- * Manage company page content
- *
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "company".
+ * via the `definition` "case-studies".
  */
-export interface Company {
+export interface CaseStudy {
   id: number;
   title: string;
-  subtitle?: string | null;
-  description?: {
+  /**
+   * URL-friendly version of the title (e.g., "my-case-study")
+   */
+  slug: string;
+  description: string;
+  image: number | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "careers".
+ */
+export interface Career {
+  id: number;
+  title: string;
+  /**
+   * URL-friendly version (e.g., "senior-designer")
+   */
+  slug: string;
+  description: {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -177,59 +209,59 @@ export interface Company {
       version: number;
     };
     [k: string]: unknown;
-  } | null;
-  heroImage?: (number | null) | Media;
-  stats?:
-    | {
-        label: string;
-        value: string;
-        id?: string | null;
-      }[]
-    | null;
-  teamMembers?:
-    | {
-        name: string;
-        role: string;
-        bio?: string | null;
-        image?: (number | null) | Media;
-        id?: string | null;
-      }[]
-    | null;
-  values?:
-    | {
-        title: string;
-        description: string;
-        id?: string | null;
-      }[]
-    | null;
+  };
+  location: string;
+  type: 'full-time' | 'part-time' | 'contract' | 'internship';
+  /**
+   * Toggle to show/hide this job listing
+   */
+  isOpen?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
- * Simplified company collection for testing
- *
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "company-simple".
+ * via the `definition` "contact-submissions".
  */
-export interface CompanySimple {
+export interface ContactSubmission {
+  id: number;
+  email: string;
+  message: string;
+  status?: ('new' | 'in-progress' | 'resolved') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
   id: number;
   title: string;
-  subtitle?: string | null;
-  simpleDescription?: string | null;
-  stats?:
-    | {
-        label: string;
-        value: string;
-        id?: string | null;
-      }[]
-    | null;
-  values?:
-    | {
-        title: string;
-        description: string;
-        id?: string | null;
-      }[]
-    | null;
+  /**
+   * URL path (e.g., "start" for /start)
+   */
+  slug: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  heroImage?: (number | null) | Media;
+  /**
+   * Toggle to show/hide this page
+   */
+  isPublished?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -249,12 +281,20 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
-        relationTo: 'company';
-        value: number | Company;
+        relationTo: 'case-studies';
+        value: number | CaseStudy;
       } | null)
     | ({
-        relationTo: 'company-simple';
-        value: number | CompanySimple;
+        relationTo: 'careers';
+        value: number | Career;
+      } | null)
+    | ({
+        relationTo: 'contact-submissions';
+        value: number | ContactSubmission;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -312,6 +352,13 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -333,61 +380,51 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "company_select".
+ * via the `definition` "case-studies_select".
  */
-export interface CompanySelect<T extends boolean = true> {
+export interface CaseStudiesSelect<T extends boolean = true> {
   title?: T;
-  subtitle?: T;
+  slug?: T;
   description?: T;
-  heroImage?: T;
-  stats?:
-    | T
-    | {
-        label?: T;
-        value?: T;
-        id?: T;
-      };
-  teamMembers?:
-    | T
-    | {
-        name?: T;
-        role?: T;
-        bio?: T;
-        image?: T;
-        id?: T;
-      };
-  values?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-        id?: T;
-      };
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "company-simple_select".
+ * via the `definition` "careers_select".
  */
-export interface CompanySimpleSelect<T extends boolean = true> {
+export interface CareersSelect<T extends boolean = true> {
   title?: T;
-  subtitle?: T;
-  simpleDescription?: T;
-  stats?:
-    | T
-    | {
-        label?: T;
-        value?: T;
-        id?: T;
-      };
-  values?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-        id?: T;
-      };
+  slug?: T;
+  description?: T;
+  location?: T;
+  type?: T;
+  isOpen?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-submissions_select".
+ */
+export interface ContactSubmissionsSelect<T extends boolean = true> {
+  email?: T;
+  message?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  content?: T;
+  heroImage?: T;
+  isPublished?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -422,6 +459,44 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "company-about".
+ */
+export interface CompanyAbout {
+  id: number;
+  title: string;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  heroImage?: (number | null) | Media;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "company-about_select".
+ */
+export interface CompanyAboutSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  heroImage?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -1,31 +1,27 @@
-import CaseStudies from '@/components/homepage/case-studies';
-import Hero from '@/components/homepage/hero';
-import News from '@/components/homepage/news';
-import Pricing from '@/components/homepage/pricing';
-import Questions from '@/components/homepage/questions-testimonials';
-import Resources from '@/components/homepage/resources';
-import Studio from '@/components/homepage/studio-services';
-import Footer from '@/components/navs/footer';
-import { Separator } from '@/components/ui/separator';
+import { Hero } from "@/components/homepage/hero";
+import { Intro } from "@/components/homepage/intro";
+import { Clients } from "@/components/homepage/clients";
+import { ArtOfSimplicity } from "@/components/homepage/art-of-simplicity";
+import { StudioServices } from "@/components/homepage/studio-and-services";
+import { DesignDevelopmentStudio } from "@/components/homepage/design-development-studio";
+import { SelectedWorkCaseStudies } from "@/components/homepage/selected-work-case-studies";
+import { BenefitsPricing } from "@/components/homepage/benefits-pricing";
+import { Resources } from "../../components/homepage/resources";
+import { QuestionsTestimonials } from "@/components/homepage/questions-testimonials";
 
-export default async function HomePage() {
+export default async function Home() {
   return (
     <div>
       <Hero />
-      <Separator className="my-8" />
-      <Studio />
-      <Separator className="my-8" />
-      <CaseStudies />
-      <Separator className="my-8" />
-      <Pricing />
-      <Separator className="my-8" />
+      <Intro />
+      <Clients />
+      <ArtOfSimplicity />
+      <StudioServices />
+      <DesignDevelopmentStudio />
+      <SelectedWorkCaseStudies />
+      <BenefitsPricing />
       <Resources />
-      <Separator className="my-8" />
-      <Questions />
-      <Separator className="my-8" />
-      <News />
-      <Separator className="my-8" />
-        <Footer />
+      <QuestionsTestimonials />
     </div>
   );
 }

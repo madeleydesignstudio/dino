@@ -1,25 +1,29 @@
-import PrimaryNavbar from '@/components/navs/primary-navbar'
-import { ProjectAnnouncement } from '@/components/ui/project-announcement'
-import type React from 'react'
-import { Toaster } from 'sonner'
-import AppWrapper from '../../components/providers/app-wrapper'
-import './globals.css'
+import { Header } from "@/components/universal/Header";
+import type { Metadata } from "next";
+import { Azeret_Mono } from "next/font/google";
+import "./globals.css";
 
-export const metadata = {
-  description:
-    'a creative team focused on crafting bespoke websites that launch startups swiftly, seamlessly, and with refined style.',
-  title: 'Dino - Next gen design studio.',
-}
+const azeretMono = Azeret_Mono({
+  variable: "--font-azeret-mono",
+  subsets: ["latin"],
+});
 
-export default async function RootLayout(props: { children: React.ReactNode }) {
-  const { children } = props
+export const metadata: Metadata = {
+  title: "Digital Dino",
+  description: "Design agency portfolio and company information",
+};
 
+export default async function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <AppWrapper>
-      <ProjectAnnouncement />
-      <PrimaryNavbar />
-      <main className="lg:border-x border-neutral-200">{children}</main>
-      <Toaster position="bottom-right" richColors />
-    </AppWrapper>
-  )
+    <html lang="en">
+      <body className={`${azeretMono.variable}  antialiased`}>
+        <Header />
+        {children}
+      </body>
+    </html>
+  );
 }
