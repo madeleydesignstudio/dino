@@ -2,7 +2,7 @@
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import path from "path";
 import { buildConfig } from "payload";
-import sharp from "sharp";
+// import sharp from "sharp";
 import { fileURLToPath } from "url";
 
 import { postgresAdapter } from "@payloadcms/db-postgres";
@@ -38,7 +38,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI,
     },
   }),
-  sharp,
+  // sharp,
   plugins: [
     vercelBlobStorage({
       enabled: true,
