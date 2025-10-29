@@ -6,7 +6,7 @@ import Link from "next/link";
 export const SelectedWorkCaseStudies = () => {
   return (
     <>
-      <div className="flex justify-center">
+      <div className="flex justify-center p-4">
         <div className="w-full max-w-7xl flex h-full flex-col gap-10">
           <div className="flex h-full justify-between w-full items-end">
             <div className="w-1/3 flex flex-col justify-between h-full">
@@ -84,7 +84,7 @@ export const SelectedWorkCaseStudies = () => {
           </div>
         </div>
       </div>
-      <Separator className="my-20 bg-foreground max-w-7xl mx-auto" />
+      <Separator className="my-20 bg-[#D9E0C1] max-w-7xl mx-auto" />
     </>
   );
 };

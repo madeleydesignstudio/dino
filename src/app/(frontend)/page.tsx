@@ -8,11 +8,14 @@ import { SelectedWorkCaseStudies } from "@/components/homepage/selected-work-cas
 import { BenefitsPricing } from "@/components/homepage/benefits-pricing";
 import { Resources } from "../../components/homepage/resources";
 import { QuestionsTestimonials } from "@/components/homepage/questions-testimonials";
+import SlidingText from "@/components/homepage/SlidingText";
+import { NewsUpdates } from "@/components/homepage/news-updates";
 
 export default async function Home() {
   return (
-    <div>
+    <div className="max-w-7xl w-full mx-auto border-x border-[#D9E0C1]">
       <Hero />
+      <SlidingText />
       <Intro />
       <Clients />
       <ArtOfSimplicity />
@@ -22,6 +25,7 @@ export default async function Home() {
       <BenefitsPricing />
       <Resources />
       <QuestionsTestimonials />
+      <NewsUpdates />
     </div>
   );
 }

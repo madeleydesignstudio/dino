@@ -17,12 +17,12 @@ export function Header() {
   ];
 
   return (
-    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
-      <div className="w-full max-w-[100rem]">
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4">
+      <div className="w-full max-w-7xl border-b border-x border-[#D9E0C1]">
         <HeaderNav
           resourcesLinks={resourcesLinks}
           companyLinks={companyLinks}
-          logo={<ServerLogo width={50} height={35} priority />}
+          logo={<ServerLogo width={40} height={25} priority />}
         />
       </div>
     </div>

@@ -124,7 +124,7 @@ export default function ServicePageClient({
         </p>
 
         {/* Container with images - Right Side */}
-        <div ref={containerRef} className="w-[40vw] h-screen mr-6">
+        <div ref={containerRef} className="w-[40vw] h-screen mr-6 ">
           <div
             ref={contentRef}
             className="flex flex-col gap-6 h-max mx-auto pb-6"
@@ -133,15 +133,17 @@ export default function ServicePageClient({
             {serviceImages.map((image, index) => (
               <div
                 key={`first-${index}`}
-                className="aspect-[1.7] rounded-[0.4em] overflow-hidden pointer-events-none  flex items-center justify-center relative group"
+                className="aspect-[1.7] rounded-[0.4em] overflow-visible pointer-events-none relative group transform scale-50 origin-center"
               >
-                <div className="w-full h-full flex items-center justify-center">
-                  {image}
-                </div>
-                <div className="absolute inset-0  transition-all duration-300 flex items-center justify-center">
-                  <h3 className="text-neutral-700 text-6xl font-bold uppercase tracking-wider text-center px-4">
-                    {serviceLabels[index]}
-                  </h3>
+                <div className="w-full h-full flex items-center">
+                  <div className="w-1/2 h-full flex items-center justify-center">
+                    {image}
+                  </div>
+                  <div className="w-1/2 h-full flex items-center justify-center">
+                    <h3 className="text-neutral-700 text-6xl font-bold uppercase tracking-wider text-center px-4">
+                      {serviceLabels[index]}
+                    </h3>
+                  </div>
                 </div>
               </div>
             ))}
@@ -149,16 +151,18 @@ export default function ServicePageClient({
             {/* Duplicate set for infinite scroll effect */}
             {serviceImages.map((image, index) => (
               <div
-                key={`second-${index}`}
-                className="aspect-[1.7] rounded-[0.4em] overflow-hidden pointer-events-none flex items-center justify-center relative group"
+                key={`first-${index}`}
+                className="aspect-[1.7] rounded-[0.4em] overflow-visible pointer-events-none relative group transform scale-50 origin-center"
               >
-                <div className="w-full h-full flex items-center justify-center">
-                  {image}
-                </div>
-                <div className="absolute inset-0  transition-all duration-300 flex items-center justify-center">
-                  <h3 className="text-neutral-700 text-6xl font-bold uppercase tracking-wider text-center px-4">
-                    {serviceLabels[index]}
-                  </h3>
+                <div className="w-full h-full flex items-center">
+                  <div className="w-1/2 h-full flex items-center justify-center">
+                    {image}
+                  </div>
+                  <div className="w-1/2 h-full flex items-center justify-center">
+                    <h3 className="text-neutral-700 text-6xl font-bold uppercase tracking-wider text-center px-4">
+                      {serviceLabels[index]}
+                    </h3>
+                  </div>
                 </div>
               </div>
             ))}

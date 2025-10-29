@@ -3,7 +3,6 @@
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useLenis } from "lenis/react";
 import React, { useRef } from "react";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -67,12 +66,12 @@ const SlidingText: React.FC<SlidingTextProps> = ({
 
   return (
     <div
-      className={`mwg_effect024 w-full relative overflow-hidden ${className}`}
+      className={` w-full relative overflow-hidden ${className}`}
       ref={containerRef}
     >
-      <div className="pin-height w-full h-60" ref={pinHeightRef}>
+      <div className=" w-full h-60" ref={pinHeightRef}>
         <div className="container w-full h-full flex flex-col justify-center items-center gap-4">
-          <div className="sentence1 w-full whitespace-nowrap">
+          <div className=" w-full whitespace-nowrap">
             <p
               ref={sentence1Ref}
               className="m-0 text-3xl font-bold text-center text-[#D9E0C1]"

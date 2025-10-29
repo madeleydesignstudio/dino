@@ -63,7 +63,7 @@ export const Intro = () => {
           </div>
         </div>
       </div>
-      <Separator className="my-20 bg-foreground max-w-7xl mx-auto" />
+      <Separator className="my-20 bg-[#D9E0C1] max-w-7xl mx-auto" />
     </>
   );
 };

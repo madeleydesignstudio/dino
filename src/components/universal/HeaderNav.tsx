@@ -27,19 +27,18 @@ export function HeaderNav({
 
   return (
     <header
-      className="bg-background border border-foreground rounded-md overflow-hidden transition-all duration-300 ease-in-out"
-      style={{
-        height: activeDropdown ? "264px" : "64px",
-      }}
+      className={`bg-background  overflow-hidden transition-all duration-300 ease-in-out ${
+        activeDropdown ? "h-[264px]" : "h-12"
+      }`}
     >
       <nav className="px-4" onMouseLeave={() => setActiveDropdown(null)}>
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-12">
           <Link href={"/"} onClick={handleLinkClick}>
             {logo}
           </Link>
 
           <div className="flex gap-10 font-bold items-center">
-            <ul className="flex gap-10 font-bold items-center">
+            <ul className="flex gap-10 font-bold items-center text-sm">
               <li
                 className="group relative"
                 onMouseEnter={() => setActiveDropdown("resources")}
@@ -78,7 +77,7 @@ export function HeaderNav({
             <div>
               <Link
                 href={"/start"}
-                className="text-neutral-50 bg-[#C64B4B] px-4 py-1 rounded-tl-md rounded-tr-md rounded-br-md border-b-6 border-neutral-700 active:border-b-2 active:translate-y-1 transition-all duration-75"
+                className="text-neutral-50 py-2"
                 onClick={handleLinkClick}
               >
                 Start
@@ -89,11 +88,11 @@ export function HeaderNav({
 
         {/* Dropdown content area */}
         <div
-          className="transition-opacity duration-300"
-          style={{
-            opacity: activeDropdown ? 1 : 0,
-            pointerEvents: activeDropdown ? "auto" : "none",
-          }}
+          className={`transition-opacity duration-300 ${
+            activeDropdown
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }`}
         >
           {activeDropdown === "resources" && (
             <div className="pt-8 pb-6">

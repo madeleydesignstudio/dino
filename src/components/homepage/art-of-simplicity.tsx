@@ -13,14 +13,14 @@ export const ArtOfSimplicity = () => {
           </div>
 
           <div className="-mt-12 flex items-end gap-4">
-            <h2 className="font-black text-7xl uppercase">art of impactful</h2>
+            <h2 className="font-black text-6xl uppercase">art of impactful</h2>
             <ServerImage
               id={13}
               width={500}
               height={500}
               priority
               quality={100}
-              className="absolute right-[25%] mb-15"
+              className="absolute right-[18%] mb-15"
             />
             <h2 className="font-black text-7xl uppercase text-accent">
               simplicity.
@@ -28,7 +28,7 @@ export const ArtOfSimplicity = () => {
           </div>
         </div>
       </div>
-      <Separator className="my-20 bg-foreground max-w-7xl mx-auto" />
+      <Separator className="my-20 bg-[#D9E0C1] max-w-7xl mx-auto" />
     </>
   );
 };
