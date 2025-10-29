@@ -89,8 +89,7 @@ export const ContactSubmissions: CollectionConfig = {
             });
           } catch (error) {
             req.payload.logger.error(
-              "Failed to send contact emails:",
-              error instanceof Error ? error.message : String(error),
+              `Failed to send contact emails: ${error instanceof Error ? error.message : String(error)}`,
             );
           }
         }
