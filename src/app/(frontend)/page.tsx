@@ -47,7 +47,7 @@ export default async function Home() {
         <BenefitsPricing />
       </SevenMaxWidth>
       <Separator className=" bg-[#D9E0C1] w-full" />
-      <div id="red-resources-section" className="bg-[#C64B4B]">
+      <div id="red-resources-section" className="bg-neutral-500">
         <SevenMaxWidth>
           <Resources />
         </SevenMaxWidth>
