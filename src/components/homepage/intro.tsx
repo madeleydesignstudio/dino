@@ -4,8 +4,8 @@ import { ServerImage } from "@/components/universal/ServerImage";
 export const Intro = () => {
   return (
     <>
-      <div className="flex justify-center px-4">
-        <div className="w-full max-w-7xl flex h-full items-end gap-20">
+      <div className="flex justify-center w-full py-20 px-5">
+        <div className="w-full flex h-full items-end gap-20">
           <div className="w-1/2 h-[1000px] flex flex-col gap-5 justify-end">
             <div className="flex flex-col gap-5">
               <p className="font-bold">
@@ -63,7 +63,6 @@ export const Intro = () => {
           </div>
         </div>
       </div>
-      <Separator className="my-20 bg-[#D9E0C1] max-w-7xl mx-auto" />
     </>
   );
 };

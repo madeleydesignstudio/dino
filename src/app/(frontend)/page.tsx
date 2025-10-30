@@ -10,21 +10,53 @@ import { Resources } from "../../components/homepage/resources";
 import { QuestionsTestimonials } from "@/components/homepage/questions-testimonials";
 import SlidingText from "@/components/homepage/SlidingText";
 import { NewsUpdates } from "@/components/homepage/news-updates";
+import SevenMaxWidth from "@/components/providers/7-max-width";
+import { Separator } from "@/components/universal/separator";
 
 export default async function Home() {
   return (
-    <div className="max-w-7xl w-full mx-auto border-x border-[#D9E0C1]">
-      <Hero />
+    <div>
+      <SevenMaxWidth>
+        <Hero />
+      </SevenMaxWidth>
+
       <SlidingText />
-      <Intro />
-      <Clients />
-      <ArtOfSimplicity />
-      <StudioServices />
+      <SevenMaxWidth>
+        <Intro />
+      </SevenMaxWidth>
+      <Separator className=" bg-[#D9E0C1] w-full" />
+      <SevenMaxWidth>
+        <Clients />
+
+        <ArtOfSimplicity />
+      </SevenMaxWidth>
+      <Separator className=" bg-[#D9E0C1] w-full" />
+      <SevenMaxWidth>
+        <StudioServices />
+      </SevenMaxWidth>
+      <Separator className=" bg-[#D9E0C1] w-full" />
+
       <DesignDevelopmentStudio />
-      <SelectedWorkCaseStudies />
-      <BenefitsPricing />
-      <Resources />
-      <QuestionsTestimonials />
+      <Separator className=" bg-[#D9E0C1] w-full" />
+
+      <SevenMaxWidth>
+        <SelectedWorkCaseStudies />
+      </SevenMaxWidth>
+      <Separator className=" bg-[#D9E0C1] w-full" />
+      <SevenMaxWidth>
+        <BenefitsPricing />
+      </SevenMaxWidth>
+      <Separator className=" bg-[#D9E0C1] w-full" />
+      <div id="red-resources-section" className="bg-[#C64B4B]">
+        <SevenMaxWidth>
+          <Resources />
+        </SevenMaxWidth>
+      </div>
+      <Separator className=" bg-[#D9E0C1] w-full" />
+
+      <SevenMaxWidth>
+        <QuestionsTestimonials />
+      </SevenMaxWidth>
       <NewsUpdates />
     </div>
   );

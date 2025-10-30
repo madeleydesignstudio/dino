@@ -1,7 +1,35 @@
+"use client";
+
 import { HeaderNav } from "@/components/universal/HeaderNav";
-import { ServerLogo } from "@/components/universal/ServerLogo";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export function Header() {
+  const [isInRedRegion, setIsInRedRegion] = useState(false);
+
+  useEffect(() => {
+    const checkRedRegion = () => {
+      const redSection = document.getElementById("red-resources-section");
+      if (redSection) {
+        const rect = redSection.getBoundingClientRect();
+        const headerHeight = 80; // Approximate header height
+
+        // Header is considered "in" the red region when it overlaps
+        const isInRegion = rect.top <= headerHeight && rect.bottom > 0;
+        setIsInRedRegion(isInRegion);
+      }
+    };
+
+    checkRedRegion();
+    window.addEventListener("scroll", checkRedRegion);
+    window.addEventListener("resize", checkRedRegion);
+
+    return () => {
+      window.removeEventListener("scroll", checkRedRegion);
+      window.removeEventListener("resize", checkRedRegion);
+    };
+  }, []);
+
   const resourcesLinks = [
     { name: "Opensource", href: "/resources/opensource" },
     { name: "UI", href: "/resources/ui" },
@@ -17,12 +45,24 @@ export function Header() {
   ];
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4">
+    <div
+      className={`fixed top-0 left-0 right-0 z-50 flex justify-center px-4 transition-opacity duration-300 ${
+        isInRedRegion ? "opacity-0 pointer-events-none" : "opacity-100"
+      }`}
+    >
       <div className="w-full max-w-7xl border-b border-x border-[#D9E0C1]">
         <HeaderNav
           resourcesLinks={resourcesLinks}
           companyLinks={companyLinks}
-          logo={<ServerLogo width={40} height={25} priority />}
+          logo={
+            <Image
+              src="/logo.png"
+              alt="Madeley Design Studio Logo"
+              width={40}
+              height={25}
+              priority
+            />
+          }
         />
       </div>
     </div>

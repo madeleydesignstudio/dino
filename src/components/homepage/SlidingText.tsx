@@ -66,7 +66,7 @@ const SlidingText: React.FC<SlidingTextProps> = ({
 
   return (
     <div
-      className={` w-full relative overflow-hidden ${className}`}
+      className={` w-full relative border-y border-[#D9E0C1] overflow-hidden ${className}`}
       ref={containerRef}
     >
       <div className=" w-full h-60" ref={pinHeightRef}>

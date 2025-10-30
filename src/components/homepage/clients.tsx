@@ -5,7 +5,7 @@ import Link from "next/link";
 export const Clients = () => {
   return (
     <>
-      <div className="flex justify-center p-4">
+      <div className="flex justify-center w-full py-20 px-5">
         <div className="w-full max-w-7xl flex h-full flex-col gap-10">
           <div className="flex items-center justify-between w-full">
             <h2 className="font-black text-xl uppercase">Clients</h2>
@@ -56,7 +56,6 @@ export const Clients = () => {
           </div>
         </div>
       </div>
-      <Separator className="my-20 bg-[#D9E0C1] max-w-7xl mx-auto" />
     </>
   );
 };
