@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import type * as THREE from "three";
+import type { Mesh, Group } from "three";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,7 +22,7 @@ function CubeSection({
   isVisible: boolean;
   isComplete: boolean;
 }) {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const meshRef = useRef<Mesh>(null);
 
   // All pieces are always visible, no scale animation needed
 
@@ -57,7 +57,7 @@ function CubeSection({
 }
 
 function Scene({ activeSection }: { activeSection: number }) {
-  const groupRef = useRef<THREE.Group>(null);
+  const groupRef = useRef<Group>(null);
   const isComplete = activeSection >= 3;
 
   useEffect(() => {
