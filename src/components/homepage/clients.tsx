@@ -9,7 +9,7 @@ export const Clients = () => {
         <div className="w-full max-w-7xl flex h-full flex-col gap-10">
           <div className="flex items-center justify-between w-full">
             <h2 className="font-black text-xl uppercase">Clients</h2>
-            <Link href="/clients" className="text-accent">
+            <Link href="/casestudies" className="text-accent">
               work with us {"----->"}
             </Link>
           </div>

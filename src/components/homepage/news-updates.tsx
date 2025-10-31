@@ -12,7 +12,7 @@ export const NewsUpdates = () => {
 
   return (
     <>
-      <div className="flex justify-center p-4">
+      <div className="flex justify-center w-full py-20 px-5">
         <div className="w-full max-w-7xl flex h-full flex-col gap-10">
           <div className="flex h-full justify-between w-full items-end">
             <div className="w-1/3 flex flex-col justify-between h-full">
@@ -23,7 +23,12 @@ export const NewsUpdates = () => {
             </div>
             <div className="w-2/3 gap-6 text-right flex flex-col font-bold"></div>
           </div>
-          <div className="flex h-full justify-between w-full items-end"></div>
+          <div className="flex h-full justify-between w-full items-end gap-5">
+            <div className="h-[500px] border w-full rounded-md"></div>
+            <div className="h-[500px] border w-full rounded-md"></div>
+            <div className="h-[500px] border w-full rounded-md"></div>
+            <div className="h-[500px] border w-full rounded-md"></div>
+          </div>
         </div>
       </div>
     </>

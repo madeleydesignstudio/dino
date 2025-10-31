@@ -27,7 +27,7 @@ export function HeaderNav({
 
   return (
     <header
-      className={`bg-background  overflow-hidden transition-all duration-300 ease-in-out ${
+      className={`bg-background overflow-hidden transition-all duration-300 ease-in-out ${
         activeDropdown ? "h-[264px]" : "h-12"
       }`}
     >
@@ -88,20 +88,20 @@ export function HeaderNav({
 
         {/* Dropdown content area */}
         <div
-          className={`transition-opacity duration-300 ${
+          className={`transition-opacity  duration-300 h-[212px] ${
             activeDropdown
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           }`}
         >
           {activeDropdown === "resources" && (
-            <div className="pt-8 pb-6">
-              <div className="grid grid-cols-5 gap-4">
+            <div className="pt-4 pb-4 h-full  flex flex-col">
+              <div className="grid grid-cols-5 gap-3 flex-1 items-center h-full">
                 {resourcesLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-foreground hover:opacity-70 transition-opacity font-semibold text-center"
+                    className="text-foreground hover:opacity-70 transition-opacity font-semibold text-center border-2 border-[#D9E0C1] h-full flex items-center justify-center px-2 py-1 text-sm leading-tight rounded-lg"
                     onClick={handleLinkClick}
                   >
                     {link.name}
@@ -112,13 +112,13 @@ export function HeaderNav({
           )}
 
           {activeDropdown === "company" && (
-            <div className="pt-8 pb-6">
-              <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
+            <div className="pt-4 pb-4 h-full flex items-center justify-center">
+              <div className="grid grid-cols-3 gap-4 max-w-md">
                 {companyLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-foreground hover:opacity-70 transition-opacity font-semibold text-center"
+                    className="text-foreground hover:opacity-70 transition-opacity font-semibold text-center h-[36px] flex items-center justify-center px-3 py-2 text-sm"
                     onClick={handleLinkClick}
                   >
                     {link.name}

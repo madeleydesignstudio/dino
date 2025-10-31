@@ -24,7 +24,7 @@ export default async function Home() {
       <SevenMaxWidth>
         <Intro />
       </SevenMaxWidth>
-      <Separator className=" bg-[#D9E0C1] w-full" />
+      {/*<Separator className=" bg-[#D9E0C1] w-full" />*/}
       <SevenMaxWidth>
         <Clients />
 
@@ -34,10 +34,11 @@ export default async function Home() {
       <SevenMaxWidth>
         <StudioServices />
       </SevenMaxWidth>
-      <Separator className=" bg-[#D9E0C1] w-full" />
+      <Separator className=" bg-neutral-500 w-full" />
 
       <DesignDevelopmentStudio />
-      <Separator className=" bg-[#D9E0C1] w-full" />
+
+      <Separator className=" bg-neutral-500 w-full" />
 
       <SevenMaxWidth>
         <SelectedWorkCaseStudies />
@@ -57,7 +58,12 @@ export default async function Home() {
       <SevenMaxWidth>
         <QuestionsTestimonials />
       </SevenMaxWidth>
-      <NewsUpdates />
+      <Separator className=" bg-[#D9E0C1] w-full" />
+
+      <SevenMaxWidth>
+        <NewsUpdates />
+      </SevenMaxWidth>
+      <Separator className=" bg-[#D9E0C1] w-full" />
     </div>
   );
 }
