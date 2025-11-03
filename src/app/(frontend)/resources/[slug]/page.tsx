@@ -4,9 +4,9 @@ import SevenMaxWidth from "@/components/providers/7-max-width";
 import { Separator } from "@/components/universal/separator";
 
 interface ResourcePageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // Define the available resources with their content
@@ -176,7 +176,7 @@ const resourcesData = {
 };
 
 export default async function ResourcePage({ params }: ResourcePageProps) {
-  const { slug } = params;
+  const { slug } = await params;
 
   // Check if the resource exists
   const resource = resourcesData[slug as keyof typeof resourcesData];
@@ -232,8 +232,10 @@ export function generateStaticParams() {
 }
 
 // Add metadata for SEO
-export function generateMetadata({ params }: ResourcePageProps): Metadata {
-  const { slug } = params;
+export async function generateMetadata({
+  params,
+}: ResourcePageProps): Promise<Metadata> {
+  const { slug } = await params;
   const resource = resourcesData[slug as keyof typeof resourcesData];
 
   if (!resource) {

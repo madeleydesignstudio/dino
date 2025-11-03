@@ -5,16 +5,17 @@ import { Separator } from "@/components/universal/separator";
 import { ServerImage } from "@/components/universal/ServerImage";
 
 interface ServicePageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // Define the available services with their content
 const servicesData = {
   "website-design": {
     title: "Website Design",
-    description: "Beautiful, user-centric web designs that captivate and convert",
+    description:
+      "Beautiful, user-centric web designs that captivate and convert",
     imageId: 17,
     content: `
       <div class="space-y-8">
@@ -209,7 +210,8 @@ const servicesData = {
   },
   "agentic-ai": {
     title: "Agentic AI",
-    description: "Intelligent AI solutions that automate and enhance your business processes",
+    description:
+      "Intelligent AI solutions that automate and enhance your business processes",
     imageId: 20,
     content: `
       <div class="space-y-8">
@@ -284,7 +286,8 @@ const servicesData = {
   },
   "product-design": {
     title: "Product Design",
-    description: "User-centered product design that drives engagement and growth",
+    description:
+      "User-centered product design that drives engagement and growth",
     imageId: 19,
     content: `
       <div class="space-y-8">
@@ -356,7 +359,7 @@ const servicesData = {
           </div>
         </div>
 
-        <div class="bg-gradient-to-r from-gray-50 to-gray-100 p-6 rounded-lg">
+        <div class="bg-linear-to-r from-gray-50 to-gray-100 p-6 rounded-lg">
           <h3 class="text-2xl font-semibold mb-4">Why Product Design Matters</h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
             <div>
@@ -379,7 +382,7 @@ const servicesData = {
 };
 
 export default async function ServicePage({ params }: ServicePageProps) {
-  const { slug } = params;
+  const { slug } = await params;
 
   // Check if the service exists
   const service = servicesData[slug as keyof typeof servicesData];
@@ -402,7 +405,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
           <div className="flex flex-col md:flex-row md:items-start gap-8">
             <div className="flex-1">
               <h1 className="text-4xl font-bold mb-4">{service.title}</h1>
-              <p className="text-xl text-gray-600 mb-6">{service.description}</p>
+              <p className="text-xl text-gray-600 mb-6">
+                {service.description}
+              </p>
               <div className="flex gap-4">
                 <a
                   href="/start"
@@ -445,7 +450,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
         <div className="text-center bg-gray-50 p-8 rounded-lg">
           <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Let's discuss how our {service.title.toLowerCase()} services can help bring your vision to life and drive your business forward.
+            Let's discuss how our {service.title.toLowerCase()} services can
+            help bring your vision to life and drive your business forward.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -485,8 +491,10 @@ export function generateStaticParams() {
 }
 
 // Add metadata for SEO
-export function generateMetadata({ params }: ServicePageProps): Metadata {
-  const { slug } = params;
+export async function generateMetadata({
+  params,
+}: ServicePageProps): Promise<Metadata> {
+  const { slug } = await params;
   const service = servicesData[slug as keyof typeof servicesData];
 
   if (!service) {
