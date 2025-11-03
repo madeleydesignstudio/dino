@@ -10,12 +10,16 @@ interface NavLink {
 
 interface HeaderNavProps {
   resourcesLinks: NavLink[];
+  servicesLinks: NavLink[];
+  caseStudiesLinks: NavLink[];
   companyLinks: NavLink[];
   logo: ReactNode;
 }
 
 export function HeaderNav({
   resourcesLinks,
+  servicesLinks,
+  caseStudiesLinks,
   companyLinks,
   logo,
 }: HeaderNavProps) {
@@ -51,13 +55,27 @@ export function HeaderNav({
                   Resources
                 </Link>
               </li>
-              <li>
-                <Link href={"/casestudies"} onClick={handleLinkClick}>
+              <li
+                className="group relative"
+                onMouseEnter={() => setActiveDropdown("casestudies")}
+              >
+                <Link
+                  href={"/casestudies"}
+                  className="block py-2"
+                  onClick={handleLinkClick}
+                >
                   Case-Studies
                 </Link>
               </li>
-              <li>
-                <Link href={"/services"} onClick={handleLinkClick}>
+              <li
+                className="group relative"
+                onMouseEnter={() => setActiveDropdown("services")}
+              >
+                <Link
+                  href={"/services"}
+                  className="block py-2"
+                  onClick={handleLinkClick}
+                >
                   Services
                 </Link>
               </li>
@@ -111,6 +129,40 @@ export function HeaderNav({
             </div>
           )}
 
+          {activeDropdown === "services" && (
+            <div className="pt-4 pb-4 h-full flex flex-col">
+              <div className="grid grid-cols-5 gap-3 flex-1 items-center h-full">
+                {servicesLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-foreground hover:opacity-70 transition-opacity font-semibold text-center border-2 border-[#D9E0C1] h-full flex items-center justify-center px-2 py-1 text-sm leading-tight rounded-lg"
+                    onClick={handleLinkClick}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {activeDropdown === "casestudies" && (
+            <div className="pt-4 pb-4 h-full flex flex-col">
+              <div className="grid grid-cols-5 gap-3 flex-1 items-center h-full">
+                {caseStudiesLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-foreground hover:opacity-70 transition-opacity font-semibold text-center border-2 border-[#D9E0C1] h-full flex items-center justify-center px-2 py-1 text-sm leading-tight rounded-lg"
+                    onClick={handleLinkClick}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
           {activeDropdown === "company" && (
             <div className="pt-4 pb-4 h-full flex items-center justify-center">
               <div className="grid grid-cols-3 gap-4 max-w-md">
@@ -118,7 +170,7 @@ export function HeaderNav({
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-foreground hover:opacity-70 transition-opacity font-semibold text-center h-[36px] flex items-center justify-center px-3 py-2 text-sm"
+                    className="text-foreground hover:opacity-70 transition-opacity font-semibold text-center h-9 flex items-center justify-center px-3 py-2 text-sm"
                     onClick={handleLinkClick}
                   >
                     {link.name}

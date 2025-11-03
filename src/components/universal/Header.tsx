@@ -38,6 +38,22 @@ export function Header() {
     { name: "Blog", href: "/resources/blog" },
   ];
 
+  const servicesLinks = [
+    { name: "Website Design", href: "/services/website-design" },
+    { name: "Website Development", href: "/services/website-development" },
+    { name: "Creative Design", href: "/services/creative-design" },
+    { name: "Agentic AI", href: "/services/agentic-ai" },
+    { name: "Product Design", href: "/services/product-design" },
+  ];
+
+  const caseStudiesLinks = [
+    { name: "Project Alpha", href: "/casestudies/project-alpha" },
+    { name: "Project Beta", href: "/casestudies/project-beta" },
+    { name: "Project Gamma", href: "/casestudies/project-gamma" },
+    { name: "Project Delta", href: "/casestudies/project-delta" },
+    { name: "View All", href: "/casestudies" },
+  ];
+
   const companyLinks = [
     { name: "About", href: "/company/about" },
     { name: "Careers", href: "/company/careers" },
@@ -53,6 +69,8 @@ export function Header() {
       <div className="w-full max-w-7xl border-b border-x border-[#D9E0C1]">
         <HeaderNav
           resourcesLinks={resourcesLinks}
+          servicesLinks={servicesLinks}
+          caseStudiesLinks={caseStudiesLinks}
           companyLinks={companyLinks}
           logo={
             <Image

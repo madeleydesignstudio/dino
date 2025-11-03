@@ -225,9 +225,55 @@ export interface Career {
  */
 export interface ContactSubmission {
   id: number;
+  name: string;
   email: string;
-  message: string;
-  status?: ('new' | 'in-progress' | 'resolved') | null;
+  company?: string | null;
+  projectType:
+    | 'website-design'
+    | 'website-development'
+    | 'mobile-app'
+    | 'ecommerce-platform'
+    | 'saas-application'
+    | 'corporate-website'
+    | 'creative-design'
+    | 'ai-integration'
+    | 'other';
+  budget: 'under-5k' | '5k-15k' | '15k-50k' | '50k-100k' | 'over-100k' | 'not-sure';
+  timeline: 'asap' | '1-2-months' | '3-6-months' | '6-12-months' | 'more-than-year' | 'flexible';
+  description: string;
+  goals?:
+    | (
+        | 'increase-sales'
+        | 'improve-brand'
+        | 'better-ux'
+        | 'mobile-optimization'
+        | 'seo-improvement'
+        | 'streamline-processes'
+        | 'generate-leads'
+        | 'showcase-portfolio'
+      )[]
+    | null;
+  features?:
+    | (
+        | 'contact-forms'
+        | 'ecommerce'
+        | 'user-accounts'
+        | 'content-management'
+        | 'payment-processing'
+        | 'social-media'
+        | 'analytics'
+        | 'multi-language'
+        | 'api-integrations'
+        | 'custom-animations'
+      )[]
+    | null;
+  inspiration?: string | null;
+  contact?: ('email' | 'phone' | 'video' | 'in-person') | null;
+  status?: ('new' | 'in-progress' | 'proposal-sent' | 'accepted' | 'declined' | 'completed') | null;
+  /**
+   * Internal notes about this submission
+   */
+  notes?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -409,9 +455,19 @@ export interface CareersSelect<T extends boolean = true> {
  * via the `definition` "contact-submissions_select".
  */
 export interface ContactSubmissionsSelect<T extends boolean = true> {
+  name?: T;
   email?: T;
-  message?: T;
+  company?: T;
+  projectType?: T;
+  budget?: T;
+  timeline?: T;
+  description?: T;
+  goals?: T;
+  features?: T;
+  inspiration?: T;
+  contact?: T;
   status?: T;
+  notes?: T;
   updatedAt?: T;
   createdAt?: T;
 }

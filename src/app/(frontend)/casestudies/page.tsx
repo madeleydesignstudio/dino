@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Observer } from "gsap/Observer";
@@ -12,6 +12,7 @@ gsap.registerPlugin(Observer);
 
 export default function CaseStudiesPage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [caseStudies, setCaseStudies] = useState<any[]>([]);
 
   // Variables to maintain state between renders
   const varsRef = useRef({
@@ -20,6 +21,74 @@ export default function CaseStudiesPage() {
     xTo: null as gsap.QuickToFunc | null,
     yTo: null as gsap.QuickToFunc | null,
   });
+
+  // Fetch case studies data
+  useEffect(() => {
+    const fetchCaseStudies = async () => {
+      try {
+        // For now, we'll create mock data that corresponds to the images
+        // In a real app, you'd fetch from your CMS
+        const mockCaseStudies = [
+          {
+            id: 1,
+            slug: "project-alpha",
+            title: "Project Alpha",
+            image: "1.png",
+          },
+          {
+            id: 2,
+            slug: "project-beta",
+            title: "Project Beta",
+            image: "2.png",
+          },
+          {
+            id: 3,
+            slug: "project-gamma",
+            title: "Project Gamma",
+            image: "3.png",
+          },
+          {
+            id: 4,
+            slug: "project-delta",
+            title: "Project Delta",
+            image: "4.png",
+          },
+        ];
+        setCaseStudies(mockCaseStudies);
+      } catch (error) {
+        console.error("Error fetching case studies:", error);
+        // Fallback to mock data
+        setCaseStudies([
+          {
+            id: 1,
+            slug: "project-alpha",
+            title: "Project Alpha",
+            image: "1.png",
+          },
+          {
+            id: 2,
+            slug: "project-beta",
+            title: "Project Beta",
+            image: "2.png",
+          },
+          {
+            id: 3,
+            slug: "project-gamma",
+            title: "Project Gamma",
+            image: "3.png",
+          },
+          {
+            id: 4,
+            slug: "project-delta",
+            title: "Project Delta",
+            image: "4.png",
+          },
+        ]);
+      }
+    };
+
+    fetchCaseStudies();
+  }, []);
 
   useGSAP(
     () => {
@@ -85,35 +154,35 @@ export default function CaseStudiesPage() {
     { scope: containerRef },
   );
 
-  // Image data array - now includes 3 images + 1 plus button
-  const images = ["1.png", "2.png", "3.png"];
-
   // Create content component
   const ContentGrid = ({ ariaHidden = false }: { ariaHidden?: boolean }) => (
     <div
-      className="grid grid-cols-5 gap-[10vw] p-[5vw] w-max pointer-events-none items-center justify-center"
+      className="grid grid-cols-5 gap-[10vw] p-[5vw] w-max items-center justify-center"
       aria-hidden={ariaHidden}
     >
-      {images.map((image, index) => (
-        <div key={index} className="w-[25vw] aspect-square select-none">
+      {caseStudies.slice(0, 3).map((caseStudy, index) => (
+        <Link
+          key={caseStudy.id}
+          href={`/casestudies/${caseStudy.slug}`}
+          className="w-[25vw] aspect-square select-none pointer-events-auto hover:scale-105 transition-transform duration-200 group"
+        >
           <Image
-            src={`/${image}`}
-            alt={ariaHidden ? "" : `Case study ${index + 1}`}
+            src={`/${caseStudy.image}`}
+            alt={ariaHidden ? "" : caseStudy.title}
             width={600}
             height={600}
-            className="w-full h-full block object-contain"
+            className="w-full h-full block object-contain group-hover:opacity-80 transition-opacity duration-200"
           />
-        </div>
+        </Link>
       ))}
 
-      {/* Plus button that links to /start */}
       {/* Plus button that links to /start */}
       <div className="w-[25vw] aspect-square select-none pointer-events-auto flex items-center justify-center">
         <div className="w-32 h-32">
           <div className="w-full h-full border border-neutral-700 border-dashed flex items-center justify-center rounded-md">
             <Link
               href="/start"
-              className="w-full h-full flex items-center justify-center group"
+              className="w-full h-full flex items-center justify-center group hover:bg-gray-50 transition-colors duration-200"
               aria-label={ariaHidden ? undefined : "Start a new project"}
             >
               <svg
@@ -121,7 +190,7 @@ export default function CaseStudiesPage() {
                 height="20%"
                 viewBox="0 0 24 24"
                 fill="none"
-                className="text-neutral-700"
+                className="text-neutral-700 group-hover:text-accent transition-colors duration-200"
               >
                 <path
                   d="M12 5V19M5 12H19"
@@ -137,15 +206,20 @@ export default function CaseStudiesPage() {
       </div>
 
       {/* Fourth image */}
-      <div className="w-[25vw] aspect-square select-none">
-        <Image
-          src="/4.png"
-          alt={ariaHidden ? "" : "Case study 4"}
-          width={600}
-          height={600}
-          className="w-full h-full block object-contain"
-        />
-      </div>
+      {caseStudies.length > 3 && (
+        <Link
+          href={`/casestudies/${caseStudies[3].slug}`}
+          className="w-[25vw] aspect-square select-none pointer-events-auto hover:scale-105 transition-transform duration-200 group"
+        >
+          <Image
+            src={`/${caseStudies[3].image}`}
+            alt={ariaHidden ? "" : caseStudies[3].title}
+            width={600}
+            height={600}
+            className="w-full h-full block object-contain group-hover:opacity-80 transition-opacity duration-200"
+          />
+        </Link>
+      )}
     </div>
   );
 

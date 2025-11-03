@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, ReactNode } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Observer } from "gsap/Observer";
@@ -108,6 +109,19 @@ export default function ServicePageClient({
     { scope: containerRef },
   );
 
+  // Create mapping from service labels to their slug URLs
+  const getServiceSlug = (label: string) => {
+    const slugMap: { [key: string]: string } = {
+      "Website Design": "/services/website-design",
+      "Website Development": "/services/website-development",
+      "Creative Design": "/services/creative-design",
+      "Agentic AI": "/services/agentic-ai",
+      "Product Design": "/services/product-design",
+      "View All": "/services",
+    };
+    return slugMap[label] || "/services";
+  };
+
   return (
     <div className="min-h-screen font-medium text-[22px] leading-[1.3] overflow-hidden">
       <section className="flex items-end select-none">
@@ -131,40 +145,42 @@ export default function ServicePageClient({
           >
             {/* First set of service images */}
             {serviceImages.map((image, index) => (
-              <div
+              <Link
                 key={`first-${index}`}
-                className="aspect-[1.7] rounded-[0.4em] overflow-visible pointer-events-none relative group transform scale-50 origin-center"
+                href={getServiceSlug(serviceLabels[index])}
+                className="aspect-[1.7] rounded-[0.4em] overflow-visible pointer-events-auto relative group transform scale-50 origin-center hover:scale-[0.52] transition-transform duration-200 cursor-pointer"
               >
                 <div className="w-full h-full flex items-center">
                   <div className="w-1/2 h-full flex items-center justify-center">
                     {image}
                   </div>
                   <div className="w-1/2 h-full flex items-center justify-center">
-                    <h3 className="text-neutral-700 text-6xl font-bold uppercase tracking-wider text-center px-4">
+                    <h3 className="text-neutral-700 text-6xl font-bold uppercase tracking-wider text-center px-4 group-hover:text-accent transition-colors duration-200">
                       {serviceLabels[index]}
                     </h3>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
 
             {/* Duplicate set for infinite scroll effect */}
             {serviceImages.map((image, index) => (
-              <div
-                key={`first-${index}`}
-                className="aspect-[1.7] rounded-[0.4em] overflow-visible pointer-events-none relative group transform scale-50 origin-center"
+              <Link
+                key={`second-${index}`}
+                href={getServiceSlug(serviceLabels[index])}
+                className="aspect-[1.7] rounded-[0.4em] overflow-visible pointer-events-auto relative group transform scale-50 origin-center hover:scale-[0.52] transition-transform duration-200 cursor-pointer"
               >
                 <div className="w-full h-full flex items-center">
                   <div className="w-1/2 h-full flex items-center justify-center">
                     {image}
                   </div>
                   <div className="w-1/2 h-full flex items-center justify-center">
-                    <h3 className="text-neutral-700 text-6xl font-bold uppercase tracking-wider text-center px-4">
+                    <h3 className="text-neutral-700 text-6xl font-bold uppercase tracking-wider text-center px-4 group-hover:text-accent transition-colors duration-200">
                       {serviceLabels[index]}
                     </h3>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
