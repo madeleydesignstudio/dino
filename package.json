@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@openpanel/nextjs": "^1.0.8",
     "@paper-design/shaders-react": "^0.0.58-next.3",
     "@payloadcms/db-postgres": "^3.59.1",
     "@payloadcms/email-resend": "^3.59.1",
