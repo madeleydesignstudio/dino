@@ -123,14 +123,14 @@ export default function ServicePageClient({
   };
 
   return (
-    <div className="min-h-screen font-medium text-[22px] leading-[1.3] overflow-hidden">
-      <section className="flex items-end select-none">
+    <div className="w-full h-full font-medium text-[22px] leading-[1.3] overflow-hidden">
+      <section className="flex items-end select-none h-full">
         {/* Text Section - Left Side */}
-        <p className="font-black text-[8vw] leading-[0.8] tracking-[-0.05em] flex-1 p-6 uppercase">
+        <p className="font-black text-[6vw] leading-[0.8] tracking-[-0.05em] flex-1 p-8 uppercase">
           <span className="block">Select</span>
           <span>a</span>
-          <span className="block pl-[10vw] text-[#C64B4B]">Service</span>
-          <span className="flex justify-between pl-[6vw]">
+          <span className="block pl-[8vw] text-[#C64B4B]">Service</span>
+          <span className="flex justify-between pl-[4vw]">
             <span>to find</span>
             <span>out</span>
           </span>
@@ -138,7 +138,7 @@ export default function ServicePageClient({
         </p>
 
         {/* Container with images - Right Side */}
-        <div ref={containerRef} className="w-[40vw] h-screen mr-6 ">
+        <div ref={containerRef} className="w-[40vw] h-full mr-8 ">
           <div
             ref={contentRef}
             className="flex flex-col gap-6 h-max mx-auto pb-6"

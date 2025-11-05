@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { NavigationLink } from "@/components/navigation/NavigationLink";
 import { useState, ReactNode } from "react";
 
 interface NavLink {
@@ -37,9 +37,9 @@ export function HeaderNav({
     >
       <nav className="px-4" onMouseLeave={() => setActiveDropdown(null)}>
         <div className="flex justify-between items-center h-12">
-          <Link href={"/"} onClick={handleLinkClick}>
+          <NavigationLink href={"/"} onClick={handleLinkClick}>
             {logo}
-          </Link>
+          </NavigationLink>
 
           <div className="flex gap-10 font-bold items-center">
             <ul className="flex gap-10 font-bold items-center text-sm">
@@ -47,59 +47,59 @@ export function HeaderNav({
                 className="group relative"
                 onMouseEnter={() => setActiveDropdown("resources")}
               >
-                <Link
+                <NavigationLink
                   href={"/resources"}
                   className="block py-2"
                   onClick={handleLinkClick}
                 >
                   Resources
-                </Link>
+                </NavigationLink>
               </li>
               <li
                 className="group relative"
                 onMouseEnter={() => setActiveDropdown("casestudies")}
               >
-                <Link
+                <NavigationLink
                   href={"/casestudies"}
                   className="block py-2"
                   onClick={handleLinkClick}
                 >
                   Case-Studies
-                </Link>
+                </NavigationLink>
               </li>
               <li
                 className="group relative"
                 onMouseEnter={() => setActiveDropdown("services")}
               >
-                <Link
+                <NavigationLink
                   href={"/services"}
                   className="block py-2"
                   onClick={handleLinkClick}
                 >
                   Services
-                </Link>
+                </NavigationLink>
               </li>
               <li
                 className="group relative"
                 onMouseEnter={() => setActiveDropdown("company")}
               >
-                <Link
+                <NavigationLink
                   href={"/company"}
                   className="block py-2"
                   onClick={handleLinkClick}
                 >
                   Company
-                </Link>
+                </NavigationLink>
               </li>
             </ul>
             <div>
-              <Link
+              <NavigationLink
                 href={"/start"}
                 className="text-neutral-50 py-2"
                 onClick={handleLinkClick}
               >
                 Start
-              </Link>
+              </NavigationLink>
             </div>
           </div>
         </div>
@@ -116,14 +116,14 @@ export function HeaderNav({
             <div className="pt-4 pb-4 h-full  flex flex-col">
               <div className="grid grid-cols-5 gap-3 flex-1 items-center h-full">
                 {resourcesLinks.map((link) => (
-                  <Link
+                  <NavigationLink
                     key={link.href}
                     href={link.href}
                     className="text-foreground hover:opacity-70 transition-opacity font-semibold text-center border-2 border-[#D9E0C1] h-full flex items-center justify-center px-2 py-1 text-sm leading-tight rounded-lg"
                     onClick={handleLinkClick}
                   >
                     {link.name}
-                  </Link>
+                  </NavigationLink>
                 ))}
               </div>
             </div>
@@ -133,14 +133,14 @@ export function HeaderNav({
             <div className="pt-4 pb-4 h-full flex flex-col">
               <div className="grid grid-cols-5 gap-3 flex-1 items-center h-full">
                 {servicesLinks.map((link) => (
-                  <Link
+                  <NavigationLink
                     key={link.href}
                     href={link.href}
                     className="text-foreground hover:opacity-70 transition-opacity font-semibold text-center border-2 border-[#D9E0C1] h-full flex items-center justify-center px-2 py-1 text-sm leading-tight rounded-lg"
                     onClick={handleLinkClick}
                   >
                     {link.name}
-                  </Link>
+                  </NavigationLink>
                 ))}
               </div>
             </div>
@@ -150,14 +150,14 @@ export function HeaderNav({
             <div className="pt-4 pb-4 h-full flex flex-col">
               <div className="grid grid-cols-5 gap-3 flex-1 items-center h-full">
                 {caseStudiesLinks.map((link) => (
-                  <Link
+                  <NavigationLink
                     key={link.href}
                     href={link.href}
                     className="text-foreground hover:opacity-70 transition-opacity font-semibold text-center border-2 border-[#D9E0C1] h-full flex items-center justify-center px-2 py-1 text-sm leading-tight rounded-lg"
                     onClick={handleLinkClick}
                   >
                     {link.name}
-                  </Link>
+                  </NavigationLink>
                 ))}
               </div>
             </div>
@@ -167,14 +167,14 @@ export function HeaderNav({
             <div className="pt-4 pb-4 h-full flex items-center justify-center">
               <div className="grid grid-cols-3 gap-4 max-w-md">
                 {companyLinks.map((link) => (
-                  <Link
+                  <NavigationLink
                     key={link.href}
                     href={link.href}
                     className="text-foreground hover:opacity-70 transition-opacity font-semibold text-center h-9 flex items-center justify-center px-3 py-2 text-sm"
                     onClick={handleLinkClick}
                   >
                     {link.name}
-                  </Link>
+                  </NavigationLink>
                 ))}
               </div>
             </div>

@@ -186,40 +186,38 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
   }
 
   return (
-    <div className="min-h-screen py-16">
-      <SevenMaxWidth>
-        {/* Header Section */}
-        <div className="mb-12">
-          <div className="text-sm text-gray-500 mb-4">
-            <a href="/resources" className="hover:underline">
-              Resources
-            </a>{" "}
-            / {resource.title}
-          </div>
-          <h1 className="text-4xl font-bold mb-4">{resource.title}</h1>
-          <p className="text-xl text-gray-600">{resource.description}</p>
+    <div className="min-h-screen py-16 ">
+      {/* Header Section */}
+      <div className="mb-12">
+        <div className="text-sm text-gray-500 mb-4">
+          <a href="/resources" className="hover:underline">
+            Resources
+          </a>{" "}
+          / {resource.title}
         </div>
+        <h1 className="text-4xl font-bold mb-4">{resource.title}</h1>
+        <p className="text-xl text-gray-600">{resource.description}</p>
+      </div>
 
-        <Separator className="bg-[#D9E0C1] w-full mb-12" />
+      <Separator className="bg-[#D9E0C1] w-full mb-12" />
 
-        {/* Content Section */}
-        <div
-          className="prose prose-lg max-w-none"
-          dangerouslySetInnerHTML={{ __html: resource.content }}
-        />
+      {/* Content Section */}
+      <div
+        className="prose prose-lg max-w-none"
+        dangerouslySetInnerHTML={{ __html: resource.content }}
+      />
 
-        <Separator className="bg-[#D9E0C1] w-full mt-12 mb-8" />
+      <Separator className="bg-[#D9E0C1] w-full mt-12 mb-8" />
 
-        {/* Back to Resources */}
-        <div className="text-center">
-          <a
-            href="/resources"
-            className="inline-flex items-center text-accent hover:underline font-semibold"
-          >
-            ← Back to Resources
-          </a>
-        </div>
-      </SevenMaxWidth>
+      {/* Back to Resources */}
+      <div className="text-center">
+        <a
+          href="/resources"
+          className="inline-flex items-center text-accent hover:underline font-semibold"
+        >
+          ← Back to Resources
+        </a>
+      </div>
     </div>
   );
 }

@@ -224,8 +224,8 @@ export default function CaseStudiesPage() {
   );
 
   return (
-    <div className="min-h-screen overflow-hidden overscroll-x-none">
-      <section className="h-screen w-full overflow-hidden pointer-events-none">
+    <div className="w-full h-full overflow-hidden overscroll-x-none">
+      <section className="h-full w-full overflow-hidden pointer-events-none">
         <div
           ref={containerRef}
           className="grid grid-cols-2 w-max will-change-transform"
@@ -240,9 +240,9 @@ export default function CaseStudiesPage() {
         </div>
       </section>
       <div className="absolute right-0 bottom-0 select-none pointer-events-none z-0">
-        <p className="font-black text-[8vw] leading-[0.8] tracking-[-0.05em] flex-1 p-6 uppercase">
+        <p className="font-black text-[6vw] leading-[0.8] tracking-[-0.05em] flex-1 p-8 uppercase">
           <span className="text-right">Read a</span>
-          <span className="block pl-[10vw] text-[#C64B4B]">Case Study</span>
+          <span className="block pl-[8vw] text-[#C64B4B]">Case Study</span>
         </p>
       </div>
     </div>

@@ -375,149 +375,145 @@ export default function StartPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen py-16">
-        <SevenMaxWidth>
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="mb-8">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg
-                  className="w-10 h-10 text-green-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              </div>
-              <h1 className="text-3xl font-bold mb-4">Thank You!</h1>
-              <p className="text-lg text-gray-600 mb-6">
-                We've received your project details and will be in touch within
-                24 hours. You should also receive a confirmation email shortly.
-              </p>
-              <div className="flex gap-4 justify-center">
-                <a
-                  href="/"
-                  className="bg-accent text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition-all font-semibold"
-                >
-                  Back to Home
-                </a>
-                <a
-                  href="/casestudies"
-                  className="border border-[#D9E0C1] px-6 py-3 rounded-lg hover:bg-gray-50 transition-all font-semibold"
-                >
-                  View Our Work
-                </a>
-              </div>
+      <div className="w-full h-full py-8">
+        <div className="max-w-2xl mx-auto text-center px-8">
+          <div className="mb-8">
+            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg
+                className="w-10 h-10 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <h1 className="text-3xl font-bold mb-4">Thank You!</h1>
+            <p className="text-lg text-gray-600 mb-6">
+              We've received your project details and will be in touch within 24
+              hours. You should also receive a confirmation email shortly.
+            </p>
+            <div className="flex gap-4 justify-center">
+              <a
+                href="/"
+                className="bg-accent text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition-all font-semibold"
+              >
+                Back to Home
+              </a>
+              <a
+                href="/casestudies"
+                className="border border-[#D9E0C1] px-6 py-3 rounded-lg hover:bg-gray-50 transition-all font-semibold"
+              >
+                View Our Work
+              </a>
             </div>
           </div>
-        </SevenMaxWidth>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen py-16">
-      <SevenMaxWidth>
-        <div className="max-w-2xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">Start Your Project</h1>
-            <p className="text-lg text-gray-600">
-              Let's learn about your needs so we can provide the best solution
-            </p>
+    <div className="w-full h-full py-8">
+      <div className="max-w-2xl mx-auto px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold mb-4">Start Your Project</h1>
+          <p className="text-lg text-gray-600">
+            Let's learn about your needs so we can provide the best solution
+          </p>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="mb-8">
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-sm font-medium text-gray-600">
+              Step {currentStep + 1} of {steps.length}
+            </span>
+            <span className="text-sm text-gray-500">
+              {Math.round(((currentStep + 1) / steps.length) * 100)}% Complete
+            </span>
           </div>
-
-          {/* Progress Bar */}
-          <div className="mb-8">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium text-gray-600">
-                Step {currentStep + 1} of {steps.length}
-              </span>
-              <span className="text-sm text-gray-500">
-                {Math.round(((currentStep + 1) / steps.length) * 100)}% Complete
-              </span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
-              <div
-                className="bg-accent h-2 rounded-full transition-all duration-300 ease-out"
-                style={{
-                  width: `${((currentStep + 1) / steps.length) * 100}%`,
-                }}
-              ></div>
-            </div>
-          </div>
-
-          <Separator className="bg-[#D9E0C1] w-full mb-8" />
-
-          {/* Current Step */}
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-6">
-              {steps[currentStep].title}
-            </h2>
-            {steps[currentStep].component}
-          </div>
-
-          <Separator className="bg-[#D9E0C1] w-full mb-8" />
-
-          {/* Navigation */}
-          <div className="flex justify-between">
-            <button
-              onClick={prevStep}
-              disabled={currentStep === 0}
-              className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all ${
-                currentStep === 0
-                  ? "text-gray-400 cursor-not-allowed"
-                  : "text-gray-700 hover:bg-gray-50 border border-[#D9E0C1]"
-              }`}
-            >
-              <ChevronLeft size={20} />
-              Previous
-            </button>
-
-            {currentStep === steps.length - 1 ? (
-              <button
-                onClick={handleSubmit}
-                disabled={!isStepValid() || isSubmitting}
-                className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all ${
-                  !isStepValid() || isSubmitting
-                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    : "bg-accent text-white hover:bg-opacity-90"
-                }`}
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send size={20} />
-                    Send Project Details
-                  </>
-                )}
-              </button>
-            ) : (
-              <button
-                onClick={nextStep}
-                disabled={!isStepValid()}
-                className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all ${
-                  !isStepValid()
-                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    : "bg-accent text-white hover:bg-opacity-90"
-                }`}
-              >
-                Next
-                <ChevronRight size={20} />
-              </button>
-            )}
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className="bg-accent h-2 rounded-full transition-all duration-300 ease-out"
+              style={{
+                width: `${((currentStep + 1) / steps.length) * 100}%`,
+              }}
+            ></div>
           </div>
         </div>
-      </SevenMaxWidth>
+
+        <Separator className="bg-[#D9E0C1] w-full mb-8" />
+
+        {/* Current Step */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-6">
+            {steps[currentStep].title}
+          </h2>
+          {steps[currentStep].component}
+        </div>
+
+        <Separator className="bg-[#D9E0C1] w-full mb-8" />
+
+        {/* Navigation */}
+        <div className="flex justify-between">
+          <button
+            onClick={prevStep}
+            disabled={currentStep === 0}
+            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all ${
+              currentStep === 0
+                ? "text-gray-400 cursor-not-allowed"
+                : "text-gray-700 hover:bg-gray-50 border border-[#D9E0C1]"
+            }`}
+          >
+            <ChevronLeft size={20} />
+            Previous
+          </button>
+
+          {currentStep === steps.length - 1 ? (
+            <button
+              onClick={handleSubmit}
+              disabled={!isStepValid() || isSubmitting}
+              className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all ${
+                !isStepValid() || isSubmitting
+                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  : "bg-accent text-white hover:bg-opacity-90"
+              }`}
+            >
+              {isSubmitting ? (
+                <>
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Send size={20} />
+                  Send Project Details
+                </>
+              )}
+            </button>
+          ) : (
+            <button
+              onClick={nextStep}
+              disabled={!isStepValid()}
+              className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all ${
+                !isStepValid()
+                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  : "bg-accent text-white hover:bg-opacity-90"
+              }`}
+            >
+              Next
+              <ChevronRight size={20} />
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

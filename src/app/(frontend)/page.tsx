@@ -36,10 +36,6 @@ export default async function Home() {
       </SevenMaxWidth>
       <Separator className=" bg-[#D9E0C1] w-full" />
 
-      <SevenMaxWidth>
-        <DesignDevelopmentStudio />
-      </SevenMaxWidth>
-
       <Separator className=" bg-[#D9E0C1] w-full" />
 
       <SevenMaxWidth>
