@@ -1,6 +1,7 @@
 import { Header } from "@/components/universal/Header";
 import { NavigationProvider } from "@/components/navigation/NavigationContext";
 import { TransitionLoader } from "@/components/navigation/TransitionLoader";
+import { LayoutContent } from "@/components/navigation";
 import type { Metadata } from "next";
 import { Azeret_Mono } from "next/font/google";
 import "./globals.css";
@@ -25,8 +26,10 @@ export default async function RootLayout({
       <body className={`${azeretMono.variable}  antialiased`}>
         <NavigationProvider>
           <TransitionLoader />
-          <Header />
-          {children}
+          <LayoutContent>
+            <Header />
+            {children}
+          </LayoutContent>
         </NavigationProvider>
       </body>
     </html>
