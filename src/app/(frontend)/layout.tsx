@@ -2,7 +2,7 @@ import { Header } from "@/components/universal/Header";
 import { NavigationProvider } from "@/components/navigation/NavigationContext";
 import { TransitionLoader } from "@/components/navigation/TransitionLoader";
 import { LayoutContent } from "@/components/navigation";
-import { OpenPanelComponent } from "@openpanel/nextjs";
+import { AnalyticsProvider } from "@/components/providers/AnalyticsProvider";
 import type { Metadata } from "next";
 import { Azeret_Mono } from "next/font/google";
 import "./globals.css";
@@ -25,19 +25,15 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${azeretMono.variable}  antialiased`}>
-        <OpenPanelComponent
-          clientId="6621cc22-a1ff-4225-a38e-cc0cec494e81"
-          trackScreenViews={true}
-          trackAttributes={true}
-          trackOutgoingLinks={true}
-        />
-        <NavigationProvider>
-          <TransitionLoader />
-          <LayoutContent>
-            <Header />
-            {children}
-          </LayoutContent>
-        </NavigationProvider>
+        <AnalyticsProvider>
+          <NavigationProvider>
+            <TransitionLoader />
+            <LayoutContent>
+              <Header />
+              {children}
+            </LayoutContent>
+          </NavigationProvider>
+        </AnalyticsProvider>
       </body>
     </html>
   );
