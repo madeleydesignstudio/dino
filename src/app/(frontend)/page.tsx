@@ -63,7 +63,11 @@ export default async function Home() {
         <NewsUpdates />
       </SevenMaxWidth>
       <Separator className=" bg-[#D9E0C1] w-full" />
-      <Footer />
+      <div className="bg-accent">
+        <SevenMaxWidth>
+          <Footer />
+        </SevenMaxWidth>
+      </div>
     </div>
   );
 }

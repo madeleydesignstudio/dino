@@ -15,7 +15,7 @@ export const SelectedWorkCaseStudies = () => {
                 <span className="text-neutral-500">Case Studies</span>
               </h2>
             </div>
-            <div className="w-2/3 gap-6 text-right flex flex-col font-bold">
+            <div className="w-2/3 gap-6 text-right flex flex-col font-normal text-sm">
               <p>
                 Every collaboration leads to something distinctive. By blending
                 bold ideas, creative thinking, and strategic goals, we craft
@@ -25,11 +25,11 @@ export const SelectedWorkCaseStudies = () => {
             </div>
           </div>
           <div className="flex flex-col h-full justify-center w-full items-center gap-5">
-            <div className="flex flex-col gap-5">
+            <div className="flex w-full flex-col gap-5">
               <ServerImage
                 id={15}
-                width={1300}
-                height={1300}
+                width={1400}
+                height={1400}
                 priority
                 quality={100}
               />

@@ -23,7 +23,7 @@ export const StudioServices = () => {
                 </ul>
               </div>
             </div>
-            <div className="w-2/3 gap-6 text-right flex flex-col font-bold">
+            <div className="w-2/3 gap-6 text-right flex flex-col font-normal text-sm">
               <p>
                 Driven by a commitment to quality and a mindset that questions
                 convention, our intentionally small studio thrives on agility.

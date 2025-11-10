@@ -135,14 +135,14 @@ export function HeaderNav({
             </NavigationLink>
 
             {/* Main Navigation Links */}
-            <ul className="flex gap-10 font-normal items-center text-xs">
+            <ul className="flex gap-1 font-normal items-center text-xs">
               <li
                 className="group relative"
                 onMouseEnter={() => openDropdown("resources")}
               >
                 <NavigationLink
                   href="/resources"
-                  className="block py-2"
+                  className="block py-2 hover:bg-[#D9E0C1]/40 px-2 rounded-md"
                   onClick={closeDropdown}
                 >
                   Resources
@@ -155,7 +155,7 @@ export function HeaderNav({
               >
                 <NavigationLink
                   href="/casestudies"
-                  className="block py-2"
+                  className="block py-2 hover:bg-[#D9E0C1]/40 px-2 rounded-md"
                   onClick={closeDropdown}
                 >
                   Case-Studies
@@ -168,7 +168,7 @@ export function HeaderNav({
               >
                 <NavigationLink
                   href="/services"
-                  className="block py-2"
+                  className="block py-2 hover:bg-[#D9E0C1]/40 px-2 rounded-md"
                   onClick={closeDropdown}
                 >
                   Services
@@ -181,7 +181,7 @@ export function HeaderNav({
               >
                 <NavigationLink
                   href="/company"
-                  className="block py-2"
+                  className="block py-2 hover:bg-[#D9E0C1]/40 px-2 rounded-md"
                   onClick={closeDropdown}
                 >
                   Company
@@ -200,11 +200,11 @@ export function HeaderNav({
             />
             <NavigationLink
               href="/start"
-              className="text-neutral-50 py-1 font-normal text-xs bg-accent px-4 rounded-sm"
+              className="text-neutral-50 py-1 font-normal text-xs bg-accent px-4 rounded-sm border-b-2 border-red-900 hover:bg-red-700"
               onClick={closeDropdown}
             >
               Start{" "}
-              <Kbd className="hidden sm:inline-flex ml-auto font-normal text-neutral-50">
+              <Kbd className="hidden sm:inline-flex ml-auto font-normal text-neutral-50 border border-red-200 bg-red-400 rounded-xs hover:bg-red-600 hover:border-red-400">
                 S
               </Kbd>
             </NavigationLink>

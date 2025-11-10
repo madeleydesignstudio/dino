@@ -13,7 +13,7 @@ export const BenefitsPricing = () => {
                 Benefits & <span className="text-neutral-500">Pricing</span>
               </h2>
             </div>
-            <div className="w-2/3 gap-6 text-right flex flex-col font-bold">
+            <div className="w-2/3 gap-6 text-right flex flex-col font-normal text-sm">
               <p>
                 Web design pricing can feel confusing and opaque, especially for
                 startups. We’ve made it simple with a transparent, per-page

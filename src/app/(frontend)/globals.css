@@ -102,7 +102,7 @@ body {
 /* Command Dialog Custom Styling */
 [data-slot="dialog-content"] {
   background: var(--background) !important;
-  border: 2px solid #d9e0c1 !important;
+  border: 1px solid #d9e0c1 !important;
 }
 
 [data-slot="command"] {
@@ -127,11 +127,4 @@ body {
 [data-slot="command-group"] [cmdk-group-heading] {
   color: var(--foreground) !important;
   font-weight: 700 !important;
-}
-
-/* Kbd Component Custom Styling */
-[data-slot="kbd"] {
-  background: rgb(64 64 64 / 0.1) !important;
-  color: var(--foreground) !important;
-  border: 1px solid #d9e0c1 !important;
 }
