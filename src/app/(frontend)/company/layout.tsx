@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { PageTransition } from "@/components/navigation/PageTransition";
 import { LocationTimeDisplay } from "@/components/universal/LocationTimeDisplay";
+import { MaxWidthContainer } from "@/components/providers/7-max-width";
 
 interface CompanyLayoutProps {
   children: ReactNode;
@@ -8,13 +9,15 @@ interface CompanyLayoutProps {
 
 export default function CompanyLayout({ children }: CompanyLayoutProps) {
   return (
-    <div className="h-screen flex items-center justify-center w-full relative overflow-hidden">
-      <PageTransition
-        className="w-full h-full px-4 py-6 relative"
-        contentClassName="w-full h-full border border-[#D9E0C1] relative overflow-auto"
-      >
-        {children}
-      </PageTransition>
+    <div className="min-h-screen w-full relative">
+      <MaxWidthContainer>
+        <PageTransition
+          className="w-full min-h-screen px-4 py-6 relative"
+          contentClassName="w-full min-h-screen relative"
+        >
+          {children}
+        </PageTransition>
+      </MaxWidthContainer>
       <LocationTimeDisplay />
     </div>
   );
