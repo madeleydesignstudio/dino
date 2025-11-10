@@ -12,6 +12,7 @@ export default function ServicesLayout({ children }: ServicesLayoutProps) {
       <PageTransition
         className="w-full h-full px-4 py-6 relative"
         contentClassName="w-full h-full border border-[#D9E0C1] relative overflow-auto"
+        disableScaling={true}
       >
         {children}
       </PageTransition>

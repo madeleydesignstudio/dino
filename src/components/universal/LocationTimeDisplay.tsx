@@ -129,12 +129,12 @@ export const LocationTimeDisplay = ({
   return (
     <div className={`absolute inset-0 pointer-events-none ${className}`}>
       {/* Location - Top Right (in py-6 top padding zone) */}
-      <div className="absolute bottom-0 left-4 py-2 text-xs text-gray-500 font-mono tracking-wide flex items-center">
+      <div className="absolute bottom-0 right-4 py-2 text-xs text-gray-500 font-mono tracking-wide flex items-center">
         {location}
       </div>
 
       {/* Time - Bottom Right (in py-6 bottom padding zone) */}
-      <div className="absolute bottom-0 right-4 py-2 text-xs text-gray-500 font-mono tracking-wide flex items-center">
+      <div className="absolute top-0 right-4 py-2 text-xs text-gray-500 font-mono tracking-wide flex items-center">
         {time}
       </div>
     </div>

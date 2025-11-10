@@ -8,6 +8,7 @@ interface PageTransitionProps {
   children: ReactNode;
   className?: string;
   contentClassName?: string;
+  disableScaling?: boolean;
 }
 
 // Animation constants
@@ -38,6 +39,7 @@ export const PageTransition = ({
   children,
   className = "",
   contentClassName = "",
+  disableScaling = false,
 }: PageTransitionProps) => {
   const { isTransitioning } = useNavigation();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -51,12 +53,19 @@ export const PageTransition = ({
     if (!containerRef.current) return;
 
     // Override inline styles with GSAP for better control
-    gsap.set(containerRef.current, {
-      scale: TRANSITION_CONFIG.INITIAL_SCALE,
-      opacity: 0,
-      transformOrigin: "center center",
-      clearProps: "visibility", // Clear any visibility overrides
-    });
+    if (disableScaling) {
+      gsap.set(containerRef.current, {
+        opacity: 0,
+        clearProps: "visibility", // Clear any visibility overrides
+      });
+    } else {
+      gsap.set(containerRef.current, {
+        scale: TRANSITION_CONFIG.INITIAL_SCALE,
+        opacity: 0,
+        transformOrigin: "center center",
+        clearProps: "visibility", // Clear any visibility overrides
+      });
+    }
   }, []);
 
   /**
@@ -74,13 +83,22 @@ export const PageTransition = ({
     if (!isTransitioning) {
       timelineRef.current = gsap.timeline();
 
-      timelineRef.current.to(containerRef.current, {
-        scale: TRANSITION_CONFIG.FINAL_SCALE,
-        opacity: 1,
-        duration: TRANSITION_CONFIG.EXPANSION_DURATION,
-        ease: TRANSITION_CONFIG.EXPANSION_EASE,
-        delay: TRANSITION_CONFIG.EXPANSION_DELAY,
-      });
+      if (disableScaling) {
+        timelineRef.current.to(containerRef.current, {
+          opacity: 1,
+          duration: TRANSITION_CONFIG.EXPANSION_DURATION,
+          ease: TRANSITION_CONFIG.EXPANSION_EASE,
+          delay: TRANSITION_CONFIG.EXPANSION_DELAY,
+        });
+      } else {
+        timelineRef.current.to(containerRef.current, {
+          scale: TRANSITION_CONFIG.FINAL_SCALE,
+          opacity: 1,
+          duration: TRANSITION_CONFIG.EXPANSION_DURATION,
+          ease: TRANSITION_CONFIG.EXPANSION_EASE,
+          delay: TRANSITION_CONFIG.EXPANSION_DELAY,
+        });
+      }
     }
 
     // Cleanup function
@@ -109,7 +127,7 @@ export const PageTransition = ({
       className={`origin-center opacity-0 ${className}`}
       style={{
         transformOrigin: "center center",
-        transform: "scale(0)",
+        transform: disableScaling ? "none" : "scale(0)",
         visibility: "visible", // Ensure it's visible for GSAP
       }}
     >
