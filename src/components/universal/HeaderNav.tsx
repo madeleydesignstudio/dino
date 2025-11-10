@@ -1,6 +1,7 @@
 "use client";
 
 import { NavigationLink } from "@/components/navigation/NavigationLink";
+import { SearchCommand } from "@/components/universal/SearchCommand";
 import { useState, ReactNode } from "react";
 
 // Constants
@@ -66,7 +67,7 @@ export function HeaderNav({
         <NavigationLink
           key={link.href}
           href={link.href}
-          className="text-foreground hover:opacity-70 transition-opacity font-semibold text-center border-2 border-[#D9E0C1] h-full flex items-center justify-center px-2 py-1 text-sm leading-tight rounded-lg"
+          className="text-foreground hover:opacity-70 transition-opacity font-normal text-center border-2 border-[#D9E0C1] h-full flex items-center justify-center px-2 py-1 text-xs leading-tight rounded-lg"
           onClick={closeDropdown}
         >
           {link.name}
@@ -127,15 +128,15 @@ export function HeaderNav({
       <nav className="px-4" onMouseLeave={closeDropdown}>
         {/* Main Navigation Bar */}
         <div className="flex justify-between items-center h-12">
-          {/* Logo */}
-          <NavigationLink href="/" onClick={closeDropdown}>
-            {logo}
-          </NavigationLink>
+          {/* Left Side - Logo and Main Navigation */}
+          <div className="flex items-center gap-10">
+            {/* Logo */}
+            <NavigationLink href="/" onClick={closeDropdown}>
+              {logo}
+            </NavigationLink>
 
-          {/* Navigation Items */}
-          <div className="flex gap-10 font-bold items-center">
             {/* Main Navigation Links */}
-            <ul className="flex gap-10 font-bold items-center text-sm">
+            <ul className="flex gap-10 font-normal items-center text-xs">
               <li
                 className="group relative"
                 onMouseEnter={() => openDropdown("resources")}
@@ -188,17 +189,23 @@ export function HeaderNav({
                 </NavigationLink>
               </li>
             </ul>
+          </div>
 
-            {/* CTA Button */}
-            <div>
-              <NavigationLink
-                href="/start"
-                className="text-neutral-50 py-2"
-                onClick={closeDropdown}
-              >
-                Start
-              </NavigationLink>
-            </div>
+          {/* Right Side - Search and CTA Button */}
+          <div className="flex items-center gap-4">
+            <SearchCommand
+              resourcesLinks={resourcesLinks}
+              servicesLinks={servicesLinks}
+              caseStudiesLinks={caseStudiesLinks}
+              companyLinks={companyLinks}
+            />
+            <NavigationLink
+              href="/start"
+              className="text-neutral-50 py-2 font-bold"
+              onClick={closeDropdown}
+            >
+              Start
+            </NavigationLink>
           </div>
         </div>
 

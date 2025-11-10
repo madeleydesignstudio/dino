@@ -13,8 +13,75 @@ const azeretMono = Azeret_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Digital Dino",
-  description: "Design agency portfolio and company information",
+  title: {
+    template: "%s | Digital Dino",
+    default: "Digital Dino - We Make Damn Good Websites",
+  },
+  description:
+    "Digital Dino is a creative design and development studio specializing in exceptional web experiences, innovative product design, and cutting-edge digital solutions. We make damn good websites.",
+  keywords: [
+    "web design",
+    "web development",
+    "digital agency",
+    "creative studio",
+    "product design",
+    "website design",
+    "UI/UX design",
+    "branding",
+    "digital marketing",
+    "responsive design",
+  ],
+  authors: [{ name: "Digital Dino" }],
+  creator: "Digital Dino",
+  publisher: "Digital Dino",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://digitaldino.com"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Digital Dino - We Make Damn Good Websites",
+    description:
+      "Creative design and development studio specializing in exceptional web experiences and innovative digital solutions.",
+    url: "https://digitaldino.com",
+    siteName: "Digital Dino",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Digital Dino - Creative Design Studio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Digital Dino - We Make Damn Good Websites",
+    description:
+      "Creative design and development studio specializing in exceptional web experiences and innovative digital solutions.",
+    images: ["/og-image.png"],
+    creator: "@digitaldino",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "your-google-verification-code",
+  },
 };
 
 export default async function RootLayout({

@@ -27,3 +27,40 @@ body {
   color: var(--foreground);
   font-family: var(--font-azeret-mono);
 }
+
+/* Command Dialog Custom Styling */
+[data-slot="dialog-content"] {
+  background: var(--background) !important;
+  border: 2px solid #d9e0c1 !important;
+}
+
+[data-slot="command"] {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
+[data-slot="command-input"] {
+  color: var(--foreground) !important;
+  background: transparent !important;
+}
+
+[data-slot="command-input"]::placeholder {
+  color: rgb(64 64 64 / 0.5) !important;
+}
+
+[data-slot="command-item"][data-selected="true"] {
+  background: rgb(198 75 75 / 0.1) !important;
+  color: var(--accent) !important;
+}
+
+[data-slot="command-group"] [cmdk-group-heading] {
+  color: var(--foreground) !important;
+  font-weight: 700 !important;
+}
+
+/* Kbd Component Custom Styling */
+[data-slot="kbd"] {
+  background: rgb(64 64 64 / 0.1) !important;
+  color: var(--foreground) !important;
+  border: 1px solid #d9e0c1 !important;
+}
