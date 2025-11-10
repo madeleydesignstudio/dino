@@ -6,14 +6,14 @@ export const Clients = () => {
   return (
     <>
       <div className="flex justify-center w-full py-20 px-5">
-        <div className="w-full max-w-7xl flex h-full flex-col gap-10">
+        <div className="w-full flex h-full flex-col gap-10">
           <div className="flex items-center justify-between w-full">
             <h2 className="font-black text-xl uppercase">Clients</h2>
             <Link href="/casestudies" className="text-accent">
               work with us {"----->"}
             </Link>
           </div>
-          <div className="flex w-full justify-between max-w-5xl mx-auto">
+          <div className="md:flex w-full justify-between max-w-5xl mx-auto">
             <div className="flex flex-col items-center justify-center gap-4">
               <div className="w-64 h-64 bg-accent rounded-xl">
                 {" "}

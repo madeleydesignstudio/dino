@@ -1,17 +1,15 @@
 "use client";
 
 import { NavigationLink } from "@/components/navigation/NavigationLink";
-import { SearchCommand } from "@/components/universal/SearchCommand";
-import { useState, ReactNode } from "react";
 import { Kbd } from "@/components/ui/kbd";
+import { SearchCommand } from "@/components/universal/SearchCommand";
+import { ReactNode, useState } from "react";
 
 // Constants
 const DROPDOWN_HEIGHT = {
   COLLAPSED: 48, // 12 in rem (48px)
   EXPANDED: 264, // Full dropdown height
 } as const;
-
-const DROPDOWN_TRANSITION_DURATION = 300; // milliseconds
 
 // Types
 interface NavLink {
@@ -206,7 +204,7 @@ export function HeaderNav({
               onClick={closeDropdown}
             >
               Start{" "}
-              <Kbd className="hidden sm:inline-flex ml-auto font-normal text-neutral-50 border border-red-400">
+              <Kbd className="hidden sm:inline-flex ml-auto font-normal text-neutral-50">
                 S
               </Kbd>
             </NavigationLink>

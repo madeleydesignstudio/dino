@@ -29,7 +29,7 @@ export default async function Home() {
       <SevenMaxWidth>
         <Clients />
 
-        <ArtOfSimplicity />
+        {/*<ArtOfSimplicity />*/}
       </SevenMaxWidth>
       <Separator className=" bg-[#D9E0C1] w-full" />
       <SevenMaxWidth>

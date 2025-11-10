@@ -8,11 +8,11 @@ import { MusicPlayer } from "./music-player";
  */
 export const Hero = () => {
   return (
-    <section className="flex flex-col items-center justify-center gap-2.5 max-w-7xl w-full h-screen">
+    <section className="flex flex-col items-center justify-center gap-2.5 w-full h-screen">
       {/* Main heading - top part */}
       <header className="flex flex-col font-black uppercase">
-        <h1 className="text-8xl leading-none text-center">We make</h1>
-        <h1 className="text-[170px] text-accent leading-none -mt-8 text-center">
+        <h1 className="md:text-8xl leading-none text-center">We make</h1>
+        <h1 className="md:text-[170px] text-accent leading-none -mt-8 text-center">
           Damn
         </h1>
       </header>
@@ -24,7 +24,7 @@ export const Hero = () => {
 
       {/* Main heading - bottom part */}
       <div className="flex flex-col font-black uppercase items-center justify-center">
-        <h1 className="text-8xl text-center">Good Websites.</h1>
+        <h1 className="md:text-8xl text-center">Good Websites.</h1>
       </div>
     </section>
   );

@@ -65,7 +65,7 @@ export const BenefitsPricing = () => {
             </div>
           </div>
           <div className="flex h-full justify-between w-full items-end">
-            <div className="w-1/3 flex flex-col justify-between h-full"></div>
+            <div className="hidden w-1/3 md:flex flex-col justify-between h-full"></div>
             <div className="w-2/3 gap-6 text-left flex flex-col font-bold">
               <div>
                 <h3>See your estimate right away</h3>

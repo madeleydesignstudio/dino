@@ -5,8 +5,8 @@ export const Intro = () => {
   return (
     <>
       <div className="flex justify-center w-full py-20 px-5">
-        <div className="w-full flex h-full items-end gap-20">
-          <div className="w-1/2 h-[1000px] flex flex-col gap-5 justify-end">
+        <div className="w-full md:flex h-full md:items-end gap-20">
+          <div className="md:w-1/2 h-[1000px] flex flex-col gap-5 justify-end pb-5 md:pb-0">
             <div className="flex flex-col gap-5">
               <p className="font-bold">
                 We’re Dino — a creative team focused on crafting bespoke
@@ -41,7 +41,7 @@ export const Intro = () => {
             </div>
           </div>
 
-          <div className="w-1/2 h-[1000px] bg-[#D9E0C1] rounded-xl p-4 flex flex-col justify-end">
+          <div className="md:w-1/2 h-[1000px] bg-[#D9E0C1] rounded-xl p-4 flex flex-col justify-end">
             <div className="p-4">
               <p className="text-sm">
                 lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed

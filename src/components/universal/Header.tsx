@@ -68,7 +68,7 @@ export function Header({
         isInRedRegion ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
-      <div className="w-full max-w-360 border-b border-x border-[#D9E0C1]">
+      <div className="hidden md:inline w-full max-w-360 border-b border-x border-[#D9E0C1]">
         <HeaderNav
           resourcesLinks={resourcesLinks}
           servicesLinks={servicesLinks}
