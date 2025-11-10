@@ -54,12 +54,13 @@ export default function CaseStudiesLayout({
   return (
     <div className="h-screen flex items-center justify-center w-full relative overflow-hidden">
       <PageTransition
-        className="w-full h-full px-4 py-6 relative"
-        contentClassName="w-full h-full border border-[#D9E0C1] relative overflow-auto"
+        className="w-full h-full px-4 pb-4 pt-12 relative"
+        contentClassName="w-full h-full border-l border-r border-b border-[#D9E0C1] relative overflow-auto"
+        disableScaling={true}
       >
         {children}
       </PageTransition>
-      <LocationTimeDisplay />
+      {/*<LocationTimeDisplay />*/}
     </div>
   );
 }

@@ -48,16 +48,15 @@ interface CompanyLayoutProps {
 
 export default function CompanyLayout({ children }: CompanyLayoutProps) {
   return (
-    <div className="min-h-screen w-full relative">
-      <MaxWidthContainer>
-        <PageTransition
-          className="w-full min-h-screen px-4 py-6 relative"
-          contentClassName="w-full min-h-screen relative"
-        >
-          {children}
-        </PageTransition>
-      </MaxWidthContainer>
-      <LocationTimeDisplay />
+    <div className="h-screen flex items-center justify-center w-full relative overflow-hidden">
+      <PageTransition
+        className="w-full h-full px-4 pb-4 pt-12 relative"
+        contentClassName="w-full h-full border-l border-r border-b border-[#D9E0C1] relative overflow-auto"
+        disableScaling={true}
+      >
+        {children}
+      </PageTransition>
+      {/*<LocationTimeDisplay />*/}
     </div>
   );
 }

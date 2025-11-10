@@ -200,7 +200,7 @@ export function HeaderNav({
             />
             <NavigationLink
               href="/start"
-              className="text-neutral-50 py-1 font-normal text-xs bg-accent px-4 rounded-md"
+              className="text-neutral-50 py-1 font-normal text-xs bg-accent px-4 rounded-sm"
               onClick={closeDropdown}
             >
               Start{" "}

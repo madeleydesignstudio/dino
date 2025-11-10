@@ -106,7 +106,7 @@ export function SearchCommand({
       {/* Search Trigger Button */}
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center gap-2 px-2 py-1 bg-background border border-[#D9E0C1] rounded-lg  group w-[250px]"
+        className="flex items-center gap-2 px-2 py-1 bg-background border border-[#D9E0C1] rounded-sm  group w-[250px]"
       >
         <Search className="h-4 w-4 " />
         <span className="text-xs text-foreground/70 hidden sm:block">

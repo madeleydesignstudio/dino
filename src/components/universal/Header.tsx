@@ -1,5 +1,4 @@
 "use client";
-
 import { HeaderNav } from "@/components/universal/HeaderNav";
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -39,7 +38,6 @@ export function Header({
    */
   const checkRedRegionOverlap = () => {
     const redSection = document.getElementById(RED_SECTION_ID);
-
     if (redSection) {
       const rect = redSection.getBoundingClientRect();
       const isOverlapping = rect.top <= HEADER_HEIGHT && rect.bottom > 0;
@@ -64,26 +62,28 @@ export function Header({
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 flex justify-center px-4 transition-opacity duration-300 ${
+      className={`fixed top-0 left-0 bg-background right-0 z-50 transition-opacity duration-300 ${
         isInRedRegion ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
-      <div className="hidden md:inline w-full max-w-360 border-b border-x border-[#D9E0C1]">
-        <HeaderNav
-          resourcesLinks={resourcesLinks}
-          servicesLinks={servicesLinks}
-          caseStudiesLinks={caseStudiesLinks}
-          companyLinks={companyLinks}
-          logo={
-            <Image
-              src="/logo.png"
-              alt="Madeley Design Studio Logo"
-              width={40}
-              height={25}
-              priority
-            />
-          }
-        />
+      <div className="hidden md:block w-full border-b border-[#D9E0C1]">
+        <div className="mx-auto w-full max-w-360 px-4 border-x border-[#D9E0C1]">
+          <HeaderNav
+            resourcesLinks={resourcesLinks}
+            servicesLinks={servicesLinks}
+            caseStudiesLinks={caseStudiesLinks}
+            companyLinks={companyLinks}
+            logo={
+              <Image
+                src="/logo.png"
+                alt="Madeley Design Studio Logo"
+                width={40}
+                height={25}
+                priority
+              />
+            }
+          />
+        </div>
       </div>
     </header>
   );
