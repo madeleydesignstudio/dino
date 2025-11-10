@@ -1,11 +1,73 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CubeIcon } from "../universal/CubeIcon";
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
 export const Resources = () => {
   const resourcesRef = useRef<HTMLDivElement>(null);
+  const cubeRef = useRef<HTMLDivElement>(null);
+  const sectionsRef = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    if (!resourcesRef.current || !cubeRef.current) return;
+
+    const cube = cubeRef.current;
+    const sections = sectionsRef.current;
+
+    // Set initial position to first section
+    gsap.set(cube, { y: 0 });
+
+    // Create scroll triggers for each section
+    sections.forEach((section, index) => {
+      if (!section) return;
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top center",
+        end: "bottom center",
+        onEnter: () => {
+          // Calculate position based on section index
+          const targetY = index * section.offsetHeight;
+          gsap.to(cube, {
+            y: targetY,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        },
+        onEnterBack: () => {
+          // Handle reverse scrolling
+          const targetY = index * section.offsetHeight;
+          gsap.to(cube, {
+            y: targetY,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        },
+      });
+    });
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.vars.trigger && sections.includes(trigger.vars.trigger)) {
+          trigger.kill();
+        }
+      });
+    };
+  }, []);
+
+  // Helper function to add section refs
+  const addToRefs = (el: HTMLDivElement | null, index: number) => {
+    if (el && !sectionsRef.current.includes(el)) {
+      sectionsRef.current[index] = el;
+    }
+  };
 
   return (
     <>
@@ -32,26 +94,44 @@ export const Resources = () => {
         </div>
         <div className="w-full grid grid-cols-4 h-screen">
           <div className="flex flex-col h-full col-span-3">
-            <div className="w-full border-t border-[#D9E0C1] flex-1">
+            <div
+              ref={(el) => addToRefs(el, 0)}
+              className="w-full border-t border-[#D9E0C1] flex-1 flex items-center px-8 text-2xl font-bold text-[#D9E0C1]"
+            >
               OpenSource
             </div>
-            <div className="w-full border-t border-[#D9E0C1] flex-1">UI</div>
-            <div className="w-full border-t border-[#D9E0C1] flex-1">API</div>
-            <div className="w-full border-t border-[#D9E0C1] flex-1">
+            <div
+              ref={(el) => addToRefs(el, 1)}
+              className="w-full border-t border-[#D9E0C1] flex-1 flex items-center px-8 text-2xl font-bold text-[#D9E0C1]"
+            >
+              UI
+            </div>
+            <div
+              ref={(el) => addToRefs(el, 2)}
+              className="w-full border-t border-[#D9E0C1] flex-1 flex items-center px-8 text-2xl font-bold text-[#D9E0C1]"
+            >
+              API
+            </div>
+            <div
+              ref={(el) => addToRefs(el, 3)}
+              className="w-full border-t border-[#D9E0C1] flex-1 flex items-center px-8 text-2xl font-bold text-[#D9E0C1]"
+            >
               Compare
             </div>
           </div>
-          <div className="flex flex-col h-full col-span-1">
-            <div className="w-full border-l border-t border-[#D9E0C1] flex-1 flex items-center justify-center">
-              <CubeIcon size={60} />
-            </div>
-            <div className="w-full border-l  border-[#D9E0C1] flex-1 flex items-center justify-center">
-              <CubeIcon size={60} />
-            </div>
-            <div className="w-full border-l  border-[#D9E0C1] flex-1 flex items-center justify-center">
-              <CubeIcon size={60} />
-            </div>
-            <div className="w-full border-l  border-[#D9E0C1] flex-1 flex items-center justify-center">
+          <div className="flex flex-col h-full col-span-1 relative">
+            {/* Static border containers */}
+            <div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>
+            <div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>
+            <div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>
+            <div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>
+
+            {/* Single animated cube */}
+            <div
+              ref={cubeRef}
+              className="absolute top-0 left-0 w-full flex items-center justify-center pointer-events-none"
+              style={{ height: "25%" }} // 25% = 1/4 of the container height
+            >
               <CubeIcon size={60} />
             </div>
           </div>
