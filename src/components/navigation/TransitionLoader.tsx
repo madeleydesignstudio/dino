@@ -25,7 +25,7 @@ const ANIMATION_CONFIG = {
 const TEXT_CONFIG = {
   CONTENT: "NEVER GO EXTINCT",
   REPEAT_COUNT: 20, // Enough repetitions for continuous scrolling
-  FONT_SIZE: "4rem", // text-6xl equivalent
+  FONT_SIZE: "8rem", // text-6xl equivalent
   FONT_WEIGHT: "bold",
   COLOR: "#D9E0C1", // Brand primary color
   LETTER_SPACING: "0.1em",

@@ -32,34 +32,36 @@ export default function CaseStudyNotFound() {
           </div>
 
           <div className="mt-12 pt-8 border-t border-[#D9E0C1]">
-            <h3 className="text-lg font-semibold mb-4">Featured Case Studies:</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              Featured Case Studies:
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
               <Link
-                href="/casestudies/project-alpha"
+                href="/casestudies/ordo"
                 className="block p-4 border border-[#D9E0C1] rounded-lg hover:bg-gray-50 transition-colors text-left"
               >
-                <h4 className="font-semibold mb-1">Project Alpha</h4>
+                <h4 className="font-semibold mb-1">Ordo</h4>
                 <p className="text-gray-600">E-commerce Platform</p>
               </Link>
               <Link
-                href="/casestudies/project-beta"
+                href="/casestudies/form-and-function"
                 className="block p-4 border border-[#D9E0C1] rounded-lg hover:bg-gray-50 transition-colors text-left"
               >
-                <h4 className="font-semibold mb-1">Project Beta</h4>
+                <h4 className="font-semibold mb-1">Form + Function</h4>
                 <p className="text-gray-600">SaaS Dashboard</p>
               </Link>
               <Link
-                href="/casestudies/project-gamma"
+                href="/casestudies/structopia"
                 className="block p-4 border border-[#D9E0C1] rounded-lg hover:bg-gray-50 transition-colors text-left"
               >
-                <h4 className="font-semibold mb-1">Project Gamma</h4>
+                <h4 className="font-semibold mb-1">Structopia</h4>
                 <p className="text-gray-600">Mobile App</p>
               </Link>
               <Link
-                href="/casestudies/project-delta"
+                href="/casestudies/madeleydesignstudio"
                 className="block p-4 border border-[#D9E0C1] rounded-lg hover:bg-gray-50 transition-colors text-left"
               >
-                <h4 className="font-semibold mb-1">Project Delta</h4>
+                <h4 className="font-semibold mb-1">madeleydesignstudio</h4>
                 <p className="text-gray-600">Corporate Website</p>
               </Link>
             </div>

@@ -1,4 +1,4 @@
-import { Header } from "@/components/universal/Header";
+import { HeaderWrapper } from "@/components/universal/HeaderWrapper";
 import { NavigationProvider } from "@/components/navigation/NavigationContext";
 import { TransitionLoader } from "@/components/navigation/TransitionLoader";
 import { LayoutContent } from "@/components/navigation";
@@ -29,7 +29,7 @@ export default async function RootLayout({
           <NavigationProvider>
             <TransitionLoader />
             <LayoutContent>
-              <Header />
+              <HeaderWrapper />
               {children}
             </LayoutContent>
           </NavigationProvider>

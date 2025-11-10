@@ -181,6 +181,10 @@ export interface CaseStudy {
   slug: string;
   description: string;
   image: number | Media;
+  /**
+   * Include this case study in the header navigation
+   */
+  isNav?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -433,6 +437,7 @@ export interface CaseStudiesSelect<T extends boolean = true> {
   slug?: T;
   description?: T;
   image?: T;
+  isNav?: T;
   updatedAt?: T;
   createdAt?: T;
 }

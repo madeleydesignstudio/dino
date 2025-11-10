@@ -4,144 +4,17 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { CaseStudy, Media } from "@/payload-types";
 import Image from "next/image";
-
-// Mock case studies data
-const mockCaseStudies = {
-  "project-alpha": {
-    id: 1,
-    slug: "project-alpha",
-    title: "Project Alpha: E-commerce Platform",
-    description: `A comprehensive e-commerce platform built for a luxury fashion brand. We created a seamless shopping experience that increased conversions by 45% and reduced cart abandonment by 30%.
-
-Key Features:
-• Custom product configurator
-• Advanced filtering and search
-• Mobile-first responsive design
-• Integrated payment processing
-• Real-time inventory management
-
-Technologies Used:
-Next.js, TypeScript, Tailwind CSS, Stripe, PostgreSQL
-
-Results:
-The new platform launched successfully and exceeded all performance metrics within the first quarter.`,
-    image: { url: "/1.png", alt: "Project Alpha Screenshot" },
-    createdAt: "2024-01-15T00:00:00.000Z",
-  },
-  "project-beta": {
-    id: 2,
-    slug: "project-beta",
-    title: "Project Beta: SaaS Dashboard",
-    description: `A comprehensive analytics dashboard for a B2B SaaS company. The project involved designing and building a complex data visualization platform that helps users make data-driven decisions.
-
-Key Features:
-• Real-time data visualization
-• Customizable dashboard widgets
-• Advanced reporting system
-• Multi-tenant architecture
-• API integrations
-
-Technologies Used:
-React, D3.js, Node.js, GraphQL, MongoDB
-
-Results:
-User engagement increased by 60% and customer satisfaction scores improved significantly.`,
-    image: { url: "/2.png", alt: "Project Beta Screenshot" },
-    createdAt: "2024-02-20T00:00:00.000Z",
-  },
-  "project-gamma": {
-    id: 3,
-    slug: "project-gamma",
-    title: "Project Gamma: Mobile App",
-    description: `A cross-platform mobile application for a healthcare startup. We designed and developed a user-friendly app that connects patients with healthcare providers.
-
-Key Features:
-• Video consultation platform
-• Appointment scheduling
-• Electronic health records
-• Push notifications
-• Offline capabilities
-
-Technologies Used:
-React Native, Firebase, WebRTC, TypeScript
-
-Results:
-The app gained 10k+ downloads in the first month and received 4.8/5 stars in app stores.`,
-    image: { url: "/3.png", alt: "Project Gamma Screenshot" },
-    createdAt: "2024-03-10T00:00:00.000Z",
-  },
-  "project-delta": {
-    id: 4,
-    slug: "project-delta",
-    title: "Project Delta: Corporate Website",
-    description: `A complete redesign and development of a corporate website for a Fortune 500 company. The project focused on improving user experience and modernizing the brand presence.
-
-Key Features:
-• Modern responsive design
-• Content management system
-• Multi-language support
-• SEO optimization
-• Performance optimization
-
-Technologies Used:
-Next.js, Payload CMS, Tailwind CSS, Vercel
-
-Results:
-Page load times improved by 70% and organic traffic increased by 120% within 6 months.`,
-    image: { url: "/4.png", alt: "Project Delta Screenshot" },
-    createdAt: "2024-03-25T00:00:00.000Z",
-  },
-};
+import {
+  fetchCaseStudyBySlug,
+  getCaseStudyStaticParams,
+} from "@/lib/caseStudiesServer";
 
 async function getCaseStudy(slug: string) {
-  // First try to get from CMS
-  try {
-    const payload = await getPayload({ config });
-
-    const result = await payload.find({
-      collection: "case-studies",
-      where: {
-        slug: {
-          equals: slug,
-        },
-      },
-      limit: 1,
-    });
-
-    if (result.docs[0]) {
-      return result.docs[0];
-    }
-  } catch (error) {
-    console.log("CMS not available, using mock data");
-  }
-
-  // Fallback to mock data
-  return mockCaseStudies[slug as keyof typeof mockCaseStudies] || null;
+  return await fetchCaseStudyBySlug(slug);
 }
 
 export async function generateStaticParams() {
-  // Try CMS first, fallback to mock data
-  try {
-    const payload = await getPayload({ config });
-
-    const caseStudies = await payload.find({
-      collection: "case-studies",
-      limit: 100,
-    });
-
-    if (caseStudies.docs.length > 0) {
-      return caseStudies.docs.map((caseStudy) => ({
-        slug: caseStudy.slug,
-      }));
-    }
-  } catch (error) {
-    console.log("CMS not available, using mock data for static params");
-  }
-
-  // Fallback to mock case studies
-  return Object.keys(mockCaseStudies).map((slug) => ({
-    slug: slug,
-  }));
+  return await getCaseStudyStaticParams();
 }
 
 type Props = {
