@@ -19,7 +19,7 @@ export default function HeroClient({ children }: HeroClientProps) {
   }, []);
 
   return (
-    <section className="relative flex flex-col items-center justify-center gap-2.5 w-full pt-12 overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center gap-2.5 w-full pt-16 pb-4 overflow-hidden">
       {/* Checkered background with fade and mouse interaction */}
       <div
         className="absolute inset-0 -z-10"

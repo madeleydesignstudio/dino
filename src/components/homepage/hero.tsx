@@ -6,20 +6,20 @@ export function Hero() {
     <HeroClient>
       {/* Main heading - top part */}
       <header className="flex flex-col font-black uppercase">
-        <h1 className="md:text-8xl leading-none text-center">We make</h1>
-        <h1 className="md:text-[170px] text-accent leading-none -mt-8 text-center">
+        <h1 className="md:text-6xl leading-none text-center">We make</h1>
+        <h1 className="md:text-[105px] text-accent leading-none -mt-4 text-center">
           Damn
         </h1>
       </header>
 
       {/* Central diamond image */}
       <div className="flex items-center justify-center">
-        <ServerImage id={9} width={625} height={625} priority quality={100} />
+        <ServerImage id={9} width={500} height={500} priority quality={100} />
       </div>
 
       {/* Main heading - bottom part */}
       <div className="flex flex-col font-black uppercase items-center justify-center">
-        <h1 className="md:text-8xl text-center">Good Websites.</h1>
+        <h1 className="md:text-6xl text-center">Good Websites.</h1>
       </div>
     </HeroClient>
   );

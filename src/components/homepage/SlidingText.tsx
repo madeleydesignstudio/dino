@@ -12,7 +12,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 const DEFAULT_TEXT = "NEVER GO EXTINCT";
 const ANIMATION_DURATION = 60; // seconds
 const TEXT_REPEAT_COUNT = 15; // Enough repetitions to fill screen width
-const CONTAINER_HEIGHT = 240; // 60 in rem (240px)
+const CONTAINER_HEIGHT = 140; // 60 in rem (240px)
 
 interface SlidingTextProps {
   /** Text for the first sliding line */
@@ -101,7 +101,7 @@ const SlidingText: React.FC<SlidingTextProps> = ({
           <div className="w-full whitespace-nowrap" aria-hidden="true">
             <p
               ref={sentence1Ref}
-              className="m-0 text-3xl font-bold text-center text-[#D9E0C1]"
+              className="m-0 text-2xl font-bold text-center text-[#D9E0C1]"
             >
               {createRepeatedText(sentence1Text)}
             </p>
@@ -111,7 +111,7 @@ const SlidingText: React.FC<SlidingTextProps> = ({
           <div className="w-full whitespace-nowrap" aria-hidden="true">
             <p
               ref={sentence2Ref}
-              className="m-0 text-3xl font-bold text-center text-[#D9E0C1]"
+              className="m-0 text-2xl font-bold text-center text-[#D9E0C1]"
             >
               {createRepeatedText(sentence2Text)}
             </p>
