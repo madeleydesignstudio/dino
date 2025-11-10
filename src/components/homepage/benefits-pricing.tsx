@@ -1,4 +1,5 @@
 import { Separator } from "@/components/universal/separator";
+import { ClientInput } from "@/components/universal/ClientInput";
 import Link from "next/link";
 
 export const BenefitsPricing = () => {
@@ -79,10 +80,11 @@ export const BenefitsPricing = () => {
                     </p>
                   </div>
                   <div className="bg-[#D9E0C1] h-12 w-1/3 flex justify-center">
-                    <input
+                    <ClientInput
                       type="number"
                       placeholder="Enter page count"
                       className="all-unset appearance-none border-0 outline-0 bg-transparent p-0 m-0 shadow-none focus:ring-0 focus:border-0 focus:outline-0"
+                      fallbackContent="Enter page count"
                     />
                   </div>
                 </div>
@@ -97,10 +99,11 @@ export const BenefitsPricing = () => {
                     </p>
                   </div>
                   <div className="bg-[#D9E0C1] h-12 w-1/3 flex justify-center">
-                    <input
-                      type="number"
-                      placeholder="Enter page count"
+                    <ClientInput
+                      type="text"
+                      placeholder="Select option"
                       className="all-unset appearance-none border-0 outline-0 bg-transparent p-0 m-0 shadow-none focus:ring-0 focus:border-0 focus:outline-0"
+                      fallbackContent="Select option"
                     />
                   </div>
                 </div>
@@ -117,10 +120,11 @@ export const BenefitsPricing = () => {
                     </p>
                   </div>
                   <div className="bg-[#D9E0C1] h-12 w-1/3 flex justify-center">
-                    <input
-                      type="number"
-                      placeholder="Enter page count"
+                    <ClientInput
+                      type="text"
+                      placeholder="Select brand status"
                       className="all-unset appearance-none border-0 outline-0 bg-transparent p-0 m-0 shadow-none focus:ring-0 focus:border-0 focus:outline-0"
+                      fallbackContent="Select brand status"
                     />
                   </div>
                 </div>
@@ -136,10 +140,11 @@ export const BenefitsPricing = () => {
                     </p>
                   </div>
                   <div className="bg-[#D9E0C1] h-12 w-1/3 flex justify-center">
-                    <input
-                      type="number"
-                      placeholder="Enter page count"
+                    <ClientInput
+                      type="email"
+                      placeholder="Enter your email"
                       className="all-unset appearance-none border-0 outline-0 bg-transparent p-0 m-0 shadow-none focus:ring-0 focus:border-0 focus:outline-0"
+                      fallbackContent="Enter your email"
                     />
                   </div>
                 </div>
@@ -150,10 +155,11 @@ export const BenefitsPricing = () => {
                 <div className="flex items-center justify-between pt-6 w-full">
                   <div className="flex flex-col items-start w-2/3"></div>
                   <div className="bg-[#D9E0C1] h-12 w-1/3 flex justify-center">
-                    <input
-                      type="number"
-                      placeholder="Enter page count"
-                      className="all-unset appearance-none border-0 outline-0 bg-transparent p-0 m-0 shadow-none focus:ring-0 focus:border-0 focus:outline-0"
+                    <ClientInput
+                      type="submit"
+                      value="Get Estimate"
+                      className="all-unset appearance-none border-0 outline-0 bg-transparent p-0 m-0 shadow-none focus:ring-0 focus:border-0 focus:outline-0 cursor-pointer font-bold"
+                      fallbackContent="Get Estimate"
                     />
                   </div>
                 </div>

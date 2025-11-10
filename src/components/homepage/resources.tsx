@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { CubeIcon } from "../universal/CubeIcon";
+import { Cube3D } from "../universal/Cube3D";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -14,6 +14,7 @@ export const Resources = () => {
   const cubeRef = useRef<HTMLDivElement>(null);
   const sectionsRef = useRef<HTMLDivElement[]>([]);
   const triggersRef = useRef<ScrollTrigger[]>([]);
+  const cubeRotationRef = useRef({ x: 0, y: 0, z: 0 });
 
   useEffect(() => {
     if (!resourcesRef.current || !cubeRef.current) return;
@@ -21,20 +22,36 @@ export const Resources = () => {
     const cube = cubeRef.current;
     const sections = sectionsRef.current;
 
+    console.log(
+      "🎲 Setting up cube animation with",
+      sections.length,
+      "sections",
+    );
+
     // Set initial position to first section
     gsap.set(cube, { y: 0 });
+
+    // Calculate the height of each section (25% of container)
+    const container = cube.parentElement;
+    const sectionHeight = container ? container.offsetHeight / 4 : 0;
+
+    console.log("📏 Section height:", sectionHeight);
 
     // Create scroll triggers for each section
     sections.forEach((section, index) => {
       if (!section) return;
 
+      console.log(`🎯 Creating trigger for section ${index}:`, section);
+
       const trigger = ScrollTrigger.create({
         trigger: section,
-        start: "top center",
-        end: "bottom center",
+        start: "top 60%",
+        end: "bottom 40%",
+        // markers: true, // Add visual markers for debugging
         onEnter: () => {
-          // Calculate position based on section index
-          const targetY = index * section.offsetHeight;
+          console.log(`✅ Entering section ${index}`);
+          const targetY = index * sectionHeight;
+
           gsap.to(cube, {
             y: targetY,
             duration: 0.8,
@@ -42,8 +59,9 @@ export const Resources = () => {
           });
         },
         onEnterBack: () => {
-          // Handle reverse scrolling
-          const targetY = index * section.offsetHeight;
+          console.log(`⬅️ Entering back section ${index}`);
+          const targetY = index * sectionHeight;
+
           gsap.to(cube, {
             y: targetY,
             duration: 0.8,
@@ -66,6 +84,7 @@ export const Resources = () => {
   const addToRefs = (el: HTMLDivElement | null, index: number) => {
     if (el && !sectionsRef.current.includes(el)) {
       sectionsRef.current[index] = el;
+      console.log(`📌 Added section ${index} to refs:`, el);
     }
   };
 
@@ -119,7 +138,7 @@ export const Resources = () => {
               Compare
             </div>
           </div>
-          <div className="flex flex-col h-full col-span-1 relative">
+          <div className="flex flex-col h-full col-span-1 relative bg-black">
             {/* Static border containers */}
             <div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>
             <div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>
@@ -129,10 +148,15 @@ export const Resources = () => {
             {/* Single animated cube */}
             <div
               ref={cubeRef}
-              className="absolute top-0 left-0 w-full flex items-center justify-center pointer-events-none"
+              className="absolute top-0 left-0 w-full flex items-center justify-center pointer-events-none z-10"
               style={{ height: "25%" }} // 25% = 1/4 of the container height
             >
-              <CubeIcon size={60} />
+              <Cube3D
+                size={80}
+                color="#ffffff"
+                autoRotate={true}
+                rotationSpeed={0.015}
+              />
             </div>
           </div>
         </div>
