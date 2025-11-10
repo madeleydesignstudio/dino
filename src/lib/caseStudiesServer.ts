@@ -1,7 +1,7 @@
 import { getPayload } from "payload";
 import config from "@payload-config";
 import type { CaseStudy } from "@/payload-types";
-import { mockCaseStudies } from "./caseStudies";
+import { mockCaseStudies, mockResources, mockServices } from "./caseStudies";
 
 /**
  * Fetches all case studies from Payload CMS with fallback to mock data
@@ -92,6 +92,280 @@ export async function getCaseStudyStaticParams() {
     { slug: "structopia" },
     { slug: "madeleydesignstudio" },
   ];
+}
+
+/**
+ * Fetches resources for navigation from Payload CMS
+ * SERVER-SIDE ONLY - Used to populate navigation menus
+ * Only includes resources where isNav is true and isPublished is true
+ */
+export async function fetchResourcesNavigation() {
+  try {
+    console.log("🔍 Fetching resources navigation...");
+    const payload = await getPayload({ config });
+
+    const result = await payload.find({
+      collection: "resources",
+      where: {
+        and: [
+          {
+            isNav: {
+              equals: true,
+            },
+          },
+          {
+            isPublished: {
+              equals: true,
+            },
+          },
+        ],
+      },
+      limit: 100,
+      sort: "-createdAt",
+      select: {
+        title: true,
+        slug: true,
+      },
+    });
+
+    const navigationLinks = result.docs.map((resource) => ({
+      name: resource.title,
+      href: `/resources/${resource.slug}`,
+    }));
+
+    console.log(`📄 Found ${navigationLinks.length} resources for navigation`);
+
+    // If no navigation links found, return static fallback
+    if (navigationLinks.length === 0) {
+      console.log("⚠️ No resources found, using static fallback");
+      return [
+        { name: "Opensource", href: "/resources/opensource" },
+        { name: "UI", href: "/resources/ui" },
+        { name: "API", href: "/resources/api" },
+        { name: "Compare", href: "/resources/compare" },
+        { name: "Blog", href: "/resources/blog" },
+      ];
+    }
+
+    console.log("✅ Returning dynamic resources navigation");
+    return navigationLinks;
+  } catch (error) {
+    console.error("❌ Error fetching resources navigation:", error);
+
+    // Fallback to static navigation
+    return [
+      { name: "Opensource", href: "/resources/opensource" },
+      { name: "UI", href: "/resources/ui" },
+      { name: "API", href: "/resources/api" },
+      { name: "Compare", href: "/resources/compare" },
+      { name: "Blog", href: "/resources/blog" },
+    ];
+  }
+}
+
+/**
+ * Fetches services for navigation from Payload CMS
+ * SERVER-SIDE ONLY - Used to populate navigation menus
+ * Only includes services where isNav is true and isPublished is true
+ */
+export async function fetchServicesNavigation() {
+  try {
+    console.log("🔍 Fetching services navigation...");
+    const payload = await getPayload({ config });
+
+    const result = await payload.find({
+      collection: "services",
+      where: {
+        and: [
+          {
+            isNav: {
+              equals: true,
+            },
+          },
+          {
+            isPublished: {
+              equals: true,
+            },
+          },
+        ],
+      },
+      limit: 100,
+      sort: "-createdAt",
+      select: {
+        title: true,
+        slug: true,
+      },
+    });
+
+    const navigationLinks = result.docs.map((service) => ({
+      name: service.title,
+      href: `/services/${service.slug}`,
+    }));
+
+    console.log(`📄 Found ${navigationLinks.length} services for navigation`);
+
+    // If no navigation links found, return static fallback
+    if (navigationLinks.length === 0) {
+      console.log("⚠️ No services found, using static fallback");
+      return [
+        { name: "Website Design", href: "/services/website-design" },
+        { name: "Website Development", href: "/services/website-development" },
+        { name: "Creative Design", href: "/services/creative-design" },
+        { name: "Agentic AI", href: "/services/agentic-ai" },
+        { name: "Product Design", href: "/services/product-design" },
+      ];
+    }
+
+    console.log("✅ Returning dynamic services navigation");
+    return navigationLinks;
+  } catch (error) {
+    console.error("❌ Error fetching services navigation:", error);
+
+    // Fallback to static navigation
+    return [
+      { name: "Website Design", href: "/services/website-design" },
+      { name: "Website Development", href: "/services/website-development" },
+      { name: "Creative Design", href: "/services/creative-design" },
+      { name: "Agentic AI", href: "/services/agentic-ai" },
+      { name: "Product Design", href: "/services/product-design" },
+    ];
+  }
+}
+
+/**
+ * Fetches all published resources from Payload CMS
+ * SERVER-SIDE ONLY
+ */
+export async function fetchResources() {
+  try {
+    const payload = await getPayload({ config });
+
+    const result = await payload.find({
+      collection: "resources",
+      where: {
+        isPublished: {
+          equals: true,
+        },
+      },
+      limit: 100,
+      sort: "-createdAt",
+    });
+
+    if (result.docs.length > 0) {
+      return result.docs;
+    } else {
+      return mockResources as unknown as any[];
+    }
+  } catch (error) {
+    console.error("Error fetching resources from CMS:", error);
+    return mockResources as unknown as any[];
+  }
+}
+
+/**
+ * Fetches a specific resource by slug from Payload CMS
+ * SERVER-SIDE ONLY
+ */
+export async function fetchResourceBySlug(slug: string) {
+  try {
+    const payload = await getPayload({ config });
+
+    const result = await payload.find({
+      collection: "resources",
+      where: {
+        and: [
+          {
+            slug: {
+              equals: slug,
+            },
+          },
+          {
+            isPublished: {
+              equals: true,
+            },
+          },
+        ],
+      },
+      limit: 1,
+    });
+
+    if (result.docs[0]) {
+      return result.docs[0];
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching resource from CMS:", error);
+    return null;
+  }
+}
+
+/**
+ * Fetches all published services from Payload CMS
+ * SERVER-SIDE ONLY
+ */
+export async function fetchServices() {
+  try {
+    const payload = await getPayload({ config });
+
+    const result = await payload.find({
+      collection: "services",
+      where: {
+        isPublished: {
+          equals: true,
+        },
+      },
+      limit: 100,
+      sort: "-createdAt",
+    });
+
+    if (result.docs.length > 0) {
+      return result.docs;
+    } else {
+      return mockServices as unknown as any[];
+    }
+  } catch (error) {
+    console.error("Error fetching services from CMS:", error);
+    return mockServices as unknown as any[];
+  }
+}
+
+/**
+ * Fetches a specific service by slug from Payload CMS
+ * SERVER-SIDE ONLY
+ */
+export async function fetchServiceBySlug(slug: string) {
+  try {
+    const payload = await getPayload({ config });
+
+    const result = await payload.find({
+      collection: "services",
+      where: {
+        and: [
+          {
+            slug: {
+              equals: slug,
+            },
+          },
+          {
+            isPublished: {
+              equals: true,
+            },
+          },
+        ],
+      },
+      limit: 1,
+    });
+
+    if (result.docs[0]) {
+      return result.docs[0];
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching service from CMS:", error);
+    return null;
+  }
 }
 
 /**

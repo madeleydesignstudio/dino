@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { PageTransition } from "@/components/navigation/PageTransition";
 
 interface ServicesLayoutProps {
   children: ReactNode;
@@ -7,25 +8,12 @@ interface ServicesLayoutProps {
 export default function ServicesLayout({ children }: ServicesLayoutProps) {
   return (
     <div className="h-screen flex items-center justify-center w-full relative overflow-hidden">
-      <div className="w-full h-full p-12 relative">
-        {/* Main container with border */}
-        <div className="w-full h-full border border-[#D9E0C1] relative overflow-auto">
-          {children}
-        </div>
-
-        {/* Overlapping corner elements */}
-        {/* Top-left corner */}
-        <div className="absolute top-8 left-8 w-8 h-8 border-l border-t border-[#D9E0C1]"></div>
-
-        {/* Top-right corner */}
-        <div className="absolute top-8 right-8 w-8 h-8 border-r border-t border-[#D9E0C1]"></div>
-
-        {/* Bottom-left corner */}
-        <div className="absolute bottom-8 left-8 w-8 h-8 border-l border-b border-[#D9E0C1]"></div>
-
-        {/* Bottom-right corner */}
-        <div className="absolute bottom-8 right-8 w-8 h-8 border-r border-b border-[#D9E0C1]"></div>
-      </div>
+      <PageTransition
+        className="w-full h-full p-4 relative"
+        contentClassName="w-full h-full border border-[#D9E0C1] relative overflow-auto"
+      >
+        {children}
+      </PageTransition>
     </div>
   );
 }

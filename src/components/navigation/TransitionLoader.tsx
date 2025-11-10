@@ -8,7 +8,7 @@ import { gsap } from "gsap";
 const ANIMATION_CONFIG = {
   // Timing
   OVERLAY_FADE_IN: 0.3,
-  OVERLAY_FADE_OUT: 0.3,
+  OVERLAY_FADE_OUT: 0.4, // Slightly longer to coordinate with page expansion
   TEXT_SLIDE_DURATION: 60, // Duration for continuous sliding
   TEXT_FADE_IN: 0.4,
 
@@ -17,7 +17,7 @@ const ANIMATION_CONFIG = {
 
   // Easing
   OVERLAY_EASE_IN: "power2.out",
-  OVERLAY_EASE_OUT: "power2.inOut",
+  OVERLAY_EASE_OUT: "power3.inOut", // Smoother easing to match page expansion
   TEXT_EASE: "none", // Linear movement for sliding text
 } as const;
 
@@ -51,6 +51,9 @@ export const TransitionLoader = () => {
   const loaderRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+
+  // Animation reference for cleanup
+  const slidingAnimationRef = useRef<gsap.core.Tween | null>(null);
 
   /**
    * Creates repeated text for continuous sliding effect
@@ -97,8 +100,13 @@ export const TransitionLoader = () => {
       tl.call(() => {
         if (textRef.current) {
           document.fonts.ready.then(() => {
+            // Kill any existing sliding animation
+            if (slidingAnimationRef.current) {
+              slidingAnimationRef.current.kill();
+            }
+
             // Sliding animation - move from right to left to create left-to-right scrolling effect
-            gsap.to(textRef.current, {
+            slidingAnimationRef.current = gsap.to(textRef.current, {
               x: () => -textRef.current!.scrollWidth / 2,
               ease: ANIMATION_CONFIG.TEXT_EASE,
               duration: ANIMATION_CONFIG.TEXT_SLIDE_DURATION,
@@ -120,8 +128,24 @@ export const TransitionLoader = () => {
 
     if (!loaderRef.current || !overlayRef.current) return tl;
 
-    // Fade out overlay and hide container
-    tl.to(overlayRef.current, {
+    // Kill any ongoing sliding animations first
+    if (slidingAnimationRef.current) {
+      slidingAnimationRef.current.kill();
+      slidingAnimationRef.current = null;
+    }
+
+    // Also kill any other tweens on the text element
+    if (textRef.current) {
+      gsap.killTweensOf(textRef.current);
+    }
+
+    // Fade out both overlay and text together
+    const fadeTargets = [overlayRef.current];
+    if (textRef.current) {
+      fadeTargets.push(textRef.current);
+    }
+
+    tl.to(fadeTargets, {
       opacity: 0,
       duration: ANIMATION_CONFIG.OVERLAY_FADE_OUT,
       ease: ANIMATION_CONFIG.OVERLAY_EASE_OUT,
@@ -145,9 +169,13 @@ export const TransitionLoader = () => {
         ? createShowAnimation()
         : createHideAnimation();
 
-    // Cleanup function to kill timeline on unmount/state change
+    // Cleanup function to kill timeline and sliding animation on unmount/state change
     return () => {
       timeline.kill();
+      if (slidingAnimationRef.current) {
+        slidingAnimationRef.current.kill();
+        slidingAnimationRef.current = null;
+      }
     };
   }, [isTransitioning, shouldBlockContent]);
 

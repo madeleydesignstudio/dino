@@ -36,7 +36,7 @@ export default async function CaseStudyPage({ params }: Props) {
 
   return (
     <div className="min-h-screen py-16">
-      <div className="max-w-7xl mx-auto px-4 border-x border-[#D9E0C1]">
+      <div className="px-4 ">
         <div className="max-w-4xl mx-auto">
           <div className="text-sm text-gray-500 mb-4">
             <Link href="/casestudies" className="hover:underline">

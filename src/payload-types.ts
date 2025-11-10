@@ -70,6 +70,8 @@ export interface Config {
     users: User;
     media: Media;
     'case-studies': CaseStudy;
+    resources: Resource;
+    services: Service;
     careers: Career;
     'contact-submissions': ContactSubmission;
     pages: Page;
@@ -82,6 +84,8 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
+    resources: ResourcesSelect<false> | ResourcesSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
     careers: CareersSelect<false> | CareersSelect<true>;
     'contact-submissions': ContactSubmissionsSelect<false> | ContactSubmissionsSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
@@ -185,6 +189,139 @@ export interface CaseStudy {
    * Include this case study in the header navigation
    */
   isNav?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "resources".
+ */
+export interface Resource {
+  id: number;
+  title: string;
+  /**
+   * URL-friendly version of the title (e.g., "my-resource")
+   */
+  slug: string;
+  description: string;
+  /**
+   * Main content for the resource page
+   */
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  category: 'opensource' | 'ui' | 'api' | 'compare' | 'blog' | 'other';
+  /**
+   * Optional featured image for the resource
+   */
+  image?: (number | null) | Media;
+  /**
+   * External link if this resource points to another website
+   */
+  externalUrl?: string | null;
+  /**
+   * Include this resource in the header navigation
+   */
+  isNav?: boolean | null;
+  /**
+   * Publish this resource (unpublished items won't be visible)
+   */
+  isPublished?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: number;
+  title: string;
+  /**
+   * URL-friendly version of the title (e.g., "website-design")
+   */
+  slug: string;
+  description: string;
+  /**
+   * Main content for the service page
+   */
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  category: 'design' | 'development' | 'strategy' | 'technology' | 'consulting';
+  price?: {
+    /**
+     * Starting price for this service
+     */
+    startingPrice?: number | null;
+    currency?: ('usd' | 'gbp' | 'eur') | null;
+    priceType?: ('fixed' | 'hourly' | 'project' | 'custom') | null;
+  };
+  /**
+   * Key features included in this service
+   */
+  features?:
+    | {
+        feature: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Featured image for the service
+   */
+  image?: (number | null) | Media;
+  /**
+   * What clients will receive upon completion
+   */
+  deliverables?:
+    | {
+        deliverable: string;
+        id?: string | null;
+      }[]
+    | null;
+  timeline?: {
+    /**
+     * Typical duration for this service
+     */
+    duration?: number | null;
+    timeUnit?: ('days' | 'weeks' | 'months') | null;
+  };
+  /**
+   * Include this service in the header navigation
+   */
+  isNav?: boolean | null;
+  /**
+   * Feature this service on the homepage
+   */
+  isFeatured?: boolean | null;
+  /**
+   * Publish this service (unpublished items won't be visible)
+   */
+  isPublished?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -335,6 +472,14 @@ export interface PayloadLockedDocument {
         value: number | CaseStudy;
       } | null)
     | ({
+        relationTo: 'resources';
+        value: number | Resource;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: number | Service;
+      } | null)
+    | ({
         relationTo: 'careers';
         value: number | Career;
       } | null)
@@ -438,6 +583,65 @@ export interface CaseStudiesSelect<T extends boolean = true> {
   description?: T;
   image?: T;
   isNav?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "resources_select".
+ */
+export interface ResourcesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  description?: T;
+  content?: T;
+  category?: T;
+  image?: T;
+  externalUrl?: T;
+  isNav?: T;
+  isPublished?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  description?: T;
+  content?: T;
+  category?: T;
+  price?:
+    | T
+    | {
+        startingPrice?: T;
+        currency?: T;
+        priceType?: T;
+      };
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  image?: T;
+  deliverables?:
+    | T
+    | {
+        deliverable?: T;
+        id?: T;
+      };
+  timeline?:
+    | T
+    | {
+        duration?: T;
+        timeUnit?: T;
+      };
+  isNav?: T;
+  isFeatured?: T;
+  isPublished?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -393,92 +393,88 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   return (
     <div className="min-h-screen py-16">
-      <SevenMaxWidth>
-        {/* Header Section */}
-        <div className="mb-12">
-          <div className="text-sm text-gray-500 mb-4">
-            <a href="/services" className="hover:underline">
-              Services
-            </a>{" "}
-            / {service.title}
-          </div>
-          <div className="flex flex-col md:flex-row md:items-start gap-8">
-            <div className="flex-1">
-              <h1 className="text-4xl font-bold mb-4">{service.title}</h1>
-              <p className="text-xl text-gray-600 mb-6">
-                {service.description}
-              </p>
-              <div className="flex gap-4">
-                <a
-                  href="/start"
-                  className="bg-accent text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition-all font-semibold"
-                >
-                  Get Started
-                </a>
-                <a
-                  href="/company/contact"
-                  className="border border-[#D9E0C1] px-6 py-3 rounded-lg hover:bg-gray-50 transition-all font-semibold"
-                >
-                  Learn More
-                </a>
-              </div>
-            </div>
-            <div className="md:w-96">
-              <ServerImage
-                id={service.imageId}
-                width={400}
-                height={235}
-                priority
-                quality={100}
-                className="rounded-lg"
-              />
+      {/* Header Section */}
+      <div className="mb-12">
+        <div className="text-sm text-gray-500 mb-4">
+          <a href="/services" className="hover:underline">
+            Services
+          </a>{" "}
+          / {service.title}
+        </div>
+        <div className="flex flex-col md:flex-row md:items-start gap-8">
+          <div className="flex-1">
+            <h1 className="text-4xl font-bold mb-4">{service.title}</h1>
+            <p className="text-xl text-gray-600 mb-6">{service.description}</p>
+            <div className="flex gap-4">
+              <a
+                href="/start"
+                className="bg-accent text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition-all font-semibold"
+              >
+                Get Started
+              </a>
+              <a
+                href="/company/contact"
+                className="border border-[#D9E0C1] px-6 py-3 rounded-lg hover:bg-gray-50 transition-all font-semibold"
+              >
+                Learn More
+              </a>
             </div>
           </div>
-        </div>
-
-        <Separator className="bg-[#D9E0C1] w-full mb-12" />
-
-        {/* Content Section */}
-        <div
-          className="prose prose-lg max-w-none"
-          dangerouslySetInnerHTML={{ __html: service.content }}
-        />
-
-        <Separator className="bg-[#D9E0C1] w-full mt-12 mb-8" />
-
-        {/* Call to Action */}
-        <div className="text-center bg-gray-50 p-8 rounded-lg">
-          <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Let's discuss how our {service.title.toLowerCase()} services can
-            help bring your vision to life and drive your business forward.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/start"
-              className="bg-accent text-white px-8 py-3 rounded-lg hover:bg-opacity-90 transition-all font-semibold"
-            >
-              Start Your Project
-            </a>
-            <a
-              href="/casestudies"
-              className="border border-[#D9E0C1] px-8 py-3 rounded-lg hover:bg-white transition-all font-semibold"
-            >
-              View Our Work
-            </a>
+          <div className="md:w-96">
+            <ServerImage
+              id={service.imageId}
+              width={400}
+              height={235}
+              priority
+              quality={100}
+              className="rounded-lg"
+            />
           </div>
         </div>
+      </div>
 
-        {/* Back to Services */}
-        <div className="text-center mt-8">
+      <Separator className="bg-[#D9E0C1] w-full mb-12" />
+
+      {/* Content Section */}
+      <div
+        className="prose prose-lg max-w-none"
+        dangerouslySetInnerHTML={{ __html: service.content }}
+      />
+
+      <Separator className="bg-[#D9E0C1] w-full mt-12 mb-8" />
+
+      {/* Call to Action */}
+      <div className="text-center bg-gray-50 p-8 rounded-lg">
+        <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
+        <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+          Let's discuss how our {service.title.toLowerCase()} services can help
+          bring your vision to life and drive your business forward.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="/services"
-            className="inline-flex items-center text-accent hover:underline font-semibold"
+            href="/start"
+            className="bg-accent text-white px-8 py-3 rounded-lg hover:bg-opacity-90 transition-all font-semibold"
           >
-            ← Back to Services
+            Start Your Project
+          </a>
+          <a
+            href="/casestudies"
+            className="border border-[#D9E0C1] px-8 py-3 rounded-lg hover:bg-white transition-all font-semibold"
+          >
+            View Our Work
           </a>
         </div>
-      </SevenMaxWidth>
+      </div>
+
+      {/* Back to Services */}
+      <div className="text-center mt-8">
+        <a
+          href="/services"
+          className="inline-flex items-center text-accent hover:underline font-semibold"
+        >
+          ← Back to Services
+        </a>
+      </div>
     </div>
   );
 }

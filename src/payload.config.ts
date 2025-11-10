@@ -9,6 +9,8 @@ import { postgresAdapter } from "@payloadcms/db-postgres";
 import { Media } from "./collections/Media";
 import { Users } from "./collections/Users";
 import { CaseStudies } from "./collections/CaseStudies";
+import { Resources } from "./collections/Resources";
+import { Services } from "./collections/Services";
 import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 import { Careers } from "./collections/Careers";
 import { ContactSubmissions } from "./collections/ContactSubmissions";
@@ -26,7 +28,16 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, CaseStudies, Careers, ContactSubmissions, Pages],
+  collections: [
+    Users,
+    Media,
+    CaseStudies,
+    Resources,
+    Services,
+    Careers,
+    ContactSubmissions,
+    Pages,
+  ],
   globals: [CompanyAbout],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
