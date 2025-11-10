@@ -17,7 +17,7 @@ export const MaxWidthContainer = ({
   className = "",
 }: MaxWidthContainerProps) => {
   return (
-    <div className={`max-w-7xl mx-auto border-x border-[#D9E0C1] ${className}`}>
+    <div className={`max-w-360 mx-auto border-x border-[#D9E0C1] ${className}`}>
       {children}
     </div>
   );

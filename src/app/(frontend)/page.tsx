@@ -12,6 +12,7 @@ import SlidingText from "@/components/homepage/SlidingText";
 import { NewsUpdates } from "@/components/homepage/news-updates";
 import SevenMaxWidth from "@/components/providers/7-max-width";
 import { Separator } from "@/components/universal/separator";
+import { Footer } from "@/components/homepage/Footer";
 
 export default async function Home() {
   return (
@@ -62,6 +63,7 @@ export default async function Home() {
         <NewsUpdates />
       </SevenMaxWidth>
       <Separator className=" bg-[#D9E0C1] w-full" />
+      <Footer />
     </div>
   );
 }

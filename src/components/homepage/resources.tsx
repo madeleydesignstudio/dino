@@ -141,9 +141,9 @@ export const Resources = () => {
           <div className="flex flex-col h-full col-span-1 relative ">
             {/* Static border containers */}
             <div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>
-            <div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>
-            <div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>
-            <div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>
+            {/*<div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>
+            <div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>*/}
+            {/*<div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>*/}
 
             {/* Single animated cube */}
             <div
@@ -152,7 +152,7 @@ export const Resources = () => {
               style={{ height: "25%" }} // 25% = 1/4 of the container height
             >
               <Cube3D
-                size={80}
+                size={120}
                 color="#ffffff"
                 autoRotate={true}
                 rotationSpeed={0.015}

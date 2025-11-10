@@ -3,6 +3,7 @@
 import { NavigationLink } from "@/components/navigation/NavigationLink";
 import { SearchCommand } from "@/components/universal/SearchCommand";
 import { useState, ReactNode } from "react";
+import { Kbd } from "@/components/ui/kbd";
 
 // Constants
 const DROPDOWN_HEIGHT = {
@@ -201,10 +202,13 @@ export function HeaderNav({
             />
             <NavigationLink
               href="/start"
-              className="text-neutral-50 py-2 font-bold"
+              className="text-neutral-50 py-1 font-normal text-xs bg-accent px-4 rounded-md"
               onClick={closeDropdown}
             >
-              Start
+              Start{" "}
+              <Kbd className="hidden sm:inline-flex ml-auto font-normal text-neutral-50 border border-red-400">
+                S
+              </Kbd>
             </NavigationLink>
           </div>
         </div>
