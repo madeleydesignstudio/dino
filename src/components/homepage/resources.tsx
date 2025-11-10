@@ -13,6 +13,7 @@ export const Resources = () => {
   const resourcesRef = useRef<HTMLDivElement>(null);
   const cubeRef = useRef<HTMLDivElement>(null);
   const sectionsRef = useRef<HTMLDivElement[]>([]);
+  const triggersRef = useRef<ScrollTrigger[]>([]);
 
   useEffect(() => {
     if (!resourcesRef.current || !cubeRef.current) return;
@@ -27,7 +28,7 @@ export const Resources = () => {
     sections.forEach((section, index) => {
       if (!section) return;
 
-      ScrollTrigger.create({
+      const trigger = ScrollTrigger.create({
         trigger: section,
         start: "top center",
         end: "bottom center",
@@ -50,15 +51,14 @@ export const Resources = () => {
           });
         },
       });
+
+      triggersRef.current.push(trigger);
     });
 
     // Cleanup function
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => {
-        if (trigger.vars.trigger && sections.includes(trigger.vars.trigger)) {
-          trigger.kill();
-        }
-      });
+      triggersRef.current.forEach((trigger) => trigger.kill());
+      triggersRef.current = [];
     };
   }, []);
 
@@ -86,7 +86,7 @@ export const Resources = () => {
             </div>
 
             <div className="flex items-end justify-end w-full">
-              <Link href="/clients" className="text-[#D9E0C1]">
+              <Link href="/resources" className="text-[#D9E0C1]">
                 view all resources {"----->"}
               </Link>
             </div>
