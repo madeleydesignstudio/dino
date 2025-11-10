@@ -106,15 +106,13 @@ export function SearchCommand({
       {/* Search Trigger Button */}
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center gap-2 px-4 py-2 bg-background border-2 border-[#D9E0C1] rounded-lg hover:border-accent transition-colors group"
+        className="flex items-center gap-2 px-2 py-1 bg-background border border-[#D9E0C1] rounded-lg  group w-[250px]"
       >
-        <Search className="h-4 w-4 text-foreground/70 group-hover:text-accent transition-colors" />
-        <span className="text-sm text-foreground/70 hidden sm:block">
+        <Search className="h-4 w-4 " />
+        <span className="text-xs text-foreground/70 hidden sm:block">
           Search...
         </span>
-        <Kbd className="hidden sm:inline-flex ml-auto text-foreground/50">
-          {getShortcutText()}
-        </Kbd>
+        <Kbd className="hidden sm:inline-flex ml-auto">{getShortcutText()}</Kbd>
       </button>
 
       {/* Command Dialog */}

@@ -189,7 +189,7 @@ export default function ServicePageClient({
                 href={getServiceSlug(serviceLabels[index])}
                 className="aspect-[1.7] rounded-[0.4em] overflow-visible pointer-events-auto relative group transform scale-50 origin-center hover:scale-[0.52] transition-transform duration-200 cursor-pointer select-none"
               >
-                <div className="w-full h-full flex items-center bg-white/90 backdrop-blur-sm rounded-[0.4em] shadow-lg">
+                <div className="w-full h-full flex items-center">
                   <div className="w-1/2 h-full flex items-center justify-center p-4">
                     {image}
                   </div>
@@ -209,7 +209,7 @@ export default function ServicePageClient({
                 href={getServiceSlug(serviceLabels[index])}
                 className="aspect-[1.7] rounded-[0.4em] overflow-visible pointer-events-auto relative group transform scale-50 origin-center hover:scale-[0.52] transition-transform duration-200 cursor-pointer select-none"
               >
-                <div className="w-full h-full flex items-center bg-white/90 backdrop-blur-sm rounded-[0.4em] shadow-lg">
+                <div className="w-full h-full flex items-center">
                   <div className="w-1/2 h-full flex items-center justify-center p-4">
                     {image}
                   </div>

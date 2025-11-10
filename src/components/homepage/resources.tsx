@@ -138,7 +138,7 @@ export const Resources = () => {
               Compare
             </div>
           </div>
-          <div className="flex flex-col h-full col-span-1 relative bg-black">
+          <div className="flex flex-col h-full col-span-1 relative ">
             {/* Static border containers */}
             <div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>
             <div className="w-full border-l border-t border-[#D9E0C1] flex-1"></div>
