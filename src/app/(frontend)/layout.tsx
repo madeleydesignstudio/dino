@@ -1,5 +1,4 @@
 import { HeaderWrapper } from "@/components/universal/HeaderWrapper";
-import { MusicWrapper } from "@/components/universal/MusicWrapper";
 import { NavigationProvider } from "@/components/navigation/NavigationContext";
 import { TransitionLoader } from "@/components/navigation/TransitionLoader";
 import { LayoutContent } from "@/components/navigation";
@@ -99,7 +98,6 @@ export default async function RootLayout({
             <LayoutContent>
               <HeaderWrapper />
               {children}
-              {/*<MusicWrapper />*/}
             </LayoutContent>
           </NavigationProvider>
         </AnalyticsProvider>
