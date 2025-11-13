@@ -4,7 +4,6 @@ import { NavigationLink } from "@/components/navigation/NavigationLink";
 import { Kbd } from "@/components/ui/kbd";
 import { SearchCommand } from "@/components/universal/SearchCommand";
 import { ReactNode, useState } from "react";
-import { Image } from "next/image";
 
 // Constants
 const DROPDOWN_HEIGHT = {
