@@ -75,11 +75,12 @@ export function Header({
             companyLinks={companyLinks}
             logo={
               <Image
-                src="/logo.png"
-                alt="Madeley Design Studio Logo"
+                src="/dino-logo.svg"
+                alt="Dino Logo"
                 width={40}
                 height={25}
                 priority
+                quality={100}
               />
             }
           />

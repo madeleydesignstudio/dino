@@ -40,9 +40,9 @@ export const StudioServices = () => {
             </div>
           </div>
           <div className="flex h-full justify-between w-full items-end">
-            <div className="w-1/3 flex flex-col justify-between h-full" />
-            <div className="w-2/3 gap-6 text-right flex flex-col font-bold">
-              <div className="grid grid-cols-2 gap-16 h-full">
+            <div className="hidden w-1/3 md:flex flex-col justify-between h-full" />
+            <div className=" w-full md:w-2/3 gap-6 text-right flex flex-col font-bold">
+              <div className="grid gird-cols-1 md:grid-cols-2 gap-16 h-full">
                 <div className=" flex justify-start gap-8">
                   <ServerImage
                     id={17}

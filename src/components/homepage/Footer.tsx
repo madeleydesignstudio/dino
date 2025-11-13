@@ -7,7 +7,12 @@ export const Footer = () => {
         <div className="container mx-auto px-4 h-full">
           <div className="flex justify-between items-center gap-10 h-full">
             <div className="flex items-center h-full">
-              <Image src="/footer.png" alt="Logo" width={250} height={250} />
+              <Image
+                src="/dino-footer.svg"
+                alt="Logo"
+                width={250}
+                height={250}
+              />
             </div>
             <div className="flex-1 grid grid-cols-4 gap-8">
               {/* Product Column */}

@@ -14,8 +14,8 @@ export const Clients = () => {
             </Link>
           </div>
           <div className="md:flex w-full justify-between max-w-5xl mx-auto">
-            <div className="flex flex-col items-center justify-center gap-4">
-              <div className="w-64 h-64 rounded-xl">
+            <div className="flex flex-col items-center justify-center gap-4 pb-4 md:pb-0">
+              <div className="w-64 h-64 rounded-xl bg-red-400">
                 <ServerImage
                   id={23}
                   width={300}
@@ -26,7 +26,7 @@ export const Clients = () => {
               </div>
               <h3>madeleydesignstudio</h3>
             </div>
-            <div className="flex flex-col items-center justify-center gap-4">
+            <div className="flex flex-col items-center justify-center gap-4 pb-4 md:pb-0">
               <div className="w-64 h-64 rounded-xl">
                 <ServerImage
                   id={25}

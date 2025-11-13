@@ -22,9 +22,8 @@ export const BenefitsPricing = () => {
               </p>
             </div>
           </div>
-          <div className="flex h-full justify-between w-full items-end">
-            <div className="w-1/3 flex flex-col justify-between h-full">
-              {" "}
+          <div className="flex flex-col md:flex-row h-full justify-between w-full items-end">
+            <div className="w-full md:w-1/3 flex flex-col justify-between h-full">
               <div className="text-sm text-[#C64B4B] font-semibold max-w-xs gap-4 flex flex-col">
                 Estimate Glossary Page Count  An approximate number of pages
                 your site will include (not counting the homepage).  Common
@@ -43,7 +42,7 @@ export const BenefitsPricing = () => {
                 </ul>
               </div>
             </div>
-            <div className="w-2/3 gap-6 text-right flex flex-col font-bold">
+            <div className="w-full md:w-2/3 gap-6 text-right flex flex-col font-bold">
               <div className="grid grid-cols-3 border border-neutral-700 h-full">
                 <div className="border-r border-b border-neutral-700 p-4 aspect-square">
                   Item 1
@@ -65,21 +64,21 @@ export const BenefitsPricing = () => {
             </div>
           </div>
           <div className="flex h-full justify-between w-full items-end">
-            <div className="hidden w-1/3 md:flex flex-col justify-between h-full"></div>
-            <div className="w-2/3 gap-6 text-left flex flex-col font-bold">
+            <div className="hidden md:w-1/3 md:flex flex-col justify-between h-full"></div>
+            <div className=" w-full md:w-2/3 gap-6 text-left flex flex-col font-bold">
               <div>
                 <h3>See your estimate right away</h3>
               </div>
               <div>
                 <Separator className="w-full bg-foreground" />
-                <div className="flex items-center justify-between pt-6 w-full">
-                  <div className="flex flex-col items-start w-2/3">
+                <div className="flex flex-col md:flex-row items-center justify-between pt-6 w-full">
+                  <div className="flex flex-col items-start w-full md:w-2/3">
                     <h4>Page Count</h4>
                     <p className="text-neutral-500 text-xs">
                       (Excluding your homepage)
                     </p>
                   </div>
-                  <div className="bg-[#D9E0C1] h-12 w-1/3 flex justify-center">
+                  <div className="bg-[#D9E0C1] h-12 w-full md:w-1/3 flex justify-center">
                     <ClientInput
                       type="number"
                       placeholder="Enter page count"
@@ -91,14 +90,14 @@ export const BenefitsPricing = () => {
               </div>
               <div>
                 <Separator className="w-full bg-foreground" />
-                <div className="flex items-center justify-between pt-6 w-full">
-                  <div className="flex flex-col items-start w-2/3">
+                <div className="flex flex-col md:flex-row items-center justify-between pt-6 w-full">
+                  <div className="flex flex-col items-start w-full md:w-2/3">
                     <h4>Pick what you need</h4>
                     <p className="text-neutral-500 text-xs">
                       Design only or full build — your choice.
                     </p>
                   </div>
-                  <div className="bg-[#D9E0C1] h-12 w-1/3 flex justify-center">
+                  <div className="bg-[#D9E0C1] h-12 w-full md:w-1/3 flex justify-center">
                     <ClientInput
                       type="text"
                       placeholder="Select option"
@@ -111,15 +110,15 @@ export const BenefitsPricing = () => {
               <div>
                 {" "}
                 <Separator className="w-full bg-foreground" />
-                <div className="flex items-center justify-between pt-6 w-full">
-                  <div className="flex flex-col items-start w-2/3">
+                <div className="flex flex-col md:flex-row items-center justify-between pt-6 w-full">
+                  <div className="flex flex-col items-start w-full md:w-2/3">
                     <h4>Where’s your brand at right now?</h4>
                     <p className="text-neutral-500 text-xs">
                       Need help defining your style? We’re here to guide
                       you.{" "}
                     </p>
                   </div>
-                  <div className="bg-[#D9E0C1] h-12 w-1/3 flex justify-center">
+                  <div className="bg-[#D9E0C1] h-12 w-full md:w-1/3 flex justify-center">
                     <ClientInput
                       type="text"
                       placeholder="Select brand status"
@@ -132,14 +131,14 @@ export const BenefitsPricing = () => {
               <div>
                 {" "}
                 <Separator className="w-full bg-foreground" />
-                <div className="flex items-center justify-between pt-6 w-full">
-                  <div className="flex flex-col items-start w-2/3">
+                <div className="flex flex-col md:flex-row items-center justify-between pt-6 w-full">
+                  <div className="flex flex-col items-start w-full md:w-2/3">
                     <h4>Tell us where to send your estimate.</h4>
                     <p className="text-neutral-500 text-xs">
                       Your quote will arrive within 5 minutes.{" "}
                     </p>
                   </div>
-                  <div className="bg-[#D9E0C1] h-12 w-1/3 flex justify-center">
+                  <div className="bg-[#D9E0C1] h-12 w-full md:w-1/3 flex justify-center">
                     <ClientInput
                       type="email"
                       placeholder="Enter your email"
@@ -152,9 +151,9 @@ export const BenefitsPricing = () => {
               <div>
                 {" "}
                 <Separator className="w-full bg-foreground" />
-                <div className="flex items-center justify-between pt-6 w-full">
-                  <div className="flex flex-col items-start w-2/3"></div>
-                  <div className="bg-[#D9E0C1] h-12 w-1/3 flex justify-center">
+                <div className="flex flex-col md:flex-row items-center justify-between pt-6 w-full">
+                  <div className="flex flex-col items-start w-full md:w-2/3"></div>
+                  <div className="bg-[#D9E0C1] h-12 w-full md:w-1/3 flex justify-center">
                     <ClientInput
                       type="submit"
                       value="Get Estimate"

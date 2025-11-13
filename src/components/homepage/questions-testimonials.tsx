@@ -68,8 +68,8 @@ export const QuestionsTestimonials = () => {
               </p>
             </div>
           </div>
-          <div className="flex h-full justify-between w-full items-end">
-            <div className="w-1/3 flex flex-col justify-between h-full">
+          <div className="flex flex-col md:flex-row h-full justify-between w-full items-end">
+            <div className="w-full md:w-1/3 flex flex-col justify-between h-full">
               {" "}
               <div className="text-sm text-[#C64B4B] font-semibold max-w-xs gap-4 flex flex-col">
                 Estimate Glossary Page Count  An approximate number of pages
@@ -89,7 +89,7 @@ export const QuestionsTestimonials = () => {
                 </ul>
               </div>
             </div>
-            <div className="w-2/3 gap-6 text-right flex flex-col font-bold">
+            <div className="w-full md:w-2/3 gap-6 text-right flex flex-col font-bold">
               <div className="flex flex-col border border-neutral-700">
                 {faqData.map((item, index) => (
                   <div

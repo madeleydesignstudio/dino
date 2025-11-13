@@ -99,7 +99,7 @@ export default async function RootLayout({
             <LayoutContent>
               <HeaderWrapper />
               {children}
-              <MusicWrapper />
+              {/*<MusicWrapper />*/}
             </LayoutContent>
           </NavigationProvider>
         </AnalyticsProvider>
