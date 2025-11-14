@@ -1,16 +1,16 @@
 /* Prevent content flash during initial load */
-html.initial-loading body:not([data-initial-load-checked]) {
+html[data-initial-load-state="pending"] body:not([data-initial-load-checked]) {
   overflow: hidden;
 }
 
 /* Hide the application shell while the loader is active */
-html.initial-loading [data-app-shell="true"] {
+html[data-initial-load-state="pending"] [data-app-shell="true"] {
   opacity: 0 !important;
   pointer-events: none !important;
 }
 
 /* Ensure initial loader is always visible */
-html.initial-loading [data-initial-loader="true"] {
+html[data-initial-load-state="pending"] [data-initial-loader="true"] {
   visibility: visible;
 }
 

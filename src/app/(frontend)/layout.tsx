@@ -101,7 +101,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-initial-load-state="pending">
       <head>
         {/* Preconnect to critical origins for 300ms LCP improvement */}
         <link rel="preconnect" href="https://api.openpanel.dev" />
@@ -113,11 +113,30 @@ export default async function RootLayout({
             __html: `
               (function() {
                 const hasShownInitialLoad = sessionStorage.getItem('dino-initial-load-shown');
-                if (!hasShownInitialLoad) {
-                  document.documentElement.classList.add('initial-loading');
-                } else {
-                  document.documentElement.classList.remove('initial-loading');
+                const root = document.documentElement;
+                const markBodyChecked = () => {
+                  if (!document.body) return;
                   document.body.setAttribute('data-initial-load-checked', 'true');
+                };
+
+                if (!hasShownInitialLoad) {
+                  root.classList.add('initial-loading');
+                  root.setAttribute('data-initial-load-state', 'pending');
+                  if (document.body) {
+                    document.body.removeAttribute('data-initial-load-checked');
+                  } else {
+                    document.addEventListener('DOMContentLoaded', () => {
+                      document.body.removeAttribute('data-initial-load-checked');
+                    }, { once: true });
+                  }
+                } else {
+                  root.classList.remove('initial-loading');
+                  root.setAttribute('data-initial-load-state', 'ready');
+                  if (document.body) {
+                    markBodyChecked();
+                  } else {
+                    document.addEventListener('DOMContentLoaded', markBodyChecked, { once: true });
+                  }
                 }
               })();
             `,

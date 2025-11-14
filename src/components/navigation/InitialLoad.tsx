@@ -20,13 +20,25 @@ export const InitialLoad = () => {
   const progressRef = useRef<{ value: number }>({ value: 0 });
 
   useEffect(() => {
+    const root = document.documentElement;
+    const markReady = () => {
+      root.classList.remove("initial-loading");
+      root.setAttribute("data-initial-load-state", "ready");
+      document.body.setAttribute("data-initial-load-checked", "true");
+    };
+
+    const markPending = () => {
+      root.classList.add("initial-loading");
+      root.setAttribute("data-initial-load-state", "pending");
+      document.body.removeAttribute("data-initial-load-checked");
+    };
+
     const hasShownInitialLoad = sessionStorage.getItem(
       "dino-initial-load-shown",
     );
 
     if (!hasShownInitialLoad) {
-      document.documentElement.classList.add("initial-loading");
-      document.body.removeAttribute("data-initial-load-checked");
+      markPending();
       sessionStorage.setItem("dino-initial-load-shown", "true");
       setIsVisible(true);
       document.body.style.overflow = "hidden";
@@ -50,8 +62,7 @@ export const InitialLoad = () => {
             onComplete: () => {
               setIsVisible(false);
               setShouldRender(false);
-              document.documentElement.classList.remove("initial-loading");
-              document.body.setAttribute("data-initial-load-checked", "true");
+              markReady();
               document.body.style.overflow = "";
             },
           });
@@ -62,12 +73,11 @@ export const InitialLoad = () => {
         clearTimeout(fadeOutTimer);
         progressTween.kill();
         document.body.style.overflow = "";
-        document.documentElement.classList.remove("initial-loading");
-        document.body.setAttribute("data-initial-load-checked", "true");
+        markReady();
       };
     } else {
       setShouldRender(false);
-      document.body.setAttribute("data-initial-load-checked", "true");
+      markReady();
     }
   }, []);
 
