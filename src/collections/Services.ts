@@ -204,7 +204,8 @@ export const Services: CollectionConfig = {
       type: "checkbox",
       defaultValue: false,
       admin: {
-        description: "Publish this service (unpublished items won't be visible)",
+        description:
+          "Publish this service (unpublished items won't be visible)",
       },
     },
   ],

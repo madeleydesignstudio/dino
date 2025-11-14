@@ -15,7 +15,9 @@ interface CaseStudiesClientProps {
   caseStudies: CaseStudy[];
 }
 
-export default function CaseStudiesClient({ caseStudies }: CaseStudiesClientProps) {
+export default function CaseStudiesClient({
+  caseStudies,
+}: CaseStudiesClientProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Variables to maintain state between renders
@@ -106,7 +108,7 @@ export default function CaseStudiesClient({ caseStudies }: CaseStudiesClientProp
           >
             <Image
               src={image?.url || `/placeholder.png`}
-              alt={ariaHidden ? "" : (image?.alt || caseStudy.title)}
+              alt={ariaHidden ? "" : image?.alt || caseStudy.title}
               width={600}
               height={600}
               className="w-full h-full block object-contain group-hover:opacity-80 transition-opacity duration-200"
@@ -152,7 +154,11 @@ export default function CaseStudiesClient({ caseStudies }: CaseStudiesClientProp
         >
           <Image
             src={(caseStudies[3].image as Media)?.url || `/placeholder.png`}
-            alt={ariaHidden ? "" : ((caseStudies[3].image as Media)?.alt || caseStudies[3].title)}
+            alt={
+              ariaHidden
+                ? ""
+                : (caseStudies[3].image as Media)?.alt || caseStudies[3].title
+            }
             width={600}
             height={600}
             className="w-full h-full block object-contain group-hover:opacity-80 transition-opacity duration-200"

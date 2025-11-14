@@ -1,5 +1,6 @@
 import { Separator } from "@/components/universal/separator";
 import { ServerImage } from "@/components/universal/ServerImage";
+import { NavigationLink } from "@/components/navigation/NavigationLink";
 
 export const StudioServices = () => {
   return (
@@ -42,8 +43,11 @@ export const StudioServices = () => {
           <div className="flex h-full justify-between w-full items-end">
             <div className="hidden w-1/3 md:flex flex-col justify-between h-full" />
             <div className=" w-full md:w-2/3 gap-6 text-right flex flex-col font-bold">
-              <div className="grid gird-cols-1 md:grid-cols-2 gap-16 h-full">
-                <div className=" flex justify-start gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 h-full">
+                <NavigationLink
+                  href="/services/website-design"
+                  className="flex justify-start gap-8 hover:opacity-70 transition-opacity"
+                >
                   <ServerImage
                     id={17}
                     width={200}
@@ -54,8 +58,11 @@ export const StudioServices = () => {
                   <h3 className="text-3xl uppercase font-bold">
                     Website Design
                   </h3>
-                </div>
-                <div className=" flex justify-end gap-8">
+                </NavigationLink>
+                <NavigationLink
+                  href="/services/website-development"
+                  className="flex justify-end gap-8 hover:opacity-70 transition-opacity"
+                >
                   <h3 className="text-3xl uppercase font-bold">
                     Website Development
                   </h3>
@@ -66,8 +73,11 @@ export const StudioServices = () => {
                     priority
                     quality={100}
                   />
-                </div>
-                <div className=" flex justify-start gap-8">
+                </NavigationLink>
+                <NavigationLink
+                  href="/services/creative-design"
+                  className="flex justify-start gap-8 hover:opacity-70 transition-opacity"
+                >
                   <ServerImage
                     id={21}
                     width={150}
@@ -78,8 +88,11 @@ export const StudioServices = () => {
                   <h3 className="text-3xl uppercase font-bold">
                     Creative Design
                   </h3>
-                </div>
-                <div className=" flex justify-end gap-8">
+                </NavigationLink>
+                <NavigationLink
+                  href="/services/agentic-ai"
+                  className="flex justify-end gap-8 hover:opacity-70 transition-opacity"
+                >
                   <h3 className="text-3xl uppercase font-bold">Agentic AI</h3>
                   <ServerImage
                     id={20}
@@ -88,9 +101,11 @@ export const StudioServices = () => {
                     priority
                     quality={100}
                   />
-                </div>
-                <div className=" flex justify-start gap-8">
-                  {" "}
+                </NavigationLink>
+                <NavigationLink
+                  href="/services/product-design"
+                  className="flex justify-start gap-8 hover:opacity-70 transition-opacity"
+                >
                   <ServerImage
                     id={19}
                     width={200}
@@ -101,8 +116,11 @@ export const StudioServices = () => {
                   <h3 className="text-3xl uppercase font-bold">
                     Product Design
                   </h3>
-                </div>
-                <div className=" flex justify-end gap-8">
+                </NavigationLink>
+                <NavigationLink
+                  href="/services"
+                  className="flex justify-end gap-8 hover:opacity-70 transition-opacity"
+                >
                   <h3 className="text-3xl uppercase font-bold">View All</h3>
                   <ServerImage
                     id={18}
@@ -111,7 +129,7 @@ export const StudioServices = () => {
                     priority
                     quality={100}
                   />
-                </div>
+                </NavigationLink>
               </div>
             </div>
           </div>

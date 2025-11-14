@@ -35,7 +35,9 @@ export const ClientConfirmationEmail = ({
   return (
     <Html>
       <Head />
-      <Preview>Thank you for your project inquiry - We'll be in touch soon!</Preview>
+      <Preview>
+        Thank you for your project inquiry - We'll be in touch soon!
+      </Preview>
       <Body style={main}>
         <Container style={container}>
           {/* Header */}
@@ -107,7 +109,8 @@ export const ClientConfirmationEmail = ({
                 <Column style={stepContent}>
                   <Text style={stepTitle}>Review (24 hours)</Text>
                   <Text style={stepDescription}>
-                    We'll carefully review your project details and requirements.
+                    We'll carefully review your project details and
+                    requirements.
                   </Text>
                 </Column>
               </Row>
@@ -145,8 +148,8 @@ export const ClientConfirmationEmail = ({
           {/* CTA Section */}
           <Section style={ctaSection}>
             <Text style={ctaText}>
-              In the meantime, feel free to explore our recent work and case studies
-              to get a better sense of our approach and capabilities.
+              In the meantime, feel free to explore our recent work and case
+              studies to get a better sense of our approach and capabilities.
             </Text>
             <Button style={ctaButton} href={`${baseUrl}/casestudies`}>
               View Our Work
@@ -162,9 +165,9 @@ export const ClientConfirmationEmail = ({
             <Text style={footerCompany}>Madeley Design Studio</Text>
 
             <Text style={contactInfo}>
-              📧 daniel@madeleydesignstudio.com<br />
-              🌐 madeleydesignstudio.com<br />
-              📱 Follow us for updates and insights
+              📧 daniel@madeleydesignstudio.com
+              <br />🌐 madeleydesignstudio.com
+              <br />📱 Follow us for updates and insights
             </Text>
           </Section>
         </Container>
@@ -194,7 +197,8 @@ const colors = {
 // Styles
 const main = {
   backgroundColor: "#f6f9fc",
-  fontFamily: '"Azeret Mono", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+  fontFamily:
+    '"Azeret Mono", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
 };
 
 const container = {

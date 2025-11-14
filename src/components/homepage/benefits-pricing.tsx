@@ -1,6 +1,7 @@
 import { Separator } from "@/components/universal/separator";
 import { ClientInput } from "@/components/universal/ClientInput";
 import Link from "next/link";
+import Image from "next/image";
 
 export const BenefitsPricing = () => {
   return (
@@ -45,21 +46,48 @@ export const BenefitsPricing = () => {
             <div className="w-full md:w-2/3 gap-6 text-right flex flex-col font-bold">
               <div className="grid grid-cols-3 border border-neutral-700 h-full">
                 <div className="border-r border-b border-neutral-700 p-4 aspect-square">
-                  Item 1
+                  <Image
+                    src="/money.png"
+                    alt="Money"
+                    width={300}
+                    height={300}
+                  />
                 </div>
                 <div className="border-r border-b border-neutral-700 p-4 aspect-square">
-                  Item 2
+                  <Image src="/help.png" alt="Money" width={300} height={300} />
                 </div>
                 <div className="border-b border-neutral-700 p-4 aspect-square">
-                  Item 3
+                  <Image
+                    src="/eye-man.png"
+                    alt="Eye-Man"
+                    width={150}
+                    height={150}
+                  />
                 </div>
                 <div className="border-r  border-neutral-700 p-4 aspect-square">
-                  Item 4
+                  <Image
+                    src="/timeline.png"
+                    alt="Timeline"
+                    width={200}
+                    height={200}
+                  />
                 </div>
                 <div className="border-r  border-neutral-700 p-4 aspect-square">
-                  Item 5
+                  <Image
+                    src="/scales.png"
+                    alt="Scales"
+                    width={150}
+                    height={150}
+                  />
                 </div>
-                <div className=" p-4 aspect-square">Item 6</div>
+                <div className=" p-4 aspect-square">
+                  <Image
+                    src="/building.png"
+                    alt="Building"
+                    width={200}
+                    height={200}
+                  />
+                </div>
               </div>
             </div>
           </div>

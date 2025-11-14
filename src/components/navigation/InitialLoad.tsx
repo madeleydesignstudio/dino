@@ -77,7 +77,8 @@ export const InitialLoad = () => {
             },
           });
         }
-      }, INITIAL_LOAD_CONFIG.SHOW_DURATION + INITIAL_LOAD_CONFIG.DELAY_BEFORE_FADE);
+      }, INITIAL_LOAD_CONFIG.SHOW_DURATION +
+        INITIAL_LOAD_CONFIG.DELAY_BEFORE_FADE);
 
       return () => {
         clearTimeout(fadeOutTimer);

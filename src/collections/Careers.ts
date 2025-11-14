@@ -1,20 +1,20 @@
-import type { CollectionConfig } from 'payload'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import type { CollectionConfig } from "payload";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
 
 export const Careers: CollectionConfig = {
-  slug: 'careers',
+  slug: "careers",
   admin: {
-    useAsTitle: 'title',
+    useAsTitle: "title",
   },
   fields: [
     {
-      name: 'title',
-      type: 'text',
+      name: "title",
+      type: "text",
       required: true,
     },
     {
-      name: 'slug',
-      type: 'text',
+      name: "slug",
+      type: "text",
       required: true,
       unique: true,
       admin: {
@@ -22,34 +22,34 @@ export const Careers: CollectionConfig = {
       },
     },
     {
-      name: 'description',
-      type: 'richText',
+      name: "description",
+      type: "richText",
       required: true,
       editor: lexicalEditor(),
     },
     {
-      name: 'location',
-      type: 'text',
+      name: "location",
+      type: "text",
       required: true,
     },
     {
-      name: 'type',
-      type: 'select',
+      name: "type",
+      type: "select",
       required: true,
       options: [
-        { label: 'Full-time', value: 'full-time' },
-        { label: 'Part-time', value: 'part-time' },
-        { label: 'Contract', value: 'contract' },
-        { label: 'Internship', value: 'internship' },
+        { label: "Full-time", value: "full-time" },
+        { label: "Part-time", value: "part-time" },
+        { label: "Contract", value: "contract" },
+        { label: "Internship", value: "internship" },
       ],
     },
     {
-      name: 'isOpen',
-      type: 'checkbox',
+      name: "isOpen",
+      type: "checkbox",
       defaultValue: true,
       admin: {
-        description: 'Toggle to show/hide this job listing',
+        description: "Toggle to show/hide this job listing",
       },
     },
   ],
-}
+};

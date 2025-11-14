@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface CubeIconProps {
   className?: string;
@@ -7,9 +7,9 @@ interface CubeIconProps {
 }
 
 export const CubeIcon: React.FC<CubeIconProps> = ({
-  className = '',
+  className = "",
   size = 80,
-  strokeColor = '#D9E0C1'
+  strokeColor = "#D9E0C1",
 }) => {
   return (
     <svg

@@ -11,7 +11,11 @@ interface ClientInputProps extends InputHTMLAttributes<HTMLInputElement> {
  * hydration mismatches caused by browser extensions injecting attributes
  * into form inputs (like password managers, autofill extensions, etc.)
  */
-export function ClientInput({ fallbackContent = "", className, ...props }: ClientInputProps) {
+export function ClientInput({
+  fallbackContent = "",
+  className,
+  ...props
+}: ClientInputProps) {
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
@@ -19,18 +23,8 @@ export function ClientInput({ fallbackContent = "", className, ...props }: Clien
   }, []);
 
   if (!hasMounted) {
-    return (
-      <div className={className}>
-        {fallbackContent}
-      </div>
-    );
+    return <div className={className}>{fallbackContent}</div>;
   }
 
-  return (
-    <input
-      {...props}
-      className={className}
-      suppressHydrationWarning
-    />
-  );
+  return <input {...props} className={className} suppressHydrationWarning />;
 }

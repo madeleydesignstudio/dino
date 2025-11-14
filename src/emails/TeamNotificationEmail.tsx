@@ -70,7 +70,8 @@ export const TeamNotificationEmail = ({
           {/* Alert Section */}
           <Section style={alertSection}>
             <Text style={alertText}>
-              ⚠️ <strong>Action Required:</strong> New client inquiry needs review and follow-up within 24 hours.
+              ⚠️ <strong>Action Required:</strong> New client inquiry needs
+              review and follow-up within 24 hours.
             </Text>
           </Section>
 
@@ -78,7 +79,8 @@ export const TeamNotificationEmail = ({
           <Section style={heroSection}>
             <Heading style={heroHeading}>🚀 New Project Inquiry</Heading>
             <Text style={heroText}>
-              A new project inquiry has been submitted through the website contact form.
+              A new project inquiry has been submitted through the website
+              contact form.
             </Text>
           </Section>
 
@@ -173,7 +175,9 @@ export const TeamNotificationEmail = ({
               <Heading style={cardHeading}>🎯 Project Goals</Heading>
               <Section style={listContainer}>
                 {goals.map((goal, index) => (
-                  <Text key={index} style={listItem}>• {goal}</Text>
+                  <Text key={index} style={listItem}>
+                    • {goal}
+                  </Text>
                 ))}
               </Section>
             </Section>
@@ -185,7 +189,9 @@ export const TeamNotificationEmail = ({
               <Heading style={cardHeading}>⚙️ Required Features</Heading>
               <Section style={listContainer}>
                 {features.map((feature, index) => (
-                  <Text key={index} style={listItem}>• {feature}</Text>
+                  <Text key={index} style={listItem}>
+                    • {feature}
+                  </Text>
                 ))}
               </Section>
             </Section>
@@ -206,8 +212,12 @@ export const TeamNotificationEmail = ({
             <Heading style={cardHeading}>📋 Next Steps</Heading>
 
             <Text style={listItem}>• Review the project details above</Text>
-            <Text style={listItem}>• Schedule a discovery call with the client</Text>
-            <Text style={listItem}>• Prepare initial questions and scope estimate</Text>
+            <Text style={listItem}>
+              • Schedule a discovery call with the client
+            </Text>
+            <Text style={listItem}>
+              • Prepare initial questions and scope estimate
+            </Text>
 
             <Section style={ctaSection}>
               <Button
@@ -224,7 +234,8 @@ export const TeamNotificationEmail = ({
           {/* Footer */}
           <Section style={footer}>
             <Text style={footerText}>
-              This notification was generated automatically from the Madeley Design Studio contact form.
+              This notification was generated automatically from the Madeley
+              Design Studio contact form.
             </Text>
             <Text style={timestampText}>
               <strong>Submitted:</strong> {new Date().toLocaleString()}
@@ -260,7 +271,8 @@ const colors = {
 // Styles
 const main = {
   backgroundColor: "#f6f9fc",
-  fontFamily: '"Azeret Mono", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+  fontFamily:
+    '"Azeret Mono", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
 };
 
 const container = {

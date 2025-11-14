@@ -1,20 +1,20 @@
-import type { CollectionConfig } from 'payload'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import type { CollectionConfig } from "payload";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
 
 export const Pages: CollectionConfig = {
-  slug: 'pages',
+  slug: "pages",
   admin: {
-    useAsTitle: 'title',
+    useAsTitle: "title",
   },
   fields: [
     {
-      name: 'title',
-      type: 'text',
+      name: "title",
+      type: "text",
       required: true,
     },
     {
-      name: 'slug',
-      type: 'text',
+      name: "slug",
+      type: "text",
       required: true,
       unique: true,
       admin: {
@@ -22,24 +22,23 @@ export const Pages: CollectionConfig = {
       },
     },
     {
-      name: 'content',
-      type: 'richText',
+      name: "content",
+      type: "richText",
       required: true,
       editor: lexicalEditor(),
     },
     {
-      name: 'heroImage',
-      type: 'upload',
-      relationTo: 'media',
+      name: "heroImage",
+      type: "upload",
+      relationTo: "media",
     },
     {
-      name: 'isPublished',
-      type: 'checkbox',
+      name: "isPublished",
+      type: "checkbox",
       defaultValue: true,
       admin: {
-        description: 'Toggle to show/hide this page',
+        description: "Toggle to show/hide this page",
       },
     },
   ],
-}
-
+};

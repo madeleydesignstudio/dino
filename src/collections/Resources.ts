@@ -17,8 +17,7 @@ export const Resources: CollectionConfig = {
       required: true,
       unique: true,
       admin: {
-        description:
-          'URL-friendly version of the title (e.g., "my-resource")',
+        description: 'URL-friendly version of the title (e.g., "my-resource")',
       },
     },
     {
@@ -92,7 +91,8 @@ export const Resources: CollectionConfig = {
       type: "checkbox",
       defaultValue: false,
       admin: {
-        description: "Publish this resource (unpublished items won't be visible)",
+        description:
+          "Publish this resource (unpublished items won't be visible)",
       },
     },
   ],
