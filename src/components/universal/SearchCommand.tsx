@@ -116,99 +116,111 @@ export function SearchCommand({
       </button>
 
       {/* Command Dialog */}
-      <CommandDialog open={open} onOpenChange={setOpen}>
-        <div className="bg-background border-2 border-[#D9E0C1]">
-          <CommandInput
-            placeholder="Search pages and content..."
-            className="border-none text-foreground placeholder:text-foreground/50"
-          />
+      <CommandDialog
+        open={open}
+        onOpenChange={setOpen}
+        className="bg-background border border-[#D9E0C1]"
+      >
+        <CommandInput
+          placeholder="Search pages and content..."
+          className="border-none text-foreground placeholder:text-foreground/50"
+        />
 
-          <CommandList className="max-h-[400px] bg-background">
-            <CommandEmpty className="py-8 text-center text-foreground/70">
-              No results found.
-            </CommandEmpty>
+        <CommandList className="max-h-[400px] bg-background">
+          <CommandEmpty className="py-8 text-center text-foreground/70">
+            No results found.
+          </CommandEmpty>
 
-            {/* Main Navigation */}
-            <CommandGroup heading="Navigation">
-              {MAIN_LINKS.map((link) => (
+          {/* Main Navigation */}
+          <CommandGroup heading="Navigation rounded-xl">
+            {MAIN_LINKS.map((link) => (
+              <CommandItem
+                key={link.href}
+                value={`${link.name} ${link.description}`}
+                onSelect={() => handleSelect(link.href)}
+                className="flex flex-col items-start py-3 text-foreground hover:bg-accent/10 hover:text-accent cursor-pointer"
+              >
+                <div className="font-semibold">{link.name}</div>
+                {link.description && (
+                  <div className="text-sm opacity-60">{link.description}</div>
+                )}
+              </CommandItem>
+            ))}
+          </CommandGroup>
+
+          {/* Resources */}
+          {resourcesLinks.length > 0 && (
+            <CommandGroup heading="Resources">
+              {resourcesLinks.map((link) => (
                 <CommandItem
                   key={link.href}
-                  value={`${link.name} ${link.description}`}
+                  value={`${link.name} resources`}
                   onSelect={() => handleSelect(link.href)}
-                  className="flex flex-col items-start py-3 text-foreground hover:bg-accent/10 hover:text-accent cursor-pointer"
+                  className="text-foreground hover:bg-accent/10 hover:text-accent cursor-pointer"
                 >
-                  <div className="font-semibold">{link.name}</div>
-                  {link.description && (
-                    <div className="text-sm opacity-60">{link.description}</div>
-                  )}
+                  <div className="font-medium">{link.name}</div>
                 </CommandItem>
               ))}
             </CommandGroup>
+          )}
 
-            {/* Resources */}
-            {resourcesLinks.length > 0 && (
-              <CommandGroup heading="Resources">
-                {resourcesLinks.map((link) => (
-                  <CommandItem
-                    key={link.href}
-                    value={`${link.name} resources`}
-                    onSelect={() => handleSelect(link.href)}
-                    className="text-foreground hover:bg-accent/10 hover:text-accent cursor-pointer"
-                  >
-                    <div className="font-medium">{link.name}</div>
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            )}
+          {/* Services */}
+          {servicesLinks.length > 0 && (
+            <CommandGroup heading="Services">
+              {servicesLinks.map((link) => (
+                <CommandItem
+                  key={link.href}
+                  value={`${link.name} services`}
+                  onSelect={() => handleSelect(link.href)}
+                  className="text-foreground hover:bg-accent/10 hover:text-accent cursor-pointer"
+                >
+                  <div className="font-medium">{link.name}</div>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
 
-            {/* Services */}
-            {servicesLinks.length > 0 && (
-              <CommandGroup heading="Services">
-                {servicesLinks.map((link) => (
-                  <CommandItem
-                    key={link.href}
-                    value={`${link.name} services`}
-                    onSelect={() => handleSelect(link.href)}
-                    className="text-foreground hover:bg-accent/10 hover:text-accent cursor-pointer"
-                  >
-                    <div className="font-medium">{link.name}</div>
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            )}
+          {/* Case Studies */}
+          {caseStudiesLinks.length > 0 && (
+            <CommandGroup heading="Case Studies">
+              {caseStudiesLinks.map((link) => (
+                <CommandItem
+                  key={link.href}
+                  value={`${link.name} case study`}
+                  onSelect={() => handleSelect(link.href)}
+                  className="text-foreground hover:bg-accent/10 hover:text-accent cursor-pointer"
+                >
+                  <div className="font-medium">{link.name}</div>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
 
-            {/* Case Studies */}
-            {caseStudiesLinks.length > 0 && (
-              <CommandGroup heading="Case Studies">
-                {caseStudiesLinks.map((link) => (
-                  <CommandItem
-                    key={link.href}
-                    value={`${link.name} case study`}
-                    onSelect={() => handleSelect(link.href)}
-                    className="text-foreground hover:bg-accent/10 hover:text-accent cursor-pointer"
-                  >
-                    <div className="font-medium">{link.name}</div>
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            )}
-
-            {/* Company */}
-            {companyLinks.length > 0 && (
-              <CommandGroup heading="Company">
-                {companyLinks.map((link) => (
-                  <CommandItem
-                    key={link.href}
-                    value={`${link.name} company`}
-                    onSelect={() => handleSelect(link.href)}
-                    className="text-foreground hover:bg-accent/10 hover:text-accent cursor-pointer"
-                  >
-                    <div className="font-medium">{link.name}</div>
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            )}
-          </CommandList>
+          {/* Company */}
+          {companyLinks.length > 0 && (
+            <CommandGroup heading="Company">
+              {companyLinks.map((link) => (
+                <CommandItem
+                  key={link.href}
+                  value={`${link.name} company`}
+                  onSelect={() => handleSelect(link.href)}
+                  className="text-foreground hover:bg-accent/10 hover:text-accent cursor-pointer"
+                >
+                  <div className="font-medium">{link.name}</div>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
+        </CommandList>
+        <div className="flex items-center justify-between gap-4 border-t border-[#D9E0C1] bg-background px-4 py-2 text-xs uppercase tracking-[0.2em] text-foreground/70">
+          <span className="flex items-center gap-2">
+            <Kbd>esc</Kbd>
+            <span>to dismiss</span>
+          </span>
+          <span className="flex items-center gap-2">
+            <Kbd>return</Kbd>
+            <span>to select</span>
+          </span>
         </div>
       </CommandDialog>
     </>
