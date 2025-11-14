@@ -85,6 +85,14 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Digital Dino",
+  url: "https://digitaldino.com",
+  logo: "https://digitaldino.com/dino-logo.svg",
+};
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -105,6 +113,12 @@ export default async function RootLayout({
                 }
               })();
             `,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
           }}
         />
       </head>
