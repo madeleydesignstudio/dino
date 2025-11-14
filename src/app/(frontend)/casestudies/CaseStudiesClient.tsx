@@ -95,7 +95,7 @@ export default function CaseStudiesClient({
   // Create content component
   const ContentGrid = ({ ariaHidden = false }: { ariaHidden?: boolean }) => (
     <div
-      className="grid grid-cols-5 gap-[10vw] p-[5vw] w-max items-center justify-center"
+      className="grid grid-cols-2 md:grid-cols-5 gap-[10vw] p-[5vw] w-max items-center justify-center  h-full"
       aria-hidden={ariaHidden}
     >
       {caseStudies.slice(0, 3).map((caseStudy) => {
@@ -104,7 +104,7 @@ export default function CaseStudiesClient({
           <Link
             key={caseStudy.id}
             href={`/casestudies/${caseStudy.slug}`}
-            className="w-[25vw] aspect-square select-none pointer-events-auto hover:scale-105 transition-transform duration-200 group"
+            className="w-[25vw] aspect-square select-none pointer-events-auto hover:scale-105 transition-transform duration-200 group "
           >
             <Image
               src={image?.url || `/placeholder.png`}
