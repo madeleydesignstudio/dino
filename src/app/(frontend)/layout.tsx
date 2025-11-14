@@ -3,6 +3,7 @@ import { NavigationProvider } from "@/components/navigation/NavigationContext";
 import { TransitionLoader } from "@/components/navigation/TransitionLoader";
 import { InitialLoad } from "@/components/navigation/InitialLoad";
 import { LayoutContent } from "@/components/navigation";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 import { AnalyticsProvider } from "@/components/providers/AnalyticsProvider";
 import type { Metadata } from "next";
 import { Azeret_Mono } from "next/font/google";
@@ -11,8 +12,6 @@ import "./globals.css";
 const azeretMono = Azeret_Mono({
   variable: "--font-azeret-mono",
   subsets: ["latin"],
-  display: "swap", // Add font-display swap for better performance
-  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -101,48 +100,22 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-initial-load-state="pending">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Preconnect to critical origins for 300ms LCP improvement */}
-        <link rel="preconnect" href="https://api.openpanel.dev" />
-        <link rel="dns-prefetch" href="https://api.openpanel.dev" />
-
-        {/* Optimize initial load handling - runs before any CSS/JS */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 const hasShownInitialLoad = sessionStorage.getItem('dino-initial-load-shown');
-                const root = document.documentElement;
-                const markBodyChecked = () => {
-                  if (!document.body) return;
-                  document.body.setAttribute('data-initial-load-checked', 'true');
-                };
-
                 if (!hasShownInitialLoad) {
-                  root.classList.add('initial-loading');
-                  root.setAttribute('data-initial-load-state', 'pending');
-                  if (document.body) {
-                    document.body.removeAttribute('data-initial-load-checked');
-                  } else {
-                    document.addEventListener('DOMContentLoaded', () => {
-                      document.body.removeAttribute('data-initial-load-checked');
-                    }, { once: true });
-                  }
+                  document.documentElement.classList.add('initial-loading');
                 } else {
-                  root.classList.remove('initial-loading');
-                  root.setAttribute('data-initial-load-state', 'ready');
-                  if (document.body) {
-                    markBodyChecked();
-                  } else {
-                    document.addEventListener('DOMContentLoaded', markBodyChecked, { once: true });
-                  }
+                  document.documentElement.classList.remove('initial-loading');
                 }
               })();
             `,
           }}
         />
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -150,17 +123,24 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className={`${azeretMono.variable} antialiased`}>
-        <AnalyticsProvider>
-          <NavigationProvider>
-            <InitialLoad />
-            <TransitionLoader />
-            <LayoutContent>
-              <HeaderWrapper />
-              {children}
-            </LayoutContent>
-          </NavigationProvider>
-        </AnalyticsProvider>
+      <body className={`${azeretMono.variable}  antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AnalyticsProvider>
+            <NavigationProvider>
+              <InitialLoad />
+              <TransitionLoader />
+              <LayoutContent>
+                <HeaderWrapper />
+                {children}
+              </LayoutContent>
+            </NavigationProvider>
+          </AnalyticsProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -87,7 +87,7 @@ const SlidingText: React.FC<SlidingTextProps> = ({
 
   return (
     <section
-      className={`w-full relative border-y border-[#D9E0C1] overflow-hidden ${className}`}
+      className={`w-full bg-[#bac0a4] z-50 relative border-y border-[#D9E0C1] overflow-hidden ${className}`}
       ref={containerRef}
       aria-label="Animated text banner"
     >

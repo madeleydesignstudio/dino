@@ -3,6 +3,7 @@
 import { NavigationLink } from "@/components/navigation/NavigationLink";
 import { Kbd } from "@/components/ui/kbd";
 import { SearchCommand } from "@/components/universal/SearchCommand";
+import { ModeToggle } from "@/components/universal/mode-toggle";
 import { ReactNode, useState } from "react";
 
 // Constants
@@ -198,6 +199,7 @@ export function HeaderNav({
               caseStudiesLinks={caseStudiesLinks}
               companyLinks={companyLinks}
             />
+            <ModeToggle />
             <NavigationLink
               href="/start"
               className="text-neutral-50 py-1 font-normal text-xs bg-accent px-4 rounded-sm border-b-2 border-red-900 hover:bg-red-700"

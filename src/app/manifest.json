@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Dino",
+  "short_name": "Dino",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

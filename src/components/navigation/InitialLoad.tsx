@@ -5,12 +5,23 @@ import { gsap } from "gsap";
 
 // Animation timing constants
 const INITIAL_LOAD_CONFIG = {
-  SHOW_DURATION: 2800,
-  FADE_OUT_DURATION: 600,
-  DELAY_BEFORE_FADE: 200,
-  PROGRESS_DURATION: 2400,
+  SHOW_DURATION: 2800, // Show animation for 2.8 seconds
+  FADE_OUT_DURATION: 600, // Fade out duration
+  DELAY_BEFORE_FADE: 200, // Extra delay to let animation breathe
+  PROGRESS_DURATION: 2400, // Total progress duration
 } as const;
 
+/**
+ * InitialLoad component displays the DINO keyboard animation on first page load
+ *
+ * Features:
+ * - Shows animated DINO keyboard on initial page load only
+ * - Loading progress indicator from 0-100%
+ * - Prevents content flash by initially hiding body content
+ * - Smooth fade out transition once loading is complete
+ * - Uses sessionStorage to prevent showing on subsequent navigations
+ * - Integrates with existing navigation system
+ */
 export const InitialLoad = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [shouldRender, setShouldRender] = useState(true);
@@ -19,28 +30,23 @@ export const InitialLoad = () => {
   const svgRef = useRef<SVGSVGElement>(null);
   const progressRef = useRef<{ value: number }>({ value: 0 });
 
+  // Prevent content flash by hiding body initially
   useEffect(() => {
-    const root = document.documentElement;
-    const markReady = () => {
-      root.classList.remove("initial-loading");
-      root.setAttribute("data-initial-load-state", "ready");
-      document.body.setAttribute("data-initial-load-checked", "true");
-    };
-
-    const markPending = () => {
-      root.classList.add("initial-loading");
-      root.setAttribute("data-initial-load-state", "pending");
-      document.body.removeAttribute("data-initial-load-checked");
-    };
-
+    // Check if we should show the initial load animation
     const hasShownInitialLoad = sessionStorage.getItem(
       "dino-initial-load-shown",
     );
 
     if (!hasShownInitialLoad) {
-      markPending();
+      // Hide content immediately and add loading class
+      document.documentElement.classList.add("initial-loading");
+      document.body.removeAttribute("data-initial-load-checked");
+
+      // Mark as shown and display the animation
       sessionStorage.setItem("dino-initial-load-shown", "true");
       setIsVisible(true);
+
+      // Prevent body scroll while loading
       document.body.style.overflow = "hidden";
 
       // Start progress animation
@@ -53,6 +59,7 @@ export const InitialLoad = () => {
         },
       });
 
+      // Set up the fade out sequence
       const fadeOutTimer = setTimeout(() => {
         if (containerRef.current) {
           gsap.to(containerRef.current, {
@@ -62,25 +69,32 @@ export const InitialLoad = () => {
             onComplete: () => {
               setIsVisible(false);
               setShouldRender(false);
-              markReady();
+
+              // Show body content
+              document.documentElement.classList.remove("initial-loading");
+              document.body.setAttribute("data-initial-load-checked", "true");
               document.body.style.overflow = "";
             },
           });
         }
-      }, INITIAL_LOAD_CONFIG.SHOW_DURATION + INITIAL_LOAD_CONFIG.DELAY_BEFORE_FADE);
+      }, INITIAL_LOAD_CONFIG.SHOW_DURATION +
+        INITIAL_LOAD_CONFIG.DELAY_BEFORE_FADE);
 
       return () => {
         clearTimeout(fadeOutTimer);
         progressTween.kill();
         document.body.style.overflow = "";
-        markReady();
+        document.documentElement.classList.remove("initial-loading");
+        document.body.setAttribute("data-initial-load-checked", "true");
       };
     } else {
+      // Don't render if we've already shown it
       setShouldRender(false);
-      markReady();
+      document.body.setAttribute("data-initial-load-checked", "true");
     }
   }, []);
 
+  // Don't render anything if we shouldn't show the initial load
   if (!shouldRender) {
     return null;
   }
@@ -91,18 +105,16 @@ export const InitialLoad = () => {
       className={`fixed inset-0 flex flex-col items-center justify-center bg-background transition-opacity duration-300 ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
-      style={{
-        zIndex: 999,
-        // Prevent layout shift by setting explicit dimensions
-        contain: "layout style paint",
-      }}
+      style={{ zIndex: 999 }}
       role="dialog"
       aria-modal="true"
       aria-label="Loading Digital Dino"
       data-initial-loader="true"
     >
+      {/* Background */}
       <div className="absolute inset-0 bg-background" />
 
+      {/* DINO Animation Container */}
       <div className="relative z-10 flex flex-col items-center justify-center space-y-8">
         <svg
           ref={svgRef}
@@ -112,8 +124,6 @@ export const InitialLoad = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="max-w-[80vw] max-h-[50vh] w-auto h-auto"
-          // Optimize SVG rendering
-          style={{ willChange: "transform" }}
         >
           <style>
             {`
@@ -121,26 +131,38 @@ export const InitialLoad = () => {
                 0%, 100% { transform: translateY(0); }
                 10%, 20% { transform: translateY(8px); }
               }
+
               @keyframes pressI {
                 0%, 25%, 100% { transform: translateY(0); }
                 35%, 45% { transform: translateY(8px); }
               }
+
               @keyframes pressN {
                 0%, 50%, 100% { transform: translateY(0); }
                 60%, 70% { transform: translateY(8px); }
               }
+
               @keyframes pressO {
                 0%, 75%, 100% { transform: translateY(0); }
                 85%, 95% { transform: translateY(8px); }
               }
-              .key-d, .key-i, .key-n, .key-o {
+
+              .key-d {
+                animation: pressD 4s ease-in-out infinite;
                 transform-origin: center;
-                will-change: transform;
               }
-              .key-d { animation: pressD 4s ease-in-out infinite; }
-              .key-i { animation: pressI 4s ease-in-out infinite; }
-              .key-n { animation: pressN 4s ease-in-out infinite; }
-              .key-o { animation: pressO 4s ease-in-out infinite; }
+              .key-i {
+                animation: pressI 4s ease-in-out infinite;
+                transform-origin: center;
+              }
+              .key-n {
+                animation: pressN 4s ease-in-out infinite;
+                transform-origin: center;
+              }
+              .key-o {
+                animation: pressO 4s ease-in-out infinite;
+                transform-origin: center;
+              }
             `}
           </style>
 
@@ -209,11 +231,8 @@ export const InitialLoad = () => {
           </g>
         </svg>
 
-        {/* Loading Progress - Fixed dimensions to prevent layout shift */}
-        <div
-          className="flex flex-col items-center space-y-4"
-          style={{ minHeight: "88px", minWidth: "256px" }}
-        >
+        {/* Loading Progress */}
+        <div className="flex flex-col items-center space-y-4">
           {/* Progress Bar */}
           <div className="w-64 h-2 bg-gray-800/20 rounded-full overflow-hidden">
             <div
@@ -221,22 +240,13 @@ export const InitialLoad = () => {
               style={{
                 width: `${loadingProgress}%`,
                 backgroundColor: "#D9E0C1",
-                // GPU acceleration
-                transform: "translateZ(0)",
-                willChange: "width",
               }}
             />
           </div>
 
-          {/* Progress Text - Fixed width container to prevent shifts */}
-          <div
-            className="flex items-center space-x-3"
-            style={{ minWidth: "256px", justifyContent: "center" }}
-          >
-            <span
-              className="text-lg font-mono text-gray-400"
-              style={{ minWidth: "150px" }}
-            >
+          {/* Progress Text */}
+          <div className="flex items-center space-x-3">
+            <span className="text-lg font-mono text-gray-400">
               {loadingProgress < 30
                 ? "Initializing..."
                 : loadingProgress < 60
@@ -247,15 +257,13 @@ export const InitialLoad = () => {
                       ? "Complete!"
                       : "Loading..."}
             </span>
-            <span
-              className="text-2xl font-mono font-bold text-white"
-              style={{ minWidth: "70px" }}
-            >
+            <span className="text-2xl font-mono font-bold text-white">
               {loadingProgress}%
             </span>
           </div>
         </div>
 
+        {/* Screen reader text */}
         <div className="sr-only" role="status" aria-live="polite">
           Loading Digital Dino website... {loadingProgress}% complete
         </div>

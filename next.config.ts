@@ -2,20 +2,6 @@ import { withPayload } from "@payloadcms/next/withPayload";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ["gsap", "lucide-react"],
-  },
-  compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
-  },
-  // Reduce unused JavaScript
-  // webpack: (config, { isServer }) => {
-  //   if (!isServer) {
-  //     config.optimization.usedExports = true;
-  //   }
-  //   return config;
-  // },
   images: {
     remotePatterns: [
       {
