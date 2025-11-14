@@ -11,6 +11,8 @@ import "./globals.css";
 const azeretMono = Azeret_Mono({
   variable: "--font-azeret-mono",
   subsets: ["latin"],
+  display: "swap", // Add font-display swap for better performance
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -101,6 +103,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preconnect to critical origins for 300ms LCP improvement */}
+        <link rel="preconnect" href="https://api.openpanel.dev" />
+        <link rel="dns-prefetch" href="https://api.openpanel.dev" />
+
+        {/* Optimize initial load handling - runs before any CSS/JS */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -110,11 +117,13 @@ export default async function RootLayout({
                   document.documentElement.classList.add('initial-loading');
                 } else {
                   document.documentElement.classList.remove('initial-loading');
+                  document.body.setAttribute('data-initial-load-checked', 'true');
                 }
               })();
             `,
           }}
         />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -122,7 +131,7 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className={`${azeretMono.variable}  antialiased`}>
+      <body className={`${azeretMono.variable} antialiased`}>
         <AnalyticsProvider>
           <NavigationProvider>
             <InitialLoad />
