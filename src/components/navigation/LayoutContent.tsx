@@ -45,6 +45,7 @@ export const LayoutContent = ({
         transitionDuration: `${TRANSITION_DURATION}ms`,
       }}
       aria-hidden={shouldBlockContent}
+      data-app-shell="true"
     >
       {children}
     </div>

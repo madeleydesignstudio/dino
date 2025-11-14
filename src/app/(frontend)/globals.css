@@ -1,12 +1,17 @@
 /* Prevent content flash during initial load */
 html.initial-loading body:not([data-initial-load-checked]) {
-  visibility: hidden;
   overflow: hidden;
+}
+
+/* Hide the application shell while the loader is active */
+html.initial-loading [data-app-shell="true"] {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 /* Ensure initial loader is always visible */
 html.initial-loading [data-initial-loader="true"] {
-  visibility: visible !important;
+  visibility: visible;
 }
 
 /* Optimize animations */
