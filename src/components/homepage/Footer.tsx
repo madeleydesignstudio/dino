@@ -5,7 +5,7 @@ export const Footer = () => {
     <>
       <footer className="bg-accent text-neutral-50 pt-8 pb-20 h-full px-8 relative overflow-hidden">
         <div className="container mx-auto px-4 h-full">
-          <div className="flex justify-between items-center gap-10 h-full">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-10 h-full">
             <div className="flex items-center h-full">
               <Image
                 src="/dino-footer.svg"
@@ -191,7 +191,7 @@ export const Footer = () => {
         </div>
 
         <h1
-          className="absolute bottom-0 left-0 right-0 text-center font-bold uppercase text-neutral-50 text-9xl"
+          className="absolute bottom-0 left-0 right-0 text-center font-bold uppercase text-neutral-50 text-4xl md:text-9xl"
           style={{
             transform: "translateY(50%)",
           }}

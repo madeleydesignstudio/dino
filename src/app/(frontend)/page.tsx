@@ -16,7 +16,7 @@ import { Footer } from "@/components/homepage/Footer";
 
 export default async function Home() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <SevenMaxWidth>
         <Hero />
       </SevenMaxWidth>
