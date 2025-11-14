@@ -1,6 +1,7 @@
 import { HeaderWrapper } from "@/components/universal/HeaderWrapper";
 import { NavigationProvider } from "@/components/navigation/NavigationContext";
 import { TransitionLoader } from "@/components/navigation/TransitionLoader";
+import { InitialLoad } from "@/components/navigation/InitialLoad";
 import { LayoutContent } from "@/components/navigation";
 import { AnalyticsProvider } from "@/components/providers/AnalyticsProvider";
 import type { Metadata } from "next";
@@ -91,9 +92,26 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const hasShownInitialLoad = sessionStorage.getItem('dino-initial-load-shown');
+                if (!hasShownInitialLoad) {
+                  document.documentElement.classList.add('initial-loading');
+                } else {
+                  document.documentElement.classList.remove('initial-loading');
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className={`${azeretMono.variable}  antialiased`}>
         <AnalyticsProvider>
           <NavigationProvider>
+            <InitialLoad />
             <TransitionLoader />
             <LayoutContent>
               <HeaderWrapper />

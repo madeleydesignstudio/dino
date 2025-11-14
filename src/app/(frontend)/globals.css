@@ -28,6 +28,21 @@ body {
   font-family: var(--font-azeret-mono);
 }
 
+/* Initial Load - Prevent content flash */
+.initial-load-hidden {
+  visibility: hidden !important;
+}
+
+/* Only show content after initial load check */
+body:not([data-initial-load-checked]) > div:not([data-initial-loader]) {
+  visibility: hidden;
+}
+
+/* Loading states */
+html.initial-loading body > div:not([data-initial-loader]) {
+  visibility: hidden;
+}
+
 /* Command Dialog Custom Styling */
 /*[data-slot="dialog-content"] {
   background: var(--background) !important;
