@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Separator } from "@/components/universal/separator";
+import { Separator } from "@/components/ui/separator";
 
 export default function CompanyPage() {
   return (

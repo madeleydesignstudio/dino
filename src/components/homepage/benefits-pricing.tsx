@@ -1,4 +1,4 @@
-import { Separator } from "@/components/universal/separator";
+import { Separator } from "@/components/ui/separator";
 import { ClientInput } from "@/components/universal/ClientInput";
 import Link from "next/link";
 import Image from "next/image";

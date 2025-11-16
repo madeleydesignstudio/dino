@@ -11,7 +11,7 @@ import { QuestionsTestimonials } from "@/components/homepage/questions-testimoni
 import SlidingText from "@/components/homepage/SlidingText";
 import { NewsUpdates } from "@/components/homepage/news-updates";
 import SevenMaxWidth from "@/components/providers/7-max-width";
-import { Separator } from "@/components/universal/separator";
+import { Separator } from "@/components/ui/separator";
 import { Footer } from "@/components/homepage/Footer";
 
 export default async function Home() {

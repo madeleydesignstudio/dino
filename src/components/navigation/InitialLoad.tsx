@@ -11,17 +11,7 @@ const INITIAL_LOAD_CONFIG = {
   PROGRESS_DURATION: 2400, // Total progress duration
 } as const;
 
-/**
- * InitialLoad component displays the DINO keyboard animation on first page load
- *
- * Features:
- * - Shows animated DINO keyboard on initial page load only
- * - Loading progress indicator from 0-100%
- * - Prevents content flash by initially hiding body content
- * - Smooth fade out transition once loading is complete
- * - Uses sessionStorage to prevent showing on subsequent navigations
- * - Integrates with existing navigation system
- */
+
 export const InitialLoad = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [shouldRender, setShouldRender] = useState(true);
@@ -232,9 +222,9 @@ export const InitialLoad = () => {
         </svg>
 
         {/* Loading Progress */}
-        <div className="flex flex-col items-center space-y-4">
+        {/* <div className="flex flex-col items-center space-y-4"> */}
           {/* Progress Bar */}
-          <div className="w-64 h-2 bg-gray-800/20 rounded-full overflow-hidden">
+          {/* <div className="w-64 h-2 bg-gray-800/20 rounded-full overflow-hidden">
             <div
               className="h-full bg-primary transition-all duration-100 ease-out rounded-full"
               style={{
@@ -242,10 +232,10 @@ export const InitialLoad = () => {
                 backgroundColor: "#D9E0C1",
               }}
             />
-          </div>
+          </div> */}
 
           {/* Progress Text */}
-          <div className="flex items-center space-x-3">
+          {/* <div className="flex items-center space-x-3">
             <span className="text-lg font-mono text-gray-400">
               {loadingProgress < 30
                 ? "Initializing..."
@@ -261,7 +251,7 @@ export const InitialLoad = () => {
               {loadingProgress}%
             </span>
           </div>
-        </div>
+        </div> */}
 
         {/* Screen reader text */}
         <div className="sr-only" role="status" aria-live="polite">

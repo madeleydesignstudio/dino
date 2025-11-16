@@ -4,7 +4,9 @@ import { NavigationLink } from "@/components/navigation/NavigationLink";
 import { Kbd } from "@/components/ui/kbd";
 import { SearchCommand } from "@/components/universal/SearchCommand";
 import { ModeToggle } from "@/components/universal/mode-toggle";
+import { useNavigationHelpers } from "@/components/navigation/useNavigationHelpers";
 import { ReactNode, useState } from "react";
+import { useHotkeys } from "react-hotkeys-hook";
 
 // Constants
 const DROPDOWN_HEIGHT = {
@@ -40,6 +42,17 @@ export function HeaderNav({
   logo,
 }: HeaderNavProps) {
   const [activeDropdown, setActiveDropdown] = useState<DropdownType>(null);
+  const { navigateTo } = useNavigationHelpers();
+
+  /**
+   * Navigate to /start page when "S" key is pressed
+   */
+  useHotkeys('s', (e) => {
+    e.preventDefault();
+    navigateTo('/start');
+  }, {
+    enableOnFormTags: false, // Disable on form inputs to avoid conflicts
+  });
 
   /**
    * Closes the active dropdown menu

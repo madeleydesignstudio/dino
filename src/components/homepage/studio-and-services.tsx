@@ -1,4 +1,4 @@
-import { Separator } from "@/components/universal/separator";
+import { Separator } from "@/components/ui/separator";
 import { ServerImage } from "@/components/universal/ServerImage";
 import { NavigationLink } from "@/components/navigation/NavigationLink";
 
@@ -55,7 +55,7 @@ export const StudioServices = () => {
                     priority
                     quality={100}
                   />
-                  <h3 className="text-3xl uppercase font-bold">
+                  <h3 className="md:text-3xl text-2xl uppercase font-bold">
                     Website Design
                   </h3>
                 </NavigationLink>
@@ -63,7 +63,7 @@ export const StudioServices = () => {
                   href="/services/website-development"
                   className="flex justify-end gap-8 hover:opacity-70 transition-opacity"
                 >
-                  <h3 className="text-3xl uppercase font-bold">
+                  <h3 className="md:text-3xl text-2xl uppercase font-bold">
                     Website Development
                   </h3>
                   <ServerImage
@@ -85,7 +85,7 @@ export const StudioServices = () => {
                     priority
                     quality={100}
                   />
-                  <h3 className="text-3xl uppercase font-bold">
+                  <h3 className="md:text-3xl text-2xl uppercase font-bold">
                     Creative Design
                   </h3>
                 </NavigationLink>
@@ -93,7 +93,7 @@ export const StudioServices = () => {
                   href="/services/agentic-ai"
                   className="flex justify-end gap-8 hover:opacity-70 transition-opacity"
                 >
-                  <h3 className="text-3xl uppercase font-bold">Agentic AI</h3>
+                  <h3 className="md:text-3xl text-2xl uppercase font-bold">Agentic AI</h3>
                   <ServerImage
                     id={20}
                     width={150}
@@ -113,7 +113,7 @@ export const StudioServices = () => {
                     priority
                     quality={100}
                   />
-                  <h3 className="text-3xl uppercase font-bold">
+                  <h3 className="md:text-3xl text-2xl uppercase font-bold">
                     Product Design
                   </h3>
                 </NavigationLink>
@@ -121,7 +121,7 @@ export const StudioServices = () => {
                   href="/services"
                   className="flex justify-end gap-8 hover:opacity-70 transition-opacity"
                 >
-                  <h3 className="text-3xl uppercase font-bold">View All</h3>
+                  <h3 className="md:text-3xl text-2xl uppercase font-bold">View All</h3>
                   <ServerImage
                     id={18}
                     width={200}

@@ -1,5 +1,5 @@
 import { ServerImage } from "@/components/universal/ServerImage";
-import { Separator } from "@/components/universal/separator";
+import { Separator } from "@/components/ui/separator";
 
 export const ArtOfSimplicity = () => {
   return (

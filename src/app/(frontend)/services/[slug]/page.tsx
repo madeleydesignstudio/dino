@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import SevenMaxWidth from "@/components/providers/7-max-width";
-import { Separator } from "@/components/universal/separator";
+import { Separator } from "@/components/ui/separator";
 import { ServerImage } from "@/components/universal/ServerImage";
 
 interface ServicePageProps {

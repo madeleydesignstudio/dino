@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Separator } from "@/components/universal/separator";
+import { Separator } from "@/components/ui/separator";
 
 export const QuestionsTestimonials = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);

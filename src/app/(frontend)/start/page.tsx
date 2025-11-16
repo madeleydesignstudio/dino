@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import SevenMaxWidth from "@/components/providers/7-max-width";
-import { Separator } from "@/components/universal/separator";
-import { ChevronLeft, ChevronRight, Send } from "lucide-react";
 import { submitProjectInquiry } from "@/actions/submit-project-inquiry";
+import { Separator } from "@/components/ui/separator";
+import { ChevronLeft, ChevronRight, Send } from "lucide-react";
+import { useState } from "react";
 
 interface FormData {
   name: string;

@@ -1,4 +1,4 @@
-import { Separator } from "../universal/separator";
+import { Separator } from "../ui/separator";
 import { ServerImage } from "@/components/universal/ServerImage";
 
 export const Intro = () => {

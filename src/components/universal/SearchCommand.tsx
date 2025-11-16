@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   CommandDialog,
@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/command";
 import { Search } from "lucide-react";
 import { Kbd } from "@/components/ui/kbd";
+import { useHotkeys } from "react-hotkeys-hook";
 
 // Types
 interface NavLink {
@@ -54,26 +55,24 @@ export function SearchCommand({
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
-  // Keyboard shortcut handler
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((open) => !open);
-      }
-      if (e.key === "Escape" && open) {
-        e.preventDefault();
-        setOpen(false);
-      }
-    },
-    [open],
-  );
+  // Keyboard shortcut: Cmd/Ctrl + K to toggle search
+  useHotkeys('mod+k', (e) => {
+    e.preventDefault();
+    setOpen((prevOpen) => !prevOpen);
+  }, {
+    enableOnFormTags: true, // Allow in forms since this is a search feature
+  });
 
-  // Set up keyboard listeners
-  useEffect(() => {
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [handleKeyDown]);
+  // Keyboard shortcut: Escape to close search
+  useHotkeys('escape', (e) => {
+    if (open) {
+      e.preventDefault();
+      setOpen(false);
+    }
+  }, {
+    enableOnFormTags: true,
+    enabled: open, // Only enable when dialog is open
+  });
 
   // Handle selection
   const handleSelect = (href: string) => {

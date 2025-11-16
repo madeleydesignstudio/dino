@@ -2,7 +2,7 @@ import { getPayload } from "payload";
 import config from "@payload-config";
 import type { Media } from "@/payload-types";
 import { RichText } from "@payloadcms/richtext-lexical/react";
-import { Separator } from "@/components/universal/separator";
+import { Separator } from "@/components/ui/separator";
 
 async function getAboutContent() {
   const payload = await getPayload({ config });

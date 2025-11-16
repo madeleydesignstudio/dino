@@ -1,5 +1,5 @@
 import { ContactForm } from "@/components/homepage/ContactForm";
-import { Separator } from "@/components/universal/separator";
+import { Separator } from "@/components/ui/separator";
 
 export default function ContactPage() {
   return (

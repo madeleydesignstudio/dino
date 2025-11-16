@@ -1,4 +1,4 @@
-import { Separator } from "@/components/universal/separator";
+import { Separator } from "@/components/ui/separator";
 import { ServerImage } from "@/components/universal/ServerImage";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,7 +38,7 @@ export const SelectedWorkCaseStudies = () => {
                   <h3 className="font-bold">Structopia</h3>
                   <p>Creative Direction, Development</p>
                 </div>
-                <Link href="/clients" className="text-accent">
+                <Link href="/casestudies/structopia" className="text-accent cursor-pointer">
                   {"----->"}
                 </Link>
               </div>
@@ -57,7 +57,7 @@ export const SelectedWorkCaseStudies = () => {
                     <h3 className="font-bold">Ordo</h3>
                     <p>Creative Direction, Development</p>
                   </div>
-                  <Link href="/clients" className="text-accent">
+                  <Link href="/casestudies/ordo" className="text-accent cursor-pointer">
                     {"----->"}
                   </Link>
                 </div>
@@ -70,12 +70,12 @@ export const SelectedWorkCaseStudies = () => {
                   priority
                   quality={100}
                 />
-                <div className="flex justify-between">
+                <div className="flex justify-between ">
                   <div>
                     <h3 className="font-bold">Form + Function</h3>
                     <p>Creative Direction, Development</p>
                   </div>
-                  <Link href="/clients" className="text-accent">
+                  <Link href="/casestudies/formfunction" className="text-accent ">
                     {"----->"}
                   </Link>
                 </div>

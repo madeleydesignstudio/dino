@@ -1,3 +1,4 @@
+import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
 export const Footer = () => {
@@ -5,17 +6,26 @@ export const Footer = () => {
     <>
       <footer className="bg-accent text-neutral-50 pt-8 pb-20 h-full px-8 relative overflow-hidden">
         <div className="container mx-auto px-4 h-full">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-10 h-full">
-            <div className="flex items-center h-full">
+
+          <div className="flex flex-col md:flex-row justify-between items-center h-full">
+            <div className="flex w-fit justify-center items-center h-full gap-4 ">
               <Image
                 src="/dino-footer.svg"
                 alt="Logo"
                 width={250}
                 height={250}
               />
+              <div className="flex flex-col w-full ">
+                <h2 className="text-sm font-bold uppercase">The digital dino</h2>
+                <p className="text-xs text-neutral-300 max-w-lg">
+                  madeleydesignstuio
+                </p>
+              </div>
             </div>
-            <div className="flex-1 grid grid-cols-4 gap-8">
+            <div className="flex flex-1 w-full h-60 justify-center gap-10 ">
               {/* Product Column */}
+              <div className="h-60 w-px bg-red-300/50"></div>
+
               <div>
                 <h3 className="text-md font-bold mb-4">Product</h3>
                 <ul className="space-y-2 text-xs">
@@ -63,6 +73,9 @@ export const Footer = () => {
                 </ul>
               </div>
 
+              <div className="h-60 w-px bg-red-300/50"></div>
+
+
               {/* Resources Column */}
               <div>
                 <h3 className="text-md font-bold mb-4">Resources</h3>
@@ -103,6 +116,8 @@ export const Footer = () => {
                 </ul>
               </div>
 
+              <div className="h-60 w-px bg-red-300/50"></div>
+
               {/* Company Column */}
               <div>
                 <h3 className="text-md font-bold mb-4">Company</h3>
@@ -139,6 +154,8 @@ export const Footer = () => {
                   </li>
                 </ul>
               </div>
+
+              <div className="h-60 w-px bg-red-300/50"></div>
 
               {/* Social Column */}
               <div>
@@ -186,6 +203,8 @@ export const Footer = () => {
                   </li>
                 </ul>
               </div>
+              <div className="h-60 w-px bg-red-300/50"></div>
+
             </div>
           </div>
         </div>
