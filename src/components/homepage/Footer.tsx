@@ -22,7 +22,7 @@ export const Footer = () => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-1 w-full h-60 justify-center gap-10 ">
+            <div className="flex flex-1 w-full h-60 justify-center gap-14 ">
               {/* Product Column */}
               <div className="h-60 w-px bg-red-300/50"></div>
 
@@ -203,7 +203,6 @@ export const Footer = () => {
                   </li>
                 </ul>
               </div>
-              <div className="h-60 w-px bg-red-300/50"></div>
 
             </div>
           </div>
